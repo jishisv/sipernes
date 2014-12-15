@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocPlanParto2" table="shcp_doc_plan_parto2">
+    <indexes>
+      <index name="IDX_B415C3198B6D3E9A" columns="id_plan_parto"/>
+      <index name="IDX_B415C3196B3CA4B" columns="id_user"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="planFecha" type="date" column="plan_fecha" nullable="true"/>
+    <field name="planTiempo" type="string" column="plan_tiempo" nullable="true"/>
+    <field name="planParFamilia" type="string" column="plan_par_familia" nullable="true"/>
+    <field name="planGanPeso" type="string" column="plan_gan_peso" nullable="true"/>
+    <field name="planHierroAcido" type="string" column="plan_hierro_acido" nullable="true"/>
+    <many-to-one field="idUser" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPlanParto" target-entity="ShcpDocPlanParto">
+      <join-columns>
+        <join-column name="id_plan_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

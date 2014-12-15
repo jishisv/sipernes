@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocExafisico" table="shcp_doc_exafisico">
+    <indexes>
+      <index name="IDX_B1279CA5AF1DFD" columns="id_hoja_post"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="exafiFreCardiaca" type="integer" column="exafi_fre_cardiaca" nullable="true"/>
+    <field name="exafiFreRespirat" type="integer" column="exafi_fre_respirat" nullable="true"/>
+    <field name="exafiPaSistole" type="string" column="exafi_pa_sistole" nullable="true"/>
+    <field name="exafiPaDiastole" type="string" column="exafi_pa_diastole" nullable="true"/>
+    <field name="exafiTempe" type="decimal" column="exafi_tempe" precision="6" scale="2" nullable="true"/>
+    <field name="exafiPeso" type="decimal" column="exafi_peso" precision="6" scale="2" nullable="true"/>
+    <field name="exafiAltura" type="integer" column="exafi_altura" nullable="true"/>
+    <field name="exafiImc" type="decimal" column="exafi_imc" precision="6" scale="2" nullable="true"/>
+    <field name="exafiCabeza" type="string" column="exafi_cabeza" length="75" nullable="true"/>
+    <field name="exafiCuello" type="string" column="exafi_cuello" length="75" nullable="true"/>
+    <field name="exafiTorax" type="string" column="exafi_torax" length="75" nullable="true"/>
+    <field name="exafiMamas" type="string" column="exafi_mamas" length="75" nullable="true"/>
+    <field name="exafiAbdomen" type="string" column="exafi_abdomen" length="75" nullable="true"/>
+    <field name="exafiUtero" type="string" column="exafi_utero" length="75" nullable="true"/>
+    <field name="exafiCesaEqb" type="string" column="exafi_cesa_eqb" length="75" nullable="true"/>
+    <field name="exafiGenitales" type="string" column="exafi_genitales" length="75" nullable="true"/>
+    <field name="exafiLoquios" type="string" column="exafi_loquios" length="75" nullable="true"/>
+    <field name="exafiEpi" type="string" column="exafi_epi" length="75" nullable="true"/>
+    <field name="exafiDiag" type="string" column="exafi_diag" length="150" nullable="true"/>
+    <field name="exafiConse" type="string" column="exafi_conse" length="150" nullable="true"/>
+    <field name="exafiTratam" type="string" column="exafi_tratam" length="150" nullable="true"/>
+    <field name="exafiFechaCita" type="date" column="exafi_fecha_cita" nullable="true"/>
+    <field name="exafiResponsa" type="string" column="exafi_responsa" length="100" nullable="true"/>
+    <many-to-one field="idHojaPost" target-entity="ShcpDocHojaPostparto">
+      <join-columns>
+        <join-column name="id_hoja_post" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocResultado" table="shcp_doc_resultado">
+    <indexes>
+      <index name="IDX_4EC8A1BA93489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="resulHojaFiltro" type="string" column="resul_hoja_filtro" nullable="true"/>
+    <field name="resulTamizaje" type="string" column="resul_tamizaje" nullable="true"/>
+    <field name="resulObservHojaFiltro" type="string" column="resul_observ_hoja_filtro" length="50" nullable="true"/>
+    <field name="resulNumControl" type="string" column="resul_num_control" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

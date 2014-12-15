@@ -1,0 +1,186 @@
+{# src/Minsal/SiapsBundle/Resource/view/MntPacienteAdmin/edit.html.twig 
+   Vista para la creación y actualización de un paciente 
+#}
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/MntPacienteAdmin/form-edit.css') }}" type="text/css" media="all" />  
+{% endblock %}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalshcp/js/MntPacienteAdmin/MntPaciente_edit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
+
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+            {#****************** aca poner redireccion a exp materno show ******************#}      
+            
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ path('admin_minsal_shcp_shcpexpmaterno_show',{'id':id_expmaterno}) }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    volver a registro de documentos
+                </a>
+           
+            {#*******************************************************************************#}      
+            {% block sonata_pre_fieldsets %}
+                <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="{{ form_group.class|default('col-md-12') }}">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {# admin.trans(name, {}, form_group.translation_domain) #}
+                                    </h4>
+                                </div>
+                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form_group.description != false %}
+                                            <p>{{ form_group.description|raw }}</p>
+                                        {% endif %}
+                                        <center>
+                                            {#<h2>Inscripci&oacuten Hoja Filtro</h2>#}
+                                            <div class="contenedor">
+                                 
+                 <table border=0>
+                      
+                     
+                     <tr>
+                     <td align= center colspan=8 class="titulo"><h4>Registro de Plan de Parto</h4> <hr></td> 
+                     </tr>
+                   
+                     <tr>
+                         <td colspan="2"align=center>Nombre Paciente</td>
+                         <td colspan="1"align=center>Edad</td>
+                         <td colspan="3"align=center>No Expediente</td>                    
+                         <td colspan="2" align=center >No Clap</td>                    
+                     </tr>
+                     <tr>{% for pacient in paciente %}
+                          {#<td colspan="2"align=center>{{form_widget(form.idExpMaterno)}} </td> #}
+                         <td colspan="2"align=center>{{pacient.exp_nombre}} {{pacient.exp_apellido}}</td> 
+                         <td colspan="1"align=center>{{pacient.exp_edad}} </td>
+                         <td colspan="3"align=center>{{pacient.numero}}</td>
+                         <td colspan="2"align=center>{{pacient.exp_clap}}</td>
+                         {%endfor%}                                  
+                     </tr>                                      
+                      <tr>                       
+                          <td colspan="8">&nbsp;</td>
+                      </tr> 
+                         
+                      <tr>                       
+                             <td colspan="1"align=center>Lugar de Control</td> 
+                             
+                             <td colspan="1"align=center>Fecha inicio de Control</td> 
+                             <td colspan="1"align=center>Nombre de quien inicia el Control</td> 
+                             <td colspan="1"align=center>Planea ir al hospital antes del partol</td> 
+                      </tr> 
+                       <tr>                       
+                          <td colspan="1"align=center>{{ form_widget(form.planLugarControl)}} </td>  
+                          
+                           <td colspan="1"align=center>{{ form_widget(form.planFechaInicio)}} </td>  
+                           <td colspan="1"align=center>{{ form_widget(form.planNomPerInicia)}} </td>  
+                           <td colspan="1"align=center>{{ form_widget(form.planHospPlaneaParto)}} </td>  
+                      </tr>
+                      
+                      <tr>                       
+                            <td colspan="1"align=center>Quien acompania</td> 
+                            <td colspan="1"align=center>Planea salir antes de la FPP</td> 
+                            <td colspan="1"align=center>Donde iria</td> 
+                            <td colspan="1"align=center>Direccion</td> 
+                      </tr> 
+                       <tr>                       
+                          <td colspan="1"align=center>{{ form_widget(form.planAcomParto)}} </td>  
+                          <td colspan="1"align=center>{{ form_widget(form.planSalirAntsFec)}} </td>  
+                          <td colspan="1"align=center>{{ form_widget(form.planDondIria)}} </td> 
+                          <td colspan="1"align=center>{{ form_widget(form.planDireccion)}} </td>  
+                      </tr> 
+                      
+                        <tr>                       
+                            <td colspan="1"align=center>Nombre de Persona que transportara</td> 
+                             <td colspan="1"align=center>Telefono de la persona que transportara</td> 
+                             
+                      </tr> 
+                       <tr>                       
+                          <td colspan="1"align=center>{{ form_widget(form.planNomPerTransp)}} </td> 
+                          <td colspan="1"align=center>{{ form_widget(form.planTelPerTransp)}} </td>  
+                         
+                      </tr> 
+                      
+                         </table>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                                {#</div>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+{% endblock %}

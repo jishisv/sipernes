@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParPatologia" table="shcp_par_patologia">
+    <indexes>
+      <index name="IDX_A0EA638AD766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="patExistencia" type="string" column="pat_existencia" nullable="true"/>
+    <field name="patEnfermedad" type="string" column="pat_enfermedad" nullable="true"/>
+    <field name="patHemorragia1trim" type="string" column="pat_hemorragia_1trim" nullable="true"/>
+    <field name="patHemorragia2trim" type="string" column="pat_hemorragia_2trim" nullable="true"/>
+    <field name="patHemorragia3trim" type="string" column="pat_hemorragia_3trim" nullable="true"/>
+    <field name="patPostparto" type="string" column="pat_postparto" nullable="true"/>
+    <field name="patInfecPuerperal" type="string" column="pat_infec_puerperal" nullable="true"/>
+    <field name="patNotas" type="string" column="pat_notas" length="200" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

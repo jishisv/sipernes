@@ -1,0 +1,99 @@
+
+
+.fechacal.form-control, .hora.form-control {
+	width: 120px;
+	margin-left: 20px;
+}
+
+	.dat_paciente tr:nth-child(2n) td{
+		text-align: center;
+	}
+
+.textos.form-control{
+	
+	float: left;
+	width: 150px;
+	margin-left: 20px;
+}
+
+.dat_paciente {
+	width: 90%;
+	min-width: 800px;
+}
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+	}
+
+	.
+
+	.dat_paciente tr:nth-child(7) td{
+		vertical-align: middle;
+		width: 16%;
+	}
+
+	.dat_paciente tr td:nth-child(1) label{
+		width: 100px;
+	}
+
+	.dat_paciente tr:nth-child(2) td label, .dat_paciente tr:nth-child(4) td label{
+		width: 100%;
+		
+	}
+
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+	}
+
+	.dat_paciente tr:last-child td:first-child{
+		height: 35px;
+	}
+
+
+
+.list-unstyled {
+		width: 200px;
+}
+
+	.list-unstyled li label{
+		width: 60px;
+
+	}
+
+.field-container{
+	width: 80%;
+	
+}
+
+.tablapatologias{
+	border: 0;
+	margin: 0 auto;
+}
+
+#hemorragia{
+	min-width: 300px;
+
+}
+
+	#hemorragia tr td:nth-child(1) label{
+		
+		width: 150px;
+	}
+
+	#hemorragia tr td:nth-child(2) label{
+		
+		width: 60px;
+	}
+
+	#hemorragia tr:nth-child(1) td label{
+		text-align: center;
+		width: 100%;
+	}
+
+
+.areadetextos {
+	width: 50%;
+	resize:none;
+
+}

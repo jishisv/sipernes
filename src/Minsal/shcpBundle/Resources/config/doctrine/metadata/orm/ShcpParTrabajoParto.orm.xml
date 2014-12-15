@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParTrabajoParto" table="shcp_par_trabajo_parto">
+    <indexes>
+      <index name="IDX_4D44E3A2D766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="trabPartograma" type="string" column="trab_partograma" nullable="true"/>
+    <field name="trabHora" type="time" column="trab_hora" nullable="true"/>
+    <field name="trabPosicion" type="string" column="trab_posicion" nullable="true"/>
+    <field name="trabPaSistole" type="string" column="trab_pa_sistole" nullable="true"/>
+    <field name="trabPaDiastole" type="string" column="trab_pa_diastole" nullable="true"/>
+    <field name="trabPulso" type="integer" column="trab_pulso" nullable="true"/>
+    <field name="trabContrac" type="integer" column="trab_contrac" nullable="true"/>
+    <field name="trabDilatacion" type="integer" column="trab_dilatacion" nullable="true"/>
+    <field name="trabAlturaPresent" type="string" column="trab_altura_present" nullable="true"/>
+    <field name="trabVariedadPosic" type="string" column="trab_variedad_posic" nullable="true"/>
+    <field name="trabMeconio" type="string" column="trab_meconio" nullable="true"/>
+    <field name="trabFcfDips" type="integer" column="trab_fcf_dips" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

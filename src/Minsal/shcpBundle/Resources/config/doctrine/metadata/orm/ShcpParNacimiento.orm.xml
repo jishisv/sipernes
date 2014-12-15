@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParNacimiento" table="shcp_par_nacimiento">
+    <indexes>
+      <index name="IDX_F2E4B155C82E5C62" columns="id_indicacion_parto"/>
+      <index name="IDX_F2E4B1557DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_F2E4B155D766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nacTipoNacimiento" type="string" column="nac_tipo_nacimiento" nullable="true"/>
+    <field name="nacFecNacimiento" type="date" column="nac_fec_nacimiento" nullable="true"/>
+    <field name="nacHoraNacimiento" type="time" column="nac_hora_nacimiento" nullable="true"/>
+    <field name="nacMultiple" type="string" column="nac_multiple" nullable="true"/>
+    <field name="nacOrden" type="string" column="nac_orden" nullable="true"/>
+    <field name="nacTerminac" type="string" column="nac_terminac" nullable="true"/>
+    <field name="nacPosicionParto" type="string" column="nac_posicion_parto" nullable="true"/>
+    <field name="nacEpisioto" type="string" column="nac_episioto" nullable="true"/>
+    <field name="nacDesgarros" type="string" column="nac_desgarros" nullable="true"/>
+    <field name="nacOcitocicosPrealumb" type="string" column="nac_ocitocicos_prealumb" nullable="true"/>
+    <field name="nacOcitocicosPostlumb" type="string" column="nac_ocitocicos_postlumb" nullable="true"/>
+    <field name="nacPlacentaCompleta" type="string" column="nac_placenta_completa" nullable="true"/>
+    <field name="nacPlacentaRetenida" type="string" column="nac_placenta_retenida" nullable="true"/>
+    <field name="nacLigaduraPrecoz" type="string" column="nac_ligadura_precoz" nullable="true"/>
+    <field name="nacMedicacionRecibida" type="string" column="nac_medicacion_recibida" nullable="true"/>
+    <field name="nacOtrosMedic" type="string" column="nac_otros_medic" nullable="true"/>
+    <field name="nacOtroMedic1" type="string" column="nac_otro_medic1" nullable="true"/>
+    <field name="nacOtroMedic2" type="string" column="nac_otro_medic2" nullable="true"/>
+    <field name="nacPartoAtendidoPor" type="string" column="nac_parto_atendido_por" nullable="true"/>
+    <field name="nacAtendioParto" type="bigint" column="nac_atendio_parto" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idIndicacionParto" target-entity="ShcpParCtlIndicacion">
+      <join-columns>
+        <join-column name="id_indicacion_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

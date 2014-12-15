@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboPreproced3" table="shcp_abo_preproced3">
+    <indexes>
+      <index name="IDX_C2C609BB70374B77" columns="id_preproced1"/>
+      <index name="IDX_C2C609BB1E833DEC" columns="id_cie10"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="prep3CondicionIngr" type="string" column="prep3_condicion_ingr" nullable="true"/>
+    <field name="prep3OtroDanio" type="string" column="prep3_otro_danio" length="30" nullable="true"/>
+    <field name="prep3EstadoActual" type="string" column="prep3_estado_actual" nullable="true"/>
+    <field name="prep3TipoAborto" type="string" column="prep3_tipo_aborto" nullable="true"/>
+    <field name="prep3Respons" type="string" column="prep3_respons" length="100" nullable="true"/>
+    <many-to-one field="idCie10" target-entity="ShcpAboCtlCie10">
+      <join-columns>
+        <join-column name="id_cie10" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPreproced1" target-entity="ShcpAboPreproced1">
+      <join-columns>
+        <join-column name="id_preproced1" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

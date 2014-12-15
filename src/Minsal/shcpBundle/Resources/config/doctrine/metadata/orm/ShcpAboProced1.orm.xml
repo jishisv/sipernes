@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboProced1" table="shcp_abo_proced1">
+    <indexes>
+      <index name="IDX_5EB187B9CDD53299" columns="id_admin_proceden"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="proc1Fecha" type="date" column="proc1_fecha" nullable="true"/>
+    <field name="proc1HoraMin" type="time" column="proc1_hora_min" nullable="true"/>
+    <field name="proc1Postagland" type="string" column="proc1_postagland" nullable="true"/>
+    <field name="proc1Dilatador" type="string" column="proc1_dilatador" nullable="true"/>
+    <field name="proc1HrsDilatacion" type="time" column="proc1_hrs_dilatacion" nullable="true"/>
+    <field name="proc1EvacUterina" type="string" column="proc1_evac_uterina" nullable="true"/>
+    <field name="proc1Ambiente" type="string" column="proc1_ambiente" nullable="true"/>
+    <field name="proc1MedicinaReci" type="string" column="proc1_medicina_reci" nullable="true"/>
+    <field name="proc1OtraMed1" type="string" column="proc1_otra_med1" nullable="true"/>
+    <field name="proc1OtraMed2" type="string" column="proc1_otra_med2" nullable="true"/>
+    <field name="proc1OtraMed3" type="string" column="proc1_otra_med3" nullable="true"/>
+    <field name="proc1OtraMed4" type="string" column="proc1_otra_med4" nullable="true"/>
+    <field name="proc1ScoreDolor" type="string" column="proc1_score_dolor" nullable="true"/>
+    <many-to-one field="idAdminProceden" target-entity="ShcpAboAdmisionProceden">
+      <join-columns>
+        <join-column name="id_admin_proceden" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

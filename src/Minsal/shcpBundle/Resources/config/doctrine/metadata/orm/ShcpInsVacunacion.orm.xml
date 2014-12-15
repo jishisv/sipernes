@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsVacunacion" table="shcp_ins_vacunacion">
+    <indexes>
+      <index name="IDX_5A2357BF93489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="vacuAntirubeo" type="string" column="vacu_antirubeo" nullable="true"/>
+    <field name="vacuAntiteVigente" type="string" column="vacu_antite_vigente" nullable="true"/>
+    <field name="vacuAntiteDosis1" type="string" column="vacu_antite_dosis1" nullable="true"/>
+    <field name="vacuAntiteDosis2" type="string" column="vacu_antite_dosis2" nullable="true"/>
+    <field name="vacuH1n1" type="string" column="vacu_h1n1" nullable="true"/>
+    <field name="vacuH1n1Mes" type="string" column="vacu_h1n1_mes" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpConPrenatal" table="shcp_con_prenatal">
+    <indexes>
+      <index name="IDX_9C7C4E53FAF6081D" columns="id_signo_alarma"/>
+      <index name="IDX_9C7C4E536B3CA4B" columns="id_user"/>
+      <index name="IDX_9C7C4E5393489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="prenaFecha" type="date" column="prena_fecha" nullable="true"/>
+    <field name="prenaHora" type="time" column="prena_hora" nullable="true"/>
+    <field name="prenaEdadGest" type="integer" column="prena_edad_gest" nullable="true"/>
+    <field name="prenaPeso" type="decimal" column="prena_peso" precision="6" scale="2" nullable="true"/>
+    <field name="prenaPresionSist" type="string" column="prena_presion_sist" nullable="true"/>
+    <field name="prenaPresionDiast" type="string" column="prena_presion_diast" nullable="true"/>
+    <field name="prenaTempe" type="decimal" column="prena_tempe" precision="6" scale="2" nullable="true"/>
+    <field name="prenaAltUterina" type="integer" column="prena_alt_uterina" nullable="true"/>
+    <field name="prenaPresent" type="string" column="prena_present" nullable="true"/>
+    <field name="prenaFrecFetal" type="integer" column="prena_frec_fetal" nullable="true"/>
+    <field name="prenaMovFetal" type="string" column="prena_mov_fetal" nullable="true"/>
+    <field name="prenaProte" type="string" column="prena_prote" nullable="true"/>
+    <field name="prenaConsultaPor" type="string" column="prena_consulta_por" length="100" nullable="true"/>
+    <field name="prenaObserv" type="string" column="prena_observ" length="500" nullable="true"/>
+    <field name="prenaPresenteEnfer" type="string" column="prena_presente_enfer" length="100" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUser" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSignoAlarma" target-entity="ShcpConCtlSignoAlarma">
+      <join-columns>
+        <join-column name="id_signo_alarma" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

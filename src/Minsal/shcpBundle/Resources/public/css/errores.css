@@ -1,0 +1,23 @@
+.errorform{
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(255, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(255, 0, 0, 1);
+	box-shadow: 0px 0px 5px 0px rgba(255, 0, 0, 1);
+} 
+
+.radiosnormales{
+	border: 1px solid black;
+	width: 20px;
+	height: 20px;
+	border-radius: 30px;
+}
+
+.alertas{
+	border: 2px solid #FFCC00;
+}
+
+.alertasradios{
+	border: 2px solid #FFCC00;
+	width: 22px;
+	height: 22px;
+	border-radius: 30px;
+}

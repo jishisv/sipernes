@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboPreproced2" table="shcp_abo_preproced2">
+    <indexes>
+      <index name="IDX_B5C1392D70374B77" columns="id_preproced1"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="prep2SintomatDias" type="string" column="prep2_sintomat_dias" nullable="true"/>
+    <field name="prep2SintomatHrs" type="string" column="prep2_sintomat_hrs" nullable="true"/>
+    <field name="prep2Sangrado" type="string" column="prep2_sangrado" nullable="true"/>
+    <field name="prep2Dolor" type="string" column="prep2_dolor" nullable="true"/>
+    <field name="prep2DolorEscala" type="string" column="prep2_dolor_escala" nullable="true"/>
+    <field name="prep2Conciencia" type="string" column="prep2_conciencia" nullable="true"/>
+    <field name="prep2PielMucosa" type="string" column="prep2_piel_mucosa" nullable="true"/>
+    <field name="prep2Abdomen" type="string" column="prep2_abdomen" nullable="true"/>
+    <field name="prep2TamUterino" type="string" column="prep2_tam_uterino" nullable="true"/>
+    <field name="prep2Posicion" type="string" column="prep2_posicion" nullable="true"/>
+    <field name="prep2CuelloCerrado" type="string" column="prep2_cuello_cerrado" nullable="true"/>
+    <field name="prep2Restos" type="string" column="prep2_restos" nullable="true"/>
+    <field name="prep2VaginaNormal" type="string" column="prep2_vagina_normal" nullable="true"/>
+    <field name="prep2DiametroEco" type="string" column="prep2_diametro_eco" nullable="true"/>
+    <field name="prep2Tamanio" type="string" column="prep2_tamanio" nullable="true"/>
+    <field name="prep2AnalgeSolicitada" type="string" column="prep2_analge_solicitada" nullable="true"/>
+    <field name="prep2AnalgeRealizada" type="string" column="prep2_analge_realizada" nullable="true"/>
+    <many-to-one field="idPreproced1" target-entity="ShcpAboPreproced1">
+      <join-columns>
+        <join-column name="id_preproced1" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

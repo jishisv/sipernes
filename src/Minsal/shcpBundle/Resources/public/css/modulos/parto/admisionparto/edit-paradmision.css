@@ -1,0 +1,94 @@
+
+
+.fechacal.form-control, .hora.form-control {
+	width: 120px;
+	margin-left: 20px;
+}
+
+	.dat_paciente tr:nth-child(2n) td{
+		text-align: center;
+	}
+
+	.dat_paciente tr:nth-child(8) td:nth-child(3) label{
+		
+		width: 100%;
+		text-align: center;
+	}
+
+.textos.form-control{
+	
+	float: left;
+	width: 150px;
+	margin-left: 20px;
+}
+
+.dat_paciente {
+	width: 90%;
+	min-width: 800px;
+}
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+	}
+
+	.dat_paciente tr:nth-child(1) td{
+		vertical-align: middle;
+	}
+
+	.dat_paciente tr{
+		height: 50px;
+		padding: 20px;
+	}
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+	}
+
+
+	.dat_paciente tr td{
+		width: 25%;
+	}
+
+	.dat_paciente tr td:nth-child(1){
+		width: 200px;
+	}
+
+.presion.form-control{
+	
+	float: left;
+	width: 20%;
+	margin: 0 auto;
+}
+
+	.presion.form-control label{
+		width: 35px;
+		
+	}
+
+	.dat_paciente td{
+		vertical-align: top;
+	}
+
+	.dat_paciente tr:nth-child(even) td{
+		height: 80px;
+		vertical-align: bottom;
+		padding-bottom: 10px;
+	}
+
+
+
+	#tabla-roturas tr td label{
+		width: 120px;
+	}
+
+#rotura{
+	padding-left: 45%;
+}
+
+	#rotura label{
+		width:55px;
+	}
+
+.textos.anchopersonalizado {
+	width: 100px;
+}

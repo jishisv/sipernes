@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfMtlIntervencion" table="enf_mtl_intervencion">
+    <indexes>
+      <index name="IDX_C272BD1F3FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_C272BD1F3F170EFF" columns="id_intervencion"/>
+      <index name="IDX_C272BD1F9B8420B7" columns="id_sec_ingreso"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaIngresoInterv" type="date" column="fecha_ingreso_interv" nullable="true"/>
+    <field name="fechaModificacionInterv" type="date" column="fecha_modificacion_interv" nullable="true"/>
+    <field name="observacionInterv" type="string" column="observacion_interv" length="500" nullable="true"/>
+    <field name="efectivoInterv" type="boolean" column="efectivo_interv" nullable="true"/>
+    <field name="estadoMtlInterv" type="boolean" column="estado_mtl_interv" nullable="true"/>
+    <many-to-one field="idSecIngreso" target-entity="SecIngreso">
+      <join-columns>
+        <join-column name="id_sec_ingreso" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idIntervencion" target-entity="EnfCtlIntervencion">
+      <join-columns>
+        <join-column name="id_intervencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

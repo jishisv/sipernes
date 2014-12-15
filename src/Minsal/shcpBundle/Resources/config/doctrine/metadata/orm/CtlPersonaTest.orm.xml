@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlPersonaTest" table="ctl_persona_test">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombrePersona" type="string" column="nombre_persona" length="150" nullable="true"/>
+    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
+    <field name="edad" type="integer" column="edad" nullable="true"/>
+    <field name="promedioNotas" type="decimal" column="promedio_notas" precision="10" scale="0" nullable="false"/>
+    <field name="descripcion" type="text" column="descripcion" nullable="true"/>
+    <field name="email" type="string" column="email" length="50" nullable="true"/>
+    <field name="aceptaCondiciones" type="boolean" column="acepta_condiciones" nullable="false"/>
+    <field name="userName" type="string" column="user_name" length="50" nullable="true"/>
+  </entity>
+</doctrine-mapping>

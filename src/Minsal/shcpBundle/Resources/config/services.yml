@@ -1,0 +1,170 @@
+services:
+    minsalshcp.admin.shcp_abo_ctl_cie10:
+        class: Minsal\shcpBundle\Admin\ShcpAboCtlCie10Admin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpAboCtlCie10, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Cie10}
+
+    minsalshcp.admin.shcp_con_ctl_signo_alarma:
+        class: Minsal\shcpBundle\Admin\ShcpConCtlSignoAlarmaAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpConCtlSignoAlarma, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Signo de Alarma}
+
+    minsalshcp.admin.shcp_doc_ctl_pregunta:
+        class: Minsal\shcpBundle\Admin\ShcpDocCtlPreguntaAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpDocCtlPregunta, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Preguntas}
+
+    minsalshcp.admin.shcp_ins_ctl_enfermedad:
+        class: Minsal\shcpBundle\Admin\ShcpInsCtlEnfermedadAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpInsCtlEnfermedad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Enfermedades}
+
+    minsalshcp.admin.shcp_par_ctl_indicacion:
+        class: Minsal\shcpBundle\Admin\ShcpParCtlIndicacionAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpParCtlIndicacion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Indicaciones medicas}
+
+    minsalshcp.admin.shcp_par_ctl_patologia:
+        class: Minsal\shcpBundle\Admin\ShcpParCtlPatologiaAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpParCtlPatologia, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CTL-1-shcp, label: Patologias}
+         
+                 
+    minsalsiaps.admin.mntpaciente:
+        class: Minsal\SiapsBundle\Admin\MntPacienteAdmin
+        arguments: [~, Minsal\SiapsBundle\Entity\MntPaciente, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PRE-1-Inscripción, label:  Inscripción a Expediente Materno}         
+    
+    minsalshcp.admin.shcp_pre_paciente:
+        class: Minsal\shcpBundle\Admin\ShcpPrePacienteAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpPrePaciente,  MinsalshcpBundle:ShcpPrePacienteAdmin]
+        tags:
+   
+            - {name: sonata.admin, manager_type: orm, group: CON-1-Control de Seguimiento, label:  Pacientes}
+            
+    
+   # minsalshcp.admin.shcp_doc_resultado:
+    #    class: Minsal\shcpBundle\Admin\ShcpDocResultadoAdmin
+     #   arguments: [~, Minsal\shcpBundle\Entity\ShcpDocResultado, SonataAdminBundle:CRUD]
+      #  tags:
+       #     - {name: sonata.admin, manager_type: orm, group: PRE-2-Inscripción, label: Registro de Documentos} 
+          
+  
+
+    minsalshcp.admin.ctl_establecimiento:
+        class: Minsal\shcpBundle\Admin\CtlEstablecimientoAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\CtlEstablecimiento, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm,  group: ABT-1-Preparación para Control, label: Prueba2}
+
+    
+    minsalshcp.admin.shcp_exp_materno:
+        class: Minsal\shcpBundle\Admin\ShcpExpMaternoAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpExpMaterno, MinsalshcpBundle:ShcpExpMaternoAdmin]
+        tags:
+            
+            - {name: sonata.admin, manager_type: orm, group: PRE-1-Control de Seguimiento, label:  Control de Seguimiento}
+
+
+    minsalshcp.admin.shcp_doc_resultado:
+        class: Minsal\shcpBundle\Admin\ShcpDocResultadoAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpDocResultado, MinsalshcpBundle:ShcpDocResultadoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PRE-1-Inscripción, label: Registro de Documentos}
+   
+    minsalshcp.admin.shcp_par_admision:
+            class: Minsal\shcpBundle\Admin\ShcpParAdmisionAdmin
+            arguments: [~, Minsal\shcpBundle\Entity\ShcpParAdmision, MinsalshcpBundle:ShcpParAdmisionAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto admision, label: Parto admision}
+                
+    minsalshcp.admin.shcp_par_trabajo_parto:
+            class: Minsal\shcpBundle\Admin\ShcpParTrabajoPartoAdmin
+            arguments: [~, Minsal\shcpBundle\Entity\ShcpParTrabajoParto, MinsalshcpBundle:ShcpParTrabajoPartoAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto admision, label: Trabajo parto}
+                
+    minsalshcp.admin.shcp_par_rotura_membrana:
+            class: Minsal\shcpBundle\Admin\ShcpParRoturaMembranaAdmin
+            arguments: [~, Minsal\shcpBundle\Entity\ShcpParRoturaMembrana, SonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto membrana, label: ShcpParRoturaMembrana, show_in_dashboard: false}
+
+    minsalshcp.admin.shcp_par_present:
+            class: Minsal\shcpBundle\Admin\ShcpParPresentAdmin
+            arguments: [~, Minsal\shcpBundle\Entity\ShcpParPresent, MinsalshcpBundle:ShcpParPresentAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: PAR-1-Par present, label: ShcpParPresent, show_in_dashboard: false}                
+
+    minsalshcp.admin.shcp_abo_admision_proceden:
+        class: Minsal\shcpBundle\Admin\ShcpAboAdmisionProcedenAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpAboAdmisionProceden, MinsalshcpBundle:ShcpAboAdmisionProcedenAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ABT-1-Preparación para Control, label: Admision por aborto}
+            
+    minsalshcp.admin.shcp_abo_preproced1:
+        class: Minsal\shcpBundle\Admin\ShcpAboPreproced1Admin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpAboPreproced1, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ABT-1-Preparación para Control, label: Preprocedimiento1}
+
+    minsalshcp.admin.shcp_abo_preproced2:
+        class: Minsal\shcpBundle\Admin\ShcpAboPreproced2Admin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpAboPreproced2, MinsalshcpBundle:ShcpAboPreproced2Admin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ABT-1-Preparación para Control, label: Preprocedimiento2}
+               
+
+    minsalshcp.admin.shcp_abo_preproced3:
+        class: Minsal\shcpBundle\Admin\ShcpAboPreproced3Admin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpAboPreproced3, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ABT-1-Preparación para Control, label: Preprocedimiento3}
+    
+    minsalshcp.admin.shcp_doc_plan_parto:
+        class: Minsal\shcpBundle\Admin\ShcpDocPlanPartoAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpDocPlanParto, MinsalshcpBundle:ShcpDocPlanPartoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PRE-1-Inscripción, label:  Registro de Plan de Parto}
+            
+    minsalshcp.admin.shcp_doc_plan_parto2:
+        class: Minsal\shcpBundle\Admin\ShcpDocPlanParto2Admin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpDocPlanParto2, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PRE-1-Inscripción, label:  Registro de Plan de Parto 2}
+            
+            
+            
+            
+
+    minsalshcp.admin.shcp_par_nacimiento:
+        class: Minsal\shcpBundle\Admin\ShcpParNacimientoAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpParNacimiento, MinsalshcpBundle:ShcpParNacimientoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto membrana, label: Datos del nacimiento}
+
+    minsalshcp.admin.shcp_par_puerperio:
+        class: Minsal\shcpBundle\Admin\ShcpParPuerperioAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpParPuerperio, MinsalshcpBundle:ShcpParPuerperioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto membrana, label: Puerperio}
+
+    minsalshcp.admin.shcp_par_patologia:
+        class: Minsal\shcpBundle\Admin\ShcpParPatologiaAdmin
+        arguments: [~, Minsal\shcpBundle\Entity\ShcpParPatologia, MinsalshcpBundle:ShcpParPatologiaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto patologias, label: Patologías maternas}
+
+    minsalshcp.admin.relationship63:
+        class: Minsal\shcpBundle\Admin\Relationship63Admin
+        arguments: [~, Minsal\shcpBundle\Entity\Relationship63, MinsalshcpBundle:Relationship63Admin]
+        tags:
+
+            - {name: sonata.admin, manager_type: orm, group: PAR-1-Parto patologias detalle, label: Relationship63, show_in_dashboard: false}

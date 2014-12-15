@@ -1,0 +1,12 @@
+services:
+    minsal_sipernes_actividad.admin.enf_ctl_actividad:
+        class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlActividadAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlActividad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catalogo Actividad}
+
+    minsal_sipernes_actividad.admin.enf_ctl_subactividad:
+        class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlSubactividadAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubactividad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Subactividad, label: Catalogo Subactividad}

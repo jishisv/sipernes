@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboPreproced1" table="shcp_abo_preproced1">
+    <indexes>
+      <index name="IDX_2CC86897CDD53299" columns="id_admin_proceden"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="prep1Pulso" type="integer" column="prep1_pulso" nullable="true"/>
+    <field name="prep1PulsoMay100Men60" type="string" column="prep1_pulso_may100_men60" nullable="true"/>
+    <field name="prep1PaSistole" type="string" column="prep1_pa_sistole" nullable="true"/>
+    <field name="prep1PaDiastole" type="string" column="prep1_pa_diastole" nullable="true"/>
+    <field name="prep1PaMay14090Men8050" type="string" column="prep1_pa_may140_90_men80_50" nullable="true"/>
+    <field name="prep1FrecRespirat" type="integer" column="prep1_frec_respirat" nullable="true"/>
+    <field name="prep1FrecRespiratMay16" type="string" column="prep1_frec_respirat_may16" nullable="true"/>
+    <field name="prep1Temp" type="decimal" column="prep1_temp" precision="6" scale="2" nullable="true"/>
+    <field name="prep1TempMay38" type="string" column="prep1_temp_may38" nullable="true"/>
+    <field name="prep1Hemoglob" type="decimal" column="prep1_hemoglob" precision="6" scale="2" nullable="true"/>
+    <field name="prep1HemoglobMen10" type="string" column="prep1_hemoglob_men10" nullable="true"/>
+    <field name="prep1SifDiagno" type="string" column="prep1_sif_diagno" nullable="true"/>
+    <field name="prep1SifTratamient" type="string" column="prep1_sif_tratamient" nullable="true"/>
+    <field name="prep1SifTratamientPareja" type="string" column="prep1_sif_tratamient_pareja" nullable="true"/>
+    <field name="prep1Leucocitos" type="string" column="prep1_leucocitos" nullable="true"/>
+    <field name="prep1Plaquetas" type="string" column="prep1_plaquetas" nullable="true"/>
+    <field name="prep1PlaqMen100ml" type="string" column="prep1_plaq_men100ml" nullable="true"/>
+    <field name="prep1Vih" type="string" column="prep1_vih" nullable="true"/>
+    <field name="prep1GrupoSang" type="string" column="prep1_grupo_sang" nullable="true"/>
+    <field name="prep1Rh" type="string" column="prep1_rh" nullable="true"/>
+    <field name="prep1Inmuniza" type="string" column="prep1_inmuniza" nullable="true"/>
+    <field name="prep1Globuantid" type="string" column="prep1_globuantid" nullable="true"/>
+    <many-to-one field="idAdminProceden" target-entity="ShcpAboAdmisionProceden">
+      <join-columns>
+        <join-column name="id_admin_proceden" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

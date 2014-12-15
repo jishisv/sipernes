@@ -1,0 +1,531 @@
+{# src/Minsal/SiapsBundle/Resource/view/MntPacienteAdmin/edit.html.twig 
+   Vista para la creación y actualización de un paciente 
+#}
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+ <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/General/list.css') }}" type="text/css" media="all" />  
+    <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/modulos/parto/nacimientoparto/edit-nacimientoparto.css') }}" type="text/css" media="all" />  
+{% endblock %}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+    
+    <script src="{{ asset('bundles/minsalshcp/js/mask/jquery.mask.js') }}" type="text/javascript"></script>
+    
+    <script src="{{ asset('bundles/minsalshcp/js/modulos/parto/new.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ asset('bundles/minsalshcp/js/modulos/parto/nacimientoparto/alertas.js') }}" type="text/javascript"></script>
+    
+{% endblock %}
+
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
+
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ admin.generateUrl('list') }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    {{ 'link_action_list'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            {% endif %}
+
+            {% block sonata_pre_fieldsets %}
+                <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="{{ form_group.class|default('col-md-12') }}">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {# admin.trans(name, {}, form_group.translation_domain) #}
+                                    </h4>
+                                </div>
+                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form_group.description != false %}
+                                            <p>{{ form_group.description|raw }}</p>
+                                        {% endif %}
+                                        <center>
+                                            <table class="dat_paciente">
+                                                <tr class="dat_paciente_sec">
+                                                        <td colspan="8">Datos del nacimiento</td>   
+
+                                                </tr>           
+                                                <tr>
+                                                    <td colspan="4"><label> Nombre de la paciente</label></td>  
+                                                    <td colspan="4"><label>Lugar de parto</label></td>
+                                                </tr>   
+                                                <tr>
+                                                    <td colspan="4">{{ form_widget(form.idAdmisionParto) }}</td>
+                                                    <td colspan="4">{{ form_widget(form.idEstablecimiento) }}</td>
+                                                </tr>       
+                                                <tr>
+                                                    <td colspan="2"><label>Nacimiento</label></td>
+                                                    <td colspan="4"><label>Fecha y hora de nacimiento</label></td>
+                                                    <td colspan="2"><label>Nacimiento multiple</label></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2">{{ form_widget(form.nacTipoNacimiento) }}</td>
+                                                    <td colspan="4">
+                                                        <table>
+                                                            <tr>
+                                                                <td colspan = "3">
+                                                                    <label>
+                                                                        Hora y minutos
+                                                                    </label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>
+                                                                        Fecha
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    {{ form_widget(form.nacHoraNacimiento) }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ form_widget(form.nacFecNacimiento) }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    {{ form_widget(form.nacMultiple) }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <label>Orden</label>{{ form_widget(form.nacOrden) }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Terminación</label>
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <label>Indicación principal de inducción o parto operatorio</label>
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <label>Posición parto</label>
+                                                    </td>
+
+                                                    <td colspan="2">
+                                                        <label>Episiotomia</label>
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        {{ form_widget(form.nacTerminac) }}
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <table id="indicacion">
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    {{ form_widget(form.nacHoraNacimiento) }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <label>
+                                                                        Código:
+                                                                    </label>
+                                                                </td>
+                                                                <td colspan="2">
+                                                                    {{ form_widget(form.idIndicacionParto) }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        
+                                                    </td>
+                                                    <td colspan="2">
+                                                        {{ form_widget(form.nacPosicionParto) }}
+                                                    </td>
+
+                                                    <td colspan="2">
+                                                        {{ form_widget(form.nacEpisioto) }}
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <label>
+                                                            Desgarros (Grado 1 a 4)
+                                                        </label>
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <label>
+                                                            Ocitocicos
+                                                        </label>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <label>
+                                                            Placenta
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                
+
+                                                <tr>
+                                                    <td colspan="3">
+                                                        {{ form_widget(form.nacDesgarros) }}
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <table id="ocitaciones">
+                                                            <tr>
+                                                                <td>
+                                                                    <label>
+                                                                        Prealumbramiento
+                                                                    </label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>
+                                                                        Postalumbramiento
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    {{ form_widget(form.nacOcitocicosPrealumb) }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ form_widget(form.nacOcitocicosPostlumb) }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <table id="placenta">
+                                                            <tr>
+                                                                <td>
+                                                                    <label>Completa</label>
+                                                                </td>
+                                                                <td>
+                                                                    {{ form_widget(form.nacPlacentaCompleta) }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <label>Retenida</label>
+                                                                </td>
+                                                                <td>
+                                                                    {{ form_widget(form.nacPlacentaRetenida) }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <label>
+                                                            Ligadura de cordon
+                                                        </label>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <label>Precoz</label>
+                                                   
+                                                        {{ form_widget(form.nacLigaduraPrecoz) }}
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="8"> <label>Medicina recibida</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <table id="medicina">
+                                                            <tr>
+                                                                <td>
+                                                                    <label>Ocitocicos en TDP</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Antibioticos</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Analgesia</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Anestesia local</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Anestesia regional</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Anestesia general</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Transfusión</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label>Otros</label>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.ocitocicos) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.antibioticos) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.analgesia) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.anestesialocal) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.anestesiaregional) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.anestesiageneral) }}
+                                                                </td>
+                                                                <td rowspan="5">
+                                                                    {{ form_widget(form.transfusion) }}
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    {{ form_widget(form.nacOtrosMedic) }}                              
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                        <label>Medicamento 1</label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                       {{ form_widget(form.nacOtroMedic1) }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                        <label>Medicamento 2</label>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                          {{ form_widget(form.nacOtroMedic2) }}
+                                                                </td>
+                                                            </tr>
+
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <label>Atendio</label>
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            Parto
+                                                        </label>
+                                                    </td>
+                                                    <td colspan="6"  id="atendio">
+                                                        {{ form_widget(form.nacPartoAtendidoPor) }}
+                                                    </td>
+                                                    <td id="atendio">
+                                                    <label>
+                                                        Nombre
+                                                    </label>
+                                                        {{ form_widget(form.nacAtendioParto) }}
+                                                    </td>
+
+                                                </tr>
+                                         
+
+                                                {# <tr>
+                                                    <td colspan="4"><label>Detalles de partograma *</label></td>    
+                                                </tr> 
+                                                <tr>
+                                                    <td colspan="4">{{ form_widget(form.trabPartograma) }}</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td><label>Hora-minutos *</label></td>
+                                                    
+                                                    <td><label>Posición de la madre *</label></td>
+                                                    <td> 
+                                                        <label>Presión arterial *</label>
+                                                    </td>
+                                                    <td><label>Pulso latidos por minuto *</label></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        {{ form_widget(form.trabHora) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ form_widget(form.trabPosicion) }}
+                                                    </td>
+                                                    <td>
+                                                        <div style="float: left;">
+                                                            {{ form_widget(form.trabPaSistole) }} <label style="width:35px;">/</label>  {{ form_widget(form.trabPaDiastole) }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        {{ form_widget(form.trabPulso) }}
+                                                    </td>
+                                                </tr> 
+
+                                                                                                                                                                  
+                                             <tr>
+                                                <td>
+                                                    <label>Contracciones uterinas/10 min. *</label>
+                                                </td>
+                                                <td>
+                                                    <label>Dilatación cervical cms *</label>
+                                                </td>
+                                                <td>
+                                                    <label>Altura de la presentación *</label>
+                                                </td>
+                                                <td>
+                                                    <label>Variedad de posición *</label>
+                                                </td>
+
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                    {{ form_widget(form.trabContrac) }}
+                                                </td>
+                                                <td>
+                                                    {{ form_widget(form.trabDilatacion) }}
+                                                </td>
+                                                <td>
+                                                    {{ form_widget(form.trabAlturaPresent) }}
+                                                </td>
+                                                <td>
+                                                    {{ form_widget(form.trabVariedadPosic) }}
+                                                </td>
+
+                                            </tr> 
+
+                                            <tr>
+                                                <td>
+                                                    <label>Meconio *</label>
+                                                </td>
+                                                <td colspan="3">
+                                                    <label>Frecuencia cardiaca fetal/dips *</label>
+                                                </td>                                                
+                                            </tr> 
+                         
+                                            <tr>
+                                                <td>
+                                                    {{ form_widget(form.trabMeconio) }}
+                                                </td>
+                                                <td colspan="3">
+                                                    {{ form_widget(form.trabFcfDips) }}
+                                                </td>
+                                               
+                                            </tr>  #}
+
+                                            <tr>
+                                                <td colspan="8">
+                                                </td>
+                                            </tr>
+
+                                           </table>
+                                        </center>
+                                    </div>
+                                </div>
+                                {#</div>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            {# {{ form_rest(form) }} #}
+            {{ form_widget(form._token) }}
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+{% endblock %}

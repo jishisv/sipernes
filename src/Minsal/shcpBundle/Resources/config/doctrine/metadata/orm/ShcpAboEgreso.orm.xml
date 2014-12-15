@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboEgreso" table="shcp_abo_egreso">
+    <indexes>
+      <index name="IDX_B6BBD31ACDD53299" columns="id_admin_proceden"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="egrAntcpMetodo" type="string" column="egr_antcp_metodo" nullable="true"/>
+    <field name="egrFecha" type="date" column="egr_fecha" nullable="true"/>
+    <field name="egrHora" type="time" column="egr_hora" nullable="true"/>
+    <field name="egrTratamient" type="string" column="egr_tratamient" nullable="true"/>
+    <field name="egrTipo" type="string" column="egr_tipo" nullable="true"/>
+    <field name="egrCondicion" type="string" column="egr_condicion" nullable="true"/>
+    <field name="egrLugarTraslado" type="integer" column="egr_lugar_traslado" nullable="true"/>
+    <field name="egrFalleceTraslado" type="string" column="egr_fallece_traslado" nullable="true"/>
+    <field name="egrAutopsia" type="string" column="egr_autopsia" nullable="true"/>
+    <field name="egrCodDiagCie10" type="string" column="egr_cod_diag_cie10" nullable="true"/>
+    <field name="egrAntirube" type="string" column="egr_antirube" nullable="true"/>
+    <field name="egrGlobulina" type="string" column="egr_globulina" nullable="true"/>
+    <field name="egrReferida" type="string" column="egr_referida" nullable="true"/>
+    <field name="egrOtroEspecific" type="string" column="egr_otro_especific" length="100" nullable="true"/>
+    <field name="egrOtroEstablec" type="integer" column="egr_otro_establec" nullable="true"/>
+    <field name="egrRespons" type="string" column="egr_respons" length="100" nullable="true"/>
+    <many-to-one field="idAdminProceden" target-entity="ShcpAboAdmisionProceden">
+      <join-columns>
+        <join-column name="id_admin_proceden" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

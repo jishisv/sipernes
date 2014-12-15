@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsAntecedentObste" table="shcp_ins_antecedent_obste">
+    <indexes>
+      <index name="IDX_89DC4E6B93489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="antGestasPrevias" type="integer" column="ant_gestas_previas" nullable="true"/>
+    <field name="antEmbEctopico" type="integer" column="ant_emb_ectopico" nullable="true"/>
+    <field name="antAbortos" type="integer" column="ant_abortos" nullable="true"/>
+    <field name="ant3espAbortos" type="string" column="ant_3esp_abortos" nullable="true"/>
+    <field name="antPartos" type="integer" column="ant_partos" nullable="true"/>
+    <field name="antPesoUltEmb" type="string" column="ant_peso_ult_emb" nullable="true"/>
+    <field name="antGemelares" type="string" column="ant_gemelares" nullable="true"/>
+    <field name="antVaginales" type="integer" column="ant_vaginales" nullable="true"/>
+    <field name="antCesareas" type="integer" column="ant_cesareas" nullable="true"/>
+    <field name="antNacVivos" type="integer" column="ant_nac_vivos" nullable="true"/>
+    <field name="antViven" type="integer" column="ant_viven" nullable="true"/>
+    <field name="antMuert1sem" type="integer" column="ant_muert_1sem" nullable="true"/>
+    <field name="antMuert1semDsp" type="integer" column="ant_muert_1sem_dsp" nullable="true"/>
+    <field name="antNacMuertos" type="integer" column="ant_nac_muertos" nullable="true"/>
+    <field name="antFeFinEmbAnt" type="date" column="ant_fe_fin_emb_ant" nullable="true"/>
+    <field name="antFeEmbMnos1" type="string" column="ant_fe_emb_mnos1" nullable="true"/>
+    <field name="antEmbPlaneado" type="string" column="ant_emb_planeado" nullable="true"/>
+    <field name="antFraMetAnti" type="string" column="ant_fra_met_anti" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

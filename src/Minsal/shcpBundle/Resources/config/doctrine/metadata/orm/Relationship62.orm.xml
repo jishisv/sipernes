@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Relationship62" table="relationship_62">
+    <indexes>
+      <index name="IDX_936A6332C2CA78C" columns="id_patologia_paciente"/>
+      <index name="IDX_936A63321D6C3F70" columns="id_recien_nacido"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idRecienNacido" target-entity="ShcpParRecienNacido">
+      <join-columns>
+        <join-column name="id_recien_nacido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPatologiaPaciente" target-entity="ShcpParCtlPatologia">
+      <join-columns>
+        <join-column name="id_patologia_paciente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,497 @@
+{# src/Minsal/SiapsBundle/Resource/view/MntPacienteAdmin/edit.html.twig 
+   Vista para la creación y actualización de un paciente 
+#}
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/General/list.css') }}" type="text/css" media="all" />
+    {#<link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/ShcpExpMaterno/form-edit.css') }}" type="text/css" media="all" />  #}
+{% endblock %}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalshcp/js/MntPacienteAdmin/MntPaciente_edit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
+
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ admin.generateUrl('list') }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    {{ 'link_action_list'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            {% endif %}
+
+            {% block sonata_pre_fieldsets %}
+                <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="{{ form_group.class|default('col-md-12') }}">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {# admin.trans(name, {}, form_group.translation_domain) #}
+                                    </h4>
+                                </div>
+                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form_group.description != false %}
+                                            <p>{{ form_group.description|raw }}</p>
+                                        {% endif %}
+                
+                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Preprocedimiento de Aborto parte 1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+                               
+                 <table class="dat_paciente">
+                     <tr>
+                     <td colspan=8 class="titulo"><h4>Signos vitales</h4> <hr></td> 
+                     </tr>
+                                        
+                                          
+                                                <tr>
+                                                    <td><label> Pulso</label></td>                                                
+                                                   
+                                                    <td><label> Presion arterial Sist./Diast. </label></td> 
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><label> Frecuencia respiratoria</label></td>
+                                                    <td><label> Temperatura axilar</label></td> 
+                                                 </tr> 
+                                                 <tr>
+                                                     <td>{{ form_widget(form.prep1Pulso) }}</td> 
+                                                     <td>{{ form_widget(form.prep1PaSistole) }}</td>
+                                                     <td>{{ form_widget(form.prep1PaDiastole) }}</td>
+                                                     <td></td>
+                                                     <td>{{ form_widget(form.prep1FrecRespirat) }}</td> 
+                                                     <td>{{ form_widget(form.prep1Temp) }}</td>
+                                                 </tr>
+                                             <tr>
+                                                 <td>{{ form_widget(form.prep1PulsoMay100Men60) }}</td>
+                                                 <td>{{ form_widget(form.prep1PaMay14090Men8050) }}</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                  <td>{{ form_widget(form.prep1FrecRespiratMay16) }}</td> 
+                                                  <td>{{ form_widget(form.prep1TempMay38) }}</td>
+                                                  
+                                             </tr>
+                                                   
+                                             <tr></tr>
+                                                    
+                                                    <td colspan=8 class="titulo"><h4>Laboratorio</h4> <hr></td> 
+                                                     <tr>
+                                                    <td><label> Hemoglobina</label></td> 
+                                                    <td></td>
+                                                    <td><label>VIH</label></td>                                                   
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>{{ form_widget(form.prep1Hemoglob) }}</td> 
+                                                        <td></td>
+                                                        <td>{{ form_widget(form.prep1Vih) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{ form_widget(form.prep1HemoglobMen10) }}</td> 
+                                                    </tr>
+                                                    
+                                                    <tr><td colspan="3">
+                                                    <table border="2"> 
+                                                        <tr>
+                                                            <td colspan="3"></td>
+                                                        </tr>
+                                                
+                                                        <tr>
+                                                            <td colspan="3"><center><label> Sifilis </label></center></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><center><label> Diagnostico </label></center></td>
+                                                            <td colspan="2"><center><label> Tratamiento </label></center></td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td><td> <label>Personal</label></td>
+                                                            <td> <label>Pareja</label></td>
+                                                        </tr>
+                                                        <tr></tr>
+                                                            <td>{{ form_widget(form.prep1SifDiagno) }}</td>
+                                                        
+                                                        
+                                                            <td>{{ form_widget(form.prep1SifTratamient) }}</td>
+                                                            
+                                                            <td>{{ form_widget(form.prep1SifTratamientPareja) }}</td>
+                                                                                                            
+                                                    
+                                                    </table>
+                                                        </td></tr>
+                                                    <tr>
+                                                        <td><label>Leucocitos (microlitro)</label></td>
+                                                        
+                                                        <td><label>Plaquetas</label></td>
+                                                    </tr>        
+                                                
+                                                    <tr>
+                                                        <td>{{ form_widget(form.prep1Leucocitos) }}</td>
+                                                        
+                                                        <td>{{ form_widget(form.prep1Plaquetas) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td></td>
+                                                        <td>{{ form_widget(form.prep1PlaqMen100ml) }}</td>
+                                                        
+                                                    </tr>
+                                                    
+                                                    <tr><td colspan="3">
+                                                    <table border="2">
+                                                        <tr>
+                                                            <td colspan="3"><center><label> Grupo sanguineo </label></center></td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td><label>Grupo RH:</label></td>
+                                                        <td>{{ form_widget(form.prep1GrupoSang) }}</td>
+                                                        <td><label>Inmunizacion</label></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td><label>RH</label></td>
+                                                            <td>{{ form_widget(form.prep1Rh) }}</td>
+                                                            <td>{{ form_widget(form.prep1Inmuniza) }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"><center><label>Gama globulina anti D</label></center></td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"><center>{{ form_widget(form.prep1Globuantid) }}</center></td>
+                                                        </tr>
+                                                    </table> 
+                                                        </td></tr>
+                                                    <tr>
+                                                        <td><label>Id admision proceden</label></td>
+                                                        <td>{{ form_widget(form.idAdminProceden) }}</td>
+                                                    </tr>
+                                                    
+                                                                         
+                                           </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Pre-Procedimiento (Parte 2)
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+               <table class="dat_paciente" border='1'  >
+
+                                                           <tr class="dat_paciente_sec">
+                                                              <td colspan="4">Sintomatología</td>       
+                                                          </tr>
+                                                           <tr >
+                                                              <td colspan="2"><label>Desde el inicio del primer síntoma</label></td>  
+                                                              <td ><label>Sangrado</label></td> 
+                                                              <td align=center ><label>Dolor</label></td>  
+                                                              
+                                                              
+                                                          </tr>
+                                                          
+                                                          <tr >
+                                                              <td >Días</td>  
+                                                              <td  >Horas</td> 
+                                                              <td rowspan="3" >{{ form_widget(form.preproced2.prep2Sangrado) }}</td>                                                            
+                                                              <td >{{ form_widget(form.preproced2.prep2Dolor) }}</td>   
+                                                              
+                                                          </tr>
+                                                          
+                                                          <tr >
+                                                              <td >
+                                                              
+                                                               <label class="mini" > {{ form_widget(form.preproced2.prep2SintomatDias) }}</label>
+
+                                                                 
+                                                              </td>
+ 
+                                                              <td > <label class="mini" > {{ form_widget(form.preproced2.prep2SintomatHrs) }}</label> </td> 
+                                                                 <td ><label>Puntuación (1-10)</label></td> 
+                                                               
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td colspan="2" ></td>  
+                                                              <td ><label class="mini" >{{ form_widget(form.preproced2.prep2DolorEscala) }}</label></td>  
+                                                             
+                                                              
+                                                              
+                                                          </tr>
+                                                         
+                                                          <tr class="dat_paciente_sec">
+                                                              <td colspan="4">Exámen Clínico</td>       
+                                                          </tr>
+                                                           <tr >
+                                                              <td colspan="2" >Conciencia</td>  
+                                                              
+                                                              <td >Piel y Mucosas</td>  
+                                                              <td >Abdomen</td>  
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td colspan="2" >{{ form_widget(form.preproced2.prep2Conciencia) }}</td>  
+                                                              <td >{{ form_widget(form.preproced2.prep2PielMucosa) }}</td> 
+                                                              <td >{{ form_widget(form.preproced2.prep2Abdomen) }}</td>  
+                                                              
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >fila 3.1</td>  
+                                                              <td >fila 3.2 </td> 
+                                                              <td >fila 3.3</td>  
+                                                              <td >fila 3.4</td>    
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >fila 4.1</td>  
+                                                              <td >fila 4.2 </td> 
+                                                              <td >fila 4.3</td>  
+                                                              <td >fila 4.4</td>  
+                                                              
+                                                          </tr>
+                                                          <tr class="dat_paciente_sec">
+                                                              <td colspan="4">Exámen Ginecológico </td>       
+                                                          </tr>
+                                                          <tr class="dat_paciente_sec">
+                                                              <td colspan="4">Útero por exámen Bimanual </td>       
+                                                          </tr>
+                                                           <tr >
+                                                              <td >Tamaño Uterino</td>  
+                                                              <td >Posición </td> 
+                                                              <td >Cuello Cerrado</td>  
+                                                              <td >Restos</td>  
+                                                              <td >vagina Normal</td> 
+                                                          </tr>
+                                                          <tr >
+                                                              <td >{{ form_widget(form.preproced2.prep2TamUterino) }}</td>  
+                                                              <td >{{ form_widget(form.preproced2.prep2Posicion) }}</td> 
+                                                              <td >{{ form_widget(form.preproced2.prep2CuelloCerrado) }}</td>  
+                                                              <td >{{ form_widget(form.preproced2.prep2Restos) }}</td>   
+                                                              <td >{{ form_widget(form.preproced2.prep2VaginaNormal) }}</td> 
+                                                          </tr>
+                                                          <tr >
+                                                              <td >Semanas</td>  
+                                                              <td >fila 3.2 </td> 
+                                                              <td >fila 3.3</td>  
+                                                              <td >fila 3.4</td>    
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >fila 4.1</td>  
+                                                              <td >fila 4.2 </td> 
+                                                              <td >fila 4.3</td>  
+                                                              <td >fila 4.4</td>  
+                                                              
+                                                          </tr>
+                                                           <tr class="dat_paciente_sec">
+                                                              <td colspan="4">Ecografía </td>       
+                                                          </tr>
+                                                           <tr >
+                                                              <td >Diámetro Longitudinal</td>  
+                                                              <td colspan="2" align=center >Analgesia </td> 
+                                                              <td ></td>  
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >{{ form_widget(form.preproced2.prep2DiametroEco) }}</td>  
+                                                              <td align="center">Solicitada</td> 
+                                                              <td align="center" >Realizada</td>  
+                                                              <td ></td>   
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >Tamaño del Útero (mm)</td>  
+                                                              <td >{{ form_widget(form.preproced2.prep2AnalgeSolicitada) }}</td> 
+                                                              <td >{{ form_widget(form.preproced2.prep2AnalgeRealizada) }}</td>  
+                                                              <td >fila 3.4</td>    
+                                                              
+                                                          </tr>
+                                                          <tr >
+                                                              <td >{{ form_widget(form.preproced2.prep2Tamanio) }}</td>  
+                                                                
+                                                              <td >fila 4.4</td>  
+                                                              
+                                                          </tr>
+                                                                              </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Pre-procedimiento parte3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+                                            <table class="dat_paciente" border="2">
+
+                                                           <tr class="dat_paciente_sec">
+                                                              <td colspan="5">Condicion al ingreso</td>       
+                                                          </tr>
+                                                          
+                                                          <tr><td>
+                                                    <table border="2">
+                                                          <tr>
+                                                                <td><label> Condicion al ingreso</label></td>
+                                                                <td></td>
+                                                                <td><label> Estado actual del aborto</label></td> 
+                                                          </tr> 
+                                                          <tr>
+                                                                <td>{{ form_widget(form.preproced3.prep3CondicionIngr) }}</td>
+                                                                <td></td>
+                                                                <td>{{ form_widget(form.preproced3.prep3EstadoActual) }}</td>
+                                                                
+                                                          </tr>
+                                                          <tr>
+                                                              <td>{{ form_widget(form.preproced3.prep3OtroDanio) }}</td>
+                                                          </tr>
+                                                    </table>
+                                                                
+                                                              </td></tr>
+                                                          
+                                                      
+                                                           <tr class="dat_paciente_sec">
+                                                              <td colspan="5">Diagnostico presuntivo</td>       
+                                                          </tr>
+                                                          <tr>
+                                                              <td><label> Tipo de aborto </label></td>
+                                                          </tr>
+                                                          
+                                                          <tr>
+                                                              <td>{{ form_widget(form.preproced3.prep3TipoAborto) }}</td>
+                                                              
+                                                          </tr>
+                                                          <tr>
+                                                              
+                                                          </tr>
+                                                          <tr>
+                                                              <td><label> Codigo de diagnostico CIE10 </label></td>
+                                                              <td>{{ form_widget(form.preproced3.idCie10) }}</td>
+                                                          </tr>
+                                                          <tr></tr>
+                                                          <tr>
+                                                              <td><label> Nombre del responsable de pre-procedimiento </label></td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>{{ form_widget(form.preproced3.prep3Respons) }}</td>
+                                                          </tr>
+                                                           
+                                            </table>
+      </div>
+    </div>
+  </div>
+</div>                         
+                                        
+                                        
+                                        
+                                        
+                                        
+                                           
+                                              
+                                                                          
+                                                    
+                                                    
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                                {#</div>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            
+            
+
+            
+            
+           {# {{ form_rest(form) }} #}
+           {{form_widget(form._token)}}
+
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+{% endblock %}

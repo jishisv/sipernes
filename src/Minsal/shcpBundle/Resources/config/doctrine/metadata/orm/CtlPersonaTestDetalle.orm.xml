@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlPersonaTestDetalle" table="ctl_persona_test_detalle">
+    <indexes>
+      <index name="IDX_10C2F2A2B0DC2AB1" columns="id_nacionalidad"/>
+      <index name="IDX_10C2F2A234DD027C" columns="id_persona_test"/>
+      <index name="IDX_10C2F2A22D9C6F7C" columns="id_tipo_zona"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idDepartamento" type="integer" column="id_departamento" nullable="true"/>
+    <many-to-one field="idTipoZona" target-entity="CtlAreaGeografica">
+      <join-columns>
+        <join-column name="id_tipo_zona" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPersonaTest" target-entity="CtlPersonaTest">
+      <join-columns>
+        <join-column name="id_persona_test" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idNacionalidad" target-entity="CtlNacionalidad">
+      <join-columns>
+        <join-column name="id_nacionalidad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

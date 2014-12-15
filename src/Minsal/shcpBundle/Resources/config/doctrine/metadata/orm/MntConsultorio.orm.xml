@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntConsultorio" table="mnt_consultorio">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="descripcion" type="string" column="descripcion" length="100" nullable="true"/>
+    <field name="area" type="smallint" column="area" nullable="true"/>
+    <field name="idusuarioreg" type="integer" column="idusuarioreg" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+  </entity>
+</doctrine-mapping>

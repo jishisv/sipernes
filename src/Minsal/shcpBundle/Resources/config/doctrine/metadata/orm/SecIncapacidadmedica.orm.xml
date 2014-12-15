@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecIncapacidadmedica" table="sec_incapacidadmedica">
+    <indexes>
+      <index name="IDX_18BCE6E343F314A6" columns="idnumeroexp"/>
+      <index name="IDX_18BCE6E3A92D004C" columns="idhistorialclinico"/>
+    </indexes>
+    <id name="incapacidadmedica" type="integer" column="incapacidadmedica">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="motivoincapacidad" type="string" column="motivoincapacidad" length="500" nullable="true"/>
+    <field name="fechainicioincapacidad" type="date" column="fechainicioincapacidad" nullable="true"/>
+    <field name="fechaemision" type="date" column="fechaemision" nullable="true"/>
+    <field name="remitente" type="string" column="remitente" length="500" nullable="true"/>
+    <many-to-one field="idhistorialclinico" target-entity="SecHistorialClinico">
+      <join-columns>
+        <join-column name="idhistorialclinico" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idnumeroexp" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="idnumeroexp" referenced-column-name="numero"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsExamen" table="shcp_ins_examen">
+    <indexes>
+      <index name="IDX_ADDC684593489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="exaOdont" type="string" column="exa_odont" nullable="true"/>
+    <field name="exaMama" type="string" column="exa_mama" nullable="true"/>
+    <field name="exaCervixInspVisual" type="string" column="exa_cervix_insp_visual" nullable="true"/>
+    <field name="exaCervixInspPap" type="string" column="exa_cervix_insp_pap" nullable="true"/>
+    <field name="exaCervixInspColp" type="string" column="exa_cervix_insp_colp" nullable="true"/>
+    <field name="exaGpoRh" type="string" column="exa_gpo_rh" nullable="true"/>
+    <field name="exaRhSigno" type="string" column="exa_rh_signo" nullable="true"/>
+    <field name="exaGlobulinaAntid" type="string" column="exa_globulina_antid" nullable="true"/>
+    <field name="exaToxoIggMnos20" type="string" column="exa_toxo_igg_mnos20" nullable="true"/>
+    <field name="exaToxoIggMas20" type="string" column="exa_toxo_igg_mas20" nullable="true"/>
+    <field name="exaToxoConsulta1Igm" type="string" column="exa_toxo_consulta1_igm" nullable="true"/>
+    <field name="exaHbMnos20" type="decimal" column="exa_hb_mnos20" precision="2" scale="1" nullable="true"/>
+    <field name="exaHb11gMnos20" type="string" column="exa_hb_11g_mnos20" nullable="true"/>
+    <field name="exaHbMas20" type="decimal" column="exa_hb_mas20" precision="2" scale="1" nullable="true"/>
+    <field name="exaHb11gMas20" type="string" column="exa_hb_11g_mas20" nullable="true"/>
+    <field name="exaFe" type="string" column="exa_fe" nullable="true"/>
+    <field name="exaFolatos" type="string" column="exa_folatos" nullable="true"/>
+    <field name="exaBacteMnos20" type="string" column="exa_bacte_mnos20" nullable="true"/>
+    <field name="exaBacteMas20" type="string" column="exa_bacte_mas20" nullable="true"/>
+    <field name="exaGluceMnos20" type="integer" column="exa_gluce_mnos20" nullable="true"/>
+    <field name="exaGluce105Mnos20" type="string" column="exa_gluce_105_mnos20" nullable="true"/>
+    <field name="exaGluceMas30" type="integer" column="exa_gluce_mas30" nullable="true"/>
+    <field name="exaGluce105Mas30" type="string" column="exa_gluce_105_mas30" nullable="true"/>
+    <field name="exaEstcocob" type="string" column="exa_estcocob" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

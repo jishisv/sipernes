@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsGestacionActual" table="shcp_ins_gestacion_actual">
+    <indexes>
+      <index name="IDX_6517CDE793489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="gestaPesoPaciente" type="decimal" column="gesta_peso_paciente" precision="6" scale="2" nullable="true"/>
+    <field name="gestaAlturaCms" type="integer" column="gesta_altura_cms" nullable="true"/>
+    <field name="gestaFecUltRegla" type="date" column="gesta_fec_ult_regla" nullable="true"/>
+    <field name="gestaFecProParto" type="date" column="gesta_fec_pro_parto" nullable="true"/>
+    <field name="gestaEgConfFum" type="string" column="gesta_eg_conf_fum" nullable="true"/>
+    <field name="gestaEgConfEco" type="string" column="gesta_eg_conf_eco" nullable="true"/>
+    <field name="gestaViolenciaTrimes1" type="string" column="gesta_violencia_trimes1" nullable="true"/>
+    <field name="gestaViolenciaTrimes2" type="string" column="gesta_violencia_trimes2" nullable="true"/>
+    <field name="gestaViolenciaTrimes3" type="string" column="gesta_violencia_trimes3" nullable="true"/>
+    <field name="gestaPreparParto" type="string" column="gesta_prepar_parto" nullable="true"/>
+    <field name="gestaConseLactMaterna" type="string" column="gesta_conse_lact_materna" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

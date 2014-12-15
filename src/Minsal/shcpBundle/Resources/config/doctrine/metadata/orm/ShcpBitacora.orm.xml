@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpBitacora" table="shcp_bitacora">
+    <indexes>
+      <index name="IDX_412596A86B3CA4B" columns="id_user"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="bitOperacion" type="string" column="bit_operacion" nullable="true"/>
+    <field name="bitFechaHora" type="date" column="bit_fecha_hora" nullable="true"/>
+    <field name="bitTablaAfectada" type="string" column="bit_tabla_afectada" length="50" nullable="true"/>
+    <many-to-one field="idUser" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpPrePaciente" table="shcp_pre_paciente">
+    <indexes>
+      <index name="IDX_988D557B93489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="preFecha" type="date" column="pre_fecha" nullable="true"/>
+    <field name="prePesoPte" type="decimal" column="pre_peso_pte" precision="6" scale="2" nullable="true"/>
+    <field name="preTallaPte" type="integer" column="pre_talla_pte" nullable="true"/>
+    <field name="preTempPte" type="decimal" column="pre_temp_pte" precision="6" scale="2" nullable="true"/>
+    <field name="prePaSistole" type="string" column="pre_pa_sistole" nullable="true"/>
+    <field name="prePaDiastole" type="string" column="pre_pa_diastole" nullable="true"/>
+    <field name="preDestinoPte" type="string" column="pre_destino_pte" nullable="true"/>
+    <field name="preDetalleObser" type="string" column="pre_detalle_obser" length="150" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

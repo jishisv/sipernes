@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecReferencias" table="sec_referencias">
+    <indexes>
+      <index name="IDX_CD1B1789A92D004C" columns="idhistorialclinico"/>
+      <index name="IDX_CD1B17897E989CC0" columns="idtiporeferencia"/>
+    </indexes>
+    <id name="idreferencia" type="integer" column="idreferencia">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="diagnostico" type="string" column="diagnostico" length="1000" nullable="true"/>
+    <field name="resumenclinico" type="text" column="resumenclinico" nullable="true"/>
+    <field name="tratamientorecibido" type="string" column="tratamientorecibido" length="1400" nullable="true"/>
+    <field name="referidoa" type="string" column="referidoa" length="100" nullable="true"/>
+    <field name="parapor" type="string" column="parapor" length="100" nullable="true"/>
+    <field name="servicio" type="string" column="servicio" length="6" nullable="true"/>
+    <many-to-one field="idtiporeferencia" target-entity="SecTiporeferencia">
+      <join-columns>
+        <join-column name="idtiporeferencia" referenced-column-name="idtiporeferencia"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idhistorialclinico" target-entity="SecHistorialClinico">
+      <join-columns>
+        <join-column name="idhistorialclinico" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

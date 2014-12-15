@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="RxRechazada" table="rx_rechazada">
+    <indexes>
+      <index name="IDX_751C69CB6682EAB5" columns="id_tamanio_pelicula"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idDetalleSolicitud" type="integer" column="id_detalle_solicitud" nullable="true"/>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="buenas" type="integer" column="buenas" nullable="true"/>
+    <field name="muyPenetrada" type="integer" column="muy_penetrada" nullable="true"/>
+    <field name="pocoPenetrada" type="integer" column="poco_penetrada" nullable="true"/>
+    <field name="malCentrada" type="integer" column="mal_centrada" nullable="true"/>
+    <field name="movida" type="integer" column="movida" nullable="true"/>
+    <field name="fallaEquipo" type="integer" column="falla_equipo" nullable="true"/>
+    <field name="fallaRevelado" type="integer" column="falla_revelado" nullable="true"/>
+    <field name="velada" type="integer" column="velada" nullable="true"/>
+    <field name="conArtefacto" type="integer" column="con_artefacto" nullable="true"/>
+    <field name="noExpuesta" type="integer" column="no_expuesta" nullable="true"/>
+    <field name="malPreparado" type="integer" column="mal_preparado" nullable="true"/>
+    <many-to-one field="idTamanioPelicula" target-entity="RxTamanioPelicula">
+      <join-columns>
+        <join-column name="id_tamanio_pelicula" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

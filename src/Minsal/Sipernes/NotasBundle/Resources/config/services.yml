@@ -1,0 +1,6 @@
+services:
+    minsal_sipernes_notas.admin.enf_ctl_diagnostico:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlDiagnosticoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlDiagnostico, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Notas, label: Catalogo Diagnostico}

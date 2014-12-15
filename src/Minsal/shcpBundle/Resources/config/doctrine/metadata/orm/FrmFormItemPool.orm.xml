@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FrmFormItemPool" table="frm_form_item_pool">
+    <indexes>
+      <index name="IDX_132426EBB0F9D2E" columns="id_form_item"/>
+      <index name="IDX_132426EB3DE02BDB" columns="id_padre"/>
+      <index name="IDX_132426EBC14F1F47" columns="id_seccion_pool"/>
+      <index name="IDX_132426EBFE04F569" columns="validacion_padre"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_seccion_pool_form_item" columns="id_seccion_pool,id_form_item"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="valorPadre" type="text" column="valor_padre" nullable="true"/>
+    <field name="orden" type="integer" column="orden" nullable="false"/>
+    <many-to-one field="validacionPadre" target-entity="CtlValidacionCampo">
+      <join-columns>
+        <join-column name="validacion_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSeccionPool" target-entity="FrmSeccionPool">
+      <join-columns>
+        <join-column name="id_seccion_pool" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPadre" target-entity="FrmFormItemPool">
+      <join-columns>
+        <join-column name="id_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormItem" target-entity="FrmFormItem">
+      <join-columns>
+        <join-column name="id_form_item" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

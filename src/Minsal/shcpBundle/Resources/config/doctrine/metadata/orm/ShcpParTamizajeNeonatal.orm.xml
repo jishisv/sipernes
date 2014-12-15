@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParTamizajeNeonatal" table="shcp_par_tamizaje_neonatal">
+    <indexes>
+      <index name="IDX_82E2CDEF1D6C3F70" columns="id_recien_nacido"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tneoVdrl" type="string" column="tneo_vdrl" nullable="true"/>
+    <field name="tneoVdrlTratamient" type="string" column="tneo_vdrl_tratamient" nullable="true"/>
+    <field name="tneoTsh" type="string" column="tneo_tsh" nullable="true"/>
+    <field name="tneoHbpatia" type="string" column="tneo_hbpatia" nullable="true"/>
+    <field name="tneoBilirrub" type="string" column="tneo_bilirrub" nullable="true"/>
+    <field name="tneoToxoigm" type="string" column="tneo_toxoigm" nullable="true"/>
+    <many-to-one field="idRecienNacido" target-entity="ShcpParRecienNacido">
+      <join-columns>
+        <join-column name="id_recien_nacido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

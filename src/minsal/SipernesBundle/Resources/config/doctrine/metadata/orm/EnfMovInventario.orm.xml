@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfMovInventario" table="enf_mov_inventario">
+    <indexes>
+      <index name="IDX_5D2CD1C2CF93CE22" columns="id_inventario"/>
+      <index name="IDX_5D2CD1C2DC13B9AD" columns="id_dosis_esq"/>
+      <index name="IDX_5D2CD1C23FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_5D2CD1C212C18F55" columns="id_tipo_inventario"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioMov" type="string" column="usuario_mov" length="40" nullable="true"/>
+    <field name="fechaIngresoMov" type="date" column="fecha_ingreso_mov" nullable="true"/>
+    <field name="fechaModificacionMov" type="date" column="fecha_modificacion_mov" nullable="true"/>
+    <field name="cantidadMov" type="decimal" column="cantidad_mov" precision="10" scale="0" nullable="true"/>
+    <field name="estadoMov" type="boolean" column="estado_mov" nullable="true"/>
+    <field name="empleadoEnvio" type="string" column="empleado_envio" length="200" nullable="true"/>
+    <field name="empleadoRecivio" type="string" column="empleado_recivio" length="200" nullable="true"/>
+    <many-to-one field="idTipoInventario" target-entity="EnfCtlMovInventario">
+      <join-columns>
+        <join-column name="id_tipo_inventario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDosisEsq" target-entity="EnfDosisEsquemaVac">
+      <join-columns>
+        <join-column name="id_dosis_esq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idInventario" target-entity="EnfInventario">
+      <join-columns>
+        <join-column name="id_inventario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParEgresoMaterno" table="shcp_par_egreso_materno">
+    <indexes>
+      <index name="IDX_549DEFBAD766E548" columns="id_admision_parto"/>
+      <index name="IDX_549DEFBA7DFA12F6" columns="id_establecimiento"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="egmaCondicion" type="string" column="egma_condicion" nullable="true"/>
+    <field name="egmaFecha" type="date" column="egma_fecha" nullable="true"/>
+    <field name="egmaHora" type="time" column="egma_hora" nullable="true"/>
+    <field name="egmaMedicoResponsab" type="bigint" column="egma_medico_responsab" nullable="true"/>
+    <field name="egmaFalleceTraslado" type="string" column="egma_fallece_traslado" nullable="true"/>
+    <field name="egmaDiasDesdeParto" type="integer" column="egma_dias_desde_parto" nullable="true"/>
+    <field name="egmaConsejeriaAnticoncep" type="string" column="egma_consejeria_anticoncep" nullable="true"/>
+    <field name="egmaMetodoElegido" type="string" column="egma_metodo_elegido" nullable="true"/>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

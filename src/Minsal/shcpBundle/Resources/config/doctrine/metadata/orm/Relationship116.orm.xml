@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Relationship116" table="relationship_116">
+    <indexes>
+      <index name="IDX_FB9E04B1E72DF557" columns="id_con_prenatal"/>
+      <index name="IDX_FB9E04B1FAF6081D" columns="id_signo_alarma"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idSignoAlarma" target-entity="ShcpConCtlSignoAlarma">
+      <join-columns>
+        <join-column name="id_signo_alarma" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idConPrenatal" target-entity="ShcpConPrenatal">
+      <join-columns>
+        <join-column name="id_con_prenatal" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

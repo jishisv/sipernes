@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FrmFormulario" table="frm_formulario">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="100" nullable="false"/>
+    <field name="codigo" type="string" column="codigo" length="10" nullable="false"/>
+    <field name="descripcion" type="text" column="descripcion" nullable="true"/>
+    <field name="activo" type="boolean" column="activo" nullable="false"/>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="false"/>
+    <field name="fechaFin" type="date" column="fecha_fin" nullable="true"/>
+    <field name="publicado" type="boolean" column="publicado" nullable="false"/>
+    <field name="fechaPublicacion" type="date" column="fecha_publicacion" nullable="true"/>
+    <field name="configGuardado" type="boolean" column="config_guardado" nullable="true"/>
+  </entity>
+</doctrine-mapping>

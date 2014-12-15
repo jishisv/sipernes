@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlPersonaTelefono" table="ctl_persona_telefono">
+    <indexes>
+      <index name="IDX_A4F6A1E334DD027C" columns="id_persona_test"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="telefono" type="integer" column="telefono" nullable="true"/>
+    <field name="tipoTelefono" type="string" column="tipo_telefono" length="50" nullable="true"/>
+    <field name="disponibilidad" type="string" column="disponibilidad" length="50" nullable="true"/>
+    <many-to-one field="idPersonaTest" target-entity="CtlPersonaTest">
+      <join-columns>
+        <join-column name="id_persona_test" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

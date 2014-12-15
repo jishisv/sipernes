@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FrmValidacionCampoFormItem" table="frm_validacion_campo_form_item">
+    <indexes>
+      <index name="IDX_D98893C6B0F9D2E" columns="id_form_item"/>
+      <index name="IDX_D98893C6E7FCFDF9" columns="id_validacion_campo"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="valorComparacion" type="text" column="valor_comparacion" nullable="true"/>
+    <many-to-one field="idValidacionCampo" target-entity="CtlValidacionCampo">
+      <join-columns>
+        <join-column name="id_validacion_campo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormItem" target-entity="FrmFormItem">
+      <join-columns>
+        <join-column name="id_form_item" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

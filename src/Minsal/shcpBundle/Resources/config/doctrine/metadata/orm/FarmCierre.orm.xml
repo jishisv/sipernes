@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FarmCierre" table="farm_cierre">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="anocierre" type="integer" column="anocierre" nullable="true"/>
+    <field name="mescierre" type="string" column="mescierre" length="15" nullable="true"/>
+    <field name="idusuarioreg" type="integer" column="idusuarioreg" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+    <field name="idestablecimiento" type="integer" column="idestablecimiento" nullable="false"/>
+    <field name="idmodalidad" type="integer" column="idmodalidad" nullable="false"/>
+  </entity>
+</doctrine-mapping>

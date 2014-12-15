@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlDiagnostico" table="enf_ctl_diagnostico">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idClase" type="integer" column="id_clase" nullable="true"/>
+    <field name="codDiagnostico" type="decimal" column="cod_diagnostico" precision="10" scale="0" nullable="false"/>
+    <field name="nombreDiagnostico" type="string" column="nombre_diagnostico" length="50" nullable="true"/>
+    <field name="descripcionDiag" type="string" column="descripcion_diag" length="500" nullable="true"/>
+    <field name="fechaIngresoCtlDiag" type="date" column="fecha_ingreso_ctl_diag" nullable="true"/>
+    <field name="fechaModificacionCtlDiag" type="date" column="fecha_modificacion_ctl_diag" nullable="true"/>
+    <field name="usuarioCtlDiag" type="string" column="usuario_ctl_diag" length="40" nullable="true"/>
+    <field name="estadoCtlDiag" type="boolean" column="estado_ctl_diag" nullable="true"/>
+  </entity>
+</doctrine-mapping>

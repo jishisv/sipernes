@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocCtlPregunta" table="shcp_doc_ctl_pregunta">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="pregDetalle" type="string" column="preg_detalle" length="150" nullable="true"/>
+    <field name="pregTipo" type="string" column="preg_tipo" nullable="true"/>
+    <field name="pregEstado" type="string" column="preg_estado" nullable="true"/>
+    <field name="pregSeccion" type="string" column="preg_seccion" nullable="true"/>
+  </entity>
+</doctrine-mapping>

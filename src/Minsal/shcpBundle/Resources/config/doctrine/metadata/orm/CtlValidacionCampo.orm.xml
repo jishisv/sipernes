@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlValidacionCampo" table="ctl_validacion_campo">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="30" nullable="false"/>
+    <field name="codigoValidacion" type="text" column="codigo_validacion" nullable="true"/>
+    <field name="aplicaPara" type="integer" column="aplica_para" nullable="false"/>
+    <field name="requiereComparacion" type="boolean" column="requiere_comparacion" nullable="false"/>
+    <field name="valorNumerico" type="boolean" column="valor_numerico" nullable="true"/>
+    <field name="aplicaItemPool" type="boolean" column="aplica_item_pool" nullable="false"/>
+  </entity>
+</doctrine-mapping>

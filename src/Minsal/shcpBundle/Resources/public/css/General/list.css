@@ -1,0 +1,137 @@
+/**********  Para tablas ******************/
+.dat_paciente{
+    text-align: left;
+    border:  3px double #0B4C5F;
+    position: relative;
+    width: 90%; 
+   background-color: #EFFBFB;
+   color:black;
+}
+
+
+.dat_paciente_sec td {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color:white;
+    background-color:  #0B4C5F;
+    padding-left: 8px; padding-right: 10px; padding-top: 2px; padding-bottom: 2px; 
+}
+
+.dat_paciente label{
+    padding-left: 1em;
+    text-align: left;  
+    display: inline;
+    margin-bottom: 0;
+    width: 190px;
+    float: left;
+    padding-right: 10px; padding-top: auto; padding-bottom: auto;
+}
+
+.dat_paciente input{
+    width: 100%;
+}
+.lista {
+    line-height: 1.8em;
+}
+
+td {   padding-left: 8px; padding-right: 10px; padding-top: 2px; padding-bottom: 2px; }
+
+.dat_paciente_content{
+    vertical-align: middle;
+    padding-bottom: 0.3em;
+}
+
+div.field-container thead th:nth-child(1){
+    display: none;
+}
+
+div.field-container thead th:nth-child(3){
+    width: 60%;
+}
+
+.sonata-ba-field.sonata-ba-field-standard-natural {
+    margin-left: 210px;
+    width: 50%;
+}
+
+.form-group {
+    margin-bottom: 5px;
+    padding-top:   10px;
+}
+
+.full-width {
+    width: 90% !important;
+}
+label.titulo {
+  font-style: italic;
+     margin-bottom: 1px;
+}
+
+label.peque{
+	width: 80px;
+        padding-left: 2px; padding-right: 10px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+label.mini{
+	width: 60px;
+        display: inline;
+        padding-left: 2px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+label.clap{
+	width: 145px;
+        display: inline;
+        padding-left: 2px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+label.doc{
+	width: 175px;
+        display: inline;
+        padding-left: 2px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+label.nombre{
+	width: 340px;
+        display: inline;
+        padding-left: 2px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+label.grande{
+	width: 540px;
+        display: inline;
+        padding-left: 2px; padding-top: 2px; padding-bottom: 2px; 
+	
+}
+
+
+.dat_paciente td:nth-child(1){
+		height: 35px;
+                width: 235px;
+	}
+
+	.dat_paciente tr:nth-child(1) td{
+		vertical-align: middle;
+                 width: 235px;
+	}
+
+	.dat_paciente tr td:nth-child(1){
+		width: 200px;
+	}
+        
+
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+                width: 200px;
+	}
+
+	.dat_paciente tr{
+		height: 40px;
+                width: 50%;
+	}
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+                width: 200px;
+	}

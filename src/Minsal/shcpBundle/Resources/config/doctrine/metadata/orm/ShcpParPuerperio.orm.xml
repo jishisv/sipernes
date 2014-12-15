@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParPuerperio" table="shcp_par_puerperio">
+    <indexes>
+      <index name="IDX_11020C1FD766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="puerFecha" type="date" column="puer_fecha" nullable="true"/>
+    <field name="puerHora" type="time" column="puer_hora" nullable="true"/>
+    <field name="puerTemp" type="decimal" column="puer_temp" precision="6" scale="2" nullable="true"/>
+    <field name="puerPaSistole" type="string" column="puer_pa_sistole" nullable="true"/>
+    <field name="puerPaDiastole" type="string" column="puer_pa_diastole" nullable="true"/>
+    <field name="puerPulso" type="integer" column="puer_pulso" nullable="true"/>
+    <field name="puerInvolucion" type="string" column="puer_involucion" length="25" nullable="true"/>
+    <field name="puerLoquios" type="string" column="puer_loquios" length="25" nullable="true"/>
+    <field name="puerAntirubeo" type="string" column="puer_antirubeo" nullable="true"/>
+    <field name="puerGlobulinaAntid" type="string" column="puer_globulina_antid" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

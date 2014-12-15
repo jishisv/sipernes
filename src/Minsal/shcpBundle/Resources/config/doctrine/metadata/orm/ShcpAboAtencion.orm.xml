@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboAtencion" table="shcp_abo_atencion">
+    <indexes>
+      <index name="IDX_49AA46706A439ED0" columns="id_post_proced"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="atenPaSist" type="string" column="aten_pa_sist" nullable="true"/>
+    <field name="atenPaDiast" type="string" column="aten_pa_diast" nullable="true"/>
+    <field name="atenPulso" type="integer" column="aten_pulso" nullable="true"/>
+    <field name="atenTemp" type="decimal" column="aten_temp" precision="6" scale="2" nullable="true"/>
+    <field name="atenSangrado" type="string" column="aten_sangrado" nullable="true"/>
+    <field name="atenScore" type="integer" column="aten_score" nullable="true"/>
+    <many-to-one field="idPostProced" target-entity="ShcpAboPostProced">
+      <join-columns>
+        <join-column name="id_post_proced" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

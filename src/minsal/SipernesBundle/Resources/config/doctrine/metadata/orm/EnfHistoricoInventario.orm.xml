@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfHistoricoInventario" table="enf_historico_inventario">
+    <indexes>
+      <index name="IDX_3916106DCF93CE22" columns="id_inventario"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="existenciaHist" type="decimal" column="existencia_hist" precision="10" scale="0" nullable="true"/>
+    <field name="fechaIngresoHistInv" type="date" column="fecha_ingreso_hist_inv" nullable="true"/>
+    <field name="usuarioInventarioHist" type="string" column="usuario_inventario_hist" length="40" nullable="true"/>
+    <field name="estadoHistInvent" type="boolean" column="estado_hist_invent" nullable="true"/>
+    <many-to-one field="idInventario" target-entity="EnfInventario">
+      <join-columns>
+        <join-column name="id_inventario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

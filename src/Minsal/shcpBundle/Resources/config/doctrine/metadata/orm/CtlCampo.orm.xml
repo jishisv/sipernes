@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlCampo" table="ctl_campo">
+    <indexes>
+      <index name="IDX_F5066AA11FC10A6F" columns="id_tabla"/>
+      <index name="IDX_F5066AA18A212DB5" columns="id_tipo_campo"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="30" nullable="false"/>
+    <field name="tamano" type="integer" column="tamano" nullable="true"/>
+    <field name="esNulo" type="boolean" column="es_nulo" nullable="false"/>
+    <many-to-one field="idTipoCampo" target-entity="CtlTipoCampo">
+      <join-columns>
+        <join-column name="id_tipo_campo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTabla" target-entity="CtlTabla">
+      <join-columns>
+        <join-column name="id_tabla" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

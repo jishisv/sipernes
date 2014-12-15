@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Relationship65" table="relationship_65">
+    <indexes>
+      <index name="IDX_D0EF691FE3B0D62" columns="id_pregunta"/>
+      <index name="IDX_D0EF6918B1B653B" columns="id_resultado"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idResultado" target-entity="ShcpDocResultado">
+      <join-columns>
+        <join-column name="id_resultado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPregunta" target-entity="ShcpDocCtlPregunta">
+      <join-columns>
+        <join-column name="id_pregunta" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

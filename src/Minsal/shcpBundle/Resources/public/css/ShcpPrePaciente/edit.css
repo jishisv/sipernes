@@ -1,0 +1,39 @@
+/*
+ * src/Minsal/shcpBundle/Resources/public/css/ShcpPrePaciente/list.css
+ * 
+ */
+.dat_paciente {
+	width: 25%;
+	min-width: 150px;
+}
+
+h2 {
+  margin-bottom: 0.3em;
+}
+
+h3 {
+     padding-left:   15px;
+  margin-bottom: 0.3em;
+}
+label.titulo {
+  font-style: italic;
+     margin-bottom: 1px;
+}
+
+
+td.area {
+
+     padding-bottom: 8px;
+}
+
+
+table { padding-left: 5px; margin-top: 20px; padding-top: 20px; font-size: 14px; }
+
+
+
+
+
+	
+
+
+	

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="RxRadiografia" table="rx_radiografia">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tamanio" type="string" column="tamanio" length="60" nullable="true"/>
+    <field name="lecturaPlaca" type="text" column="lectura_placa" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="2" nullable="true"/>
+    <field name="idDetalleSolicitud" type="integer" column="id_detalle_solicitud" nullable="true"/>
+    <field name="idSolicitudEstudio" type="integer" column="id_solicitud_estudio" nullable="true"/>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="idEmpleado" type="string" column="id_empleado" length="50" nullable="true"/>
+    <field name="encargadoTraslado" type="string" column="encargado_traslado" length="50" nullable="true"/>
+    <field name="tecnico" type="string" column="tecnico" length="50" nullable="true"/>
+    <field name="habilitado" type="string" column="habilitado" length="2" nullable="true"/>
+  </entity>
+</doctrine-mapping>

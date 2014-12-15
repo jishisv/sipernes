@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecSegconsultaexterna" table="sec_segconsultaexterna">
+    <indexes>
+      <index name="IDX_1A98CC9DA92D004C" columns="idhistorialclinico"/>
+    </indexes>
+    <id name="idseguimiento" type="integer" column="idseguimiento">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="control" type="text" column="control" nullable="true"/>
+    <field name="ingreso" type="text" column="ingreso" nullable="true"/>
+    <field name="altapaciente" type="string" column="altapaciente" nullable="false"/>
+    <many-to-one field="idhistorialclinico" target-entity="SecHistorialClinico">
+      <join-columns>
+        <join-column name="idhistorialclinico" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

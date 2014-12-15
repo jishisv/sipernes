@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlNota" table="enf_ctl_nota">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tipoNota" type="string" column="tipo_nota" length="20" nullable="true"/>
+    <field name="nombreNota" type="string" column="nombre_nota" length="50" nullable="true"/>
+    <field name="estadoCtlNota" type="boolean" column="estado_ctl_nota" nullable="true"/>
+    <field name="usuarioCtlNota" type="string" column="usuario_ctl_nota" length="40" nullable="true"/>
+    <field name="fechaIngresoCtlNota" type="date" column="fecha_ingreso_ctl_nota" nullable="true"/>
+    <field name="fechaModCtlNota" type="date" column="fecha_mod_ctl_nota" nullable="true"/>
+  </entity>
+</doctrine-mapping>
