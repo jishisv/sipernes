@@ -153,4 +153,8 @@ class EnfEsquemaVac
     {
         return $this->edadMaxima;
     }
+    
+    public function __toString() {
+    return $this->nombreEsquemaVac ? $this->nombreEsquemaVac : '';
+    }
 }

@@ -276,4 +276,8 @@ class EnfCtlSubprotocolo
     {
         return $this->idProtocolo;
     }
+    
+    public function __toString() {
+    return $this->nombreSubprotocolo ? $this->nombreSubprotocolo : '';
+    }
 }

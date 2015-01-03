@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfTrazaDiagnostico" table="enf_traza_diagnostico">
+    <indexes>
+      <index name="IDX_EC88A3D3A48933A" columns="id_registro_diag"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioTraDia" type="string" column="usuario_tra_dia" length="40" nullable="true"/>
+    <field name="fechaIngresoTraDia" type="date" column="fecha_ingreso_tra_dia" nullable="true"/>
+    <field name="cambioTraDiag" type="string" column="cambio_tra_diag" length="200" nullable="true"/>
+    <many-to-one field="idRegistroDiag" target-entity="EnfMtlDiagnostico">
+      <join-columns>
+        <join-column name="id_registro_diag" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

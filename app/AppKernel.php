@@ -46,12 +46,11 @@ class AppKernel extends Kernel
             new Minsal\SeguimientoBundle\MinsalSeguimientoBundle(),
             new Minsal\CitasBundle\MinsalCitasBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
-            new Minsal\shcpBundle\MinsalshcpBundle(),
+            new Minsal\Sipernes\ReportesBundle\MinsalSipernesReportesBundle(),
+            new Minsal\Sipernes\AplicacionesBundle\MinsalSipernesAplicacionesBundle(),
             new Minsal\SipernesBundle\MinsalSipernesBundle(),
             new Minsal\Sipernes\ActividadBundle\MinsalSipernesActividadBundle(),
             new Minsal\Sipernes\NotasBundle\MinsalSipernesNotasBundle(),
-            new Minsal\Sipernes\ReportesBundle\MinsalSipernesReportesBundle(),
-            new Minsal\Sipernes\AplicacionesBundle\MinsalSipernesAplicacionesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

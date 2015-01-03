@@ -3,10 +3,28 @@ services:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlActividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catalogo Actividad}
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo de Actividades}
 
     minsal_sipernes_actividad.admin.enf_ctl_subactividad:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlSubactividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubactividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: ACT-1-Subactividad, label: Catalogo Subactividad}
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo de Subactividades}
+
+    minsal_sipernes_actividad.admin.enf_mtl_actividad:
+        class: Minsal\Sipernes\ActividadBundle\Admin\EnfMtlActividadAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlActividad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Actividades realizadas a paciente }
+
+    minsal_sipernes_actividad.admin.enf_ctl_financiamiento:
+        class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlFinanciamientoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFinanciamiento, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CPC-1-Capacitacion, label: Empresas de financiamiento}
+
+    minsal_sipernes_actividad.admin.enf_mtl_capacitacion:
+        class: Minsal\Sipernes\ActividadBundle\Admin\EnfMtlCapacitacionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlCapacitacion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CPC-1-Capacitacion, label: Capacitaciones impartidas}

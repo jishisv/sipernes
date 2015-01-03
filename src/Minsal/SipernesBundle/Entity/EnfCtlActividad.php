@@ -56,16 +56,7 @@ class EnfCtlActividad
      * @ORM\Column(name="fecha_modificacion_cat_act", type="date", nullable=true)
      */
     private $fechaModificacionCatAct;
-
-
     
-    /**
-     * @ORM\OneToOne(targetEntity="EnfCtlSubactividad", mappedBy="idActividad", cascade={"all"}, orphanRemoval=true)
-     *
-     */
-    private $EnfCtlSubactividad;
-    
-
     /**
      * Get id
      *
@@ -191,8 +182,7 @@ class EnfCtlActividad
         return $this->fechaModificacionCatAct;
     }
     
-    
     public function __toString() {
-        return $this->nombreActividad ? (string) $this->nombreActividad : ''; 
+    return $this->nombreActividad ? $this->nombreActividad : '';
     }
 }

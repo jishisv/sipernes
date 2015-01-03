@@ -18,7 +18,7 @@ class EnfCtlSubactividadAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-           //->add('id')
+            //->add('id')
             ->add('idActividad', null, array('label' => 'Nombre de actividad'))
             ->add('nombreSubactividad',null, array('label' => 'Nombre de sub-actividad'))
             ->add('fechaIngresoSubact',null, array('label' => 'Fecha de creacion'))
@@ -36,7 +36,7 @@ class EnfCtlSubactividadAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            //->add('id')
+             //->add('id')
             ->add('idActividad', 'text', array('label' => 'Nombre actividad'))
             ->add('nombreSubactividad', 'text', array('label' => 'Nombre sub-actividad'))
             ->add('cantidadSubact',null, array('label' => 'Cantidad sub-actividades'))
@@ -61,7 +61,7 @@ class EnfCtlSubactividadAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            //->add('id')
+             //->add('id')
             ->add('idActividad', null, array('label' => 'Seleccione Actividad','required' => true,
             'class' => 'MinsalSipernesBundle:EnfCtlActividad',
             'query_builder' => function(EntityRepository $repository) {
@@ -96,7 +96,8 @@ class EnfCtlSubactividadAdmin extends Admin
     }
     
     
-/*
+    
+     /*
      * Método que se ejecuta antes de realizar una inserción.
      * Recibe como parámetro una entidad; en este caso de tipo EnfCtlSubactividad
      * con los valores del formulario.
@@ -119,6 +120,7 @@ class EnfCtlSubactividadAdmin extends Admin
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfCtlSubactividad->setusuarioIngresoSubact($user);
         $EnfCtlSubactividad->setfechaModificacionSubact(new \DateTime());
-    }       
+    }   
+    
     
 }

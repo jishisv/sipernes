@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfClase" table="enf_clase">
+    <indexes>
+      <index name="IDX_FF9FFAE2C95DE20F" columns="id_dominio"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codClase" type="decimal" column="cod_clase" precision="10" scale="0" nullable="false"/>
+    <field name="nombreClase" type="string" column="nombre_clase" length="50" nullable="true"/>
+    <field name="fechaIngresoClase" type="date" column="fecha_ingreso_clase" nullable="true"/>
+    <field name="fechaModificacionClase" type="date" column="fecha_modificacion_clase" nullable="true"/>
+    <field name="usuarioClase" type="string" column="usuario_clase" length="40" nullable="true"/>
+    <field name="estadoClase" type="boolean" column="estado_clase" nullable="true"/>
+    <many-to-one field="idDominio" target-entity="EnfDominio">
+      <join-columns>
+        <join-column name="id_dominio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

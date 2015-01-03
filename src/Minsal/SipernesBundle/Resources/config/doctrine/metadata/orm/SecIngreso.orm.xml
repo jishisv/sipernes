@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecIngreso" table="sec_ingreso">
+    <indexes>
+      <index name="IDX_8396ED40890253C7" columns="id_empleado"/>
+      <index name="IDX_8396ED40701624C4" columns="id_expediente"/>
+      <index name="IDX_8396ED40721098ED" columns="id_usuario_modifica"/>
+      <index name="IDX_8396ED40D58F2214" columns="id_usuario_registra"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="false"/>
+    <field name="hora" type="time" column="hora" nullable="false"/>
+    <field name="idAtenAreModEstab" type="integer" column="id_aten_are_mod_estab" nullable="false"/>
+    <field name="idAmbienteIngreso" type="integer" column="id_ambiente_ingreso" nullable="false"/>
+    <field name="diagnostico" type="text" column="diagnostico" nullable="false"/>
+    <field name="idCie10" type="integer" column="id_cie10" nullable="true"/>
+    <field name="idEstado" type="integer" column="id_estado" nullable="false"/>
+    <field name="idProcedenciaIngreso" type="integer" column="id_procedencia_ingreso" nullable="false"/>
+    <field name="idCircunstanciaIngreso" type="integer" column="id_circunstancia_ingreso" nullable="false"/>
+    <field name="idTipoAccidente" type="integer" column="id_tipo_accidente" nullable="true"/>
+    <field name="embarazada" type="boolean" column="embarazada" nullable="true"/>
+    <field name="semanasAmenorrea" type="integer" column="semanas_amenorrea" nullable="true"/>
+    <field name="fechaProbableParto" type="date" column="fecha_probable_parto" nullable="true"/>
+    <field name="idEstablecimientoReferencia" type="integer" column="id_establecimiento_referencia" nullable="true"/>
+    <field name="motivoReferencia" type="text" column="motivo_referencia" nullable="true"/>
+    <field name="fechaRegistro" type="datetime" column="fecha_registro" nullable="false"/>
+    <field name="fechaModificacion" type="datetime" column="fecha_modificacion" nullable="true"/>
+    <field name="tarjetasEntregadas" type="integer" column="tarjetas_entregadas" nullable="true"/>
+    <field name="responsableTarjeta" type="string" column="responsable_tarjeta" length="80" nullable="true"/>
+    <many-to-one field="idUsuarioRegistra" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_usuario_registra" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUsuarioModifica" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_usuario_modifica" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

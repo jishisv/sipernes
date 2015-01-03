@@ -1,13 +1,3 @@
-minsal_sipernes_aplicaciones:
-    resource: "@MinsalSipernesAplicacionesBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-minsal_sipernes_reportes:
-    resource: "@MinsalSipernesReportesBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 minsal_sipernes_notas:
     resource: "@MinsalSipernesNotasBundle/Controller/"
     type:     annotation
@@ -23,8 +13,13 @@ minsal_sipernes:
     type:     annotation
     prefix:   /
 
-minsalshcp:
-    resource: "@MinsalshcpBundle/Controller/"
+minsal_sipernes_aplicaciones:
+    resource: "@MinsalSipernesAplicacionesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+minsal_sipernes_reportes:
+    resource: "@MinsalSipernesReportesBundle/Controller/"
     type:     annotation
     prefix:   /
 

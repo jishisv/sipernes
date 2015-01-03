@@ -31,7 +31,7 @@ class EnfCtlActividadAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-             //->add('id')
+            //->add('id')
             ->add('nombreActividad', 'text', array('label' => 'Nombre de actividad'))
             ->add('estadoAct', null, array('label' => 'Activo'))
             ->add('usuarioIngresoCatAct', 'text', array('label' => 'Creado por'))
@@ -74,7 +74,7 @@ class EnfCtlActividadAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-           //->add('id')
+             //->add('id')
             ->add('nombreActividad', 'text', array('label' => 'Nombre de actividad'))
             ->add('estadoAct', null, array('label' => 'Activo'))
             ->add('usuarioIngresoCatAct', 'text', array('label' => 'Creado por'))
@@ -82,9 +82,10 @@ class EnfCtlActividadAdmin extends Admin
             ->add('fechaModificacionCatAct', 'date', array('label' => 'Fecha de modificacion'))
         ;
     }
-
     
-/*
+    
+    
+     /*
      * Método que se ejecuta antes de realizar una inserción.
      * Recibe como parámetro una entidad; en este caso de tipo EnfCtlActividad
      * con los valores del formulario.
@@ -107,6 +108,7 @@ class EnfCtlActividadAdmin extends Admin
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfCtlActividad->setusuarioIngresoCatAct($user);
         $EnfCtlActividad->setfechaModificacionCatAct(new \DateTime());
-    }    
+    }
+    
     
 }

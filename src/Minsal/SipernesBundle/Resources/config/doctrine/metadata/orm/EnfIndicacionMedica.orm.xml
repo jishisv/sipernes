@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfIndicacionMedica" table="enf_indicacion_medica">
+    <indexes>
+      <index name="IDX_F91941EABFAE4CCD" columns="id_registro_nota"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tratamientoInd" type="string" column="tratamiento_ind" length="800" nullable="true"/>
+    <field name="dosisInd" type="string" column="dosis_ind" length="10" nullable="true"/>
+    <field name="indicacionInd" type="string" column="indicacion_ind" length="200" nullable="true"/>
+    <field name="estadoInd" type="boolean" column="estado_ind" nullable="true"/>
+    <field name="usuarioInd" type="string" column="usuario_ind" length="40" nullable="true"/>
+    <field name="fechaIngresoInd" type="date" column="fecha_ingreso_ind" nullable="true"/>
+    <field name="fechaModInd" type="date" column="fecha_mod_ind" nullable="true"/>
+    <many-to-one field="idRegistroNota" target-entity="EnfMtlNota">
+      <join-columns>
+        <join-column name="id_registro_nota" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

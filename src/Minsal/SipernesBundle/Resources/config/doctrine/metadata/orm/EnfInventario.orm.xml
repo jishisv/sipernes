@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfInventario" table="enf_inventario">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="existencia" type="decimal" column="existencia" precision="10" scale="0" nullable="true"/>
+    <field name="fechaIngresoInventario" type="date" column="fecha_ingreso_inventario" nullable="true"/>
+    <field name="usuarioInventario" type="string" column="usuario_inventario" length="40" nullable="true"/>
+    <field name="estadoInventario" type="boolean" column="estado_inventario" nullable="true"/>
+    <field name="caducidadInventario" type="date" column="caducidad_inventario" nullable="true"/>
+  </entity>
+</doctrine-mapping>

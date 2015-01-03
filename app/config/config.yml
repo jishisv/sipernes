@@ -9,11 +9,10 @@ imports:
     - { resource: bundles/sonata_formatter.yml }
     - { resource: bundles/sonata_user.yml }
     - { resource: bundles/fos_user.yml }
-    - { resource: @MinsalshcpBundle/Resources/config/services.yml }
     - { resource: @MinsalSipernesActividadBundle/Resources/config/services.yml}
     - { resource: @MinsalSipernesNotasBundle/Resources/config/services.yml}
+    - { resource: @MinsalSipernesAplicacionesBundle/Resources/config/services.yml}
     #- { resource: @MinsalSipernesReportesBundle/Resources/config/services.yml}
-    #- { resource: @MinsalSipernesAplicacionBundle/Resources/config/services.yml}
     
 framework:
     #esi:             ~

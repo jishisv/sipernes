@@ -1,6 +1,60 @@
 services:
+    minsal_sipernes_notas.admin.enf_dominio:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfDominioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfDominio, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Dominios de Diagnósticos}
+
+    minsal_sipernes_notas.admin.enf_clase:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfClaseAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfClase, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Clases de Diagnósticos}
+
     minsal_sipernes_notas.admin.enf_ctl_diagnostico:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlDiagnosticoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlDiagnostico, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Notas, label: Catalogo Diagnostico}
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Catálogo de Diagnósticos}
+
+    minsal_sipernes_notas.admin.enf_mtl_diagnostico:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlDiagnosticoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlDiagnostico, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Diagnósticos a pacientes}
+
+    minsal_sipernes_notas.admin.enf_ctl_protocolo:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlProtocoloAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlProtocolo, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Protocolos}
+
+    minsal_sipernes_notas.admin.enf_ctl_subprotocolo:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlSubprotocoloAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubprotocolo, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Subprotocolos}
+
+    minsal_sipernes_notas.admin.enf_ctl_intervencion:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlIntervencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Intervenciones}
+
+    minsal_sipernes_notas.admin.enf_ctl_fase_intervencion:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlFaseIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFaseIntervencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo Fases de intervenciones}
+
+    minsal_sipernes_notas.admin.enf_mtl_intervencion:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlIntervencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Intervenciones a pacientes}
+
+    minsal_sipernes_notas.admin.enf_ctl_nota:
+        class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlNotaAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlNota, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Catálogo Notas}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfCtlDiagnostico
  *
- * @ORM\Table(name="enf_ctl_diagnostico")
+ * @ORM\Table(name="enf_ctl_diagnostico", indexes={@ORM\Index(name="IDX_69BA9BD0F71AEDFE", columns={"id_clase"})})
  * @ORM\Entity
  */
 class EnfCtlDiagnostico
@@ -21,13 +21,6 @@ class EnfCtlDiagnostico
      * @ORM\SequenceGenerator(sequenceName="enf_ctl_diagnostico_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_clase", type="integer", nullable=true)
-     */
-    private $idClase;
 
     /**
      * @var string
@@ -78,6 +71,16 @@ class EnfCtlDiagnostico
      */
     private $estadoCtlDiag;
 
+    /**
+     * @var \EnfClase
+     *
+     * @ORM\ManyToOne(targetEntity="EnfClase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_clase", referencedColumnName="id")
+     * })
+     */
+    private $idClase;
+
 
 
     /**
@@ -88,29 +91,6 @@ class EnfCtlDiagnostico
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idClase
-     *
-     * @param integer $idClase
-     * @return EnfCtlDiagnostico
-     */
-    public function setIdClase($idClase)
-    {
-        $this->idClase = $idClase;
-
-        return $this;
-    }
-
-    /**
-     * Get idClase
-     *
-     * @return integer 
-     */
-    public function getIdClase()
-    {
-        return $this->idClase;
     }
 
     /**
@@ -272,5 +252,32 @@ class EnfCtlDiagnostico
     public function getEstadoCtlDiag()
     {
         return $this->estadoCtlDiag;
+    }
+
+    /**
+     * Set idClase
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfClase $idClase
+     * @return EnfCtlDiagnostico
+     */
+    public function setIdClase(\Minsal\SipernesBundle\Entity\EnfClase $idClase = null)
+    {
+        $this->idClase = $idClase;
+
+        return $this;
+    }
+
+    /**
+     * Get idClase
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfClase 
+     */
+    public function getIdClase()
+    {
+        return $this->idClase;
+    }
+    
+     public function __toString() {
+    return $this->nombreDiagnostico ? $this->nombreDiagnostico : '';
     }
 }

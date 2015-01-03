@@ -17,7 +17,6 @@ class EnfCtlDiagnosticoAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('idClase')
             ->add('codDiagnostico')
             ->add('nombreDiagnostico')
             ->add('descripcionDiag')
@@ -34,15 +33,14 @@ class EnfCtlDiagnosticoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('idClase')
+            //->add('id')
             ->add('codDiagnostico')
             ->add('nombreDiagnostico')
             ->add('descripcionDiag')
-            ->add('fechaIngresoCtlDiag')
-            ->add('fechaModificacionCtlDiag')
-            ->add('usuarioCtlDiag')
             ->add('estadoCtlDiag')
+            ->add('usuarioCtlDiag') 
+            ->add('fechaIngresoCtlDiag')
+            //->add('fechaModificacionCtlDiag')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -59,15 +57,16 @@ class EnfCtlDiagnosticoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('idClase')
-            ->add('codDiagnostico')
-            ->add('nombreDiagnostico')
-            ->add('descripcionDiag')
-            ->add('fechaIngresoCtlDiag')
-            ->add('fechaModificacionCtlDiag')
-            ->add('usuarioCtlDiag')
-            ->add('estadoCtlDiag')
+            //->add('id')
+            ->add('idClase', null, array('label' => 'Seleccione Clase','required' => true))
+            ->add('codDiagnostico', 'text', array('label' => 'Codigo de Diagnóstico'))
+            ->add('nombreDiagnostico', 'text', array('label' => 'Nombre de Diagnóstico'))
+            ->add('descripcionDiag', 'text', array('label' => 'Descripción del Diagnóstico'))
+            ->add('estadoCtlDiag',null, array('label' => 'Activo'))
+            //->add('fechaIngresoCtlDiag')
+            //->add('fechaModificacionCtlDiag')
+            //->add('usuarioCtlDiag')
+            
         ;
     }
 
@@ -78,7 +77,6 @@ class EnfCtlDiagnosticoAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('idClase')
             ->add('codDiagnostico')
             ->add('nombreDiagnostico')
             ->add('descripcionDiag')
@@ -88,4 +86,30 @@ class EnfCtlDiagnosticoAdmin extends Admin
             ->add('estadoCtlDiag')
         ;
     }
+    
+    
+      /*
+     * Método que se ejecuta antes de realizar una inserción.
+     * Recibe como parámetro una entidad; en este caso de tipo EnfCtlDiagnostico
+     * con los valores del formulario.
+     * 
+     */
+ 
+    public function prePersist($EnfCtlDiagnostico) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfCtlDiagnostico->setusuarioCtlDiag($user);
+        $EnfCtlDiagnostico->setfechaIngresoCtlDiag(new \DateTime());
+    }
+ 
+     /*
+     * Método que se ejecuta antes de realizar una actualización.
+     * Recibe como parámetro una entidad; en este caso de tipo EnfCtlDiagnostico
+     * con los valores del formulario.
+     * 
+     */
+    public function preUpdate($EnfCtlDiagnostico) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfCtlDiagnostico->setusuarioCtlDiag($user);
+        $EnfCtlDiagnostico->setfechaModificacionCtlDiag(new \DateTime());
+    }   
 }

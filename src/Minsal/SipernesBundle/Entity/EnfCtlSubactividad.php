@@ -74,14 +74,12 @@ class EnfCtlSubactividad
     /**
      * @var \EnfCtlActividad
      *
-     * @ORM\OneToOne(targetEntity="EnfCtlActividad", inversedBy="EnfCtlActividad")
+     * @ORM\ManyToOne(targetEntity="EnfCtlActividad")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_actividad", referencedColumnName="id")
      * })
      */
     private $idActividad;
-
-
 
     /**
      * Get id
@@ -276,4 +274,9 @@ class EnfCtlSubactividad
     {
         return $this->idActividad;
     }
+    
+    public function __toString() {
+    return $this->nombreSubactividad ? $this->nombreSubactividad : '';
+    }
+    
 }

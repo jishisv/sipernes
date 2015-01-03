@@ -1,0 +1,48 @@
+services:
+    minsal_sipernes_aplicaciones.admin.enf_esquema_vac:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfEsquemaVacAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfEsquemaVac, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Esquema de vacunación}
+
+    minsal_sipernes_aplicaciones.admin.enf_tipo_esquema_vac:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaVacAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Tipo de Esquema de vacunación}
+
+    minsal_sipernes_aplicaciones.admin.enf_ctl_tipo_componente:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlTipoComponenteAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlTipoComponente, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Catálogo tipo componentes}
+
+    minsal_sipernes_aplicaciones.admin.enf_ctl_mov_inventario:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlMovInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlMovInventario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Catálogo movimiento en inventario}
+
+    minsal_sipernes_aplicaciones.admin.enf_inventario:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfInventario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Inventario}
+
+    minsal_sipernes_aplicaciones.admin.enf_componente:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfComponenteAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfComponente, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Componentes}
+
+    minsal_sipernes_aplicaciones.admin.enf_dosis_esquema_vac:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaVacAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Dosis esquema de vacunación}
+
+    minsal_sipernes_aplicaciones.admin.enf_mov_inventario:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfMovInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMovInventario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Movimiento de inventario}

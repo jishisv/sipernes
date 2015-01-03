@@ -183,4 +183,8 @@ class EnfCtlFinanciamiento
     {
         return $this->estadoFinanciamiento;
     }
+    
+     public function __toString() {
+    return $this->nombreFinanciamiento ? $this->nombreFinanciamiento : '';
+    }
 }

@@ -16,8 +16,17 @@ class MenuBuilder extends ContainerAware {
         'US' => array('label' => 'Usuario', 'icon' => 'glyphicon glyphicon-user'),
         'CT' => array('label' => 'Cita', 'icon' => 'glyphicon glyphicon-time'),
         
-        'ACT' => array('label' => 'Actividad', 'icon' => 'glyphicon glyphicon-pencil'),
-        'NTS' => array('label' => 'Notas', 'icon' => 'glyphicon glyphicon-check'),
+        'ACT' => array('label' => 'Actividad', 'icon' => 'glyphicon glyphicon-book'),
+        'DNT' => array('label' => 'Diagnóstico', 'icon' => 'glyphicon glyphicon-book'),
+        'PTC' => array('label' => 'Protocolo', 'icon' => 'glyphicon glyphicon-book'),
+        'CPC' => array('label' => 'Capacitación', 'icon' => 'glyphicon glyphicon-book'),
+        'APL' => array('label' => 'Aplicación', 'icon' => 'glyphicon glyphicon-book'),
+        'NTS' => array('label' => 'Nota', 'icon' => 'glyphicon glyphicon-book'),
+        'IVT' => array('label' => 'Inventario', 'icon' => 'glyphicon glyphicon-book'),
+        //
+        
+        
+        //'NTS' => array('label' => 'Notas', 'icon' => 'glyphicon glyphicon-check'),
         //'RPT' => array('label' => 'Reportes', 'icon' => 'glyphicon glyphicon-book'),
        // 'APL' => array('label' => 'Aplicacion', 'icon' => 'glyphicon glyphicon-circle'),
         //'CTL' => array('label' => 'Catalogos', 'icon' => 'glyphicon glyphicon-bell'),

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfTiene" table="enf_tiene">
+    <indexes>
+      <index name="IDX_E2E48582BFAE4CCD" columns="id_registro_nota"/>
+    </indexes>
+    <id name="idExpediente" type="integer" column="id_expediente"/>
+    <id name="idRegistroNota" association-key="true"/>
+    <field name="id" type="integer" column="id" nullable="false"/>
+    <one-to-one field="idRegistroNota" target-entity="EnfMtlNota">
+      <join-columns>
+        <join-column name="id_registro_nota" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>
