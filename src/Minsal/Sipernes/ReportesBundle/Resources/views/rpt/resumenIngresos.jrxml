@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="69"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_servicio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRUEBA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * from ctl_departamento where id=1]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Llave primaria]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre del área de atención]]></fieldDescription>
+	</field>
+	<field name="codigo_cnr" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo asignado por la Digestyc para un departamento en especifico]]></fieldDescription>
+	</field>
+	<field name="abreviatura" class="java.lang.String">
+		<fieldDescription><![CDATA[Abreviatura asignada al departamento]]></fieldDescription>
+	</field>
+	<field name="id_pais" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Representa la llave foranea que proviene de ctl_pais]]></fieldDescription>
+	</field>
+	<field name="id_establecimiento_region" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Foránea que representa el la región a la que pertenece administrativamente el departamento]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="21" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sistema Nacional de Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="41" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Listado de Pacientes Ingresados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="1" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ee057968-9785-4e29-bbcd-08234a56fc03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[República de El Salvador]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="114" y="13" width="100" height="20" uuid="36ec72c3-1b88-4004-9894-f64b30aa0768"/>
+				<text><![CDATA[Llave primaria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="13" width="100" height="20" uuid="a7f99766-5387-4446-902d-507b4999d751"/>
+				<text><![CDATA[Nombre del área de atención]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="114" y="0" width="100" height="20" uuid="f6547373-85ec-4964-a544-67c46c6f606f"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="100" height="20" uuid="97cca3dd-80fd-4d03-b94a-c2c7931da739"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

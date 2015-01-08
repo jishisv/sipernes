@@ -49,39 +49,6 @@ class ReportePrueba2Controller extends Controller
         return $jasperReport->buildReport();
     }
    
-   /**
-     *@Route("/obtener/municipios/hospitalarios/todos/{id}", name="get_all_munic", options={"expose"=true})
-     */
-    public function getMunicipiosAction($id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $dql = "SELECT o
-                FROM MinsalshcpBundle:CtlMunicipio o
-                 WHERE o.idDepartamento = :id";
-        $municipios['municipios'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
-               
-         
-        return new Response(json_encode($municipios));
-    }
-    
-   
-   /**
-     *@Route("/obtener/deptos/todos/", name="get_all_deptos", options={"expose"=true})
-     */
-    public function getDeptosAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $dql = "SELECT o
-                FROM MinsalshcpBundle:CtlDepartamento o
-                ";
-        $deptos['deptos'] = $em->createQuery($dql)
-                ->getArrayResult();
-
-        return new Response(json_encode($deptos));
-    }
-    
-
-
     
 }
 

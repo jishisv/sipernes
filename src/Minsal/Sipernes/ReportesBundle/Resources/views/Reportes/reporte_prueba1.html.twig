@@ -1,139 +1,18 @@
 {# src/Minsal/SeguimientoBundle/Resources/views/SecIngreso/reporte_list.html.twig #}
 {% extends 'SonataAdminBundle::layout.html.twig' %}
-{%block stylesheets %}
+{% block stylesheets -%}
     {{parent()}}
     <link rel="stylesheet" href="{{ asset('bundles/minsalseguimiento/css/SecIngreso/reporte_list.css') }}" type="text/css" media="all" />  
-{%endblock%}
+{% endblock -%}
 
-{%block javascripts %}
+{% block javascripts -%}
     {{parent()}}
-    
-   
- {#   <script> 
-    $(document).ready(function() {
 
-    $('#exportar_hoja_calculo').click(function() {
-        alert('hola');
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($('#servicio_ingreso').val() == '')
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-            else
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
-
-    });
-    $('#exportar_pdf').click(function() {
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($('#servicio_ingreso').val() == '')
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-            else
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
-    });
-
-});
-
-</script>#}
-<script>
- $(document).ready(function() {
-$('#emitir_informe').click(function() {
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar ambas fechas para generar el reporte."
-                    + "</center></div>");
-            //elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    if ($("#fecha_inicio").val() == '')
-                        $("#fecha_inicio").focus();
-                    else
-                        $("#fecha_fin").focus();
-                }
-            });
-        } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "La fecha de inicio debe de ser menor que la fecha fin."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    $("#fecha_inicio").val('');
-                    $("#fecha_fin").val('');
-                    $("#fecha_inicio").focus();
-                }
-            });
-             return false;
-        } 
-       
-            
-            
-            if ($('#municipios').val() == 'Seleccione..')
-            alert('Debe seleccionar un municipio');
-            
-               // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-                  // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
-            else
-                url = Routing.generate('infor_abortos') + '/infor_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
-    });
-    });
-    
-     $("#emitir_informe").click(function() {
-        if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar ambas fechas para generar el reporte."
-                    + "</center></div>");
-            //elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    if ($("#fecha_inicio").val() == '')
-                        $("#fecha_inicio").focus();
-                    else
-                        $("#fecha_fin").focus();
-                }
-            });
-        } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "La fecha de inicio debe de ser menor que la fecha fin."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    $("#fecha_inicio").val('');
-                    $("#fecha_fin").val('');
-                    $("#fecha_inicio").focus();
-                }
-            });
-        } 
-        return false;
-    });
-
-</script>
     
 <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_list.js') }}" type="text/javascript"></script>
-{%endblock%}
+{% endblock -%}
 {% block sonata_admin_content -%}
 <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Informe de Reportes 1</h4>
 <center>
@@ -171,7 +50,7 @@ $('#emitir_informe').click(function() {
             </tbody>
         </table>
         <div class="well form-actions">
-            <input type="button" class="btn btn-primary" id="emitir_informe" name="btn_generate" value="Emitir Informe"/>
+            <input type="button" class="btn btn-primary" id="id_reporte_prueba" name="btn_generate" value="Genrera Reporte 1"/>
         </div>
     </form>
    <div id="resultado" ></div>
