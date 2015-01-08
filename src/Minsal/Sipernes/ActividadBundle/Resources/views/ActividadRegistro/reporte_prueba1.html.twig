@@ -51,7 +51,7 @@ $('#emitir_informe').click(function() {
             if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
             ($('#error')) ? $('#error').remove() : '';
             var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar ambas fechas para generar el reporte."
+                    "Debe de seleccionar la fecha en que se realizo la actividad."
                     + "</center></div>");
             //elem.insertAfter($("#pacientesIngresados"));
             $("#error").dialog({
@@ -100,7 +100,7 @@ $('#emitir_informe').click(function() {
         if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
             ($('#error')) ? $('#error').remove() : '';
             var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar ambas fechas para generar el reporte."
+                    "Debe de seleccionar la fecha en que se realizo la actividad."
                     + "</center></div>");
             //elem.insertAfter($("#pacientesIngresados"));
             $("#error").dialog({
@@ -162,14 +162,14 @@ $('#emitir_informe').click(function() {
                     
                 </tr>
                 <tr>
-                    <td class="" ><strong>Departamento:</strong></td>
+                    <td class="" ><strong>Tipo de Actividad:</strong></td>
                     <td colspan="3" ><select id="deptos" name="deptos">
                         <option></option>
                     </select></td>                   
                 </tr>
                 
                 <tr>
-                    <<td class="" ><strong>Municipio:</strong></td>
+                    <<td class="" ><strong>Actividad:</strong></td>
                     <td colspan="3" ><select id="municipios" name="municipios">
                         <option selected="true">Seleccione..</option>
                     </select></td>       
