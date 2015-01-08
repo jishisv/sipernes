@@ -104,7 +104,7 @@ class EnfMtlActividadAdmin extends Admin
      public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+                return 'MinsalSipernesActividadBundle:ActividadRegistro:mtlactividad.html.twig';
                 break;
             //case 'create':
                 //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
