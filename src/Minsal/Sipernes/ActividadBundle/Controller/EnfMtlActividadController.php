@@ -21,8 +21,8 @@ class EnfMtlActividadController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlMunicipio o
-                 WHERE o.idDepartamento = :id";
+                FROM MinsalSipernesBundle:EnfCtlSubactividad o
+                 WHERE o.idActividad = :id";
         $municipios['municipios'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                
          
@@ -37,7 +37,7 @@ class EnfMtlActividadController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlDepartamento o
+                FROM MinsalSipernesBundle:EnfCtlActividad o
                 ";
         $deptos['deptos'] = $em->createQuery($dql)
                 ->getArrayResult();
