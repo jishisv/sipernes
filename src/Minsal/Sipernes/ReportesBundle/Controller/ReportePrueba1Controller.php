@@ -14,17 +14,16 @@ use Symfony\Component\HttpFoundation\Response;
 class ReportePrueba1Controller extends Controller
 {
  /**
-     *@Route("/rptabortos/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{id_servicio}", name="infor_abortos", options={"expose"=true})
+     *@Route("/rptprueba/{report_name}/{report_format}/{PRUEBA}/{id_servicio}", name="rpt_prueba1", options={"expose"=true})
      */
-    public function informeAbortosAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $id_servicio = 0) {
+    public function reportepruebaAction($report_name, $report_format, $PRUEBA, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports/siaps/seguimiento/");
        $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'PRUEBA' => $PRUEBA,
             'id_servicio' => $id_servicio
         ));
        
