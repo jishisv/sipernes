@@ -92,4 +92,7 @@ class EnfMtlCapacitacionAdmin extends Admin
             ->add('usuarioCapacitacion')
         ;
     }
+    
+    
+    
 }

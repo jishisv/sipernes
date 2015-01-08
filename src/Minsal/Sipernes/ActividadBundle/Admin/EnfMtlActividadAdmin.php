@@ -101,6 +101,20 @@ class EnfMtlActividadAdmin extends Admin
     
     
     
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    
+    
      /*
      * Método que se ejecuta antes de realizar una inserción.
      * Recibe como parámetro una entidad; en este caso de tipo EnfMtlActividad
