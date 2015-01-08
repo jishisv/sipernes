@@ -12,7 +12,7 @@ imports:
     - { resource: @MinsalSipernesActividadBundle/Resources/config/services.yml}
     - { resource: @MinsalSipernesNotasBundle/Resources/config/services.yml}
     - { resource: @MinsalSipernesAplicacionesBundle/Resources/config/services.yml}
-    #- { resource: @MinsalSipernesReportesBundle/Resources/config/services.yml}
+    - { resource: @MinsalSipernesReportesBundle/Resources/config/services.yml}
     
 framework:
     #esi:             ~

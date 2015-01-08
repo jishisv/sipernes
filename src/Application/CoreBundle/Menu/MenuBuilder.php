@@ -23,7 +23,7 @@ class MenuBuilder extends ContainerAware {
         'APL' => array('label' => 'Aplicación', 'icon' => 'glyphicon glyphicon-book'),
         'NTS' => array('label' => 'Nota', 'icon' => 'glyphicon glyphicon-book'),
         'IVT' => array('label' => 'Inventario', 'icon' => 'glyphicon glyphicon-book'),
-        'RPT' => array('label' => 'Reportes', 'icon' => 'glyphicon glyphicon-book'),
+        'RPT' => array('label' => 'Reportes', 'icon' => 'glyphicon glyphicon-file'),
         //
         
         

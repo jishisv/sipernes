@@ -59,11 +59,3 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Catálogo Notas}
            
-    
-    minsal_sipernes.admin.enf_historico_actividad:
-        class: Minsal\SipernesBundle\Admin\EnfHistoricoActividadAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoActividad, MinsalSipernesBundle:ReportesEstadisticos]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: EnfHistoricoActividad}
-
-            

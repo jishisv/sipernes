@@ -1,6 +1,6 @@
 <?php
 
-namespace Minsal\SipernesBundle\Admin;
+namespace Minsal\Sipernes\ReportesBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -88,7 +88,7 @@ class EnfHistoricoActividadAdmin extends Admin
     public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesBundle:Reportes:reporte_list.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_prueba1.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);
