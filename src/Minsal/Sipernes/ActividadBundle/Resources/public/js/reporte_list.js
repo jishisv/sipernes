@@ -31,6 +31,7 @@ $(document).ready(function() {
                         $("#fecha_fin").focus();
                 }
             });
+            return false;
         } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
             ($('#error')) ? $('#error').remove() : '';
             var elem = $("<div id='error' title='Error de llenado'><center>" +

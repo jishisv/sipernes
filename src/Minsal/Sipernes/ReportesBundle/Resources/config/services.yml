@@ -3,10 +3,10 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoCapacitacionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoCapacitacion, MinsalSipernesReportesBundle:ReportePrueba1]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 1}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 1 Capacitacion}
 
     minsal_sipernes_reportes.admin.enf_historico_actividad:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoActividad, MinsalSipernesReportesBundle:ReportePrueba2]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 2}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 2 Actividad}
