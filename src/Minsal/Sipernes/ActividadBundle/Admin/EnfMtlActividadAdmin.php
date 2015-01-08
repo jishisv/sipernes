@@ -73,7 +73,7 @@ class EnfMtlActividadAdmin extends Admin
             //->add('usuarioIngresoAct')
             //->add('fechaIngresoAct')
             //
-            
+       
             
         ;
     }
@@ -106,6 +106,9 @@ class EnfMtlActividadAdmin extends Admin
             case 'list':
                 return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
                 break;
+            //case 'create':
+                //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+                //break;
             default:
                 return parent::getTemplate($name);
                 break;
