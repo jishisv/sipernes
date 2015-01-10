@@ -62,7 +62,7 @@ class EnfMtlActividadAdmin extends Admin {
                 //->add('id')
                 ->add('fechaModificacionAct', null, array('required' => false))
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado', 'required' => true))
-                ->add('idExpediente', 'text', array('label' => 'Numero de paciente'))
+                ->add('idExpediente', null, array('label' => 'Numero de paciente'))
                 ->add('idSubactividad', null, array('label' => 'Seleccione sub-actividad', 'required' => true))
                 ->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
                 ->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))

@@ -118,23 +118,23 @@ $(document).ready(function () {
 
 
     $("#deptos").on('change', function (event) { // aqui el JSON });
-        $('#municipios option').each(function (index, val) {
+        $('.select2-drop-mask option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-            $('#municipios').select2({
-                selected: 'true',
-                width: '60%',
-                placeholder: 'Seleccione...'
-//                allowClear: true
-            });
+//            $('select2-drop-mask').select2({
+//                selected: 'true',
+//                width: '60%',
+//                placeholder: 'Seleccione...'
+////                allowClear: true
+//            });
 
         });
         $.getJSON(Routing.generate('get_Subact') + '/' + $('#deptos').val(),
                 function (data) {
-                    $('#municipios').append('<option value="0" selected="true">Seleccione...</option>');
+                    $('.select2-drop-mask').append('<option value="0" selected="true">Seleccione...</option>');
 //                    alert("entre a municipios de shcp");
                     $.each(data.municipios, function (indice, aux) {
-                        $('#municipios').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
+                        $('.select2-drop-mask').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
                     });
 
                 });
