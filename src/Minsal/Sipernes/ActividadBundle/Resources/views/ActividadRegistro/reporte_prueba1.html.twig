@@ -45,7 +45,7 @@
 
 </script>#}
 <script>
- $(document).ready(function() {
+ {#$(document).ready(function() {
 $('#emitir_informe').click(function() {
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
             if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
@@ -94,9 +94,9 @@ $('#emitir_informe').click(function() {
             return false;
         }
     });
-    });
+    });#}
     
-     $("#emitir_informe").click(function() {
+     {#$("#emitir_informe").click(function() {
         if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
             ($('#error')) ? $('#error').remove() : '';
             var elem = $("<div id='error' title='Error de llenado'><center>" +
@@ -126,7 +126,7 @@ $('#emitir_informe').click(function() {
             });
         } 
         return false;
-    });
+    });#}
 
 </script>
     
