@@ -7,186 +7,207 @@
 
 {%block javascripts %}
     {{parent()}}
-    
+
+
+    {#   <script> 
+       $(document).ready(function() {
    
- {#   <script> 
-    $(document).ready(function() {
+       $('#exportar_hoja_calculo').click(function() {
+           alert('hola');
+           if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
+               if ($('#servicio_ingreso').val() == '')
+                   url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
+               else
+                   url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
+               window.open(url, '_blank');
+               return false;
+           }
+           else {
+               return false;
+           }
+   
+       });
+       $('#exportar_pdf').click(function() {
+           if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
+               if ($('#servicio_ingreso').val() == '')
+                   url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
+               else
+                   url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
+               window.open(url, '_blank');
+               return false;
+           }
+           else {
+               return false;
+           }
+       });
+   
+   });
+   
+   </script>#}
+    <script>
+        {#$(document).ready(function() {
+       $('#emitir_informe').click(function() {
+               if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
+                   if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
+                   ($('#error')) ? $('#error').remove() : '';
+                   var elem = $("<div id='error' title='Error de llenado'><center>" +
+                           "Debe de seleccionar la fecha en que se realizo la actividad."
+                           + "</center></div>");
+                   //elem.insertAfter($("#pacientesIngresados"));
+                   $("#error").dialog({
+                       close: function() {
+                           if ($("#fecha_inicio").val() == '')
+                               $("#fecha_inicio").focus();
+                           else
+                               $("#fecha_fin").focus();
+                       }
+                   });
+               } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                   ($('#error')) ? $('#error').remove() : '';
+                   var elem = $("<div id='error' title='Error de llenado'><center>" +
+                           "La fecha de inicio debe de ser menor que la fecha fin."
+                           + "</center></div>");
+                   elem.insertAfter($("#pacientesIngresados"));
+                   $("#error").dialog({
+                       close: function() {
+                           $("#fecha_inicio").val('');
+                           $("#fecha_fin").val('');
+                           $("#fecha_inicio").focus();
+                       }
+                   });
+                    return false;
+               } 
+              
+                   
+                   
+                   if ($('#municipios').val() == 'Seleccione..')
+                   alert('Debe seleccionar un municipio');
+                   
+                      // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
+                         // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
+                   else
+                       url = Routing.generate('infor_abortos') + '/infor_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
+                   window.open(url, '_blank');
+                   return false;
+               }
+               else {
+                   return false;
+               }
+           });
+           });#}
 
-    $('#exportar_hoja_calculo').click(function() {
-        alert('hola');
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($('#servicio_ingreso').val() == '')
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-            else
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
+        {#$("#emitir_informe").click(function() {
+           if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
+               ($('#error')) ? $('#error').remove() : '';
+               var elem = $("<div id='error' title='Error de llenado'><center>" +
+                       "Debe de seleccionar la fecha en que se realizo la actividad."
+                       + "</center></div>");
+               //elem.insertAfter($("#pacientesIngresados"));
+               $("#error").dialog({
+                   close: function() {
+                       if ($("#fecha_inicio").val() == '')
+                           $("#fecha_inicio").focus();
+                       else
+                           $("#fecha_fin").focus();
+                   }
+               });
+           } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+               ($('#error')) ? $('#error').remove() : '';
+               var elem = $("<div id='error' title='Error de llenado'><center>" +
+                       "La fecha de inicio debe de ser menor que la fecha fin."
+                       + "</center></div>");
+               elem.insertAfter($("#pacientesIngresados"));
+               $("#error").dialog({
+                   close: function() {
+                       $("#fecha_inicio").val('');
+                       $("#fecha_fin").val('');
+                       $("#fecha_inicio").focus();
+                   }
+               });
+           } 
+           return false;
+       });#}
 
-    });
-    $('#exportar_pdf').click(function() {
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($('#servicio_ingreso').val() == '')
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-            else
-                url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#servicio_ingreso').val();
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
-    });
+    </script>
 
-});
-
-</script>#}
-<script>
- {#$(document).ready(function() {
-$('#emitir_informe').click(function() {
-        if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar la fecha en que se realizo la actividad."
-                    + "</center></div>");
-            //elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    if ($("#fecha_inicio").val() == '')
-                        $("#fecha_inicio").focus();
-                    else
-                        $("#fecha_fin").focus();
-                }
-            });
-        } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "La fecha de inicio debe de ser menor que la fecha fin."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    $("#fecha_inicio").val('');
-                    $("#fecha_fin").val('');
-                    $("#fecha_inicio").focus();
-                }
-            });
-             return false;
-        } 
-       
-            
-            
-            if ($('#municipios').val() == 'Seleccione..')
-            alert('Debe seleccionar un municipio');
-            
-               // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-                  // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
-            else
-                url = Routing.generate('infor_abortos') + '/infor_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
-            window.open(url, '_blank');
-            return false;
-        }
-        else {
-            return false;
-        }
-    });
-    });#}
-    
-     {#$("#emitir_informe").click(function() {
-        if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar la fecha en que se realizo la actividad."
-                    + "</center></div>");
-            //elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    if ($("#fecha_inicio").val() == '')
-                        $("#fecha_inicio").focus();
-                    else
-                        $("#fecha_fin").focus();
-                }
-            });
-        } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
-            ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "La fecha de inicio debe de ser menor que la fecha fin."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function() {
-                    $("#fecha_inicio").val('');
-                    $("#fecha_fin").val('');
-                    $("#fecha_inicio").focus();
-                }
-            });
-        } 
-        return false;
-    });#}
-
-</script>
-    
-<script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
-<script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
-<script src="{{ asset('bundles/minsalsiaps/js/Sipernes/MtlActividad/reporte_mtlactividad.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/MtlActividad/reporte_mtlactividad.js') }}" type="text/javascript"></script>
 {%endblock%}
 {% block sonata_admin_content -%}
-<h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Registro de Actividad</h4>
+
 <center>
-    <form  id="pacientesIngresados" method="post">
-        <table class="table table-bordered ">
-            <tbody>
-                <tr>
-                    <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Opciones de Contenido</strong></td>
-                </tr>
-                <tr>
-            <div id="divdomreg">
-                
-              </div>  
-                    <td class=""><strong>Fecha de Actividad:</strong></td>
-                    <td><input id="fecha_inicio" name="fecha_inicio" type="text" class="fecha obligatorio" /></td>
-                    
+    <h1>Registro de actividad a paciente</h1>
+    <form name="preparar" id="preparar" action="{#{{admin.generateObjectUrl('edit', entity)}}#}" method="post" class="form-vertical">
+         <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Opciones de Contenido</strong></td>
+                    </tr>
+                    <tr>
+                <div id="divdomreg">
+
+                </div>  
+                <td class=""><strong>Fecha de Actividad:</strong></td>
+                {# <td><input id="fecha_inicio" name="fecha_inicio" type="text" class="fecha obligatorio" /></td>#}
+
+                <td>{{ form_widget(form.fechaModificacionAct) }}</td>
                 </tr>
                 </div>  
-                    <td class=""><strong>Código de Enfermera:</strong></td>
-                    <td><input id="codigo_enfermera" name="codigo_enfermera" type="text" class="fecha obligatorio" /></td>
-                    
+                <td class=""><strong>Código de Enfermera:</strong></td>
+                {#<td><input id="codigo_enfermera" name="codigo_enfermera" type="text" class="fecha obligatorio" /></td>#}
+                <td><label >{{ form_widget(form.idEmpCorr) }}</label></td>
                 </tr>
                 </div>  
-                    <td class=""><strong>Código de Paciente:</strong></td>
-                    <td><input id="codigo_paciente" name="codigo_paciente" type="text" class="fecha obligatorio" /></td>
-                    
+                <td class=""><strong>Código de Paciente:</strong></td>
+                <td><input id="codigo_paciente" name="codigo_paciente" type="text" class="fecha obligatorio" /></td>
+{#                <td><label >{{ form_widget(form.idExpediente) }}</label></td>#}
                 </tr>
                 <tr>
                     <td class="" ><strong>Tipo de Actividad:</strong></td>
                     <td colspan="3" ><select id="deptos" name="deptos">
-                        <option></option>
-                    </select></td>                   
+                            <option></option>
+                        </select></td>                   
                 </tr>
-                
+
                 <tr>
                     <<td class="" ><strong>Actividad:</strong></td>
                     <td colspan="3" ><select id="municipios" name="municipios">
-                        <option selected="true">Seleccione..</option>
-                    </select></td>       
+                            <option selected="true">Seleccione..</option>
+                        </select></td>       
                 </tr>
                 </div>  
-                    <td class=""><strong>Tiempo:</strong></td>
-                    <td><input id="tiempo_minutos" name="tiempo_minutos" type="text" class="fecha obligatorio" />Minutos</td> 
-                    
+                <td class=""><strong>Tiempo:</strong></td>
+                <td><input id="tiempo_minutos" name="tiempo_minutos" type="text" class="fecha obligatorio" />Minutos</td> 
                 </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <tr>
+                    <td colspan="2">
+                <div class="pull-right">
+          {#  <a  class="btn btn-info" href="{{ admin.generateObjectUrl('edit', entity) }}">#}
+            <a  class="btn btn-info" href="">
+               <span class="glyphicon glyphicon-floppy-saved"></span> Guardar          
+            </a>
+             </div> 
+                </td>
+                <td colspan="2">
+                <div class="pull-right">
+            <a  class="btn btn-info" href="">
+               <span class="glyphicon glyphicon-remove"></span> Cancelar          
+            </a>
+             </div> 
+                </td>
+                </tr>
+            </table>
+{#            </tr>#}
             </tbody>
         </table>
-        <div class="well form-actions">
-            <input type="button" class="btn btn-primary" id="emitir_informe" name="btn_generate" value="Guardar"/>
-        </div>
     </form>
-   <div id="resultado" ></div>
- </center>
+</center>
+<br><br>
 {% endblock -%}
 
 {# empty Twig template #}

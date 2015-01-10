@@ -52,7 +52,7 @@ $(document).ready(function () {
     });
 
     $("#id_reporte_prueba").click(function () {
-//        alert('entro aqui 2');
+        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
 //            alert('entro aqui 3');
             if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
@@ -70,7 +70,7 @@ $(document).ready(function () {
                             $("#fecha_fin").focus();
                     }
                 });
-//                alert('entro aqui 5');
+                alert('entro aqui 5');
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -89,7 +89,7 @@ $(document).ready(function () {
             }
 
 
-//            alert('entro aqui 7');
+            alert('entro aqui 7');
             alert(Routing.generate('prueba2') + '/prueba2/PDF/' + "Hola" + '/' + "Reporte_Nuevo");
 //            if ($('#municipios').val() == 'Seleccione..')
 //                alert('Debe seleccionar un municipio');
@@ -98,7 +98,7 @@ $(document).ready(function () {
 //            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
 //            else
             var url = Routing.generate('prueba2') + '/prueba2/PDF/' + "Hola" + '/' + "Reporte_Nuevo";
-//            alert('Entro saqui 8');
+            alert('Entro saqui 8');
             window.open(url, '_blank');
             return false;
         }
@@ -107,11 +107,12 @@ $(document).ready(function () {
         }
     });
 
-    $.getJSON(Routing.generate('get_all_deptos'),
+    $.getJSON(Routing.generate('get_Act'),
             function (data) {
 //                alert("entre a deptos de shcp");
+//                alert(Routing.generate('get_Act'));
                 $.each(data.deptos, function (indice, aux) {
-                    $('#deptos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    $('#deptos').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
                 });
             });
 
@@ -128,12 +129,12 @@ $(document).ready(function () {
             });
 
         });
-        $.getJSON(Routing.generate('get_all_munic') + '/' + $('#deptos').val(),
+        $.getJSON(Routing.generate('get_Subact') + '/' + $('#deptos').val(),
                 function (data) {
                     $('#municipios').append('<option value="0" selected="true">Seleccione...</option>');
 //                    alert("entre a municipios de shcp");
                     $.each(data.municipios, function (indice, aux) {
-                        $('#municipios').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                        $('#municipios').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
                     });
 
                 });

@@ -15,9 +15,9 @@ class EnfMtlActividadController extends Controller
 {
    
    /**
-     *@Route("/obtener/municipios/hospitalarios/todos/{id}", name="get_all_munic", options={"expose"=true})
+     *@Route("/recibir/subactividades/{id}", name="get_Subact", options={"expose"=true})
      */
-    public function getMunicipiosAction($id) {
+    public function getSubactividadesAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
@@ -31,9 +31,9 @@ class EnfMtlActividadController extends Controller
     
    
    /**
-     *@Route("/obtener/deptos/todos/", name="get_all_deptos", options={"expose"=true})
+     *@Route("/recibir/actividades/todos/", name="get_Act", options={"expose"=true})
      */
-    public function getDeptosAction() {
+    public function getActividadesAction() {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
