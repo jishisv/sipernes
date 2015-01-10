@@ -20,17 +20,17 @@ use Symfony\Component\HttpFoundation\Response;
 class ReporteMetodoController extends Controller
 {
  /**
-     *@Route("/rpt_reporte/{report_name}/{report_format}/{PRUEBA}/{id_servicio}", name="rpt_reporte_nuevo", options={"expose"=true})
+     *@Route("/prueba2/{report_name}/{report_format}/{PRUEBA}/{id_servicio}", name="prueba2", options={"expose"=true})
      */
     public function reportepruebaAction($report_name, $report_format, $PRUEBA, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
-        $jasperReport->setReportName($report_name);
-        $jasperReport->setReportFormat($report_format);
-        $jasperReport->setReportPath("/reports/siaps/seguimiento/");
+        $jasperReport->setReportName("prueba2");
+        $jasperReport->setReportFormat("PDF");
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
        $jasperReport->setReportParams(array(
-            'PRUEBA' => $PRUEBA,
-            'id_servicio' => $id_servicio
+            'PRUEBA' => 'HOLA',
+            'id_servicio' => 0
         ));
        
    

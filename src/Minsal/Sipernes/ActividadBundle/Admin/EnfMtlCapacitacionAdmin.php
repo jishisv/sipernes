@@ -36,6 +36,7 @@ class EnfMtlCapacitacionAdmin extends Admin
     {
         $listMapper
             //->add('id')
+            ->add('idFinanciamiento')
             ->add('fechaIngresoCap')
             ->add('fechaCapacitacion')
             ->add('temaCapacitacion')
@@ -62,6 +63,7 @@ class EnfMtlCapacitacionAdmin extends Admin
     {
         $formMapper
             //->add('id')
+            ->add('idFinanciamiento')
             ->add('fechaIngresoCap')
             ->add('fechaCapacitacion')
             ->add('temaCapacitacion')

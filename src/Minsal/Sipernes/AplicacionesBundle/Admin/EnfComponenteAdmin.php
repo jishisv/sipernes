@@ -53,11 +53,14 @@ class EnfComponenteAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('presentacion')
-            ->add('usuarioComponente')
-            ->add('fechaIngresoComponente')
-            ->add('fechaModificacionComponente')
+//            ->add('id')
+            ->add('idInventario', null, array('label' => 'Codigo de Inventario'))
+//            ->add('idTipoEsq', null, array('label' => 'Tipo de Esquema'))
+//            ->add('idTipoComponente', null, array('label' => 'Tipo de Componente'))
+            ->add('presentacion', 'text', array('label' => 'Presentacion'))
+//            ->add('usuarioComponente')
+//            ->add('fechaIngresoComponente')
+//            ->add('fechaModificacionComponente')
             ->add('estadoComponente')
         ;
     }

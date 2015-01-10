@@ -1,7 +1,7 @@
 $(document).ready(function () {
 //    alert('entro aqui');
     $("#id_reporte_prueba").click(function () {
-//        alert('entro aqui 2');
+        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
 //            alert('entro aqui 3');
             if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
@@ -19,7 +19,7 @@ $(document).ready(function () {
                             $("#fecha_fin").focus();
                     }
                 });
-//                alert('entro aqui 5');
+                alert('entro aqui 5');
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -38,15 +38,16 @@ $(document).ready(function () {
             }
 
 
-//            alert('entro aqui 7');
+            alert('entro aqui 7');
+            alert(Routing.generate('rpt_reporte_nuevo') + '/prueba2/PDF/' + "Hola" + '/' + "Reporte_Nuevo");
 //            if ($('#municipios').val() == 'Seleccione..')
 //                alert('Debe seleccionar un municipio');
 //
 //            // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
 //            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
 //            else
-                url = Routing.generate('rpt_reporte_nuevo') + '/prueba2/PDF/' + 'Hola' + '/' + "Reporte_Nuevo";
-//                alert('Entro saqui 8');
+                url = Routing.generate('rpt_reporte_nuevo') + '/prueba2/PDF/' + "Hola" + '/' + "Reporte_Nuevo";
+                alert('Entro saqui 8');
             window.open(url, '_blank');
             return false;
         }

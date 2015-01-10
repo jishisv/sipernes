@@ -47,6 +47,10 @@
 				<reportElement x="169" y="41" width="100" height="20" uuid="9211fcc4-0036-490a-b437-5f78b3a41fca"/>
 				<text><![CDATA[Nombre del área de atención]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="269" y="41" width="100" height="20" uuid="48c9fa40-7849-4e30-8722-e9cbd810dda3"/>
+				<text><![CDATA[Abreviatura asignada al departamento]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -58,6 +62,10 @@
 			<textField>
 				<reportElement x="169" y="0" width="100" height="20" uuid="3e26308d-1de1-4eb0-b339-ec053f6051c6"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="100" height="20" uuid="f5e5bb3e-a446-4fb8-b266-2267d67082fb"/>
+				<textFieldExpression><![CDATA[$F{abreviatura}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

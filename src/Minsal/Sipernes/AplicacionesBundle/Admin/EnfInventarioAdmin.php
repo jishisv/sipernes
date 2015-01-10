@@ -53,10 +53,10 @@ class EnfInventarioAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+//            ->add('id')
             ->add('existencia')
-            ->add('fechaIngresoInventario')
-            ->add('usuarioInventario')
+//            ->add('fechaIngresoInventario')
+//            ->add('usuarioInventario')
             ->add('estadoInventario')
             ->add('caducidadInventario')
         ;

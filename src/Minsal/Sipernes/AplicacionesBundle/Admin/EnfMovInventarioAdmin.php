@@ -57,10 +57,14 @@ class EnfMovInventarioAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('usuarioMov')
-            ->add('fechaIngresoMov')
-            ->add('fechaModificacionMov')
+//            ->add('id')
+            ->add('idInventario', null, array('label' => 'Codigo de Inventario'))
+            ->add('idDosisEsq', null, array('label' => 'Tipo de Dosis Esquema'))
+//            ->add('idTipoInventario', null, array('label' => 'Tipo de Inventario'))
+            ->add('idEmpCorr', 'text', array('label' => 'Codigo Empleado'))
+//            ->add('usuarioMov')
+//            ->add('fechaIngresoMov')
+//            ->add('fechaModificacionMov')
             ->add('cantidadMov')
             ->add('estadoMov')
             ->add('empleadoEnvio')

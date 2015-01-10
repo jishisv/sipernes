@@ -52,7 +52,7 @@ class EnfMtlDiagnosticoAdmin extends Admin
     {
         $formMapper
             //->add('id')
-           // ->add('idEmpCorr')
+            ->add('idEmpCorr')
             ->add('idExpediente','text', array('label' => 'Numero de Expediente'))
             ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
             ->add('observacion1','text', array('label' => 'Observación'))

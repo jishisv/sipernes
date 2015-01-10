@@ -56,7 +56,7 @@ class EnfMtlIntervencionAdmin extends Admin
             //->add('id')
             //->add('fechaIngresoInterv')
             //->add('fechaModificacionInterv')
-            //->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
+            ->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
             ->add('idSecIngreso','text', array('label' => 'Numero de expediente'))
             ->add('idIntervencion',null, array('label' => 'Seleccione intervencion'))
             ->add('efectivoInterv', null, array('label' => 'Efectivo','required' => False))
