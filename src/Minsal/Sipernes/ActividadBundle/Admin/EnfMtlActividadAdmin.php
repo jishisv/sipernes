@@ -16,13 +16,13 @@ class EnfMtlActividadAdmin extends Admin {
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
                 //->add('id')
-                ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                ->add('idExpediente', null, array('label' => 'Numero de paciente'))
-                ->add('idSubactividad', null, array('label' => 'Sub-actividad'))
-                ->add('estadoMtlAct', null, array('label' => 'Activo'))
-                ->add('usuarioIngresoAct', null, array('label' => 'Creado por'))
-                ->add('fechaIngresoAct', null, array('label' => 'Fecha de creacion'))
                 ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))
+                ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
+                ->add('idExpediente', null, array('label' => 'Expediente'))
+                ->add('idSubactividad', null, array('label' => 'Actividad'))
+                //->add('estadoMtlAct', null, array('label' => 'Activo'))
+                ->add('usuarioIngresoAct', null, array('label' => 'Creado por'))
+                ->add('fechaIngresoAct', null, array('label' => 'Fecha de creacion'))           
         //->add('cantidadActEnf')
         //->add('tiempoActEnf')
 
@@ -35,15 +35,15 @@ class EnfMtlActividadAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
                 //->add('id')
+                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))      
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                ->add('idExpediente', 'text', array('label' => 'Expediente'))
-                ->add('idSubactividad', 'text', array('label' => 'Sub-actividad'))
-                ->add('estadoMtlAct', null, array('label' => 'Activo'))
-                ->add('cantidadActEnf', null, array('label' => 'Cantidad'))
-                ->add('tiempoActEnf', 'time', array('label' => 'Tiempo'))
-                ->add('usuarioIngresoAct', 'text', array('label' => 'Creado por'))
-                ->add('fechaIngresoAct', 'date', array('label' => 'Fecha de creación'))
-                //->add('fechaModificacionAct')      
+                ->add('idExpediente',  null, array('label' => 'Expediente'))
+                ->add('idSubactividad',  null, array('label' => 'Actividad'))
+                //->add('estadoMtlAct', null, array('label' => 'Activo'))
+                //->add('cantidadActEnf', null, array('label' => 'Cantidad'))
+                //->add('tiempoActEnf', null, array('label' => 'Tiempo'))
+                ->add('usuarioIngresoAct', null, array('label' => 'Creado por'))
+                ->add('fechaIngresoAct', null, array('label' => 'Fecha de creación'))
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -62,8 +62,8 @@ class EnfMtlActividadAdmin extends Admin {
                 //->add('id')
                 ->add('fechaModificacionAct', null, array('required' => false))
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado', 'required' => true))
-                ->add('idExpediente', null, array('label' => 'Numero de paciente'))
-                ->add('idSubactividad', null, array('label' => 'Seleccione sub-actividad', 'required' => true))
+                ->add('idExpediente', null, array('label' => 'Expediente'))
+                ->add('idSubactividad', null, array('label' => 'Seleccione Actividad', 'required' => true))
                 //->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
                 //->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))
                 ->add('tiempoActEnf', 'time', array('label' => 'Tiempo en realizar las sub-actividad', 'required' => true))
@@ -81,15 +81,16 @@ class EnfMtlActividadAdmin extends Admin {
     protected function configureShowFields(ShowMapper $showMapper) {
         $showMapper
                 //->add('id')
+                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                ->add('idExpediente', 'text', array('label' => 'Numero de paciente'))
-                ->add('idSubactividad', 'text', array('label' => 'Sub-actividad'))
+                ->add('idExpediente', 'text', array('label' => 'Expediente'))
+                ->add('idSubactividad', 'text', array('label' => 'Actividad'))
                 ->add('estadoMtlAct', null, array('label' => 'Activo'))
                 ->add('cantidadActEnf', null, array('label' => 'Cantidad sub-actividades'))
                 ->add('tiempoActEnf', 'time', array('label' => 'Tiempo sub-actividades'))
                 ->add('usuarioIngresoAct', 'text', array('label' => 'Creado por'))
                 ->add('fechaIngresoAct', 'date', array('label' => 'Fecha de creacion'))
-                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))
+                
 
 
         ;
