@@ -17,12 +17,12 @@ class EnfMtlActividadAdmin extends Admin {
         $datagridMapper
                 //->add('id')
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                //->add('idExpediente', null, array('label' => 'Numero de paciente'))
+                ->add('idExpediente', null, array('label' => 'Numero de paciente'))
                 ->add('idSubactividad', null, array('label' => 'Sub-actividad'))
                 ->add('estadoMtlAct', null, array('label' => 'Activo'))
                 ->add('usuarioIngresoAct', null, array('label' => 'Creado por'))
                 ->add('fechaIngresoAct', null, array('label' => 'Fecha de creacion'))
-                ->add('fechaModificacionAct', null, array('label' => 'Fecha de modificacion'))
+                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))
         //->add('cantidadActEnf')
         //->add('tiempoActEnf')
 
@@ -36,13 +36,13 @@ class EnfMtlActividadAdmin extends Admin {
         $listMapper
                 //->add('id')
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                //->add('idExpediente', 'text', array('label' => 'Numero de paciente'))
+                ->add('idExpediente', 'text', array('label' => 'Expediente'))
                 ->add('idSubactividad', 'text', array('label' => 'Sub-actividad'))
                 ->add('estadoMtlAct', null, array('label' => 'Activo'))
-                ->add('cantidadActEnf', null, array('label' => 'Cantidad sub-actividades'))
-                ->add('tiempoActEnf', 'time', array('label' => 'Tiempo sub-actividades'))
+                ->add('cantidadActEnf', null, array('label' => 'Cantidad'))
+                ->add('tiempoActEnf', 'time', array('label' => 'Tiempo'))
                 ->add('usuarioIngresoAct', 'text', array('label' => 'Creado por'))
-                ->add('fechaIngresoAct', 'date', array('label' => 'Fecha de creacion'))
+                ->add('fechaIngresoAct', 'date', array('label' => 'Fecha de creación'))
                 //->add('fechaModificacionAct')      
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -64,8 +64,8 @@ class EnfMtlActividadAdmin extends Admin {
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado', 'required' => true))
                 ->add('idExpediente', null, array('label' => 'Numero de paciente'))
                 ->add('idSubactividad', null, array('label' => 'Seleccione sub-actividad', 'required' => true))
-                ->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
-                ->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))
+                //->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
+                //->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))
                 ->add('tiempoActEnf', 'time', array('label' => 'Tiempo en realizar las sub-actividad', 'required' => true))
         //->add('usuarioIngresoAct')
         //->add('fechaIngresoAct')
@@ -82,14 +82,14 @@ class EnfMtlActividadAdmin extends Admin {
         $showMapper
                 //->add('id')
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                //->add('idExpediente', 'text', array('label' => 'Numero de paciente'))
+                ->add('idExpediente', 'text', array('label' => 'Numero de paciente'))
                 ->add('idSubactividad', 'text', array('label' => 'Sub-actividad'))
                 ->add('estadoMtlAct', null, array('label' => 'Activo'))
                 ->add('cantidadActEnf', null, array('label' => 'Cantidad sub-actividades'))
                 ->add('tiempoActEnf', 'time', array('label' => 'Tiempo sub-actividades'))
                 ->add('usuarioIngresoAct', 'text', array('label' => 'Creado por'))
                 ->add('fechaIngresoAct', 'date', array('label' => 'Fecha de creacion'))
-                ->add('fechaModificacionAct', null, array('label' => 'Fecha de modificacion'))
+                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))
 
 
         ;
@@ -97,7 +97,7 @@ class EnfMtlActividadAdmin extends Admin {
 
     public function getTemplate($name) {
         switch ($name) {
-            case 'edit':
+            case 'edita':
                 return 'MinsalSipernesActividadBundle:ActividadRegistro:mtlactividad.html.twig';
                 break;
             //case 'create':
@@ -120,6 +120,8 @@ class EnfMtlActividadAdmin extends Admin {
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfMtlActividad->setusuarioIngresoAct($user);
         $EnfMtlActividad->setfechaIngresoAct(new \DateTime());
+        $EnfMtlActividad->setestadoMtlAct(true);
+        $EnfMtlActividad->setcantidadActEnf(1);
     }
 
     /*

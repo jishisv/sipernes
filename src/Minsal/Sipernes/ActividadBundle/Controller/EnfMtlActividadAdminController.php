@@ -22,24 +22,33 @@ class EnfMtlActividadAdminController extends Controller
         // $session->start();
         $session = $this->get('session');
         /** @var $form \Symfony\Component\Form\Form */
+       
+        
         $form = $this->admin->getForm();
         $em = $this->getDoctrine()->getManager();
 
            
-            //seteando el objeto shcpsxpmaterno
-            $object->setFechaModificacionAct('fecha_modificacion_act');
+            
+               //seteando el objeto shcpsxpmaterno
+            //$object->setFechaModificacionAct('fecha_modificacion_act');
             //$object->setIdEmpCorr('id_emp_corr');
             //$object->setIdExpediente('id_expediente');
             //$object->setIdSubactividad('id_subactividad');
-            $object->setEstadoMtlAct('estado_mtl_actividad');
-            $object->setCantidadActEnf('cantidad_act_enf');
-            $object->setTiempoActEnf('tiempo_act_enf');
+            $object->setEstadoMtlAct(true);
+            $object->setCantidadActEnf(1);
+            //$object->setTiempoActEnf('tiempo_act_enf');
             $object->setUsuarioIngresoAct('usuario_ingreso_act');
+            $object->setFechaIngresoAct(new \DateTime());
             
-//            $this->admin->setSubject($object);
-//        //var_dump($pacienteid); //creo q hay q borrar esta linea
-//        $form->setData($object);
-////        $view = $form->createView();
+            
+            
+        
+        
+        
+            $this->admin->setSubject($object);
+        //var_dump($pacienteid); //creo q hay q borrar esta linea
+        $form->setData($object);
+        $view = $form->createView();
 //            
 //            
              $view = $form->createView();
@@ -53,7 +62,7 @@ class EnfMtlActividadAdminController extends Controller
         //'paciente'=>$pacienteid 
                     ));
      }
+   
  }
-        
-
+ 
 ?>
