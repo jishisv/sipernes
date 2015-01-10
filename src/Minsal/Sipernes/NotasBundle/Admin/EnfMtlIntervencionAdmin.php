@@ -16,12 +16,15 @@ class EnfMtlIntervencionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('fechaIngresoInterv')
-            ->add('fechaModificacionInterv')
-            ->add('observacionInterv')
-            ->add('efectivoInterv')
-            ->add('estadoMtlInterv')
+            //->add('id')
+            ->add('idEmpCorr',null, array('label' => 'Numero de Enfermera'))
+            ->add('idSecIngreso',null, array('label' => 'Expediente'))
+            ->add('idIntervencion',null, array('label' => 'Intervención'))
+            ->add('fechaIngresoInterv',null, array('label' => 'Fecha de registro'))
+            //->add('fechaModificacionInterv')
+            //->add('observacionInterv')
+            ->add('efectivoInterv',null, array('label' => 'Efectivo'))
+            //->add('estadoMtlInterv')
         ;
     }
 
@@ -32,10 +35,13 @@ class EnfMtlIntervencionAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('observacionInterv')
-            ->add('efectivoInterv')
-            ->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv')
+            ->add('idEmpCorr',null, array('label' => 'Numero de enfermera'))
+            ->add('idSecIngreso',null, array('label' => 'Expediente'))
+            ->add('idIntervencion',null, array('label' => 'Intervencion'))
+            ->add('observacionInterv',null, array('label' => 'Observación'))
+            ->add('efectivoInterv',null, array('label' => 'Efectivo'))
+            //->add('estadoMtlInterv')
+            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
             //->add('fechaModificacionInterv') 
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -56,12 +62,12 @@ class EnfMtlIntervencionAdmin extends Admin
             //->add('id')
             //->add('fechaIngresoInterv')
             //->add('fechaModificacionInterv')
-            ->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
-            ->add('idSecIngreso','text', array('label' => 'Numero de expediente'))
-            ->add('idIntervencion',null, array('label' => 'Seleccione intervencion'))
+            ->add('idEmpCorr',null, array('label' => 'Numero de empleado', 'required' => true))
+            ->add('idSecIngreso',null, array('label' => 'Numero de expediente', 'required' => false))
+            ->add('idIntervencion',null, array('label' => 'Seleccione intervencion', 'required' => true))
             ->add('efectivoInterv', null, array('label' => 'Efectivo','required' => False))
-            ->add('estadoMtlInterv', null, array('label' => 'Activo','required' => False))
-            ->add('observacionInterv','text', array('label' => 'Observacion','required' => False))         
+            //->add('estadoMtlInterv', null, array('label' => 'Activo','required' => False))
+            ->add('observacionInterv',null, array('label' => 'Observacion','required' => False))         
         ;
     }
 
@@ -72,10 +78,13 @@ class EnfMtlIntervencionAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('observacionInterv')
-            ->add('efectivoInterv')
-            ->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv')
+            ->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
+            ->add('idSecIngreso',null, array('label' => 'Numero de expediente'))
+            ->add('idIntervencion',null, array('label' => 'Seleccione intervencion'))
+            ->add('observacionInterv',null, array('label' => 'Observación'))
+            ->add('efectivoInterv',null, array('label' => 'Efectivo'))
+            //->add('estadoMtlInterv')
+            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
             //->add('fechaModificacionInterv')
             
         ;
@@ -89,9 +98,8 @@ class EnfMtlIntervencionAdmin extends Admin
      */
  
     public function prePersist($EnfMtlIntervencion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-        $EnfMtlIntervencion->setidEmpCorr($user);
         $EnfMtlIntervencion->setfechaIngresoInterv(new \DateTime());
+        $EnfMtlIntervencion->setestadoMtlInterv(true);
     }
  
      

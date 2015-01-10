@@ -16,11 +16,14 @@ class EnfMtlDiagnosticoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('observacion1')
-            ->add('fechaIngresoDiag')
-            ->add('fechaModificacionDiag')
-            ->add('estadoMtlDiag')
+            //->add('id')
+            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
+            ->add('observacion1',null, array('label' => 'Observación'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            //->add('fechaModificacionDiag')
+            //->add('estadoMtlDiag')
         ;
     }
 
@@ -30,11 +33,14 @@ class EnfMtlDiagnosticoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('observacion1')
-            ->add('fechaIngresoDiag')
-            ->add('fechaModificacionDiag')
-            ->add('estadoMtlDiag')
+            //->add('id')
+            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
+            ->add('observacion1',null, array('label' => 'Observación'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            //->add('fechaModificacionDiag')
+            //->add('estadoMtlDiag')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -52,13 +58,13 @@ class EnfMtlDiagnosticoAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEmpCorr')
-            ->add('idExpediente','text', array('label' => 'Numero de Expediente'))
-            ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
-            ->add('observacion1','text', array('label' => 'Observación'))
+            ->add('idEmpCorr',null, array('label' => 'Numero enfermera', 'required' => true))
+            ->add('idExpediente',null, array('label' => 'Expediente','required' => true))
+            ->add('idCtlDiag',null, array('label' => 'Diagnóstico','required' => true))
+            ->add('observacion1',null, array('label' => 'Observación'))
             //->add('fechaIngresoDiag')
             //->add('fechaModificacionDiag')
-            ->add('estadoMtlDiag', null, array('label' => 'Activo','required' => False))
+            //->add('estadoMtlDiag', null, array('label' => 'Activo','required' => False))
         ;
     }
 
@@ -68,37 +74,37 @@ class EnfMtlDiagnosticoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('observacion1')
-            ->add('fechaIngresoDiag')
-            ->add('fechaModificacionDiag')
-            ->add('estadoMtlDiag')
+            //->add('id')
+            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
+            ->add('observacion1',null, array('label' => 'Observación'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            //->add('fechaModificacionDiag')
+            //->add('estadoMtlDiag',null, array('label' => 'Activo'))
         ;
     }
     
     
      /*
      * Método que se ejecuta antes de realizar una inserción.
-     * Recibe como parámetro una entidad; en este caso de tipo EnfDominio
+     * Recibe como parámetro una entidad; en este caso de tipo EnfMtlDiagnostico
      * con los valores del formulario.
      * 
      */
  
     public function prePersist($EnfMtlDiagnostico) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-        $EnfMtlDiagnosticoo->setidEmpCorr($user);
         $EnfMtlDiagnostico->setfechaIngresoDiag(new \DateTime());
+        $EnfMtlDiagnostico->setestadoMtlDiag(true);
     }
  
      /*
      * Método que se ejecuta antes de realizar una actualización.
-     * Recibe como parámetro una entidad; en este caso de tipo EnfDominio
+     * Recibe como parámetro una entidad; en este caso de tipo EnfMtlDiagnostico
      * con los valores del formulario.
      * 
      */
     public function preUpdate($EnfMtlDiagnostico) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-        $EnfMtlDiagnostico->setidEmpCorr($user);
         $EnfMtlDiagnostico->setfechaModificacionDiag(new \DateTime());
     }   
 }

@@ -16,7 +16,7 @@ class EnfCtlIntervencionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            //->add('id')
             ->add('descripcionInterven')
             ->add('fechaIngresoInterven')
             ->add('usuarioInterven')
