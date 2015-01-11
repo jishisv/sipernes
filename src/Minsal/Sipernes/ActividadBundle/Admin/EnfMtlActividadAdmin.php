@@ -98,7 +98,7 @@ class EnfMtlActividadAdmin extends Admin {
 
     public function getTemplate($name) {
         switch ($name) {
-            case 'edita':
+            case 'edit':
                 return 'MinsalSipernesActividadBundle:ActividadRegistro:mtlactividad.html.twig';
                 break;
             //case 'create':
