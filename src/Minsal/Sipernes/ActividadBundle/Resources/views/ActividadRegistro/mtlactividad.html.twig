@@ -68,74 +68,80 @@
                                         {% endif %}
                                         <center>
                                             <table class="dat_paciente">
-                                            
-                                            <tr class="dat_paciente_sec">
+
+                                                <tr class="dat_paciente_sec">
                                                     <td colspan="4">A.Datos de Registro</td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.fechaModificacionAct])}}
-							 {% if form_errors(form[form_group.fields.fechaModificacionAct])|length > 0 %}
-							<div class="sonata-ba-form-error">
-							      {{form_errors(form[form_group.fields.fechaModificacionAct])}}
-							</div>
-						    {% endif %}
+                                                        {% if form_errors(form[form_group.fields.fechaModificacionAct])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.fechaModificacionAct])}}
+                                                            </div>
+                                                        {% endif %}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idEmpCorr])}}
-						       {% if form_errors(form[form_group.fields.idEmpCorr])|length > 0 %}
-							<div class="sonata-ba-form-error">
-							      {{form_errors(form[form_group.fields.idEmpCorr])}}
-							</div>
-						    {% endif %}						      
+                                                        {% if form_errors(form[form_group.fields.idEmpCorr])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.idEmpCorr])}}
+                                                            </div>
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idExpediente])}}
-						       {% if form_errors(form[form_group.fields.idExpediente])|length > 0 %}
-							<div class="sonata-ba-form-error">
-							      {{form_errors(form[form_group.fields.idExpediente])}}
-							</div>
-						    {% endif %}						      
+                                                        {% if form_errors(form[form_group.fields.idExpediente])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.idExpediente])}}
+                                                            </div>
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
-                                                
+
                                                 <tr class="dat_paciente_sec">
                                                     <td colspan="4">B.Datos de Actividad</td>
                                                 </tr>
-                                                
                                                 <tr>
-                                                    <td class="" ><strong>Tipo de Actividad:</strong></td>
-                                                    <td colspan="3" ><select id="deptos" name="deptos">
-                                                    <option></option>
-                                                    </select></td>                   
+                                                    <td class="" >
+                                                        <div id="sonata-ba-field-container-s54b31e919fc05_idSubactividad" class="form-group">
+                                                            <label class="control-label required" for="s54b31e919fc05_idSubactividad">
+                                                                Tipo de Actividad:
+                                                            </label>
+                                                            <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
+                                                                <select id="deptos" name="deptos">
+                                                                    <option></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                                  <td></td>                   #}
                                                 </tr>
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idSubactividad])}}
-						       {% if form_errors(form[form_group.fields.idSubactividad])|length > 0 %}
-							<div class="sonata-ba-form-error">
-							      {{form_errors(form[form_group.fields.idSubactividad])}}
-							</div>
-						    {% endif %}						      
+                                                        {% if form_errors(form[form_group.fields.idSubactividad])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.idSubactividad])}}
+                                                            </div>
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.tiempoActEnf])}}
-						       {% if form_errors(form[form_group.fields.tiempoActEnf])|length > 0 %}
-							<div class="sonata-ba-form-error">
-							      {{form_errors(form[form_group.fields.tiempoActEnf])}}
-							</div>
-						    {% endif %}						      
+                                                        {% if form_errors(form[form_group.fields.tiempoActEnf])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.tiempoActEnf])}}
+                                                            </div>
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
-                                           
-                                           <tr>
-                   
-                                           
-                                           
+
+                                                <tr>
+
+
+
                                             </table>
                                         </center>
                                     </div>
@@ -170,7 +176,7 @@
                         {% if admin.id(object) is not null %}
                             <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
 
-                           
+
                             {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
                                 <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
                             {% endif %}
