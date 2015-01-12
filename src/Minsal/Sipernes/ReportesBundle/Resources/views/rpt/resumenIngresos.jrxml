@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.331000000000001"/>
-	<property name="ireport.x" value="69"/>
+	<property name="ireport.x" value="159"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -59,6 +59,14 @@
 				</textElement>
 				<text><![CDATA[República de El Salvador]]></text>
 			</staticText>
+			<image>
+				<reportElement x="38" y="1" width="95" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
+				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/url.jpeg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="430" y="5" width="142" height="78" uuid="5a1f9a67-ec4b-4be8-9610-1d02a9b3de02"/>
+				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/logo_minsal.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
