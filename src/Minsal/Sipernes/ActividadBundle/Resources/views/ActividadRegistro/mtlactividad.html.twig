@@ -1,118 +1,187 @@
-{# src/Minsal/SeguimientoBundle/Resources/views/SecIngreso/reporte_list.html.twig #}
+{# src/Minsal/SiapsBundle/Resource/view/MntPacienteAdmin/edit.html.twig 
+   Vista para la creación y actualización de un paciente 
+#}
 {% extends 'SonataAdminBundle::layout.html.twig' %}
-{%block stylesheets %}
+
+{% block stylesheets %}
     {{parent()}}
-    <link rel="stylesheet" href="{{ asset('bundles/minsalseguimiento/css/SecIngreso/reporte_list.css') }}" type="text/css" media="all" />  
-{%endblock%}
+    <link rel="stylesheet" href="{{ asset('bundles/minsalsiaps/css/MntPacienteAdmin/form-edit.css') }}" type="text/css" media="all" />  
+{% endblock %}
 
 {%block javascripts %}
     {{parent()}}
-
-
     <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/MtlActividad/reporte_mtlactividad.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{% endblock %}
 
-<script type="text/javascript"> 
-    $(document).ready(function(){ 
-        $(".textos").click(function(){ 
-            var idi = $(this).getElementsByName('select'); 
-            alert('Evento click '+idi); 
-        }); 
-    });
-</script>
-    
-{%endblock%}
-{% block sonata_admin_content -%}
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
 
-<center>
-    <h1>Registro de actividad a paciente</h1>
-    <form name="preparar" id="preparar" action="{#{{admin.generateObjectUrl('edit', entity)}}#}" method="post" class="form-vertical">
-         <table class="table table-bordered ">
-                <tbody>
-                    <tr>
-                        <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Opciones de Contenido</strong></td>
-                    </tr>
-                    <tr>
-                <div id="divdomreg">
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
 
-                </div>  
-                <td class=""><strong>Fecha de Actividad:</strong></td>
-                <td>{{ form_widget(form.fechaModificacionAct) }}</td>
-                </tr>
-                </div>  
-                <td class=""><strong>Código de Enfermera:</strong></td>
-                {#<td><input id="codigo_enfermera" name="codigo_enfermera" type="text" class="fecha obligatorio" /></td>#}
-                <td><label >{{ form_widget(form.idEmpCorr) }}</label></td>
-                </tr>
-                </div>  
-                <td class=""><strong>Código de Paciente:</strong></td>
-{#                <td><input id="codigo_paciente" name="codigo_paciente" type="text" class="fecha obligatorio" /></td>#}
-                <td><label >{{ form_widget(form.idExpediente) }}</label></td>
-                </tr>
-                <tr>
-                    <td class="" ><strong>Tipo de Actividad:</strong></td>
-                    <td colspan="3" ><select id="deptos" name="deptos">
-                            <option></option>
-                        </select></td>                   
-                </tr>
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
 
-                <tr>
-                    <<td class="" ><strong>Actividad:</strong></td>
-                    <td colspan="3" >
-                        <select id="municipios" name="municipios" >
-                            <option selected="true">Seleccione..</option>
-                        </select></td>       
-                </tr>
-                {#<tr>
-                    <<td class="" ><strong>Actividad:</strong></td>
-                    <td> 
-                        <select id="municipios" name="municipios" >
-                            <option selected="true" {{form.idSubactividad}}>Seleccione..</option>
-                        </select>
-                    </td>      
-                </tr>#}
-                <tr>
-                    <<td class="" ><strong>Actividad:</strong></td>
-{#                    <td> {{ form_widget(form.idSubactividad) }}</td> #}
-                    <td class="textos">{{ form_widget(form.idSubactividad) }}</td>
-                </tr>
-                </div>  
-                <td class=""><strong>Tiempo:</strong></td>
-                <td>{{ form_widget(form.tiempoActEnf) }}</td>
-                {#                <td><input id="tiempo_minutos" name="tiempo_minutos" type="text" class="fecha obligatorio" />Minutos</td> #}
-                </tr>
-                </tbody>
-            </table>
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
 
-            <table>
-                
-                <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
-                
-                <tr>
-                    <td colspan="2">
-                <div class="pull-right">
-{#            <a  class="btn btn-info" href="{{ admin.generateObjectUrl('edit', entity) }}">#}
-            <a  class="btn btn-info" href="">
-               <span class="glyphicon glyphicon-floppy-saved"></span> Guardar          
-            </a>
-             </div> 
-                </td>
-                <td colspan="2">
-                <div class="pull-right">
-            <a  class="btn btn-info" href="">
-               <span class="glyphicon glyphicon-remove"></span> Cancelar          
-            </a>
-             </div> 
-                </td>
-                </tr>
-            </table>
-{#            </tr>#}
-            </tbody>
-        </table>
-    </form>
-</center>
-<br><br>
-{% endblock -%}
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ admin.generateUrl('list') }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    {{ 'link_action_list'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            {% endif %}
 
-{# empty Twig template #}
+            {% block sonata_pre_fieldsets %}
+                <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="{{ form_group.class|default('col-md-12') }}">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {# admin.trans(name, {}, form_group.translation_domain) #}
+                                    </h4>
+                                </div>
+                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form_group.description != false %}
+                                            <p>{{ form_group.description|raw }}</p>
+                                        {% endif %}
+                                        <center>
+                                            <table class="dat_paciente">
+                                            
+                                            <tr class="dat_paciente_sec">
+                                                    <td colspan="4">A.Datos de Registro</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.fechaModificacionAct])}}
+							 {% if form_errors(form[form_group.fields.fechaModificacionAct])|length > 0 %}
+							<div class="sonata-ba-form-error">
+							      {{form_errors(form[form_group.fields.fechaModificacionAct])}}
+							</div>
+						    {% endif %}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.idEmpCorr])}}
+						       {% if form_errors(form[form_group.fields.idEmpCorr])|length > 0 %}
+							<div class="sonata-ba-form-error">
+							      {{form_errors(form[form_group.fields.idEmpCorr])}}
+							</div>
+						    {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.idExpediente])}}
+						       {% if form_errors(form[form_group.fields.idExpediente])|length > 0 %}
+							<div class="sonata-ba-form-error">
+							      {{form_errors(form[form_group.fields.idExpediente])}}
+							</div>
+						    {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr class="dat_paciente_sec">
+                                                    <td colspan="4">B.Datos de Actividad</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td class="" ><strong>Tipo de Actividad:</strong></td>
+                                                    <td colspan="3" ><select id="deptos" name="deptos">
+                                                    <option></option>
+                                                    </select></td>                   
+                                                </tr>
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.idSubactividad])}}
+						       {% if form_errors(form[form_group.fields.idSubactividad])|length > 0 %}
+							<div class="sonata-ba-form-error">
+							      {{form_errors(form[form_group.fields.idSubactividad])}}
+							</div>
+						    {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.tiempoActEnf])}}
+						       {% if form_errors(form[form_group.fields.tiempoActEnf])|length > 0 %}
+							<div class="sonata-ba-form-error">
+							      {{form_errors(form[form_group.fields.tiempoActEnf])}}
+							</div>
+						    {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                           
+                                           <tr>
+                   
+                                           
+                                           
+                                            </table>
+                                        </center>
+                                    </div>
+                                </div>
+                                {#</div>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+{% endblock %}

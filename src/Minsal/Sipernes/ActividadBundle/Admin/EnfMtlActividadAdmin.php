@@ -66,7 +66,7 @@ class EnfMtlActividadAdmin extends Admin {
                 ->add('idSubactividad', null, array('label' => 'Seleccione Actividad', 'required' => true))
                 //->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
                 //->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))
-                ->add('tiempoActEnf', 'time', array('label' => 'Tiempo en realizar las sub-actividad', 'required' => true))
+                ->add('tiempoActEnf', null, array('label' => 'Tiempo en realizar las sub-actividad', 'required' => true))
         //->add('usuarioIngresoAct')
         //->add('fechaIngresoAct')
         //

@@ -27,6 +27,8 @@ class EnfMtlActividadController extends Controller
                
          
         return new Response(json_encode($municipios));
+        
+        
     }
     
    
