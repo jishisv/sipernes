@@ -64,10 +64,10 @@ class EnfMtlIntervencionAdmin extends Admin
             //->add('fechaModificacionInterv')
             ->add('idEmpCorr',null, array('label' => 'Numero de empleado', 'required' => true))
             ->add('idSecIngreso',null, array('label' => 'Numero de expediente', 'required' => false))
-            ->add('idIntervencion',null, array('label' => 'Seleccione intervencion', 'required' => true))
+            ->add('idIntervencion',null, array('label' => 'Intervención', 'required' => true))
             ->add('efectivoInterv', null, array('label' => 'Efectivo','required' => False))
             //->add('estadoMtlInterv', null, array('label' => 'Activo','required' => False))
-            ->add('observacionInterv',null, array('label' => 'Observacion','required' => False))         
+            ->add('observacionInterv',null, array('label' => 'Observación','required' => False))         
         ;
     }
 
@@ -90,7 +90,24 @@ class EnfMtlIntervencionAdmin extends Admin
         ;
     }
     
-       /*
+      
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesNotasBundle:IntervencionRegistro:mtlintervencion.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    /*
      * Método que se ejecuta antes de realizar una inserción.
      * Recibe como parámetro una entidad; en este caso de tipo EnfMtlIntervencion
      * con los valores del formulario.
