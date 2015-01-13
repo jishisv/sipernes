@@ -312,4 +312,6 @@ class EnfMtlActividad
     {
         return $this->idSubactividad;
     }
+    
+     
 }
