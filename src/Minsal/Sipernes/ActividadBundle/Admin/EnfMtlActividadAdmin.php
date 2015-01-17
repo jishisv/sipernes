@@ -60,13 +60,13 @@ class EnfMtlActividadAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 //->add('id')
-                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad','required' => false))
+                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad','required' => true))
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado', 'required' => true))
-                ->add('idExpediente', null, array('label' => 'Expediente'))
-                ->add('idSubactividad', null, array('label' => 'Seleccione Actividad', 'required' => true))
+                ->add('idExpediente', null, array('label' => 'Expediente', 'required' => true))
+                ->add('idSubactividad', null, array('label' => 'Actividad', 'required' => true))
                 //->add('estadoMtlAct', null, array('label' => 'Activo', 'required' => False))
                 //->add('cantidadActEnf', null, array('label' => 'Cantidad de sub-actividades realizadas', 'max_length' => 10, 'required' => true))
-                ->add('tiempoActEnf', null, array('label' => 'Tiempo en realizar las sub-actividad', 'required' => true))
+                ->add('tiempoActEnf', null, array('label' => 'Tiempo en la actividad', 'required' => true))
         //->add('usuarioIngresoAct')
         //->add('fechaIngresoAct')
         //

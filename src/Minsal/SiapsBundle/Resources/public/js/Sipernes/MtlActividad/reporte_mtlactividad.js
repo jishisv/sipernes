@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#deptos').select2({
+    $('#actividad').select2({
         width: '60%',
         placeholder: 'Seleccione Tipo de Actividad ',
         allowClear: true
@@ -22,13 +22,13 @@ $(document).ready(function () {
             function (data) {
 //                alert("entre a deptos de shcp");
 //                alert(Routing.generate('get_Act'));
-                $.each(data.deptos, function (indice, aux) {
-                    $('#deptos').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
+                $.each(data.actividad, function (indice, aux) {
+                    $('#actividad').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
                 });
             });
 
 
-    $("#deptos").on('change', function (event) { // aqui el JSON });
+    $("#actividad").on('change', function (event) { // aqui el JSON });
         $('select[id$="_idSubactividad"] option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
@@ -40,11 +40,11 @@ $(document).ready(function () {
 //            });
 
         });
-        $.getJSON(Routing.generate('get_Subact') + '/' + $('#deptos').val(),
+        $.getJSON(Routing.generate('get_Subact') + '/' + $('#actividad').val(),
                 function (data) {
                     $('select[id$="_idSubactividad"]').append('<option value="0" selected="true">Seleccione...</option>');
 //                    alert("entre a municipios de shcp");
-                    $.each(data.municipios, function (indice, aux) {
+                    $.each(data.subactividad, function (indice, aux) {
                         $('select[id$="_idSubactividad"]').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
                     });
 

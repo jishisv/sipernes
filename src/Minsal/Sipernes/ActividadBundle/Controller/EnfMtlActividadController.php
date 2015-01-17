@@ -23,10 +23,10 @@ class EnfMtlActividadController extends Controller
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlSubactividad o
                  WHERE o.idActividad = :id";
-        $municipios['municipios'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+        $subactividad['subactividad'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                
          
-        return new Response(json_encode($municipios));
+        return new Response(json_encode($subactividad));
         
         
     }
@@ -41,10 +41,10 @@ class EnfMtlActividadController extends Controller
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlActividad o
                 ";
-        $deptos['deptos'] = $em->createQuery($dql)
+        $actividad['actividad'] = $em->createQuery($dql)
                 ->getArrayResult();
 
-        return new Response(json_encode($deptos));
+        return new Response(json_encode($actividad));
     }
     
 
