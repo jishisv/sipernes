@@ -94,7 +94,7 @@
                                                 </tr>
 
                                                 <tr class="dat_paciente_sec">
-                                                    <td colspan="4">B.Datos de Intervención</td>
+                                                    <td colspan="4">B.Datos de Protocolo</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="" >
@@ -103,7 +103,7 @@
                                                                 Tipo de Protocolo:
                                                             </label>
                                                             <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="protocolo" name="protocolo">
+                                                                <select id="protocolo" name="protocolo" onclick="subprotocolo.disabled=false">
                                                                     <option></option>
                                                                 </select>
                                                             </div>
@@ -116,14 +116,20 @@
                                                                 Protocolo:
                                                             </label>
                                                             <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="subprotocolo" name="subprotocolo">
+                                                                <select id="subprotocolo" name="subprotocolo" disabled >
                                                                     <option></option>
                                                                 </select>
                                                             </div>
                                                         </div>                                                  <td></td>                   
                                                 </tr>
+                                                
+                                                
+                                                <tr class="dat_paciente_sec">
+                                                    <td colspan="4">C.Datos de Intervención</td>
+                                                </tr>
+                                                
                                                 <tr>
-                                                    <td>{{form_row(form[form_group.fields.idIntervencion])}}
+                                                    <td>{{form_row(form[form_group.fields.idIntervencion])}} 
                                                         {% if form_errors(form[form_group.fields.idIntervencion])|length > 0 %}
                                                             <div class="sonata-ba-form-error">
                                                                 {{form_errors(form[form_group.fields.idIntervencion])}}

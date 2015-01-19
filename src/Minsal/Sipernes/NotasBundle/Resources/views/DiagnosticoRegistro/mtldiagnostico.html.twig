@@ -103,7 +103,7 @@
                                                                 Dominio:
                                                             </label>
                                                             <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="dominio" name="dominio">
+                                                                <select id="dominio" name="dominio" onclick="clase.disabled=false">
                                                                     <option></option>
                                                                 </select>
                                                             </div>
@@ -116,12 +116,17 @@
                                                                 Clase:
                                                             </label>
                                                             <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="clase" name="clase">
+                                                                <select id="clase" name="clase" disabled>
                                                                     <option></option>
                                                                 </select>
                                                             </div>
                                                         </div>                                                  <td></td>                   
                                                 </tr>
+                                                
+                                                <tr class="dat_paciente_sec">
+                                                    <td colspan="4">C.Registro de Diagnóstico</td>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idCtlDiag])}}
                                                         {% if form_errors(form[form_group.fields.idCtlDiag])|length > 0 %}

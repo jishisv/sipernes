@@ -1,92 +1,125 @@
-$(document).ready(function () {
-    $('#dominio').select2({
-        width: '60%',
-        placeholder: 'Seleccione Dominio ',
-        allowClear: true
-    });
 
 
+$(document).ready(function() {
+    
 
-    $('#clase').prepend('<option/>').val(function() {
+    $('#dominio').prepend('<option/>').val(function() {
         return $('[selected]', this).val();
     });
-    $('#clase').select2({
-        placeholder: 'Seleccione Clase',
+    $('#dominio').select2({
+        placeholder: 'Seleccione Dominio... ',
         allowClear: true,
         width: '100%'
     });
 
- 
-    
-     $('select[id$="_idCtlDiag"]').prepend('<option/>').val(function() {
+    $('#clase').select2({
+        placeholder: 'Seleccione Clase... ',
+        allowClear: true,
+        width: '100%'
+    });
+
+    $('select[id$="_idCtlDiag"]').prepend('<option/>').val(function() {
         return $('[selected]', this).val();
     });
     $('select[id$="_idCtlDiag"]').select2({
-        placeholder: 'Seleccione Diagnóstico',
+        placeholder: 'Seleccione Diagnostico... ',
         allowClear: true,
         width: '100%'
     });
-    
 
-    $.getJSON(Routing.generate('get_Dominio'),
+   //$('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
+   
+    /*CARGAR DOMINIOS*/
+      $.getJSON(Routing.generate('get_Dominio'),
             function (data) {
-//                alert("entre a deptos de shcp");
-//                alert(Routing.generate('get_Act'));
                 $.each(data.dominio, function (indice, aux) {
                     $('#dominio').append('<option value="' + aux.id + '">' + aux.nombreDominio + '</option>');
                 });
             });
 
 
-    $("#dominio").on('change', function (event) { // aqui el JSON });
-        $('#clase option').each(function (index, val) {
-            $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-//            $('select2-drop-mask').select2({
-//                selected: 'true',
-//                width: '60%',
-//                placeholder: 'Seleccione...'
-////                allowClear: true
-//            });
-
+    
+    /*CARGAR CLASES*/
+    $('#dominio').change(function() {
+        $('#clase').children().remove();
+        $('#clase').append('<option></option>');
+        $('#clase').select2({
+            placeholder: 'Seleccione Dominio...',
+            allowClear: true,
+            width: '100%'
         });
-        $.getJSON(Routing.generate('get_Clase') + '/' + $('#dominio').val(),
-                function (data) {
-                    $('#clase').append('<option value="0" selected="true">Seleccione...</option>');
-//                    alert("entre a municipios de shcp");
-                    $.each(data.clase, function (indice, aux) {
-                        $('#clase').append('<option value="' + aux.id + '">' + aux.nombreClase + '</option>');
+        $('select[id$="_idCtlDiag"]').children().remove();
+        $('select[id$="_idCtlDiag"]').append('<option></option>');
+        $('select[id$="_idCtlDiag"]').select2({
+            placeholder: 'Seleccione Diagnostico...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#dominio').select2('val') == '') {
+            $('#clase').attr('enabled', 'enabled');
+        } else {
+            $.getJSON(Routing.generate('get_Clase') + '/' + $('#dominio').select2('val'),
+                    function(data) {
+                        $.each(data.clase, function(indice, aux) {
+                            $('#clase').append($('<option>', {value: aux.id, text: aux.nombreClase}));
+                        });
+                        $('#dominio').removeAttr('enabled');
+                        $('#clase').attr('enabled', 'enabled');
                     });
 
-                });
+        }
+
     });
 
-
-    
-    
-     $("#clase").on('change', function (event) { // aqui el JSON });
-        $('select[id$="_idCtlDiag"] option').each(function (index, val) {
-            $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-//            $('select2-drop-mask').select2({
-//                selected: 'true',
-//                width: '60%',
-//                placeholder: 'Seleccione...'
-////                allowClear: true
-//            });
-
+    if (($('#dominio').select2('val') == 68 && $('#subprotocolo').select2('val') == "") || $('#protocolo').select2('val') == '') {
+        $('#dominio').select2('val', 68);
+        $('#clase').children().remove();
+        $('#clase').append('<option></option>');
+        $('#clase').select2({
+            placeholder: 'Seleccione Clase...',
+            allowClear: true,
+            width: '100%'
         });
-        $.getJSON(Routing.generate('get_Diagnostico') + '/' + $('#clase').val(),
-                function (data) {
-                    $('select[id$="_idCtlDiag"]').append('<option value="0" selected="true">Seleccione...</option>');
-//                    alert("entre a municipios de shcp");
-                    $.each(data.diagnostico, function (indice, aux) {
-                        $('select[id$="_idCtlDiag"]').append('<option value="' + aux.id + '">' + aux.nombreDiagnostico + '</option>');
+        $.getJSON(Routing.generate('get_Clase') + '/' + $('#dominio').select2('val'),
+                function(data) {
+                    $.each(data.clase, function(indice, aux) {
+                        $('#clase').append($('<option>', {value: aux.id, text: aux.nombreClase}));
                     });
-
+                    $('#dominio').removeAttr('disabled');
                 });
+
+    }
+    
+
+ 
+
+    /*CARGAR DIAGNOSTICOS*/
+    $('#clase').on('change', function(e) {
+        $('select[id$="_idCtlDiag"]').children().remove();
+        $('select[id$="_idCtlDiag"]').append('<option></option>');
+        $('select[id$="_idCtlDiag"]').select2({
+            placeholder: 'Seleccione Intervención...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#clase').select2('val') == '') {
+            $('select[id$="_idCtlDiag"]').attr('disabled', 'disabled');
+        } else {
+            $.getJSON(Routing.generate('get_Diagnostico') + '/' + $('#clase').select2('val'),
+                    function(data) {
+                        $.each(data.diagnostico, function(indice, aux) {
+                            $('select[id$="_idCtlDiag"]').append($('<option>', {value: aux.id, text: aux.nombreDiagnostico}));
+                        });
+                        $('select[id$="_idCtlDiag"]').removeAttr('disabled');
+                    });
+        }
+
+    }).focusout(function() {
+        $('select[id$="_idCtlDiag"]').focus();
     });
+
+  
 
 });
 
-//url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
+

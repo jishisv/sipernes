@@ -1,92 +1,125 @@
-$(document).ready(function () {
-    $('#protocolo').select2({
-        width: '60%',
-        placeholder: 'Seleccione Tipo de Protocolo ',
-        allowClear: true
-    });
 
 
+$(document).ready(function() {
+    
 
-    $('#subprotocolo').prepend('<option/>').val(function() {
+    $('#protocolo').prepend('<option/>').val(function() {
         return $('[selected]', this).val();
     });
-    $('#subprotocolo').select2({
-        placeholder: 'Seleccione Protocolo',
+    $('#protocolo').select2({
+        placeholder: 'Seleccione Tipo de Protocolo... ',
         allowClear: true,
         width: '100%'
     });
 
- 
-    
-     $('select[id$="_idIntervencion"]').prepend('<option/>').val(function() {
+    $('#subprotocolo').select2({
+        placeholder: 'Seleccione Protocolo... ',
+        allowClear: true,
+        width: '100%'
+    });
+
+    $('select[id$="_idIntervencion"]').prepend('<option/>').val(function() {
         return $('[selected]', this).val();
     });
     $('select[id$="_idIntervencion"]').select2({
-        placeholder: 'Seleccione Intervención',
+        placeholder: 'Seleccione Intervención... ',
         allowClear: true,
         width: '100%'
     });
-    
 
-    $.getJSON(Routing.generate('get_Protocolo'),
+   //$('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
+   
+    /*CARGAR PROTOCOLOS*/
+      $.getJSON(Routing.generate('get_Protocolo'),
             function (data) {
-//                alert("entre a deptos de shcp");
-//                alert(Routing.generate('get_Act'));
                 $.each(data.protocolo, function (indice, aux) {
                     $('#protocolo').append('<option value="' + aux.id + '">' + aux.nombreProtocolo + '</option>');
                 });
             });
 
 
-    $("#protocolo").on('change', function (event) { // aqui el JSON });
-        $('#subprotocolo option').each(function (index, val) {
-            $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-//            $('select2-drop-mask').select2({
-//                selected: 'true',
-//                width: '60%',
-//                placeholder: 'Seleccione...'
-////                allowClear: true
-//            });
-
+    
+    /*CARGAR SUBPROTOCOLOS*/
+    $('#protocolo').change(function() {
+        $('#subprotocolo').children().remove();
+        $('#subprotocolo').append('<option></option>');
+        $('#subprotocolo').select2({
+            placeholder: 'Seleccione Protocolo...',
+            allowClear: true,
+            width: '100%'
         });
-        $.getJSON(Routing.generate('get_Subprotocolo') + '/' + $('#protocolo').val(),
-                function (data) {
-                    $('#subprotocolo').append('<option value="0" selected="true">Seleccione...</option>');
-//                    alert("entre a municipios de shcp");
-                    $.each(data.subprotocolo, function (indice, aux) {
-                        $('#subprotocolo').append('<option value="' + aux.id + '">' + aux.nombreSubprotocolo + '</option>');
+        $('select[id$="_idIntervencion"]').children().remove();
+        $('select[id$="_idIntervencion"]').append('<option></option>');
+        $('select[id$="_idIntervencion"]').select2({
+            placeholder: 'Seleccione Intervención...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#protocolo').select2('val') == '') {
+            $('#subprotocolo').attr('enabled', 'enabled');
+        } else {
+            $.getJSON(Routing.generate('get_Subprotocolo') + '/' + $('#protocolo').select2('val'),
+                    function(data) {
+                        $.each(data.subprotocolo, function(indice, aux) {
+                            $('#subprotocolo').append($('<option>', {value: aux.id, text: aux.nombreSubprotocolo}));
+                        });
+                        $('#protocolo').removeAttr('enabled');
+                        $('#subprotocolo').attr('enabled', 'enabled');
                     });
 
-                });
+        }
+
     });
 
-
-    
-    
-     $("#subprotocolo").on('change', function (event) { // aqui el JSON });
-        $('select[id$="_idIntervencion"] option').each(function (index, val) {
-            $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-//            $('select2-drop-mask').select2({
-//                selected: 'true',
-//                width: '60%',
-//                placeholder: 'Seleccione...'
-////                allowClear: true
-//            });
-
+    if (($('#protocolo').select2('val') == 68 && $('#subprotocolo').select2('val') == "") || $('#protocolo').select2('val') == '') {
+        $('#protocolo').select2('val', 68);
+        $('#subprotocolo').children().remove();
+        $('#subprotocolo').append('<option></option>');
+        $('#subprotocolo').select2({
+            placeholder: 'Seleccione Protocolo...',
+            allowClear: true,
+            width: '100%'
         });
-        $.getJSON(Routing.generate('get_Intervencion') + '/' + $('#subprotocolo').val(),
-                function (data) {
-                    $('select[id$="_idIntervencion"]').append('<option value="0" selected="true">Seleccione...</option>');
-//                    alert("entre a municipios de shcp");
-                    $.each(data.intervencion, function (indice, aux) {
-                        $('select[id$="_idIntervencion"]').append('<option value="' + aux.id + '">' + aux.descripcionInterven + '</option>');
+        $.getJSON(Routing.generate('get_Subprotocolo') + '/' + $('#protocolo').select2('val'),
+                function(data) {
+                    $.each(data.subprotocolo, function(indice, aux) {
+                        $('#subprotocolo').append($('<option>', {value: aux.id, text: aux.nombreSubprotocolo}));
                     });
-
+                    $('#protocolo').removeAttr('disabled');
                 });
+
+    }
+    
+
+ 
+
+    /*CARGAR INTERVENCIONES*/
+    $('#subprotocolo').on('change', function(e) {
+        $('select[id$="_idIntervencion"]').children().remove();
+        $('select[id$="_idIntervencion"]').append('<option></option>');
+        $('select[id$="_idIntervencion"]').select2({
+            placeholder: 'Seleccione Intervención...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#subprotocolo').select2('val') == '') {
+            $('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
+        } else {
+            $.getJSON(Routing.generate('get_Intervencion') + '/' + $('#subprotocolo').select2('val'),
+                    function(data) {
+                        $.each(data.intervencion, function(indice, aux) {
+                            $('select[id$="_idIntervencion"]').append($('<option>', {value: aux.id, text: aux.descripcionInterven}));
+                        });
+                        $('select[id$="_idIntervencion"]').removeAttr('disabled');
+                    });
+        }
+
+    }).focusout(function() {
+        $('select[id$="_idIntervencion"]').focus();
     });
+
+  
 
 });
 
-//url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/XLS/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
+
