@@ -19,7 +19,7 @@ services:
 
     minsal_sipernes_notas.admin.enf_mtl_diagnostico:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlDiagnosticoAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlDiagnostico, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlDiagnostico, MinsalSipernesNotasBundle:EnfMtlDiagnosticoAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Diagnósticos a pacientes}
 
@@ -49,7 +49,7 @@ services:
 
     minsal_sipernes_notas.admin.enf_mtl_intervencion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlIntervencionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlIntervencion, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlIntervencion, MinsalSipernesNotasBundle:EnfMtlIntervencionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Intervenciones a pacientes}
 
