@@ -23,7 +23,7 @@ class EnfMtlIntervencionController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlProtocolo o
-                ";
+                WHERE o.estadoProt = true";
         $protocolo['protocolo'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -39,7 +39,7 @@ class EnfMtlIntervencionController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlSubprotocolo o
-                 WHERE o.idProtocolo = :id";
+                 WHERE o.idProtocolo = :id AND o.estadoSubpro = true";
         $subprotocolo['subprotocolo'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                
          
@@ -59,7 +59,7 @@ class EnfMtlIntervencionController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlIntervencion o
-                 WHERE o.idSubprotocolo = :id";
+                 WHERE o.idSubprotocolo = :id AND o.estadoCltInterv = true";
         $intervencion['intervencion'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                
          
