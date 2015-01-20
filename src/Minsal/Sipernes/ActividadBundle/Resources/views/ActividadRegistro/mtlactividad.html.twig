@@ -174,15 +174,48 @@
                             </button>
                         {% endif %}
                         {% if admin.id(object) is not null %}
-                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+                            <center>
+                            <button class="btn btn-success" name="btn_update_and_edit" type="submit">
+                             <i class="fa fa-save"></i>
 
+                                 Actualizar
+
+                           </button>
+                           <button class="btn btn-success" name="btn_update_and_list" type="submit">
+                            <i class="fa fa-save"></i>
+                            <i class="fa fa-list"></i>
+
+                                Actualizar y cerrar
+
+                          </button>
+                        </center>
 
                             {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
                                 <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
                             {% endif %}
                         {% else %}
                             {% if admin.hasroute('list') %}
-                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                              <center>
+                                 <button class="btn btn-success" name="btn_create_and_edit" type="submit">
+                                  <i class="fa fa-save"></i>
+
+                                     Crear y editar
+
+                                </button>
+                                <button class="btn btn-success" name="btn_create_and_list" type="submit">
+                                 <i class="fa fa-save"></i>
+                                 <i class="fa fa-list"></i>
+
+                                     Crear y regresar al listado
+
+                                </button>
+                                <button class="btn btn-success" name="btn_create_and_create" type="submit">
+                                <i class="fa fa-plus-circle"></i>
+
+                                    Crear y agregar otro
+
+                                </button>
+                            </center>
                             {% endif %}
                         {% endif %}
                     {% endif %}

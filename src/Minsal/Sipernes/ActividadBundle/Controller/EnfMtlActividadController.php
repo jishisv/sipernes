@@ -40,6 +40,7 @@ class EnfMtlActividadController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlActividad o
+                WHERE o.estadoAct = true
                 ";
         $actividad['actividad'] = $em->createQuery($dql)
                 ->getArrayResult();

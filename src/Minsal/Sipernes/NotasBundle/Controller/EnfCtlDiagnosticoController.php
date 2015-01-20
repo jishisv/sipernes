@@ -23,6 +23,7 @@ class EnfCtlDiagnosticoController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfDominio o
+                WHERE o.estadoDominio = true
                 ";
         $dominio['dominio'] = $em->createQuery($dql)
                 ->getArrayResult();
@@ -39,7 +40,7 @@ class EnfCtlDiagnosticoController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfClase o
-                 WHERE o.idDominio = :id";
+                 WHERE o.idDominio = :id AND o.estadoClase = true";
         $clase['clase'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                
          
