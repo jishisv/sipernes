@@ -54,12 +54,12 @@ class EnfCtlIntervencionAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idSubprotocolo')
-            ->add('descripcionInterven')
+            ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('descripcionInterven', null, array('label' => 'Intervención'))
             //->add('fechaIngresoInterven')
             //->add('usuarioInterven')
             //->add('fechaModificacionInterven')
-            ->add('estadoCltInterv')
+            ->add('estadoCltInterv', null, array('label' => 'Activo'))
         ;
     }
 
@@ -79,6 +79,22 @@ class EnfCtlIntervencionAdmin extends Admin
             
         ;
     }
+    
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesNotasBundle:CtlIntervencionRegistro:ctlintervencion.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
     
      /*
      * Método que se ejecuta antes de realizar una inserción.
