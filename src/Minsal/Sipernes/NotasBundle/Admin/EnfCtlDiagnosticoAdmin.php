@@ -58,10 +58,10 @@ class EnfCtlDiagnosticoAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idClase', null, array('label' => 'Seleccione Clase','required' => true))
-            ->add('codDiagnostico', 'text', array('label' => 'Codigo de Diagnóstico'))
+            ->add('idClase', null, array('label' => 'Clase diagnóstica','required' => true))
+            ->add('codDiagnostico', null, array('label' => 'Codigo de Diagnóstico','max_length' => 5))
             ->add('nombreDiagnostico', 'text', array('label' => 'Nombre de Diagnóstico'))
-            ->add('descripcionDiag', 'text', array('label' => 'Descripción del Diagnóstico'))
+            ->add('descripcionDiag', 'text', array('label' => 'Descripción'))
             ->add('estadoCtlDiag',null, array('label' => 'Activo'))
             //->add('fechaIngresoCtlDiag')
             //->add('fechaModificacionCtlDiag')
@@ -85,6 +85,21 @@ class EnfCtlDiagnosticoAdmin extends Admin
             ->add('usuarioCtlDiag')
             ->add('estadoCtlDiag')
         ;
+    }
+    
+   
+    public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesNotasBundle:CtlDiagnosticoRegistro:ctldiagnostico.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
     
     
