@@ -93,4 +93,8 @@ class EnfCtlMovInventario
     {
         return $this->estadoCtlMov;
     }
+    
+     public function __toString() {
+    return $this->nombreTipoInventatrio ? $this->nombreTipoInventatrio : '';
+    }
 }
