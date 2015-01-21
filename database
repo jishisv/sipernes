@@ -186,3 +186,3606 @@ ALTER TABLE public.ctl_atencion_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE ctl_atencion_id_seq OWNED BY ctl_atencion.id;
+
+
+--
+-- TOC entry 165 (class 1259 OID 37488)
+-- Dependencies: 5
+-- Name: ctl_departamento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_departamento (
+    id integer NOT NULL,
+    nombre character varying(150),
+    codigo_cnr character varying(5),
+    abreviatura character varying(5),
+    id_pais integer,
+    id_establecimiento_region integer
+);
+
+
+ALTER TABLE public.ctl_departamento OWNER TO postgres;
+
+--
+-- TOC entry 2588 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: TABLE ctl_departamento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_departamento IS 'Lista de los departamentos que conforman un pais';
+
+
+--
+-- TOC entry 2589 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.id IS 'Llave primaria';
+
+
+--
+-- TOC entry 2590 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.nombre IS 'Nombre del departamento';
+
+
+--
+-- TOC entry 2591 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.codigo_cnr; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.codigo_cnr IS 'Codigo asignado por la Digestyc para un departamento en especifico';
+
+
+--
+-- TOC entry 2592 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.abreviatura; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.abreviatura IS 'Abreviatura asignada al departamento';
+
+
+--
+-- TOC entry 2593 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.id_pais; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.id_pais IS 'Representa la llave foranea que proviene de ctl_pais';
+
+
+--
+-- TOC entry 2594 (class 0 OID 0)
+-- Dependencies: 165
+-- Name: COLUMN ctl_departamento.id_establecimiento_region; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_departamento.id_establecimiento_region IS 'Foránea que representa el la región a la que pertenece administrativamente el departamento';
+
+
+--
+-- TOC entry 166 (class 1259 OID 37491)
+-- Dependencies: 5 165
+-- Name: ctl_departamento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_departamento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_departamento_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2595 (class 0 OID 0)
+-- Dependencies: 166
+-- Name: ctl_departamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_departamento_id_seq OWNED BY ctl_departamento.id;
+
+
+--
+-- TOC entry 167 (class 1259 OID 37493)
+-- Dependencies: 5
+-- Name: ctl_establecimiento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_establecimiento (
+    id integer NOT NULL,
+    id_tipo_establecimiento integer NOT NULL,
+    nombre character varying(150) NOT NULL,
+    direccion character varying(250),
+    telefono character varying(15),
+    fax character varying(15),
+    latitud numeric(10,4),
+    longitud numeric(10,4),
+    id_municipio integer,
+    id_nivel_minsal integer,
+    cod_ucsf integer,
+    activo boolean,
+    id_establecimiento_padre integer,
+    tipo_expediente character(1),
+    configurado boolean,
+    tipo_farmacia boolean
+);
+
+
+ALTER TABLE public.ctl_establecimiento OWNER TO postgres;
+
+--
+-- TOC entry 2596 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: TABLE ctl_establecimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_establecimiento IS 'Contiene los tipos de establecimiento que conforman el MINSAL';
+
+
+--
+-- TOC entry 2597 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.id IS 'Llave primaria';
+
+
+--
+-- TOC entry 2598 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.id_tipo_establecimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.id_tipo_establecimiento IS 'Llave foránea del tipo de establecimiento';
+
+
+--
+-- TOC entry 2599 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.nombre IS 'Nombre del establecimiento de salud';
+
+
+--
+-- TOC entry 2600 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.direccion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.direccion IS 'Lugar físico del establecimiento';
+
+
+--
+-- TOC entry 2601 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.telefono; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.telefono IS 'Teléfono de contacto del establecimiento';
+
+
+--
+-- TOC entry 2602 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.fax; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.fax IS 'Fax del establecimiento';
+
+
+--
+-- TOC entry 2603 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.latitud; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.latitud IS 'Coordenadas de latitud para sistema georeferencial';
+
+
+--
+-- TOC entry 2604 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.longitud; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.longitud IS 'Coordenadas de longitud para sistema georeferencial';
+
+
+--
+-- TOC entry 2605 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.id_municipio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.id_municipio IS 'Llave foránea del municipio al que pertenece el establecimiento';
+
+
+--
+-- TOC entry 2606 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.id_nivel_minsal; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.id_nivel_minsal IS 'Representa el nivel del establecimiento, pueden ser 1,2,3';
+
+
+--
+-- TOC entry 2607 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.cod_ucsf; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.cod_ucsf IS 'Código asignados a la Unidad Comunitaria de Salud Familiar.';
+
+
+--
+-- TOC entry 2608 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.activo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.activo IS 'Estado del establecimiento';
+
+
+--
+-- TOC entry 2609 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.id_establecimiento_padre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.id_establecimiento_padre IS 'Llave foránea del establecimiento que es su supervisor';
+
+
+--
+-- TOC entry 2610 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.tipo_expediente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.tipo_expediente IS 'Los tipos de expedientes son: G = Utiliza guión (xxx-xx); I = Infinito';
+
+
+--
+-- TOC entry 2611 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: COLUMN ctl_establecimiento.tipo_farmacia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_establecimiento.tipo_farmacia IS 'Representa el tipo de farmacia que opera en el establecimiento';
+
+
+--
+-- TOC entry 168 (class 1259 OID 37496)
+-- Dependencies: 5 167
+-- Name: ctl_establecimiento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_establecimiento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_establecimiento_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2612 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: ctl_establecimiento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_establecimiento_id_seq OWNED BY ctl_establecimiento.id;
+
+
+--
+-- TOC entry 169 (class 1259 OID 37498)
+-- Dependencies: 5
+-- Name: ctl_municipio; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_municipio (
+    id integer NOT NULL,
+    nombre character varying(150) NOT NULL,
+    codigo_cnr character varying(5),
+    abreviatura character varying(5),
+    id_departamento integer NOT NULL
+);
+
+
+ALTER TABLE public.ctl_municipio OWNER TO postgres;
+
+--
+-- TOC entry 2613 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: TABLE ctl_municipio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_municipio IS 'Lista de los municipios que conforman un departamento';
+
+
+--
+-- TOC entry 2614 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: COLUMN ctl_municipio.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_municipio.id IS 'Llave primaria';
+
+
+--
+-- TOC entry 2615 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: COLUMN ctl_municipio.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_municipio.nombre IS 'Nombre del municipio';
+
+
+--
+-- TOC entry 2616 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: COLUMN ctl_municipio.codigo_cnr; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_municipio.codigo_cnr IS 'Codigo asignado por la Digestyc para un municipio en especifico';
+
+
+--
+-- TOC entry 2617 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: COLUMN ctl_municipio.abreviatura; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_municipio.abreviatura IS 'Abreviatura asignada al municipio';
+
+
+--
+-- TOC entry 2618 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: COLUMN ctl_municipio.id_departamento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_municipio.id_departamento IS 'Representa la llave foranea que proviene de ctl_departamento';
+
+
+--
+-- TOC entry 170 (class 1259 OID 37501)
+-- Dependencies: 169 5
+-- Name: ctl_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_municipio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_municipio_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2619 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: ctl_municipio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_municipio_id_seq OWNED BY ctl_municipio.id;
+
+
+--
+-- TOC entry 171 (class 1259 OID 37503)
+-- Dependencies: 5
+-- Name: ctl_pais; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_pais (
+    id integer NOT NULL,
+    nombre character varying(150),
+    activo boolean
+);
+
+
+ALTER TABLE public.ctl_pais OWNER TO postgres;
+
+--
+-- TOC entry 2620 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: TABLE ctl_pais; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_pais IS 'Lista del pais originario del paciente';
+
+
+--
+-- TOC entry 2621 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: COLUMN ctl_pais.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_pais.id IS 'Llave primaria';
+
+
+--
+-- TOC entry 2622 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: COLUMN ctl_pais.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_pais.nombre IS 'Nombre del pais';
+
+
+--
+-- TOC entry 2623 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: COLUMN ctl_pais.activo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_pais.activo IS 'Si el país está activo para ser presentado en las aplicaciones del sistema';
+
+
+--
+-- TOC entry 172 (class 1259 OID 37506)
+-- Dependencies: 5 171
+-- Name: ctl_pais_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_pais_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_pais_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2624 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: ctl_pais_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_pais_id_seq OWNED BY ctl_pais.id;
+
+
+--
+-- TOC entry 173 (class 1259 OID 37508)
+-- Dependencies: 5
+-- Name: ctl_tipo_atencion; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_tipo_atencion (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.ctl_tipo_atencion OWNER TO postgres;
+
+--
+-- TOC entry 2625 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: TABLE ctl_tipo_atencion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_tipo_atencion IS 'Determina los tipos de atención que pueden existir en un establecimiento de salud';
+
+
+--
+-- TOC entry 2626 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN ctl_tipo_atencion.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_tipo_atencion.id IS 'Llave primaria ';
+
+
+--
+-- TOC entry 2627 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN ctl_tipo_atencion.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_tipo_atencion.nombre IS 'Nombre del tipo de atención';
+
+
+--
+-- TOC entry 174 (class 1259 OID 37511)
+-- Dependencies: 5 173
+-- Name: ctl_tipo_atencion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_tipo_atencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_tipo_atencion_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2628 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: ctl_tipo_atencion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_tipo_atencion_id_seq OWNED BY ctl_tipo_atencion.id;
+
+
+--
+-- TOC entry 196 (class 1259 OID 37886)
+-- Dependencies: 5
+-- Name: enf_anotacion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_anotacion (
+    id integer NOT NULL,
+    id_registro_nota integer,
+    edad_anotacion character varying(1024),
+    estado_anotacion boolean,
+    usuario_anotacion character varying(40),
+    fecha_ingreso_anota date,
+    fecha_mod_anota date
+);
+
+
+ALTER TABLE public.enf_anotacion OWNER TO siap;
+
+--
+-- TOC entry 239 (class 1259 OID 38420)
+-- Dependencies: 5
+-- Name: enf_clase; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_clase (
+    id integer NOT NULL,
+    id_dominio integer,
+    cod_clase numeric NOT NULL,
+    nombre_clase character varying(50),
+    fecha_ingreso_clase date,
+    fecha_modificacion_clase date,
+    usuario_clase character varying(40),
+    estado_clase boolean
+);
+
+
+ALTER TABLE public.enf_clase OWNER TO siap;
+
+--
+-- TOC entry 244 (class 1259 OID 38452)
+-- Dependencies: 5
+-- Name: enf_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_clase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_clase_id_seq OWNER TO siap;
+
+--
+-- TOC entry 197 (class 1259 OID 37892)
+-- Dependencies: 5
+-- Name: enf_componente; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_componente (
+    id integer NOT NULL,
+    id_tipo_componente integer,
+    id_inventario integer,
+    id_tipo_esq integer,
+    presentacion character varying(100),
+    usuario_componente character varying(40),
+    fecha_ingreso_componente date,
+    fecha_modificacion_componente date,
+    estado_componente boolean
+);
+
+
+ALTER TABLE public.enf_componente OWNER TO siap;
+
+--
+-- TOC entry 198 (class 1259 OID 37895)
+-- Dependencies: 5
+-- Name: enf_ctl_actividad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_actividad (
+    id integer NOT NULL,
+    nombre_actividad character varying(50),
+    estado_act boolean,
+    usuario_ingreso_cat_act character varying(40),
+    fecha_ingreso_cat_act date,
+    fecha_modificacion_cat_act date
+);
+
+
+ALTER TABLE public.enf_ctl_actividad OWNER TO siap;
+
+--
+-- TOC entry 238 (class 1259 OID 38418)
+-- Dependencies: 5
+-- Name: enf_ctl_actividad_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_actividad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_actividad_id_seq OWNER TO siap;
+
+--
+-- TOC entry 199 (class 1259 OID 37898)
+-- Dependencies: 5
+-- Name: enf_ctl_diagnostico; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_diagnostico (
+    id integer NOT NULL,
+    id_clase integer,
+    cod_diagnostico numeric NOT NULL,
+    nombre_diagnostico character varying(50),
+    descripcion_diag character varying(500),
+    fecha_ingreso_ctl_diag date,
+    fecha_modificacion_ctl_diag date,
+    usuario_ctl_diag character varying(40),
+    estado_ctl_diag boolean
+);
+
+
+ALTER TABLE public.enf_ctl_diagnostico OWNER TO siap;
+
+--
+-- TOC entry 245 (class 1259 OID 38454)
+-- Dependencies: 5
+-- Name: enf_ctl_diagnostico_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_diagnostico_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_diagnostico_id_seq OWNER TO siap;
+
+--
+-- TOC entry 200 (class 1259 OID 37904)
+-- Dependencies: 5
+-- Name: enf_ctl_fase_intervencion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_fase_intervencion (
+    id integer NOT NULL,
+    id_intervencion integer,
+    nombre_fase character varying(100),
+    fecha_ingreso_fase date,
+    fecha_modificacion_fase date,
+    usuario_fase character varying(40),
+    estado_fase boolean
+);
+
+
+ALTER TABLE public.enf_ctl_fase_intervencion OWNER TO siap;
+
+--
+-- TOC entry 249 (class 1259 OID 38462)
+-- Dependencies: 5
+-- Name: enf_ctl_fase_intervencion_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_fase_intervencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_fase_intervencion_id_seq OWNER TO siap;
+
+--
+-- TOC entry 201 (class 1259 OID 37907)
+-- Dependencies: 5
+-- Name: enf_ctl_financiamiento; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_financiamiento (
+    id integer NOT NULL,
+    nombre_financiamiento character varying(100),
+    usuario_finan character varying(200),
+    fecha_ingreso_finan date,
+    fecha_modificacion_finan date,
+    estado_financiamiento boolean
+);
+
+
+ALTER TABLE public.enf_ctl_financiamiento OWNER TO siap;
+
+--
+-- TOC entry 250 (class 1259 OID 38464)
+-- Dependencies: 5
+-- Name: enf_ctl_financiamiento_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_financiamiento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_financiamiento_id_seq OWNER TO siap;
+
+--
+-- TOC entry 202 (class 1259 OID 37910)
+-- Dependencies: 5
+-- Name: enf_ctl_intervencion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_intervencion (
+    id integer NOT NULL,
+    id_subprotocolo integer,
+    descripcion_interven character varying(500),
+    fecha_ingreso_interven date,
+    usuario_interven character varying(40),
+    fecha_modificacion_interven date,
+    estado_clt_interv boolean
+);
+
+
+ALTER TABLE public.enf_ctl_intervencion OWNER TO siap;
+
+--
+-- TOC entry 248 (class 1259 OID 38460)
+-- Dependencies: 5
+-- Name: enf_ctl_intervencion_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_intervencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_intervencion_id_seq OWNER TO siap;
+
+--
+-- TOC entry 203 (class 1259 OID 37916)
+-- Dependencies: 5
+-- Name: enf_ctl_mov_inventario; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_mov_inventario (
+    id integer NOT NULL,
+    nombre_tipo_inventatrio character varying(50),
+    estado_ctl_mov boolean
+);
+
+
+ALTER TABLE public.enf_ctl_mov_inventario OWNER TO siap;
+
+--
+-- TOC entry 255 (class 1259 OID 46620)
+-- Dependencies: 5
+-- Name: enf_ctl_mov_inventario_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_mov_inventario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_mov_inventario_id_seq OWNER TO siap;
+
+--
+-- TOC entry 204 (class 1259 OID 37919)
+-- Dependencies: 5
+-- Name: enf_ctl_nota; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_nota (
+    id integer NOT NULL,
+    tipo_nota character varying(20),
+    nombre_nota character varying(50),
+    estado_ctl_nota boolean,
+    usuario_ctl_nota character varying(40),
+    fecha_ingreso_ctl_nota date,
+    fecha_mod_ctl_nota date
+);
+
+
+ALTER TABLE public.enf_ctl_nota OWNER TO siap;
+
+--
+-- TOC entry 253 (class 1259 OID 46616)
+-- Dependencies: 5
+-- Name: enf_ctl_nota_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_nota_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_nota_id_seq OWNER TO siap;
+
+--
+-- TOC entry 205 (class 1259 OID 37922)
+-- Dependencies: 5
+-- Name: enf_ctl_protocolo; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_protocolo (
+    id integer NOT NULL,
+    nombre_protocolo character varying(150),
+    fecha_ingreso_proto date,
+    fecha_modificacion_proto date,
+    usuario_proto character varying(40),
+    estado_prot boolean
+);
+
+
+ALTER TABLE public.enf_ctl_protocolo OWNER TO siap;
+
+--
+-- TOC entry 246 (class 1259 OID 38456)
+-- Dependencies: 5
+-- Name: enf_ctl_protocolo_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_protocolo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_protocolo_id_seq OWNER TO siap;
+
+--
+-- TOC entry 206 (class 1259 OID 37925)
+-- Dependencies: 5
+-- Name: enf_ctl_subactividad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_subactividad (
+    id integer NOT NULL,
+    id_actividad integer,
+    nombre_subactividad character varying(50),
+    fecha_ingreso_subact date,
+    fecha_modificacion_subact date,
+    usuario_ingreso_subact character varying(40),
+    estado_subact boolean,
+    cantidad_subact numeric,
+    tiempo_subact time without time zone
+);
+
+
+ALTER TABLE public.enf_ctl_subactividad OWNER TO siap;
+
+--
+-- TOC entry 241 (class 1259 OID 38446)
+-- Dependencies: 5
+-- Name: enf_ctl_subactividad_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_subactividad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_subactividad_id_seq OWNER TO siap;
+
+--
+-- TOC entry 207 (class 1259 OID 37931)
+-- Dependencies: 5
+-- Name: enf_ctl_subprotocolo; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_subprotocolo (
+    id integer NOT NULL,
+    id_protocolo integer,
+    concepto character varying(500),
+    etiologia character varying(100),
+    nombre_subprotocolo character varying(150),
+    fecha_ingreso_subpro date,
+    fecha_modificacion_subpro date,
+    usuario_subpro character varying(40),
+    estado_subpro boolean
+);
+
+
+ALTER TABLE public.enf_ctl_subprotocolo OWNER TO siap;
+
+--
+-- TOC entry 247 (class 1259 OID 38458)
+-- Dependencies: 5
+-- Name: enf_ctl_subprotocolo_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_subprotocolo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_subprotocolo_id_seq OWNER TO siap;
+
+--
+-- TOC entry 208 (class 1259 OID 37937)
+-- Dependencies: 5
+-- Name: enf_ctl_tipo_componente; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_ctl_tipo_componente (
+    id numeric NOT NULL,
+    nombre_componente1 character varying(50),
+    fecha_ingreso_compo date,
+    fecha_modificacion_compo date,
+    usuario_ctl_comp character varying(40),
+    estado_tcl_t_comp boolean
+);
+
+
+ALTER TABLE public.enf_ctl_tipo_componente OWNER TO siap;
+
+--
+-- TOC entry 254 (class 1259 OID 46618)
+-- Dependencies: 5
+-- Name: enf_ctl_tipo_componente_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_ctl_tipo_componente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_ctl_tipo_componente_id_seq OWNER TO siap;
+
+--
+-- TOC entry 240 (class 1259 OID 38428)
+-- Dependencies: 5
+-- Name: enf_dominio; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_dominio (
+    id integer NOT NULL,
+    cod_dominio numeric NOT NULL,
+    nombre_dominio character varying(50),
+    fecha_ingreso_dom date,
+    fecha_modificacion_dom date,
+    usuario_dom character varying(40),
+    estado_dominio boolean
+);
+
+
+ALTER TABLE public.enf_dominio OWNER TO siap;
+
+--
+-- TOC entry 243 (class 1259 OID 38450)
+-- Dependencies: 5
+-- Name: enf_dominio_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_dominio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_dominio_id_seq OWNER TO siap;
+
+--
+-- TOC entry 209 (class 1259 OID 37943)
+-- Dependencies: 5
+-- Name: enf_dosis_esquema_vac; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_dosis_esquema_vac (
+    id integer NOT NULL,
+    id_tipo_esq integer,
+    id_movimiento integer NOT NULL,
+    id_componente integer,
+    id_expediente integer NOT NULL,
+    id_emp_corr integer NOT NULL,
+    dosis character varying(10),
+    centro_educativo character varying(200),
+    fecha_dosis_esq date,
+    estado_dosis_esq boolean,
+    usuario_dosis_esq character varying(40),
+    fecha_ingreso_dosis_esq date,
+    fecha_mod_dosis date
+);
+
+
+ALTER TABLE public.enf_dosis_esquema_vac OWNER TO siap;
+
+--
+-- TOC entry 210 (class 1259 OID 37946)
+-- Dependencies: 5
+-- Name: enf_esquema_vac; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_esquema_vac (
+    id integer NOT NULL,
+    anio_esquema_vac numeric(4,0),
+    nombre_esquema_vac character varying(40),
+    edad_minima numeric,
+    edad_maxima numeric
+);
+
+
+ALTER TABLE public.enf_esquema_vac OWNER TO siap;
+
+--
+-- TOC entry 251 (class 1259 OID 46612)
+-- Dependencies: 5
+-- Name: enf_esquema_vac_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_esquema_vac_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_esquema_vac_id_seq OWNER TO siap;
+
+--
+-- TOC entry 211 (class 1259 OID 37952)
+-- Dependencies: 5
+-- Name: enf_historico_actividad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_actividad (
+    id integer NOT NULL,
+    id_registro_actividad integer,
+    usuario_ingreso_hist_act character varying(40),
+    fecha_ingreso_hist_act date,
+    fecha_modificacion_hist_act date,
+    cantidad_hist_act_enf numeric,
+    tiempo_hist_act_enf time without time zone,
+    expediente_hist_act numeric,
+    estado_his_act boolean
+);
+
+
+ALTER TABLE public.enf_historico_actividad OWNER TO siap;
+
+--
+-- TOC entry 212 (class 1259 OID 37958)
+-- Dependencies: 5
+-- Name: enf_historico_capacitacion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_capacitacion (
+    id integer NOT NULL,
+    id_capacitacion integer,
+    fecha_capacitacion_hist_cap date,
+    tema_capacitacion_hist_cap character varying(100),
+    asistencia_his_cap numeric,
+    monto_financiamiento_hist_cap double precision,
+    horas_duracion_his_cap numeric,
+    establecimiento_hist_cap character varying(200),
+    estado_his_cap boolean,
+    usuario_hist_cap character varying(200),
+    fecha_ingreso_hist_capa date
+);
+
+
+ALTER TABLE public.enf_historico_capacitacion OWNER TO siap;
+
+--
+-- TOC entry 213 (class 1259 OID 37964)
+-- Dependencies: 5
+-- Name: enf_historico_dosis; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_dosis (
+    id integer NOT NULL,
+    id_dosis_esq integer,
+    dosis_hist character varying(10),
+    centro_educativo_hist character varying(200),
+    fecha_dosis_esq_hist date,
+    estado_dosis_esq_hist boolean,
+    usuario_dosis_esq_hist character varying(40),
+    fecha_ingreso_dosis_hist date,
+    fecha_modificacion_dosis_hist date
+);
+
+
+ALTER TABLE public.enf_historico_dosis OWNER TO siap;
+
+--
+-- TOC entry 214 (class 1259 OID 37967)
+-- Dependencies: 5
+-- Name: enf_historico_intervencion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_intervencion (
+    id integer NOT NULL,
+    id_registro_intervencion integer NOT NULL,
+    observacion_hist_interv character varying(500),
+    fecha_ingreso_hist_inter date,
+    fecha_modificacion_hist_interv date,
+    usuario_hist_interv character varying(40),
+    efectivo_hist_interv boolean,
+    estado_hist_interv boolean
+);
+
+
+ALTER TABLE public.enf_historico_intervencion OWNER TO siap;
+
+--
+-- TOC entry 215 (class 1259 OID 37973)
+-- Dependencies: 5
+-- Name: enf_historico_inventario; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_inventario (
+    id integer NOT NULL,
+    id_inventario integer,
+    existencia_hist numeric,
+    fecha_ingreso_hist_inv date,
+    usuario_inventario_hist character varying(40),
+    estado_hist_invent boolean
+);
+
+
+ALTER TABLE public.enf_historico_inventario OWNER TO siap;
+
+--
+-- TOC entry 216 (class 1259 OID 37979)
+-- Dependencies: 5
+-- Name: enf_historico_nota; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_historico_nota (
+    id integer NOT NULL,
+    id_registro_nota integer,
+    observacion_hist_nota character varying(500),
+    usuario_hist_nota character varying(40),
+    fecha_mod_hist_nota date,
+    estado_hist_nota boolean,
+    fecha_ingreso_hist_notas date
+);
+
+
+ALTER TABLE public.enf_historico_nota OWNER TO siap;
+
+--
+-- TOC entry 217 (class 1259 OID 37985)
+-- Dependencies: 5
+-- Name: enf_hitorico_diagnostico; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_hitorico_diagnostico (
+    id integer NOT NULL,
+    id_registro_diag integer,
+    observacion_hist character varying(500),
+    usuario_hist_diag character varying(40),
+    fecha_ingreso_hist_diag date,
+    fecha_modificacion_hist_diag date,
+    estado_hist_diag boolean
+);
+
+
+ALTER TABLE public.enf_hitorico_diagnostico OWNER TO siap;
+
+--
+-- TOC entry 218 (class 1259 OID 37991)
+-- Dependencies: 5
+-- Name: enf_indicacion_medica; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_indicacion_medica (
+    id integer NOT NULL,
+    id_registro_nota integer,
+    tratamiento_ind character varying(800),
+    dosis_ind character varying(10),
+    indicacion_ind character varying(200),
+    estado_ind boolean,
+    usuario_ind character varying(40),
+    fecha_ingreso_ind date,
+    fecha_mod_ind date
+);
+
+
+ALTER TABLE public.enf_indicacion_medica OWNER TO siap;
+
+--
+-- TOC entry 219 (class 1259 OID 37997)
+-- Dependencies: 5
+-- Name: enf_inventario; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_inventario (
+    id integer NOT NULL,
+    existencia numeric,
+    fecha_ingreso_inventario date,
+    usuario_inventario character varying(40),
+    estado_inventario boolean,
+    caducidad_inventario date
+);
+
+
+ALTER TABLE public.enf_inventario OWNER TO siap;
+
+--
+-- TOC entry 220 (class 1259 OID 38003)
+-- Dependencies: 5
+-- Name: enf_modalidad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_modalidad (
+    id integer NOT NULL,
+    id_dosis_esq integer,
+    nombre_modalidad character varying(50)
+);
+
+
+ALTER TABLE public.enf_modalidad OWNER TO siap;
+
+--
+-- TOC entry 221 (class 1259 OID 38006)
+-- Dependencies: 5
+-- Name: enf_mov_inventario; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mov_inventario (
+    id integer NOT NULL,
+    id_inventario integer,
+    id_tipo_inventario integer,
+    id_dosis_esq integer,
+    id_emp_corr integer,
+    usuario_mov character varying(40),
+    fecha_ingreso_mov date,
+    fecha_modificacion_mov date,
+    cantidad_mov numeric,
+    estado_mov boolean,
+    empleado_envio character varying(200),
+    empleado_recivio character varying(200)
+);
+
+
+ALTER TABLE public.enf_mov_inventario OWNER TO siap;
+
+--
+-- TOC entry 222 (class 1259 OID 38012)
+-- Dependencies: 5
+-- Name: enf_mtl_actividad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mtl_actividad (
+    id integer NOT NULL,
+    id_subactividad integer NOT NULL,
+    id_emp_corr integer,
+    id_expediente integer NOT NULL,
+    usuario_ingreso_act character varying(40),
+    fecha_ingreso_act date,
+    fecha_modificacion_act date,
+    cantidad_act_enf numeric,
+    tiempo_act_enf time without time zone,
+    estado_mtl_act boolean,
+    id_ctl_actividad integer
+);
+
+
+ALTER TABLE public.enf_mtl_actividad OWNER TO siap;
+
+--
+-- TOC entry 242 (class 1259 OID 38448)
+-- Dependencies: 5
+-- Name: enf_mtl_actividad_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_mtl_actividad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_mtl_actividad_id_seq OWNER TO siap;
+
+--
+-- TOC entry 223 (class 1259 OID 38018)
+-- Dependencies: 5
+-- Name: enf_mtl_capacitacion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mtl_capacitacion (
+    id integer NOT NULL,
+    id_financiamiento integer,
+    fecha_ingreso_cap date,
+    fecha_capacitacion date,
+    tema_capacitacion character varying(100),
+    asistencia_capacitacion numeric,
+    monto_financiamiento_cap double precision,
+    horas_duracion_cap numeric,
+    establecimiento_cap character varying(200),
+    estado_capacitacion boolean,
+    usuario_capacitacion character varying(200)
+);
+
+
+ALTER TABLE public.enf_mtl_capacitacion OWNER TO siap;
+
+--
+-- TOC entry 256 (class 1259 OID 63110)
+-- Dependencies: 5
+-- Name: enf_mtl_capacitacion_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_mtl_capacitacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_mtl_capacitacion_id_seq OWNER TO siap;
+
+--
+-- TOC entry 224 (class 1259 OID 38024)
+-- Dependencies: 5
+-- Name: enf_mtl_diagnostico; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mtl_diagnostico (
+    id integer NOT NULL,
+    id_expediente integer,
+    id_ctl_diag integer NOT NULL,
+    id_emp_corr integer,
+    observacion1 character varying(500),
+    fecha_ingreso_diag date,
+    fecha_modificacion_diag date,
+    estado_mtl_diag boolean
+);
+
+
+ALTER TABLE public.enf_mtl_diagnostico OWNER TO siap;
+
+--
+-- TOC entry 257 (class 1259 OID 63112)
+-- Dependencies: 5
+-- Name: enf_mtl_diagnostico_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_mtl_diagnostico_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_mtl_diagnostico_id_seq OWNER TO siap;
+
+--
+-- TOC entry 225 (class 1259 OID 38030)
+-- Dependencies: 5
+-- Name: enf_mtl_intervencion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mtl_intervencion (
+    id integer NOT NULL,
+    id_sec_ingreso integer,
+    id_intervencion integer NOT NULL,
+    id_emp_corr integer,
+    fecha_ingreso_interv date,
+    fecha_modificacion_interv date,
+    observacion_interv character varying(500),
+    efectivo_interv boolean,
+    estado_mtl_interv boolean
+);
+
+
+ALTER TABLE public.enf_mtl_intervencion OWNER TO siap;
+
+--
+-- TOC entry 258 (class 1259 OID 63114)
+-- Dependencies: 5
+-- Name: enf_mtl_intervencion_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_mtl_intervencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_mtl_intervencion_id_seq OWNER TO siap;
+
+--
+-- TOC entry 226 (class 1259 OID 38036)
+-- Dependencies: 5
+-- Name: enf_mtl_nota; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_mtl_nota (
+    id integer NOT NULL,
+    id_ctl_nota integer NOT NULL,
+    id_sec_ingreso integer,
+    id_sec_histo_clin integer,
+    fecha_modificacion_nota date,
+    usuario_nota character varying(40),
+    observacion_nota character varying(500),
+    estado_mtl_nota boolean,
+    fecha_ingreso_nota date
+);
+
+
+ALTER TABLE public.enf_mtl_nota OWNER TO siap;
+
+--
+-- TOC entry 227 (class 1259 OID 38042)
+-- Dependencies: 5
+-- Name: enf_tiene; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_tiene (
+    id integer NOT NULL,
+    id_expediente integer NOT NULL,
+    id_registro_nota integer NOT NULL
+);
+
+
+ALTER TABLE public.enf_tiene OWNER TO siap;
+
+--
+-- TOC entry 228 (class 1259 OID 38045)
+-- Dependencies: 5
+-- Name: enf_tipo_esquema_vac; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_tipo_esquema_vac (
+    id integer NOT NULL,
+    id_esquema_vac integer NOT NULL,
+    nombre_tipo_esq character varying(100),
+    dosis_maxima numeric
+);
+
+
+ALTER TABLE public.enf_tipo_esquema_vac OWNER TO siap;
+
+--
+-- TOC entry 252 (class 1259 OID 46614)
+-- Dependencies: 5
+-- Name: enf_tipo_esquema_vac_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE enf_tipo_esquema_vac_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.enf_tipo_esquema_vac_id_seq OWNER TO siap;
+
+--
+-- TOC entry 229 (class 1259 OID 38051)
+-- Dependencies: 5
+-- Name: enf_traza_actividad; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_actividad (
+    id integer NOT NULL,
+    id_registro_actividad integer,
+    usuario_tra_act character varying(40),
+    cambio_tra_act character varying(200),
+    fecha_traza_act date
+);
+
+
+ALTER TABLE public.enf_traza_actividad OWNER TO siap;
+
+--
+-- TOC entry 230 (class 1259 OID 38054)
+-- Dependencies: 5
+-- Name: enf_traza_capacitacion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_capacitacion (
+    id integer NOT NULL,
+    id_capacitacion integer,
+    usuario_tra_cap character varying(40),
+    fecha_ingreso_tra_capa date,
+    cambio_tra_capa character varying(200)
+);
+
+
+ALTER TABLE public.enf_traza_capacitacion OWNER TO siap;
+
+--
+-- TOC entry 231 (class 1259 OID 38057)
+-- Dependencies: 5
+-- Name: enf_traza_diagnostico; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_diagnostico (
+    id integer NOT NULL,
+    id_registro_diag integer,
+    usuario_tra_dia character varying(40),
+    fecha_ingreso_tra_dia date,
+    cambio_tra_diag character varying(200)
+);
+
+
+ALTER TABLE public.enf_traza_diagnostico OWNER TO siap;
+
+--
+-- TOC entry 232 (class 1259 OID 38060)
+-- Dependencies: 5
+-- Name: enf_traza_dosis; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_dosis (
+    id integer NOT NULL,
+    id_dosis_esq integer,
+    usuario_traza_dosis character varying(40),
+    cambio_traza_dosis character varying(200),
+    fecha_ingreso_traza_dosis date
+);
+
+
+ALTER TABLE public.enf_traza_dosis OWNER TO siap;
+
+--
+-- TOC entry 233 (class 1259 OID 38063)
+-- Dependencies: 5
+-- Name: enf_traza_intervencion; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_intervencion (
+    id integer NOT NULL,
+    id_registro_intervencion integer,
+    usuario_tra_interven character varying(40),
+    cambio_tra_interven boolean,
+    fecha_ingreso_tra_interven date
+);
+
+
+ALTER TABLE public.enf_traza_intervencion OWNER TO siap;
+
+--
+-- TOC entry 234 (class 1259 OID 38066)
+-- Dependencies: 5
+-- Name: enf_traza_inventario; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_inventario (
+    id integer NOT NULL,
+    id_inventario integer,
+    fecha_ingreso_tra_inv date,
+    usuario_tra_inv character varying(40),
+    cambio_inv character varying(200)
+);
+
+
+ALTER TABLE public.enf_traza_inventario OWNER TO siap;
+
+--
+-- TOC entry 235 (class 1259 OID 38069)
+-- Dependencies: 5
+-- Name: enf_traza_nota; Type: TABLE; Schema: public; Owner: siap; Tablespace: 
+--
+
+CREATE TABLE enf_traza_nota (
+    id integer NOT NULL,
+    id_registro_nota integer,
+    fecha_ingreso_tra_nota date,
+    usuario_tra_nota character varying(40),
+    cambio_tra_nota character varying(200)
+);
+
+
+ALTER TABLE public.enf_traza_nota OWNER TO siap;
+
+--
+-- TOC entry 175 (class 1259 OID 37513)
+-- Dependencies: 5
+-- Name: fos_user_group; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE fos_user_group (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    roles text NOT NULL
+);
+
+
+ALTER TABLE public.fos_user_group OWNER TO postgres;
+
+--
+-- TOC entry 2629 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: TABLE fos_user_group; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE fos_user_group IS 'Maneja los grupo de roles para el BUNDLE SONATAADMINBUNDLE de symfony';
+
+
+--
+-- TOC entry 2630 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: COLUMN fos_user_group.roles; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN fos_user_group.roles IS '(DC2Type:array)';
+
+
+--
+-- TOC entry 236 (class 1259 OID 38414)
+-- Dependencies: 5
+-- Name: fos_user_group_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE fos_user_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.fos_user_group_id_seq OWNER TO siap;
+
+--
+-- TOC entry 176 (class 1259 OID 37519)
+-- Dependencies: 2101 2102 2103 2104 2105 2106 2107 2108 2109 2110 2111 2112 2113 2114 2115 2116 2117 2118 2119 2120 2121 2122 5
+-- Name: fos_user_user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE fos_user_user (
+    id integer NOT NULL,
+    username character varying(255) NOT NULL,
+    username_canonical character varying(255),
+    email character varying(255),
+    email_canonical character varying(255),
+    enabled boolean,
+    salt character varying(255),
+    password character varying(255) NOT NULL,
+    last_login timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    locked boolean,
+    expired boolean,
+    expires_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    confirmation_token character varying(255) DEFAULT NULL::character varying,
+    password_requested_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    roles text,
+    credentials_expired boolean,
+    credentials_expire_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    date_of_birth timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    firstname character varying(64) DEFAULT NULL::character varying,
+    lastname character varying(64) DEFAULT NULL::character varying,
+    website character varying(64) DEFAULT NULL::character varying,
+    biography character varying(255) DEFAULT NULL::character varying,
+    gender character varying(1) DEFAULT NULL::character varying,
+    locale character varying(8) DEFAULT NULL::character varying,
+    timezone character varying(64) DEFAULT NULL::character varying,
+    phone character varying(64) DEFAULT NULL::character varying,
+    facebook_uid character varying(255) DEFAULT NULL::character varying,
+    facebook_name character varying(255) DEFAULT NULL::character varying,
+    facebook_data text,
+    twitter_uid character varying(255) DEFAULT NULL::character varying,
+    twitter_name character varying(255) DEFAULT NULL::character varying,
+    twitter_data text,
+    gplus_uid character varying(255) DEFAULT NULL::character varying,
+    gplus_name character varying(255) DEFAULT NULL::character varying,
+    gplus_data text,
+    token character varying(255) DEFAULT NULL::character varying,
+    two_step_code character varying(255) DEFAULT NULL::character varying,
+    id_establecimiento integer,
+    id_empleado integer,
+    modulo character varying(4),
+    id_area_mod_estab integer,
+    nivel smallint,
+    grupo smallint,
+    id_farmacia integer,
+    datos integer,
+    reportes integer,
+    administracion integer,
+    primeravez integer,
+    conectado character(1),
+    id_modalidad_estab integer,
+    id_area integer
+);
+
+
+ALTER TABLE public.fos_user_user OWNER TO postgres;
+
+--
+-- TOC entry 2631 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: TABLE fos_user_user; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE fos_user_user IS 'Maneja los usuarios tanto para los módulos en Symfony como para los de PHP puro';
+
+
+--
+-- TOC entry 2632 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: COLUMN fos_user_user.roles; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN fos_user_user.roles IS '(DC2Type:array)';
+
+
+--
+-- TOC entry 2633 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: COLUMN fos_user_user.facebook_data; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN fos_user_user.facebook_data IS '(DC2Type:json)';
+
+
+--
+-- TOC entry 2634 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: COLUMN fos_user_user.twitter_data; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN fos_user_user.twitter_data IS '(DC2Type:json)';
+
+
+--
+-- TOC entry 2635 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: COLUMN fos_user_user.gplus_data; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN fos_user_user.gplus_data IS '(DC2Type:json)';
+
+
+--
+-- TOC entry 177 (class 1259 OID 37547)
+-- Dependencies: 5
+-- Name: fos_user_user_group; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE fos_user_user_group (
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.fos_user_user_group OWNER TO postgres;
+
+--
+-- TOC entry 2636 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: TABLE fos_user_user_group; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE fos_user_user_group IS 'Tabla intermedia para saber que usuarios poseen que grupos dentro de los modulos con Symfony';
+
+
+--
+-- TOC entry 237 (class 1259 OID 38416)
+-- Dependencies: 5
+-- Name: fos_user_user_id_seq; Type: SEQUENCE; Schema: public; Owner: siap
+--
+
+CREATE SEQUENCE fos_user_user_id_seq
+    START WITH 254
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.fos_user_user_id_seq OWNER TO siap;
+
+--
+-- TOC entry 178 (class 1259 OID 37550)
+-- Dependencies: 5
+-- Name: mnt_cargoempleados; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_cargoempleados (
+    id integer NOT NULL,
+    cargo character varying(50),
+    id_atencion integer
+);
+
+
+ALTER TABLE public.mnt_cargoempleados OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 37553)
+-- Dependencies: 5 178
+-- Name: mnt_cargo_empleado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_cargo_empleado_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_cargo_empleado_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2637 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: mnt_cargo_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_cargo_empleado_id_seq OWNED BY mnt_cargoempleados.id;
+
+
+--
+-- TOC entry 180 (class 1259 OID 37555)
+-- Dependencies: 2124 2125 2126 5
+-- Name: mnt_empleado; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_empleado (
+    id integer NOT NULL,
+    nombre character varying(100),
+    apellido character varying(100),
+    fecha_nacimiento date,
+    dui character varying(12),
+    numero_junta_vigilancia character varying(20),
+    numero_celular character varying(10),
+    correo_electronico character varying(50),
+    id_establecimiento integer,
+    correlativo smallint,
+    id_cargo_empleado integer,
+    codigo_farmacia character varying(6),
+    habilitado_farmacia character(1) DEFAULT 'H'::bpchar,
+    firma_digital text,
+    id_tipo_empleado integer,
+    idempleado character varying(7) DEFAULT ''::character varying,
+    idusuarioreg smallint,
+    fechahorareg timestamp without time zone,
+    idusuariomod smallint,
+    fechahoramod timestamp without time zone,
+    nombreempleado character varying(200),
+    habilitado boolean DEFAULT true,
+    idarea integer,
+    id_establecimiento_externo integer
+);
+
+
+ALTER TABLE public.mnt_empleado OWNER TO postgres;
+
+--
+-- TOC entry 2638 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: TABLE mnt_empleado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE mnt_empleado IS 'Contiene los empleados del sistema';
+
+
+--
+-- TOC entry 2639 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.id IS 'Llave Primaria';
+
+
+--
+-- TOC entry 2640 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.nombre IS 'Nombre del empleado';
+
+
+--
+-- TOC entry 2641 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.apellido; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.apellido IS 'Apellidos del Empleado';
+
+
+--
+-- TOC entry 2642 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.fecha_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.fecha_nacimiento IS 'Fecha de nacimiento del empleado';
+
+
+--
+-- TOC entry 2643 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.dui; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.dui IS 'DUI del empleado';
+
+
+--
+-- TOC entry 2644 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.numero_junta_vigilancia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.numero_junta_vigilancia IS 'Numero de junta de vigilancia en caso de que sea medico';
+
+
+--
+-- TOC entry 2645 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.numero_celular; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.numero_celular IS 'Telefono celular de contacto';
+
+
+--
+-- TOC entry 2646 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.correo_electronico; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.correo_electronico IS 'Correo electronico';
+
+
+--
+-- TOC entry 2647 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.id_establecimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.id_establecimiento IS 'Llave foranea del establecimiento';
+
+
+--
+-- TOC entry 2648 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.id_cargo_empleado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.id_cargo_empleado IS 'Cargo del empleado para el modulo de laboratorio';
+
+
+--
+-- TOC entry 2649 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.codigo_farmacia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.codigo_farmacia IS 'Codigo del usuario en farmacia';
+
+
+--
+-- TOC entry 2650 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.habilitado_farmacia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.habilitado_farmacia IS 'Si esta habilitado en farmacia';
+
+
+--
+-- TOC entry 2651 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.firma_digital; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.firma_digital IS 'Campo para setearle el hash de la firma digital del empleado';
+
+
+--
+-- TOC entry 2652 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.id_tipo_empleado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.id_tipo_empleado IS 'Almacena el tipo de empleado de la persona para el SIAP';
+
+
+--
+-- TOC entry 2653 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.nombreempleado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.nombreempleado IS 'Nombre Unido para los modulos de PHP Puro y POstgresql';
+
+
+--
+-- TOC entry 2654 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.idarea; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.idarea IS 'ID de la tabla lab_areas, llave foranea, indica a que area de laboratorio pertenece el empleado';
+
+
+--
+-- TOC entry 2655 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN mnt_empleado.id_establecimiento_externo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_empleado.id_establecimiento_externo IS 'ID para empleados externos al establecimiento, se usa para el modulo de laboratorio';
+
+
+--
+-- TOC entry 181 (class 1259 OID 37564)
+-- Dependencies: 5 180
+-- Name: mnt_empleado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_empleado_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_empleado_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2656 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: mnt_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_empleado_id_seq OWNED BY mnt_empleado.id;
+
+
+--
+-- TOC entry 182 (class 1259 OID 37566)
+-- Dependencies: 2128 5
+-- Name: mnt_expediente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_expediente (
+    id bigint NOT NULL,
+    numero character varying(12) NOT NULL,
+    id_paciente bigint NOT NULL,
+    id_establecimiento integer,
+    habilitado boolean DEFAULT true NOT NULL,
+    id_creacion_expediente integer,
+    fecha_creacion date,
+    hora_creacion time without time zone
+);
+
+
+ALTER TABLE public.mnt_expediente OWNER TO postgres;
+
+--
+-- TOC entry 2657 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: TABLE mnt_expediente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE mnt_expediente IS 'Tabla que guarda los números de expediente clinico';
+
+
+--
+-- TOC entry 2658 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.id IS 'Expediente generado para el paciente';
+
+
+--
+-- TOC entry 2659 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.numero; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.numero IS 'Número de expediente de un paciente en el SIAPS local';
+
+
+--
+-- TOC entry 2660 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.id_paciente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.id_paciente IS 'Foránea que representa el identificador único del paciente dentro de la base de datos local';
+
+
+--
+-- TOC entry 2661 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.id_establecimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.id_establecimiento IS 'Foránea que se relaciona con el establecimiento para saber a que establecimiento pertenece ese expediente';
+
+
+--
+-- TOC entry 2662 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.habilitado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.habilitado IS 'Para determinar si el expediente esta habilitado. TRUE=Habilitado; FALSE= Deshabilitado';
+
+
+--
+-- TOC entry 2663 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: COLUMN mnt_expediente.id_creacion_expediente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_expediente.id_creacion_expediente IS 'Fóranea que representa el área en donde se creo el expediente del paciente';
+
+
+--
+-- TOC entry 183 (class 1259 OID 37570)
+-- Dependencies: 5
+-- Name: mnt_expediente_establecimiento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_expediente_establecimiento (
+    id bigint NOT NULL,
+    id_paciente_inicial bigint,
+    id_establecimiento integer,
+    id_paciente_siap_local bigint,
+    id_numero_expediente bigint
+);
+
+
+ALTER TABLE public.mnt_expediente_establecimiento OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 37573)
+-- Dependencies: 183 5
+-- Name: mnt_expediente_establecimiento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_expediente_establecimiento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_expediente_establecimiento_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2664 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: mnt_expediente_establecimiento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_expediente_establecimiento_id_seq OWNED BY mnt_expediente_establecimiento.id;
+
+
+--
+-- TOC entry 185 (class 1259 OID 37575)
+-- Dependencies: 5 182
+-- Name: mnt_expediente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_expediente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_expediente_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2665 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: mnt_expediente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_expediente_id_seq OWNED BY mnt_expediente.id;
+
+
+--
+-- TOC entry 186 (class 1259 OID 37577)
+-- Dependencies: 2131 5
+-- Name: mnt_paciente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_paciente (
+    id bigint NOT NULL,
+    primer_nombre character varying(25) NOT NULL,
+    segundo_nombre character varying(25),
+    tercer_nombre character varying(25),
+    primer_apellido character varying(25) NOT NULL,
+    segundo_apellido character varying(25),
+    apellido_casada character varying(25),
+    fecha_nacimiento date,
+    hora_nacimiento time without time zone,
+    id_pais_nacimiento integer,
+    id_departamento_nacimiento integer,
+    id_municipio_nacimiento integer,
+    id_estado_civil integer,
+    id_doc_ide_paciente integer,
+    numero_doc_ide_paciente character varying(20),
+    id_ocupacion integer,
+    direccion character varying(200),
+    telefono_casa character varying(10),
+    id_departamento_domicilio integer,
+    id_municipio_domicilio integer,
+    id_canton_domicilio integer,
+    area_geografica_domicilio integer,
+    lugar_trabajo character varying(50),
+    telefono_trabajo character varying(10),
+    id_area_cotizacion integer,
+    asegurado boolean,
+    numero_afiliacion character varying(12),
+    cotizante boolean,
+    nombre_padre character varying(80),
+    nombre_madre character varying(80),
+    nombre_conyuge character varying(80),
+    nombre_responsable character varying(80),
+    direccion_responsable character varying(200),
+    telefono_responsable character varying(10),
+    id_parentesco_responsable integer,
+    id_doc_ide_responsable integer,
+    numero_doc_ide_responsable character varying(20),
+    nombre_proporciono_datos character varying(80),
+    id_doc_ide_proporciono_datos integer,
+    numero_doc_ide_propor_datos character varying(20),
+    observacion text,
+    conocido_por character varying(70),
+    id_siff integer,
+    estado integer DEFAULT 1 NOT NULL,
+    dispensarizacion_individual integer,
+    id_paciente_inicial bigint,
+    id_nacionalidad integer,
+    id_sexo integer NOT NULL,
+    id_parentesco_propor_datos integer,
+    fecha_registro timestamp without time zone,
+    id_user integer,
+    id_user_mod integer,
+    fecha_mod timestamp without time zone
+);
+
+
+ALTER TABLE public.mnt_paciente OWNER TO postgres;
+
+--
+-- TOC entry 2666 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: TABLE mnt_paciente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE mnt_paciente IS 'Datos generales del paciente';
+
+
+--
+-- TOC entry 2667 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id IS 'Este será considerado como el identificador único del paciente a nivel local; dentro de cada establecimiento';
+
+
+--
+-- TOC entry 2668 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.primer_nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.primer_nombre IS 'Primer nombre del paciente';
+
+
+--
+-- TOC entry 2669 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.segundo_nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.segundo_nombre IS 'Segundo nombre del paciente es opcional';
+
+
+--
+-- TOC entry 2670 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.tercer_nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.tercer_nombre IS 'Tercer nombre del paciente es opcional';
+
+
+--
+-- TOC entry 2671 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.primer_apellido; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.primer_apellido IS 'Primer apellido del paciente';
+
+
+--
+-- TOC entry 2672 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.segundo_apellido; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.segundo_apellido IS 'Segundo apellido del paciente es opcional';
+
+
+--
+-- TOC entry 2673 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.apellido_casada; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.apellido_casada IS 'Apellido de casada para paciente mujer';
+
+
+--
+-- TOC entry 2674 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.fecha_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.fecha_nacimiento IS 'Fecha de nacimiento del paciente';
+
+
+--
+-- TOC entry 2675 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.hora_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.hora_nacimiento IS 'Hora de nacimiento en caso se conociera';
+
+
+--
+-- TOC entry 2676 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_pais_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_pais_nacimiento IS 'Foránea que representa el pais de nacimiento';
+
+
+--
+-- TOC entry 2677 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_municipio_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_municipio_nacimiento IS 'Foránea que representa el municipio de nacimiento; sinonimo de Lugar de Nacimiento';
+
+
+--
+-- TOC entry 2678 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_estado_civil; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_estado_civil IS 'Foránea que representa el estado civil del paciente';
+
+
+--
+-- TOC entry 2679 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_doc_ide_paciente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_doc_ide_paciente IS 'Foránea que representa el tipo de documento de identidad del paciente';
+
+
+--
+-- TOC entry 2680 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.numero_doc_ide_paciente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.numero_doc_ide_paciente IS 'Número del documento de identidad seleccionado para el paciente';
+
+
+--
+-- TOC entry 2681 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_ocupacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_ocupacion IS 'Foránea que representa la ocupacion a la que se dedica el paciente';
+
+
+--
+-- TOC entry 2682 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.direccion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.direccion IS 'Direccion de donde vive el paciente';
+
+
+--
+-- TOC entry 2683 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.telefono_casa; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.telefono_casa IS 'Teléfono de contacto de casa en caso existiera';
+
+
+--
+-- TOC entry 2684 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_departamento_domicilio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_departamento_domicilio IS 'Foránea que representa el departamento de domicilio del paciente';
+
+
+--
+-- TOC entry 2685 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_municipio_domicilio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_municipio_domicilio IS 'Foránea que representa el municipio en donde vive el paciente';
+
+
+--
+-- TOC entry 2686 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_canton_domicilio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_canton_domicilio IS 'Foránea que representa el cantón en donde vive el paciente';
+
+
+--
+-- TOC entry 2687 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.area_geografica_domicilio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.area_geografica_domicilio IS 'Determina si vive en un área rural o urbana. 1=Rural; 2=Urbana';
+
+
+--
+-- TOC entry 2688 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.lugar_trabajo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.lugar_trabajo IS 'Lugar donde trabaja el paciente, En caso trabajara';
+
+
+--
+-- TOC entry 2689 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.telefono_trabajo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.telefono_trabajo IS 'Teléfono del trabajo, en caso existiera';
+
+
+--
+-- TOC entry 2690 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_area_cotizacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_area_cotizacion IS 'Foránea que representa el área de cotización';
+
+
+--
+-- TOC entry 2691 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.asegurado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.asegurado IS 'Para saber si es asegurado o beneficiario. Asegurado=True; Beneficiario=F';
+
+
+--
+-- TOC entry 2692 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.numero_afiliacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.numero_afiliacion IS 'Número de afiliación ya sea del asegurado o del beneficiario';
+
+
+--
+-- TOC entry 2693 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.cotizante; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.cotizante IS 'Para saber si el paciente es cotizante. True=Es cotizante; False=NO es cotizante';
+
+
+--
+-- TOC entry 2694 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.nombre_padre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.nombre_padre IS 'Nombre del padre, en caso lo conozca';
+
+
+--
+-- TOC entry 2695 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.nombre_madre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.nombre_madre IS 'Nombre de la madre, en caso lo conozca';
+
+
+--
+-- TOC entry 2696 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.nombre_conyuge; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.nombre_conyuge IS 'Nombre de conyuge en caso este acompañado';
+
+
+--
+-- TOC entry 2697 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.nombre_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.nombre_responsable IS 'Nombre del responsable del paciente';
+
+
+--
+-- TOC entry 2698 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.direccion_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.direccion_responsable IS 'Direccion del responsable';
+
+
+--
+-- TOC entry 2699 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.telefono_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.telefono_responsable IS 'Telefono del responsable del paciente en caso existiera';
+
+
+--
+-- TOC entry 2700 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_parentesco_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_parentesco_responsable IS 'Foránea que representa el parentesco del paciente con el responsable';
+
+
+--
+-- TOC entry 2701 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_doc_ide_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_doc_ide_responsable IS 'Foránea que representa el documento de identidad del responsable';
+
+
+--
+-- TOC entry 2702 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.numero_doc_ide_responsable; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.numero_doc_ide_responsable IS 'Número del documento de identidad seleccionado para el responsable';
+
+
+--
+-- TOC entry 2703 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.nombre_proporciono_datos; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.nombre_proporciono_datos IS 'Persona que proporciono los datos del paciente';
+
+
+--
+-- TOC entry 2704 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_doc_ide_proporciono_datos; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_doc_ide_proporciono_datos IS 'Foránea que representa el documento de identidad del que proporciono datos';
+
+
+--
+-- TOC entry 2705 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.numero_doc_ide_propor_datos; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.numero_doc_ide_propor_datos IS 'Número del documento de identidad seleccionado para el proporciono datos';
+
+
+--
+-- TOC entry 2706 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.observacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.observacion IS 'Observaciones del expediente del paciente, Fusiones de expedientes, etc';
+
+
+--
+-- TOC entry 2707 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.conocido_por; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.conocido_por IS 'Sobre-Nombre con el que es conocido popularmente el paciente';
+
+
+--
+-- TOC entry 2708 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_siff; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_siff IS 'Id de la ficha familiar. Proviene del sistema de ficha familiar';
+
+
+--
+-- TOC entry 2709 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.estado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.estado IS 'Estado del paciente. 1=Vivo; 2= Fallecido; 3=Inactivo ';
+
+
+--
+-- TOC entry 2710 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.dispensarizacion_individual; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.dispensarizacion_individual IS 'Grupo dispensarial en que se ubica en la ficha familiar: 1: Aparentemente sano; 2:Riesgo; 3: Enfermo; 4:Con discapacidad o secuela';
+
+
+--
+-- TOC entry 2711 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_paciente_inicial; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_paciente_inicial IS 'Número global del paciente';
+
+
+--
+-- TOC entry 2712 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_nacionalidad; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_nacionalidad IS 'Foránea para la nacionalidad del paciente';
+
+
+--
+-- TOC entry 2713 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_sexo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_sexo IS 'Foránea que representa el sexo del paciente';
+
+
+--
+-- TOC entry 2714 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_parentesco_propor_datos; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_parentesco_propor_datos IS 'Foránea que representa el parentesco del paciente con la persona que proporionó los datos';
+
+
+--
+-- TOC entry 2715 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.fecha_registro; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.fecha_registro IS 'Fecha en que fue creado el registro del paciente';
+
+
+--
+-- TOC entry 2716 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_user; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_user IS 'Foránea que representa el usuario que registro los datos por primera vez del paciente';
+
+
+--
+-- TOC entry 2717 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.id_user_mod; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.id_user_mod IS 'Foránea que representa el usuario que ha realizado la última modificación a los datos del paciente';
+
+
+--
+-- TOC entry 2718 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: COLUMN mnt_paciente.fecha_mod; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN mnt_paciente.fecha_mod IS 'Fecha de última modificación de datos de paciente
+';
+
+
+--
+-- TOC entry 187 (class 1259 OID 37584)
+-- Dependencies: 186 5
+-- Name: mnt_paciente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_paciente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_paciente_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2719 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: mnt_paciente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_paciente_id_seq OWNED BY mnt_paciente.id;
+
+
+--
+-- TOC entry 188 (class 1259 OID 37586)
+-- Dependencies: 2133 5
+-- Name: mnt_tipo_empleado; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mnt_tipo_empleado (
+    id integer NOT NULL,
+    codigo character varying(3) NOT NULL,
+    tipo character varying(50) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.mnt_tipo_empleado OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 37590)
+-- Dependencies: 188 5
+-- Name: mnt_tipo_empleado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mnt_tipo_empleado_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mnt_tipo_empleado_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2720 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: mnt_tipo_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mnt_tipo_empleado_id_seq OWNED BY mnt_tipo_empleado.id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 37592)
+-- Dependencies: 2135 2136 2137 2138 2139 5
+-- Name: sec_historial_clinico; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sec_historial_clinico (
+    id integer NOT NULL,
+    datosclinicos character varying(200) DEFAULT NULL::character varying,
+    fechaconsulta date,
+    idempleado character varying(7) DEFAULT NULL::character varying,
+    idsubservicio integer,
+    seguimientoconsultaext character(4) DEFAULT NULL::bpchar,
+    idusuarioreg smallint,
+    fechahorareg timestamp without time zone,
+    piloto character(1) DEFAULT NULL::bpchar,
+    ipaddress character varying(15) DEFAULT NULL::character varying,
+    idestablecimiento integer,
+    idnumeroexp character varying,
+    id_numero_expediente integer,
+    id_empleado integer,
+    idmodalidad integer
+);
+
+
+ALTER TABLE public.sec_historial_clinico OWNER TO postgres;
+
+--
+-- TOC entry 2721 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: TABLE sec_historial_clinico; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE sec_historial_clinico IS 'Historial clinico de pacientes atendidos por medicos';
+
+
+--
+-- TOC entry 2722 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.id IS 'Numero de expediente del paciente, conectado con mnt_expediente';
+
+
+--
+-- TOC entry 2723 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.fechaconsulta; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.fechaconsulta IS 'Fecha en la que se genero una nueva historia clinica';
+
+
+--
+-- TOC entry 2724 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.idempleado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.idempleado IS 'Medico que realizo la historia clinica';
+
+
+--
+-- TOC entry 2725 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.idsubservicio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.idsubservicio IS 'IdSubServicio/Especialidad en la que se genero la historia clnica, ahora conectado con ctl_atencion';
+
+
+--
+-- TOC entry 2726 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.idusuarioreg; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.idusuarioreg IS 'IdUsuario que ingreso el registro';
+
+
+--
+-- TOC entry 2727 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.fechahorareg; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.fechahorareg IS 'Fecha y hora de ingreso del registro';
+
+
+--
+-- TOC entry 2728 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.piloto; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.piloto IS 'Bandera para determinar si es una version piloto y/o ingreso de historias por medio de otro modulo (Farmacia)';
+
+
+--
+-- TOC entry 2729 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.ipaddress; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.ipaddress IS 'Direccion IP de la maquina en la que se realizo la transaccion';
+
+
+--
+-- TOC entry 2730 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: COLUMN sec_historial_clinico.idestablecimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_historial_clinico.idestablecimiento IS 'IdEstablecimiento, conectado con ctl_establecimiento';
+
+
+--
+-- TOC entry 191 (class 1259 OID 37603)
+-- Dependencies: 190 5
+-- Name: sec_historial_clinico_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_historial_clinico_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sec_historial_clinico_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2731 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: sec_historial_clinico_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE sec_historial_clinico_id_seq OWNED BY sec_historial_clinico.id;
+
+
+--
+-- TOC entry 192 (class 1259 OID 37605)
+-- Dependencies: 5
+-- Name: sec_ingreso; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sec_ingreso (
+    id integer NOT NULL,
+    id_expediente integer NOT NULL,
+    fecha date NOT NULL,
+    hora time without time zone NOT NULL,
+    id_aten_are_mod_estab integer NOT NULL,
+    id_ambiente_ingreso integer NOT NULL,
+    diagnostico text NOT NULL,
+    id_cie10 integer,
+    id_estado integer NOT NULL,
+    id_procedencia_ingreso integer NOT NULL,
+    id_circunstancia_ingreso integer NOT NULL,
+    id_tipo_accidente integer,
+    embarazada boolean,
+    semanas_amenorrea integer,
+    fecha_probable_parto date,
+    id_empleado integer,
+    id_establecimiento_referencia integer,
+    motivo_referencia text,
+    id_usuario_registra integer NOT NULL,
+    fecha_registro timestamp without time zone NOT NULL,
+    id_usuario_modifica integer,
+    fecha_modificacion timestamp without time zone,
+    tarjetas_entregadas integer,
+    responsable_tarjeta character varying(80)
+);
+
+
+ALTER TABLE public.sec_ingreso OWNER TO postgres;
+
+--
+-- TOC entry 2732 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: TABLE sec_ingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE sec_ingreso IS 'Contiene todos los ingresos que el paciente tenga en el establecimiento configurado';
+
+
+--
+-- TOC entry 2733 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id IS 'Llave primaria de la tabla';
+
+
+--
+-- TOC entry 2734 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_expediente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_expediente IS 'Foránea que representa el numero de expediente del paciente';
+
+
+--
+-- TOC entry 2735 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_aten_are_mod_estab; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_aten_are_mod_estab IS 'Especialidad en la que ingresado el paciente';
+
+
+--
+-- TOC entry 2736 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_ambiente_ingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_ambiente_ingreso IS 'Ambiente físico o servicio al que fue ingresado el paciente';
+
+
+--
+-- TOC entry 2737 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.diagnostico; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.diagnostico IS 'Diagnostico de ingreso del paciente al hospital';
+
+
+--
+-- TOC entry 2738 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_cie10; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_cie10 IS 'Foránea que representa el código CIE10 relacionado al ingreso del paciente';
+
+
+--
+-- TOC entry 2739 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_estado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_estado IS 'Foránea que representa estado del paciente';
+
+
+--
+-- TOC entry 2740 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_procedencia_ingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_procedencia_ingreso IS 'Foránea que representa la procedencia del ingreso del paciente';
+
+
+--
+-- TOC entry 2741 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_circunstancia_ingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_circunstancia_ingreso IS 'Foránea que representa la circunstancia del ingreso del paciente';
+
+
+--
+-- TOC entry 2742 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_tipo_accidente; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_tipo_accidente IS 'Foránea que representa el tipo de accidente por el cual fue ingresado el paciente. Si no fuese por accidente puede dejarse en blanco este campo';
+
+
+--
+-- TOC entry 2743 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.embarazada; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.embarazada IS 'Este valor representa si una mujer esta embarazada';
+
+
+--
+-- TOC entry 2744 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.semanas_amenorrea; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.semanas_amenorrea IS 'Número de semanas de amenorrea';
+
+
+--
+-- TOC entry 2745 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.fecha_probable_parto; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.fecha_probable_parto IS 'Fecha probable de parto para una mujer embaraza';
+
+
+--
+-- TOC entry 2746 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_establecimiento_referencia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_establecimiento_referencia IS 'Foránea que representa el establecimiento de donde viene referido el paciente';
+
+
+--
+-- TOC entry 2747 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.motivo_referencia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.motivo_referencia IS 'Mótivo de la referencia del paciente';
+
+
+--
+-- TOC entry 2748 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_usuario_registra; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_usuario_registra IS 'Foránea que representa el usuario que registra el ingreso';
+
+
+--
+-- TOC entry 2749 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.fecha_registro; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.fecha_registro IS 'Fecha y Hora en que se registra en el sistema el ingreso';
+
+
+--
+-- TOC entry 2750 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.id_usuario_modifica; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.id_usuario_modifica IS 'Foránea que representa el usuario que modifica el ingreso';
+
+
+--
+-- TOC entry 2751 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.fecha_modificacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.fecha_modificacion IS 'Fecha y Hora en que se modifica el ingreso';
+
+
+--
+-- TOC entry 2752 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.tarjetas_entregadas; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.tarjetas_entregadas IS 'Cantidad de tarjetas entregadas al pariente del ingresado';
+
+
+--
+-- TOC entry 2753 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: COLUMN sec_ingreso.responsable_tarjeta; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingreso.responsable_tarjeta IS 'Nombre de la persona a quien se entrega las tarjestas de visita';
+
+
+--
+-- TOC entry 193 (class 1259 OID 37611)
+-- Dependencies: 192 5
+-- Name: sec_ingreso_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_ingreso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sec_ingreso_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2754 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: sec_ingreso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE sec_ingreso_id_seq OWNED BY sec_ingreso.id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 37613)
+-- Dependencies: 2142 2143 2144 2145 2146 2147 2148 5
+-- Name: sec_ingresos_historial; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sec_ingresos_historial (
+    idingreso integer NOT NULL,
+    fechaingreso date NOT NULL,
+    horaingreso time without time zone NOT NULL,
+    idsubservicio integer DEFAULT 0 NOT NULL,
+    subespecialidad integer DEFAULT 0 NOT NULL,
+    diagnosticodeingreso character varying(100) DEFAULT ''::character varying NOT NULL,
+    tarjetasvisita character varying(255) DEFAULT NULL::character varying,
+    estado smallint DEFAULT (1)::smallint NOT NULL,
+    idusuarioreg smallint DEFAULT (0)::smallint NOT NULL,
+    idusuariomod smallint DEFAULT (0)::smallint NOT NULL,
+    fechahorareg timestamp without time zone NOT NULL,
+    fechahoramod timestamp without time zone NOT NULL,
+    idnumeroexp character varying
+);
+
+
+ALTER TABLE public.sec_ingresos_historial OWNER TO postgres;
+
+--
+-- TOC entry 2755 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: TABLE sec_ingresos_historial; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE sec_ingresos_historial IS 'HISTORICO DE INGRESO DE PACIENTE, DIAGNOSITCO, SERVICIO HOSP';
+
+
+--
+-- TOC entry 2756 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.idingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.idingreso IS 'Llave Primaria';
+
+
+--
+-- TOC entry 2757 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.fechaingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.fechaingreso IS 'Fecha que el paciente ingresa al hospital';
+
+
+--
+-- TOC entry 2758 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.horaingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.horaingreso IS 'Hora de ingreso hospitalario';
+
+
+--
+-- TOC entry 2759 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.idsubservicio; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.idsubservicio IS 'Servicio hospitalario donde es ingresado el paciente, ahora conecta con ctl_atencion';
+
+
+--
+-- TOC entry 2760 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.subespecialidad; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.subespecialidad IS 'Especialidad medica que ingresa al paciente';
+
+
+--
+-- TOC entry 2761 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.diagnosticodeingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.diagnosticodeingreso IS 'Diagnostico medico de ingreso';
+
+
+--
+-- TOC entry 2762 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.tarjetasvisita; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.tarjetasvisita IS 'Tarjetas de visitas generadas a familiares';
+
+
+--
+-- TOC entry 2763 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.estado; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.estado IS 'Estado del paciente';
+
+
+--
+-- TOC entry 2764 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.idusuarioreg; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.idusuarioreg IS 'IdUsuario que ingreso el registro';
+
+
+--
+-- TOC entry 2765 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.idusuariomod; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.idusuariomod IS 'IdUsuario que modifica el registro';
+
+
+--
+-- TOC entry 2766 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.fechahorareg; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.fechahorareg IS 'Fecha y hora que se ingresa el registro';
+
+
+--
+-- TOC entry 2767 (class 0 OID 0)
+-- Dependencies: 194
+-- Name: COLUMN sec_ingresos_historial.fechahoramod; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN sec_ingresos_historial.fechahoramod IS 'IdUsuario que modifica el registro';
+
+
+--
+-- TOC entry 195 (class 1259 OID 37626)
+-- Dependencies: 5 194
+-- Name: sec_ingresos_historial_idingreso_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_ingresos_historial_idingreso_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sec_ingresos_historial_idingreso_seq OWNER TO postgres;
+
+--
+-- TOC entry 2768 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: sec_ingresos_historial_idingreso_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE sec_ingresos_historial_idingreso_seq OWNED BY sec_ingresos_historial.idingreso;
+
+
+--
+-- TOC entry 2094 (class 2604 OID 37628)
+-- Dependencies: 162 161
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_area_atencion ALTER COLUMN id SET DEFAULT nextval('ctl_area_atencion_id_seq'::regclass);
+
+
+--
+-- TOC entry 2095 (class 2604 OID 37629)
+-- Dependencies: 164 163
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_atencion ALTER COLUMN id SET DEFAULT nextval('ctl_atencion_id_seq'::regclass);
+
+
+--
+-- TOC entry 2096 (class 2604 OID 37630)
+-- Dependencies: 166 165
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_departamento ALTER COLUMN id SET DEFAULT nextval('ctl_departamento_id_seq'::regclass);
+
+
+--
+-- TOC entry 2097 (class 2604 OID 37631)
+-- Dependencies: 168 167
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_establecimiento ALTER COLUMN id SET DEFAULT nextval('ctl_establecimiento_id_seq'::regclass);
+
+
+--
+-- TOC entry 2098 (class 2604 OID 37632)
+-- Dependencies: 170 169
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_municipio ALTER COLUMN id SET DEFAULT nextval('ctl_municipio_id_seq'::regclass);
+
+
+--
+-- TOC entry 2099 (class 2604 OID 37633)
+-- Dependencies: 172 171
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_pais ALTER COLUMN id SET DEFAULT nextval('ctl_pais_id_seq'::regclass);
+
+
+--
+-- TOC entry 2100 (class 2604 OID 37634)
+-- Dependencies: 174 173
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ctl_tipo_atencion ALTER COLUMN id SET DEFAULT nextval('ctl_tipo_atencion_id_seq'::regclass);
+
+
+--
+-- TOC entry 2123 (class 2604 OID 37635)
+-- Dependencies: 179 178
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_cargoempleados ALTER COLUMN id SET DEFAULT nextval('mnt_cargo_empleado_id_seq'::regclass);
+
+
+--
+-- TOC entry 2127 (class 2604 OID 37636)
+-- Dependencies: 181 180
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_empleado ALTER COLUMN id SET DEFAULT nextval('mnt_empleado_id_seq'::regclass);
+
+
+--
+-- TOC entry 2129 (class 2604 OID 37637)
+-- Dependencies: 185 182
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_expediente ALTER COLUMN id SET DEFAULT nextval('mnt_expediente_id_seq'::regclass);
+
+
+--
+-- TOC entry 2130 (class 2604 OID 37638)
+-- Dependencies: 184 183
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_expediente_establecimiento ALTER COLUMN id SET DEFAULT nextval('mnt_expediente_establecimiento_id_seq'::regclass);
+
+
+--
+-- TOC entry 2132 (class 2604 OID 37639)
+-- Dependencies: 187 186
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_paciente ALTER COLUMN id SET DEFAULT nextval('mnt_paciente_id_seq'::regclass);
+
+
+--
+-- TOC entry 2134 (class 2604 OID 37640)
+-- Dependencies: 189 188
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mnt_tipo_empleado ALTER COLUMN id SET DEFAULT nextval('mnt_tipo_empleado_id_seq'::regclass);
+
+
+--
+-- TOC entry 2140 (class 2604 OID 37641)
+-- Dependencies: 191 190
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sec_historial_clinico ALTER COLUMN id SET DEFAULT nextval('sec_historial_clinico_id_seq'::regclass);
+
+
+--
+-- TOC entry 2141 (class 2604 OID 37642)
+-- Dependencies: 193 192
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sec_ingreso ALTER COLUMN id SET DEFAULT nextval('sec_ingreso_id_seq'::regclass);
+
+
+--
+-- TOC entry 2149 (class 2604 OID 37643)
+-- Dependencies: 195 194
+-- Name: idingreso; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sec_ingresos_historial ALTER COLUMN idingreso SET DEFAULT nextval('sec_ingresos_historial_idingreso_seq'::regclass);
+
+
+--
+-- TOC entry 2472 (class 0 OID 37478)
+-- Dependencies: 161 2570
+-- Data for Name: ctl_area_atencion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ctl_area_atencion (id, nombre) FROM stdin;
+1	Consulta Externa
+2	Emergencia
+3	Hospitalización
+\.
+
+
+--
+-- TOC entry 2769 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: ctl_area_atencion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ctl_area_atencion_id_seq', 3, true);
