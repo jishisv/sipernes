@@ -10,3 +10,75 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoActividad, MinsalSipernesReportesBundle:ReportePrueba2]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 2 Actividad}
+
+    minsal_sipernes_reportes.admin.enf_historico_intervencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoIntervencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 3}
+
+    minsal_sipernes_reportes.admin.enf_hitorico_diagnostico:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHitoricoDiagnosticoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHitoricoDiagnostico, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 4}
+
+    minsal_sipernes_reportes.admin.enf_historico_dosis:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoDosisAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoDosis, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 5}
+
+    minsal_sipernes_reportes.admin.enf_historico_nota:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoNotaAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoNota, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 6}
+
+    minsal_sipernes_reportes.admin.enf_historico_inventario:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoInventario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 7}
+
+    minsal_sipernes_reportes.admin.enf_traza_capacitacion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaCapacitacionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaCapacitacion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 8}
+
+    minsal_sipernes_reportes.admin.enf_traza_intervencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaIntervencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 9}
+
+    minsal_sipernes_reportes.admin.enf_traza_diagnostico:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDiagnosticoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDiagnostico, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 10}
+
+    minsal_sipernes_reportes.admin.enf_traza_actividad:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaActividadAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaActividad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 11}
+
+    minsal_sipernes_reportes.admin.enf_traza_dosis:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDosisAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDosis, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 13}
+
+    minsal_sipernes_reportes.admin.enf_traza_nota:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaNotaAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaNota, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 14}
+
+    minsal_sipernes_reportes.admin.enf_traza_inventario:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaInventario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 15}
