@@ -1,0 +1,188 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.13
+-- Dumped by pg_dump version 9.1.13
+-- Started on 2015-01-20 02:27:30 CST
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 259 (class 3079 OID 11644)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2577 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 161 (class 1259 OID 37478)
+-- Dependencies: 5
+-- Name: ctl_area_atencion; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_area_atencion (
+    id integer NOT NULL,
+    nombre character varying(25)
+);
+
+
+ALTER TABLE public.ctl_area_atencion OWNER TO postgres;
+
+--
+-- TOC entry 2578 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: TABLE ctl_area_atencion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_area_atencion IS 'Contiene las áreas de atención al paciente en que  se divide un establecimiento';
+
+
+--
+-- TOC entry 2579 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: COLUMN ctl_area_atencion.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_area_atencion.id IS 'Llave primaria';
+
+
+--
+-- TOC entry 2580 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: COLUMN ctl_area_atencion.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_area_atencion.nombre IS 'Nombre del área de atención';
+
+
+--
+-- TOC entry 162 (class 1259 OID 37481)
+-- Dependencies: 161 5
+-- Name: ctl_area_atencion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_area_atencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_area_atencion_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2581 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: ctl_area_atencion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_area_atencion_id_seq OWNED BY ctl_area_atencion.id;
+
+
+--
+-- TOC entry 163 (class 1259 OID 37483)
+-- Dependencies: 5
+-- Name: ctl_atencion; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ctl_atencion (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    id_atencion_padre integer,
+    id_tipo_atencion integer,
+    codigo_busqueda character varying(6)
+);
+
+
+ALTER TABLE public.ctl_atencion OWNER TO postgres;
+
+--
+-- TOC entry 2582 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: TABLE ctl_atencion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE ctl_atencion IS 'Contiene todas la atenciones que un paciente puede recibir como especiales u otras atenciones en salud';
+
+
+--
+-- TOC entry 2583 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: COLUMN ctl_atencion.id; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_atencion.id IS 'Llave primaria de la tabla';
+
+
+--
+-- TOC entry 2584 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: COLUMN ctl_atencion.nombre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_atencion.nombre IS 'Nombre de la atención a recibir por el paciente';
+
+
+--
+-- TOC entry 2585 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: COLUMN ctl_atencion.id_atencion_padre; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_atencion.id_atencion_padre IS 'Llave recursiva para determinar a que área superior pertenece.';
+
+
+--
+-- TOC entry 2586 (class 0 OID 0)
+-- Dependencies: 163
+-- Name: COLUMN ctl_atencion.id_tipo_atencion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN ctl_atencion.id_tipo_atencion IS 'Foránea para representar el tipo de atención';
+
+
+--
+-- TOC entry 164 (class 1259 OID 37486)
+-- Dependencies: 5 163
+-- Name: ctl_atencion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ctl_atencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ctl_atencion_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2587 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: ctl_atencion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ctl_atencion_id_seq OWNED BY ctl_atencion.id;
