@@ -16,11 +16,11 @@ class EnfCtlFinanciamientoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('nombreFinanciamiento')
-            ->add('usuarioFinan')
-            ->add('fechaIngresoFinan')
-            ->add('fechaModificacionFinan')
+            //->add('id')
+            ->add('nombreFinanciamiento', null, array('label' => 'Financiado por'))
+            ->add('usuarioFinan', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoFinan', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionFinan')
             ->add('estadoFinanciamiento')
         ;
     }
@@ -32,10 +32,10 @@ class EnfCtlFinanciamientoAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('nombreFinanciamiento')
-            ->add('estadoFinanciamiento')
-            ->add('usuarioFinan')
-            ->add('fechaIngresoFinan')
+            ->add('nombreFinanciamiento', null, array('label' => 'Financiado por'))
+            ->add('estadoFinanciamiento', null, array('label' => 'Activo','required' => false))
+            ->add('usuarioFinan', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoFinan', null, array('label' => 'Creado el'))
             //->add('fechaModificacionFinan') 
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -54,7 +54,7 @@ class EnfCtlFinanciamientoAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('nombreFinanciamiento', 'text', array('label' => 'Nombre de empresa a financiar','max_length' => 150,'required' => true))
+            ->add('nombreFinanciamiento', 'text', array('label' => 'Digite el nombre de la empresa','max_length' => 150,'required' => true))
             //->add('usuarioFinan')
             //->add('fechaIngresoFinan')
             //->add('fechaModificacionFinan')
@@ -69,11 +69,11 @@ class EnfCtlFinanciamientoAdmin extends Admin
     {
         $showMapper
            // ->add('id')
-            ->add('nombreFinanciamiento')
-            ->add('usuarioFinan')
-            ->add('fechaIngresoFinan')
+            ->add('nombreFinanciamiento', null, array('label' => 'Financiado por'))
+            ->add('usuarioFinan', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoFinan', null, array('label' => 'Creado el'))
             //->add('fechaModificacionFinan')
-            ->add('estadoFinanciamiento')
+            ->add('estadoFinanciamiento', null, array('label' => 'Activo','required' => false))
         ;
     }
     

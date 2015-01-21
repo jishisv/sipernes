@@ -20,8 +20,8 @@ class EnfCtlActividadAdmin extends Admin
             ->add('nombreActividad', null, array('label' => 'Nombre de actividad'))
             ->add('estadoAct', null, array('label' => 'Activo'))
             ->add('usuarioIngresoCatAct', null, array('label' => 'Creado por'))
-            ->add('fechaIngresoCatAct', null, array('label' => 'Fecha de creacion'))
-            ->add('fechaModificacionCatAct', null, array('label' => 'Fecha de modificacion'))
+            ->add('fechaIngresoCatAct', null, array('label' => 'Fecha de creación'))
+            //->add('fechaModificacionCatAct', null, array('label' => 'Fecha de modificacion'))
         ;
     }
 
@@ -56,7 +56,7 @@ class EnfCtlActividadAdmin extends Admin
             //->add('id')
             
             //->add('nombreActividad')
-            ->add('nombreActividad', 'text', array('label' => 'Escriba el nombre de la actividad','max_length' => 150,'required' => true))
+            ->add('nombreActividad', 'text', array('label' => 'Digite el nombre de tipo de actividad','max_length' => 150,'required' => true))
                     
             
             //->add('estadoAct')
@@ -78,8 +78,8 @@ class EnfCtlActividadAdmin extends Admin
             ->add('nombreActividad', 'text', array('label' => 'Nombre de actividad'))
             ->add('estadoAct', null, array('label' => 'Activo'))
             ->add('usuarioIngresoCatAct', 'text', array('label' => 'Creado por'))
-            ->add('fechaIngresoCatAct', 'date', array('label' => 'Fecha de creacion'))
-            ->add('fechaModificacionCatAct', 'date', array('label' => 'Fecha de modificacion'))
+            ->add('fechaIngresoCatAct', 'date', array('label' => 'Fecha de creación'))
+            //->add('fechaModificacionCatAct', 'date', array('label' => 'Fecha de modificacion'))
         ;
     }
     

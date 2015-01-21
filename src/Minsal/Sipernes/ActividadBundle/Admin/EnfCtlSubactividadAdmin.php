@@ -19,12 +19,14 @@ class EnfCtlSubactividadAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('idActividad', null, array('label' => 'Nombre de actividad'))
-            ->add('nombreSubactividad',null, array('label' => 'Nombre de sub-actividad'))
-            ->add('fechaIngresoSubact',null, array('label' => 'Fecha de creacion'))
-            ->add('fechaModificacionSubact',null, array('label' => 'Fecha de modificacion'))
-            ->add('usuarioIngresoSubact',null, array('label' => 'Creado por'))
+            ->add('idActividad', null, array('label' => 'Tipo Actividad'))
+            ->add('nombreSubactividad',null, array('label' => 'Actividad'))
             ->add('estadoSubact',null, array('label' => 'Activo'))
+            ->add('usuarioIngresoSubact',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoSubact',null, array('label' => 'Creado el'))
+            //->add('fechaModificacionSubact',null, array('label' => 'Fecha de modificacion'))
+            
+            
             //->add('cantidadSubact',null, array('label' => 'Cantidad sub-actividades'))
             //->add('tiempoSubact',null, array('label' => 'Tiempo sub-actividades'))
         ;
@@ -37,13 +39,13 @@ class EnfCtlSubactividadAdmin extends Admin
     {
         $listMapper
              //->add('id')
-            ->add('idActividad', 'text', array('label' => 'Nombre actividad'))
-            ->add('nombreSubactividad', 'text', array('label' => 'Nombre sub-actividad'))
-            ->add('cantidadSubact',null, array('label' => 'Cantidad sub-actividades'))
-            ->add('tiempoSubact','time', array('label' => 'Tiempo sub-actividades'))
+            ->add('idActividad', 'text', array('label' => 'Tipo Actividad'))
+            ->add('nombreSubactividad', 'text', array('label' => 'Actividad'))
+            ->add('cantidadSubact',null, array('label' => 'Cantidad'))
+            ->add('tiempoSubact','time', array('label' => 'Tiempo'))
             ->add('estadoSubact',null, array('label' => 'Activo'))
             ->add('usuarioIngresoSubact','text', array('label' => 'Creado por'))
-            ->add('fechaIngresoSubact','date', array('label' => 'Fecha de creacion'))
+            ->add('fechaIngresoSubact','date', array('label' => 'Creado el'))
             //->add('fechaModificacionSubact','date', array('label' => 'Fecha de modificacion'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -62,18 +64,18 @@ class EnfCtlSubactividadAdmin extends Admin
     {
         $formMapper
              //->add('id')
-            ->add('idActividad', null, array('label' => 'Seleccione Actividad','required' => true,
+            ->add('idActividad', null, array('label' => 'Seleccione tipo de Actividad','required' => true,
             'class' => 'MinsalSipernesBundle:EnfCtlActividad',
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerActivActivo();
             }))
-            ->add('nombreSubactividad', 'text', array('label' => 'Escriba el nombre de la sub-actividad','max_length' => 150,'required' => true))
+            ->add('nombreSubactividad', 'text', array('label' => 'Digite el nombre de la actividad','max_length' => 150,'required' => true))
             //->add('fechaIngresoSubact')
             //->add('fechaModificacionSubact')
-            //->add('usuarioIngresoSubact')
+            //->add('usuarioIngresoSubact')          
+            ->add('cantidadSubact', null, array('label' => 'Cantidad de actividades esperadas ','max_length' => 10,'required' => true))
+            ->add('tiempoSubact', 'time', array('label' => 'Tiempo en realizar las actividades','required' => true))
             ->add('estadoSubact', null, array('label' => 'Activo','required' => False))
-            ->add('cantidadSubact', null, array('label' => 'Cantidad de sub-actividades realizadas','max_length' => 10,'required' => true))
-            ->add('tiempoSubact', 'time', array('label' => 'Tiempo en realizar las sub-actividad','required' => true))
         ;
     }
 
@@ -84,14 +86,14 @@ class EnfCtlSubactividadAdmin extends Admin
     {
         $showMapper
              //->add('id')
-            ->add('idActividad', 'text', array('label' => 'Nombre Actividad'))
-            ->add('nombreSubactividad', 'text', array('label' => 'Nombre Subactividad'))
-            ->add('cantidadSubact',null, array('label' => 'Cantidad sub-actividades'))
-            ->add('tiempoSubact','time', array('label' => 'Tiempo sub-actividades'))
+            ->add('idActividad', 'text', array('label' => 'Tipo Actividad'))
+            ->add('nombreSubactividad', 'text', array('label' => 'Actividad'))
+            ->add('cantidadSubact',null, array('label' => 'Cantidad de actividades esperadas'))
+            ->add('tiempoSubact','time', array('label' => 'Tiempo en realizar las actividades'))
             ->add('estadoSubact',null, array('label' => 'Activo'))
             ->add('usuarioIngresoSubact','text', array('label' => 'Creado por'))
-            ->add('fechaIngresoSubact','date', array('label' => 'Fecha de creacion'))
-            ->add('fechaModificacionSubact','date', array('label' => 'Fecha de modificacion'))
+            ->add('fechaIngresoSubact','date', array('label' => 'Creado el'))
+            //->add('fechaModificacionSubact','date', array('label' => 'Fecha de modificacion'))
         ;
     }
     

@@ -36,14 +36,14 @@ class EnfMtlActividadAdmin extends Admin {
         $listMapper
                 //->add('id')
                 ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad'))      
-                ->add('idEmpCorr', null, array('label' => 'Numero de empleado'))
-                ->add('idExpediente',  null, array('label' => 'Expediente'))
+                ->add('idEmpCorr', null, array('label' => 'Numero de Empleado'))
+                ->add('idExpediente',  null, array('label' => 'Numero de Expediente'))
                 ->add('idSubactividad',  null, array('label' => 'Actividad'))
                 //->add('estadoMtlAct', null, array('label' => 'Activo'))
                 //->add('cantidadActEnf', null, array('label' => 'Cantidad'))
                 //->add('tiempoActEnf', null, array('label' => 'Tiempo'))
                 ->add('usuarioIngresoAct', null, array('label' => 'Creado por'))
-                ->add('fechaIngresoAct', null, array('label' => 'Fecha de creación'))
+                ->add('fechaIngresoAct', null, array('label' => 'Creado el'))
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
