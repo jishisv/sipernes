@@ -253,5 +253,4 @@ class MntExpediente
     public function __toString() {
         return $this->numero ? $this->numero : '';
     }
-    
 }

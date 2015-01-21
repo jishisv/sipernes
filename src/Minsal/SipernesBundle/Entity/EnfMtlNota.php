@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfMtlNota
  *
- * @ORM\Table(name="enf_mtl_nota", indexes={@ORM\Index(name="IDX_C7BCADA15F5B16B6", columns={"id_ctl_nota"}), @ORM\Index(name="IDX_C7BCADA1E007AEB5", columns={"id_sec_histo_clin"}), @ORM\Index(name="IDX_C7BCADA19B8420B7", columns={"id_sec_ingreso"})})
+ * @ORM\Table(name="enf_mtl_nota", indexes={@ORM\Index(name="IDX_C7BCADA15F5B16B6", columns={"id_ctl_nota"}), @ORM\Index(name="IDX_C7BCADA13FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_C7BCADA1701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class EnfMtlNota
@@ -68,24 +68,24 @@ class EnfMtlNota
     private $idCtlNota;
 
     /**
-     * @var \SecHistorialClinico
+     * @var \MntEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="SecHistorialClinico")
+     * @ORM\ManyToOne(targetEntity="MntEmpleado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_sec_histo_clin", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_emp_corr", referencedColumnName="id")
      * })
      */
-    private $idSecHistoClin;
+    private $idEmpCorr;
 
     /**
-     * @var \SecIngreso
+     * @var \MntExpediente
      *
-     * @ORM\ManyToOne(targetEntity="SecIngreso")
+     * @ORM\ManyToOne(targetEntity="MntExpediente")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_sec_ingreso", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
      * })
      */
-    private $idSecIngreso;
+    private $idExpediente;
 
 
 
@@ -238,48 +238,48 @@ class EnfMtlNota
     }
 
     /**
-     * Set idSecHistoClin
+     * Set idEmpCorr
      *
-     * @param \Minsal\SipernesBundle\Entity\SecHistorialClinico $idSecHistoClin
+     * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
      * @return EnfMtlNota
      */
-    public function setIdSecHistoClin(\Minsal\SipernesBundle\Entity\SecHistorialClinico $idSecHistoClin = null)
+    public function setIdEmpCorr(\Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr = null)
     {
-        $this->idSecHistoClin = $idSecHistoClin;
+        $this->idEmpCorr = $idEmpCorr;
 
         return $this;
     }
 
     /**
-     * Get idSecHistoClin
+     * Get idEmpCorr
      *
-     * @return \Minsal\SipernesBundle\Entity\SecHistorialClinico 
+     * @return \Minsal\SipernesBundle\Entity\MntEmpleado 
      */
-    public function getIdSecHistoClin()
+    public function getIdEmpCorr()
     {
-        return $this->idSecHistoClin;
+        return $this->idEmpCorr;
     }
 
     /**
-     * Set idSecIngreso
+     * Set idExpediente
      *
-     * @param \Minsal\SipernesBundle\Entity\SecIngreso $idSecIngreso
+     * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
      * @return EnfMtlNota
      */
-    public function setIdSecIngreso(\Minsal\SipernesBundle\Entity\SecIngreso $idSecIngreso = null)
+    public function setIdExpediente(\Minsal\SipernesBundle\Entity\MntExpediente $idExpediente = null)
     {
-        $this->idSecIngreso = $idSecIngreso;
+        $this->idExpediente = $idExpediente;
 
         return $this;
     }
 
     /**
-     * Get idSecIngreso
+     * Get idExpediente
      *
-     * @return \Minsal\SipernesBundle\Entity\SecIngreso 
+     * @return \Minsal\SipernesBundle\Entity\MntExpediente 
      */
-    public function getIdSecIngreso()
+    public function getIdExpediente()
     {
-        return $this->idSecIngreso;
+        return $this->idExpediente;
     }
 }

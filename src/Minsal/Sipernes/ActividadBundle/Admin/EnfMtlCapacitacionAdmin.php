@@ -19,7 +19,8 @@ class EnfMtlCapacitacionAdmin extends Admin
             //->add('id')
             //->add('fechaIngresoCap')
             ->add('fechaCapacitacion', null, array('label' => 'Fecha capacitación'))
-            ->add('usuarioCapacitacion', null, array('label' => 'Numero Enfermera'))
+            ->add('idEmpCorr', null, array('label' => 'Numero de Empleado'))
+            //->add('usuarioCapacitacion', null, array('label' => 'Ingresado por'))
             ->add('temaCapacitacion', null, array('label' => 'Tema','required' => false))
             //->add('asistenciaCapacitacion')
             //->add('montoFinanciamientoCap')
@@ -38,7 +39,7 @@ class EnfMtlCapacitacionAdmin extends Admin
         $listMapper
             //->add('id')
             ->add('fechaCapacitacion', null, array('label' => 'Fecha capacitación'))
-            ->add('usuarioCapacitacion', null, array('label' => 'Numero Enfermera'))
+            ->add('idEmpCorr', null, array('label' => 'Numero de Empleado'))
             ->add('temaCapacitacion', null, array('label' => 'Tema'))
             ->add('idFinanciamiento', null, array('label' => 'Financiado'))
             //->add('montoFinanciamientoCap', null, array('label' => 'Monto'))
@@ -46,7 +47,8 @@ class EnfMtlCapacitacionAdmin extends Admin
             //->add('asistenciaCapacitacion', null, array('label' => 'Asistencia'))
             //->add('horasDuracionCap', null, array('label' => 'Duración'))
             ->add('establecimientoCap', null, array('label' => 'Establecimiento'))
-            //->add('estadoCapacitacion', null, array('label' => 'Activo'))        
+            //->add('estadoCapacitacion', null, array('label' => 'Activo'))
+            ->add('usuarioCapacitacion', null, array('label' => 'Ingresado por'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -66,7 +68,8 @@ class EnfMtlCapacitacionAdmin extends Admin
             //->add('id')   
             //->add('fechaIngresoCap')
             ->add('fechaCapacitacion', null, array('label' => 'Fecha capacitación','required' => true))
-            ->add('usuarioCapacitacion', null, array('label' => 'Numero de enfermera','required' => true))
+            ->add('idEmpCorr', null, array('label' => 'Numero de empleado','required' => true))
+           // ->add('usuarioCapacitacion')
             ->add('temaCapacitacion', null, array('label' => 'Tema','required' => true))
             ->add('idFinanciamiento', null, array('label' => 'Financiado','required' => true))
             ->add('montoFinanciamientoCap', null, array('label' => 'Monto','required' => true))
@@ -86,7 +89,8 @@ class EnfMtlCapacitacionAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('fechaCapacitacion', null, array('label' => 'Fecha capacitación'))
-            ->add('usuarioCapacitacion', null, array('label' => 'Numero Enfermera'))
+            ->add('idEmpCorr', null, array('label' => 'Numero de Empleado'))
+            ->add('usuarioCapacitacion', null, array('label' => 'Ingresado por'))
             ->add('temaCapacitacion', null, array('label' => 'Tema'))
             ->add('idFinanciamiento', null, array('label' => 'Financiado'))    
             ->add('asistenciaCapacitacion', null, array('label' => 'Asistencia'))
@@ -107,7 +111,9 @@ class EnfMtlCapacitacionAdmin extends Admin
      */
 
     public function prePersist($EnfMtlCapacitacion) {
-        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfMtlCapacitacion->setusuarioCapacitacion($user);
+        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());      
         $EnfMtlCapacitacion->setestadoCapacitacion(true);
         $EnfMtlCapacitacion->setestablecimientoCap('Hospital Nacional Antiguo Cuscatlán');
     }

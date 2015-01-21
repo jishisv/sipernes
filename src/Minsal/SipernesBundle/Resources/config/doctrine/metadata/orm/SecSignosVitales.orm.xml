@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecSignosVitales" table="sec_signos_vitales">
+    <indexes>
+      <index name="IDX_9222FCE33FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_9222FCE3701624C4" columns="id_expediente"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="frecuenciaCardiaca" type="string" column="frecuencia_cardiaca" length="10" nullable="true"/>
+    <field name="presionArterial" type="string" column="presion_arterial" length="10" nullable="true"/>
+    <field name="frecuenciaRespiratoria" type="string" column="frecuencia_respiratoria" length="6" nullable="true"/>
+    <field name="peso" type="float" column="peso" precision="10" scale="0" nullable="true"/>
+    <field name="talla" type="float" column="talla" precision="10" scale="0" nullable="true"/>
+    <field name="temperatura" type="float" column="temperatura" precision="10" scale="0" nullable="true"/>
+    <field name="observacionSig" type="string" column="observacion_sig" length="500" nullable="true"/>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

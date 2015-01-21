@@ -65,9 +65,9 @@ class EnfClaseAdmin extends Admin
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerDomActivo();
             }))
-            ->add('codClase')
-            ->add('nombreClase')
-            ->add('estadoClase')
+            ->add('codClase', null, array('label' => 'Código de Clase','required' => true))
+            ->add('nombreClase', null, array('label' => 'Nombre de Clase','required' => true))
+            ->add('estadoClase', null, array('label' => 'Activo','required' => false))
             //->add('fechaIngresoClase')
             //->add('fechaModificacionClase')
            // ->add('usuarioClase')

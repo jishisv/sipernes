@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfIndicacionMedica
  *
- * @ORM\Table(name="enf_indicacion_medica", indexes={@ORM\Index(name="IDX_F91941EABFAE4CCD", columns={"id_registro_nota"})})
+ * @ORM\Table(name="enf_indicacion_medica", indexes={@ORM\Index(name="IDX_F91941EA3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_F91941EA701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class EnfIndicacionMedica
@@ -72,14 +72,31 @@ class EnfIndicacionMedica
     private $fechaModInd;
 
     /**
-     * @var \EnfMtlNota
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="EnfMtlNota")
+     * @ORM\Column(name="observacion_ind", type="string", length=500, nullable=true)
+     */
+    private $observacionInd;
+
+    /**
+     * @var \MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="MntEmpleado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_registro_nota", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_emp_corr", referencedColumnName="id")
      * })
      */
-    private $idRegistroNota;
+    private $idEmpCorr;
+
+    /**
+     * @var \MntExpediente
+     *
+     * @ORM\ManyToOne(targetEntity="MntExpediente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
+     * })
+     */
+    private $idExpediente;
 
 
 
@@ -255,25 +272,71 @@ class EnfIndicacionMedica
     }
 
     /**
-     * Set idRegistroNota
+     * Set observacionInd
      *
-     * @param \Minsal\SipernesBundle\Entity\EnfMtlNota $idRegistroNota
+     * @param string $observacionInd
      * @return EnfIndicacionMedica
      */
-    public function setIdRegistroNota(\Minsal\SipernesBundle\Entity\EnfMtlNota $idRegistroNota = null)
+    public function setObservacionInd($observacionInd)
     {
-        $this->idRegistroNota = $idRegistroNota;
+        $this->observacionInd = $observacionInd;
 
         return $this;
     }
 
     /**
-     * Get idRegistroNota
+     * Get observacionInd
      *
-     * @return \Minsal\SipernesBundle\Entity\EnfMtlNota 
+     * @return string 
      */
-    public function getIdRegistroNota()
+    public function getObservacionInd()
     {
-        return $this->idRegistroNota;
+        return $this->observacionInd;
+    }
+
+    /**
+     * Set idEmpCorr
+     *
+     * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
+     * @return EnfIndicacionMedica
+     */
+    public function setIdEmpCorr(\Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr = null)
+    {
+        $this->idEmpCorr = $idEmpCorr;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpCorr
+     *
+     * @return \Minsal\SipernesBundle\Entity\MntEmpleado 
+     */
+    public function getIdEmpCorr()
+    {
+        return $this->idEmpCorr;
+    }
+
+    /**
+     * Set idExpediente
+     *
+     * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
+     * @return EnfIndicacionMedica
+     */
+    public function setIdExpediente(\Minsal\SipernesBundle\Entity\MntExpediente $idExpediente = null)
+    {
+        $this->idExpediente = $idExpediente;
+
+        return $this;
+    }
+
+    /**
+     * Get idExpediente
+     *
+     * @return \Minsal\SipernesBundle\Entity\MntExpediente 
+     */
+    public function getIdExpediente()
+    {
+        return $this->idExpediente;
     }
 }

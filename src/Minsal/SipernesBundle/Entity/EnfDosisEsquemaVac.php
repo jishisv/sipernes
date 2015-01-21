@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfDosisEsquemaVac
  *
- * @ORM\Table(name="enf_dosis_esquema_vac", indexes={@ORM\Index(name="IDX_5BA20B9FBF16C07B", columns={"id_componente"}), @ORM\Index(name="IDX_5BA20B9F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5BA20B9FEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_5BA20B9F6D7590AD", columns={"id_movimiento"}), @ORM\Index(name="IDX_5BA20B9F701624C4", columns={"id_expediente"})})
+ * @ORM\Table(name="enf_dosis_esquema_vac", indexes={@ORM\Index(name="IDX_5BA20B9FBF16C07B", columns={"id_componente"}), @ORM\Index(name="IDX_5BA20B9F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5BA20B9FEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_5BA20B9F6D7590AD", columns={"id_movimiento"}), @ORM\Index(name="IDX_5BA20B9F701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5BA20B9F1D8176FA", columns={"id_modalidad"})})
  * @ORM\Entity
  */
 class EnfDosisEsquemaVac
@@ -120,6 +120,16 @@ class EnfDosisEsquemaVac
      * })
      */
     private $idExpediente;
+
+    /**
+     * @var \EnfModalidad
+     *
+     * @ORM\ManyToOne(targetEntity="EnfModalidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_modalidad", referencedColumnName="id")
+     * })
+     */
+    private $idModalidad;
 
 
 
@@ -407,5 +417,28 @@ class EnfDosisEsquemaVac
     public function getIdExpediente()
     {
         return $this->idExpediente;
+    }
+
+    /**
+     * Set idModalidad
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfModalidad $idModalidad
+     * @return EnfDosisEsquemaVac
+     */
+    public function setIdModalidad(\Minsal\SipernesBundle\Entity\EnfModalidad $idModalidad = null)
+    {
+        $this->idModalidad = $idModalidad;
+
+        return $this;
+    }
+
+    /**
+     * Get idModalidad
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfModalidad 
+     */
+    public function getIdModalidad()
+    {
+        return $this->idModalidad;
     }
 }

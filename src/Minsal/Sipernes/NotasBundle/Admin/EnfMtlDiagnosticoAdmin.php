@@ -17,13 +17,14 @@ class EnfMtlDiagnosticoAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))
             ->add('idExpediente',null, array('label' => 'Expediente'))
             ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
             ->add('observacion1',null, array('label' => 'Observación'))
             ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag')
+            //->add('usuarioIngresoDiag')
         ;
     }
 
@@ -41,6 +42,7 @@ class EnfMtlDiagnosticoAdmin extends Admin
             ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag')
+            //->add('usuarioIngresoDiag')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -65,6 +67,7 @@ class EnfMtlDiagnosticoAdmin extends Admin
             //->add('fechaIngresoDiag')
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag', null, array('label' => 'Activo','required' => False))
+            //->add('usuarioIngresoDiag')
         ;
     }
 
@@ -82,6 +85,7 @@ class EnfMtlDiagnosticoAdmin extends Admin
             ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag',null, array('label' => 'Activo'))
+            ->add('usuarioIngresoDiag')
         ;
     }
     
@@ -112,6 +116,8 @@ class EnfMtlDiagnosticoAdmin extends Admin
      */
  
     public function prePersist($EnfMtlDiagnostico) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfMtlDiagnostico->setusuarioIngresoDiag($user);
         $EnfMtlDiagnostico->setfechaIngresoDiag(new \DateTime());
         $EnfMtlDiagnostico->setestadoMtlDiag(true);
     }

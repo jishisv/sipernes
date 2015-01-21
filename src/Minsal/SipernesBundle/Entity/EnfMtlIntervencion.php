@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfMtlIntervencion
  *
- * @ORM\Table(name="enf_mtl_intervencion", indexes={@ORM\Index(name="IDX_C272BD1F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_C272BD1F3F170EFF", columns={"id_intervencion"}), @ORM\Index(name="IDX_C272BD1F9B8420B7", columns={"id_sec_ingreso"})})
+ * @ORM\Table(name="enf_mtl_intervencion", indexes={@ORM\Index(name="IDX_C272BD1F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_C272BD1F3F170EFF", columns={"id_intervencion"}), @ORM\Index(name="IDX_C272BD1F701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class EnfMtlIntervencion
@@ -58,6 +58,13 @@ class EnfMtlIntervencion
     private $estadoMtlInterv;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_interv", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoInterv;
+
+    /**
      * @var \MntEmpleado
      *
      * @ORM\ManyToOne(targetEntity="MntEmpleado")
@@ -78,14 +85,14 @@ class EnfMtlIntervencion
     private $idIntervencion;
 
     /**
-     * @var \SecIngreso
+     * @var \MntExpediente
      *
-     * @ORM\ManyToOne(targetEntity="SecIngreso")
+     * @ORM\ManyToOne(targetEntity="MntExpediente")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_sec_ingreso", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
      * })
      */
-    private $idSecIngreso;
+    private $idExpediente;
 
 
 
@@ -215,6 +222,29 @@ class EnfMtlIntervencion
     }
 
     /**
+     * Set usuarioIngresoInterv
+     *
+     * @param string $usuarioIngresoInterv
+     * @return EnfMtlIntervencion
+     */
+    public function setUsuarioIngresoInterv($usuarioIngresoInterv)
+    {
+        $this->usuarioIngresoInterv = $usuarioIngresoInterv;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoInterv
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoInterv()
+    {
+        return $this->usuarioIngresoInterv;
+    }
+
+    /**
      * Set idEmpCorr
      *
      * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
@@ -261,25 +291,25 @@ class EnfMtlIntervencion
     }
 
     /**
-     * Set idSecIngreso
+     * Set idExpediente
      *
-     * @param \Minsal\SipernesBundle\Entity\SecIngreso $idSecIngreso
+     * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
      * @return EnfMtlIntervencion
      */
-    public function setIdSecIngreso(\Minsal\SipernesBundle\Entity\SecIngreso $idSecIngreso = null)
+    public function setIdExpediente(\Minsal\SipernesBundle\Entity\MntExpediente $idExpediente = null)
     {
-        $this->idSecIngreso = $idSecIngreso;
+        $this->idExpediente = $idExpediente;
 
         return $this;
     }
 
     /**
-     * Get idSecIngreso
+     * Get idExpediente
      *
-     * @return \Minsal\SipernesBundle\Entity\SecIngreso 
+     * @return \Minsal\SipernesBundle\Entity\MntExpediente 
      */
-    public function getIdSecIngreso()
+    public function getIdExpediente()
     {
-        return $this->idSecIngreso;
+        return $this->idExpediente;
     }
 }

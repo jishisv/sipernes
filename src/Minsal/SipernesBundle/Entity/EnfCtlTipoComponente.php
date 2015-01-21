@@ -183,9 +183,4 @@ class EnfCtlTipoComponente
     {
         return $this->estadoTclTComp;
     }
-    
-     
-    public function __toString() {
-    return $this->nombreComponente1 ? $this->nombreComponente1 : '';
-    }
 }

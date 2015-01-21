@@ -214,7 +214,7 @@ class EnfDominio
         return $this->estadoDominio;
     }
     
-    public function __toString() {
+     public function __toString() {
     return $this->nombreDominio ? $this->nombreDominio : '';
     }
 }

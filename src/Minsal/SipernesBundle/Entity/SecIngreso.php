@@ -735,8 +735,4 @@ class SecIngreso
     {
         return $this->idUsuarioRegistra;
     }
-    
-    public function __toString() {
-    return $this->idCie10 ? $this->idCie10 : '';
-    }
 }

@@ -81,6 +81,8 @@ class EnfCtlSubactividad
      */
     private $idActividad;
 
+
+
     /**
      * Get id
      *
@@ -275,7 +277,7 @@ class EnfCtlSubactividad
         return $this->idActividad;
     }
     
-    public function __toString() {
+     public function __toString() {
     return $this->nombreSubactividad ? $this->nombreSubactividad : '';
     }
     

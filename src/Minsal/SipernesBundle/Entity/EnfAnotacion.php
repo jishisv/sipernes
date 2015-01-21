@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfAnotacion
  *
- * @ORM\Table(name="enf_anotacion", indexes={@ORM\Index(name="IDX_CC29885ABFAE4CCD", columns={"id_registro_nota"})})
+ * @ORM\Table(name="enf_anotacion", indexes={@ORM\Index(name="IDX_CC29885A3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_CC29885A701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class EnfAnotacion
@@ -58,14 +58,31 @@ class EnfAnotacion
     private $fechaModAnota;
 
     /**
-     * @var \EnfMtlNota
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="EnfMtlNota")
+     * @ORM\Column(name="observacion_anot", type="string", length=500, nullable=true)
+     */
+    private $observacionAnot;
+
+    /**
+     * @var \MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="MntEmpleado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_registro_nota", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_emp_corr", referencedColumnName="id")
      * })
      */
-    private $idRegistroNota;
+    private $idEmpCorr;
+
+    /**
+     * @var \MntExpediente
+     *
+     * @ORM\ManyToOne(targetEntity="MntExpediente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
+     * })
+     */
+    private $idExpediente;
 
 
 
@@ -195,25 +212,71 @@ class EnfAnotacion
     }
 
     /**
-     * Set idRegistroNota
+     * Set observacionAnot
      *
-     * @param \Minsal\SipernesBundle\Entity\EnfMtlNota $idRegistroNota
+     * @param string $observacionAnot
      * @return EnfAnotacion
      */
-    public function setIdRegistroNota(\Minsal\SipernesBundle\Entity\EnfMtlNota $idRegistroNota = null)
+    public function setObservacionAnot($observacionAnot)
     {
-        $this->idRegistroNota = $idRegistroNota;
+        $this->observacionAnot = $observacionAnot;
 
         return $this;
     }
 
     /**
-     * Get idRegistroNota
+     * Get observacionAnot
      *
-     * @return \Minsal\SipernesBundle\Entity\EnfMtlNota 
+     * @return string 
      */
-    public function getIdRegistroNota()
+    public function getObservacionAnot()
     {
-        return $this->idRegistroNota;
+        return $this->observacionAnot;
+    }
+
+    /**
+     * Set idEmpCorr
+     *
+     * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
+     * @return EnfAnotacion
+     */
+    public function setIdEmpCorr(\Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr = null)
+    {
+        $this->idEmpCorr = $idEmpCorr;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpCorr
+     *
+     * @return \Minsal\SipernesBundle\Entity\MntEmpleado 
+     */
+    public function getIdEmpCorr()
+    {
+        return $this->idEmpCorr;
+    }
+
+    /**
+     * Set idExpediente
+     *
+     * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
+     * @return EnfAnotacion
+     */
+    public function setIdExpediente(\Minsal\SipernesBundle\Entity\MntExpediente $idExpediente = null)
+    {
+        $this->idExpediente = $idExpediente;
+
+        return $this;
+    }
+
+    /**
+     * Get idExpediente
+     *
+     * @return \Minsal\SipernesBundle\Entity\MntExpediente 
+     */
+    public function getIdExpediente()
+    {
+        return $this->idExpediente;
     }
 }

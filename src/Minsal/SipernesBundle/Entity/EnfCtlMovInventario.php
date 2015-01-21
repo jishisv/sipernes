@@ -36,6 +36,20 @@ class EnfCtlMovInventario
      */
     private $estadoCtlMov;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_mov", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoMov;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso_mov", type="date", nullable=true)
+     */
+    private $fechaIngresoMov;
+
 
 
     /**
@@ -93,8 +107,50 @@ class EnfCtlMovInventario
     {
         return $this->estadoCtlMov;
     }
-    
-     public function __toString() {
-    return $this->nombreTipoInventatrio ? $this->nombreTipoInventatrio : '';
+
+    /**
+     * Set usuarioIngresoMov
+     *
+     * @param string $usuarioIngresoMov
+     * @return EnfCtlMovInventario
+     */
+    public function setUsuarioIngresoMov($usuarioIngresoMov)
+    {
+        $this->usuarioIngresoMov = $usuarioIngresoMov;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoMov
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoMov()
+    {
+        return $this->usuarioIngresoMov;
+    }
+
+    /**
+     * Set fechaIngresoMov
+     *
+     * @param \DateTime $fechaIngresoMov
+     * @return EnfCtlMovInventario
+     */
+    public function setFechaIngresoMov($fechaIngresoMov)
+    {
+        $this->fechaIngresoMov = $fechaIngresoMov;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngresoMov
+     *
+     * @return \DateTime 
+     */
+    public function getFechaIngresoMov()
+    {
+        return $this->fechaIngresoMov;
     }
 }
