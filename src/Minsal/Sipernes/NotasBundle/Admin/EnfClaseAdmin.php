@@ -18,13 +18,14 @@ class EnfClaseAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('codClase')
-            ->add('nombreClase')
-            ->add('fechaIngresoClase')
-            ->add('fechaModificacionClase')
-            ->add('usuarioClase')
-            ->add('estadoClase')
+            //->add('id')
+            ->add('codClase', null, array('label' => 'Código'))
+            ->add('nombreClase', null, array('label' => 'Clase'))
+            ->add('estadoClase', null, array('label' => 'Activo'))
+            ->add('usuarioClase', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoClase', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionClase')
+
         ;
     }
 
@@ -35,11 +36,11 @@ class EnfClaseAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('codClase')
-            ->add('nombreClase')
-            ->add('estadoClase')
-            ->add('usuarioClase')
-            ->add('fechaIngresoClase')
+            ->add('codClase', null, array('label' => 'Código'))
+            ->add('nombreClase', null, array('label' => 'Clase'))
+            ->add('estadoClase', null, array('label' => 'Activo'))
+            ->add('usuarioClase', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoClase', null, array('label' => 'Creado el'))
             //->add('fechaModificacionClase')
             
             
@@ -65,8 +66,8 @@ class EnfClaseAdmin extends Admin
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerDomActivo();
             }))
-            ->add('codClase', null, array('label' => 'Código de Clase','required' => true))
-            ->add('nombreClase', null, array('label' => 'Nombre de Clase','required' => true))
+            ->add('codClase', null, array('label' => 'Digite el código de la clase','required' => true))
+            ->add('nombreClase', null, array('label' => 'Digite el nombre de la clase','required' => true))
             ->add('estadoClase', null, array('label' => 'Activo','required' => false))
             //->add('fechaIngresoClase')
             //->add('fechaModificacionClase')
@@ -81,13 +82,13 @@ class EnfClaseAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('codClase')
-            ->add('nombreClase')
-            ->add('fechaIngresoClase')
-            ->add('fechaModificacionClase')
-            ->add('usuarioClase')
-            ->add('estadoClase')
+            //->add('id')
+            ->add('codClase', null, array('label' => 'Código'))
+            ->add('nombreClase', null, array('label' => 'Clase'))
+            ->add('estadoClase', null, array('label' => 'Activo'))
+            ->add('usuarioClase', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoClase', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionClase')
         ;
     }
     

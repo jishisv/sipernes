@@ -16,14 +16,14 @@ class EnfCtlDiagnosticoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('codDiagnostico')
-            ->add('nombreDiagnostico')
-            ->add('descripcionDiag')
-            ->add('fechaIngresoCtlDiag')
-            ->add('fechaModificacionCtlDiag')
-            ->add('usuarioCtlDiag')
-            ->add('estadoCtlDiag')
+            //->add('id')
+            ->add('codDiagnostico',null, array('label' => 'Código'))
+            //->add('nombreDiagnostico',null, array('label' => 'Diagnóstico'))
+            //->add('descripcionDiag',null, array('label' => 'Descripción'))
+            ->add('estadoCtlDiag',null, array('label' => 'Activo'))
+            ->add('usuarioCtlDiag',null, array('label' => 'Creado por')) 
+            ->add('fechaIngresoCtlDiag',null, array('label' => 'Creado el'))
+            //->add('fechaModificacionCtlDiag')
         ;
     }
 
@@ -34,12 +34,12 @@ class EnfCtlDiagnosticoAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('codDiagnostico')
-            ->add('nombreDiagnostico')
-            ->add('descripcionDiag')
-            ->add('estadoCtlDiag')
-            ->add('usuarioCtlDiag') 
-            ->add('fechaIngresoCtlDiag')
+            ->add('codDiagnostico',null, array('label' => 'Código'))
+            ->add('nombreDiagnostico',null, array('label' => 'Diagnóstico'))
+            ->add('descripcionDiag',null, array('label' => 'Descripción'))
+            ->add('estadoCtlDiag',null, array('label' => 'Activo'))
+            ->add('usuarioCtlDiag',null, array('label' => 'Creado por')) 
+            ->add('fechaIngresoCtlDiag',null, array('label' => 'Creado el'))
             //->add('fechaModificacionCtlDiag')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -58,9 +58,9 @@ class EnfCtlDiagnosticoAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idClase', null, array('label' => 'Clase diagnóstica','required' => true))
-            ->add('codDiagnostico', null, array('label' => 'Codigo de Diagnóstico','max_length' => 5))
-            ->add('nombreDiagnostico', 'text', array('label' => 'Nombre de Diagnóstico'))
+            ->add('idClase', null, array('label' => 'Clase ','required' => true))
+            ->add('codDiagnostico', null, array('label' => 'Digite el código ','max_length' => 5))
+            ->add('nombreDiagnostico', 'text', array('label' => 'Digite el nombre '))
             ->add('descripcionDiag', 'text', array('label' => 'Descripción'))
             ->add('estadoCtlDiag',null, array('label' => 'Activo'))
             //->add('fechaIngresoCtlDiag')
@@ -76,14 +76,14 @@ class EnfCtlDiagnosticoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('codDiagnostico')
-            ->add('nombreDiagnostico')
-            ->add('descripcionDiag')
-            ->add('fechaIngresoCtlDiag')
-            ->add('fechaModificacionCtlDiag')
-            ->add('usuarioCtlDiag')
-            ->add('estadoCtlDiag')
+            //->add('id')
+            ->add('codDiagnostico',null, array('label' => 'Código'))
+            ->add('nombreDiagnostico',null, array('label' => 'Diagnóstico'))
+            ->add('descripcionDiag',null, array('label' => 'Descripción'))
+            ->add('estadoCtlDiag',null, array('label' => 'Activo'))
+            ->add('usuarioCtlDiag',null, array('label' => 'Creado por')) 
+            ->add('fechaIngresoCtlDiag',null, array('label' => 'Creado el'))
+            //->add('fechaModificacionCtlDiag')
         ;
     }
     

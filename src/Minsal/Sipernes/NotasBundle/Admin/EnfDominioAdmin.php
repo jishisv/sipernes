@@ -16,13 +16,12 @@ class EnfDominioAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('codDominio')
-            ->add('nombreDominio')
-            ->add('fechaIngresoDom')
-            ->add('fechaModificacionDom')
-            ->add('usuarioDom')
-            ->add('estadoDominio')
+            //->add('id')
+            ->add('codDominio',null, array('label' => 'Código'))
+            ->add('nombreDominio',null, array('label' => 'Dominio'))
+            ->add('estadoDominio', null, array('label' => 'Activo'))
+            ->add('usuarioDom', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDom', null, array('label' => 'Creado el'))
         ;
     }
 
@@ -33,11 +32,11 @@ class EnfDominioAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('codDominio')
-            ->add('nombreDominio')
-            ->add('estadoDominio')
-            ->add('usuarioDom')
-            ->add('fechaIngresoDom')
+            ->add('codDominio',null, array('label' => 'Código'))
+            ->add('nombreDominio',null, array('label' => 'Dominio'))
+            ->add('estadoDominio', null, array('label' => 'Activo'))
+            ->add('usuarioDom', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDom', null, array('label' => 'Creado el'))
             //->add('fechaModificacionDom')
             
             
@@ -58,8 +57,8 @@ class EnfDominioAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('codDominio','text', array('label' => 'Codigo de Dominio'))
-            ->add('nombreDominio','text', array('label' => 'Nombre de Dominio'))
+            ->add('codDominio','text', array('label' => 'Digite el código de Dominio'))
+            ->add('nombreDominio','text', array('label' => 'Digite el nombre de Dominio'))
             ->add('estadoDominio', null, array('label' => 'Activo','required' => False))
             //->add('fechaIngresoDom')
             //->add('fechaModificacionDom')
@@ -74,13 +73,12 @@ class EnfDominioAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('codDominio')
-            ->add('nombreDominio')
-            ->add('fechaIngresoDom')
-            ->add('fechaModificacionDom')
-            ->add('usuarioDom')
-            ->add('estadoDominio')
+            //->add('id')
+            ->add('codDominio',null, array('label' => 'Código'))
+            ->add('nombreDominio',null, array('label' => 'Dominio'))
+            ->add('estadoDominio', null, array('label' => 'Activo'))
+            ->add('usuarioDom', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDom', null, array('label' => 'Creado el'))
         ;
     }
     

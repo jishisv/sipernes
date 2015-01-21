@@ -18,10 +18,10 @@ class EnfMtlDiagnosticoAdmin extends Admin
         $datagridMapper
             //->add('id')
             ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))
-            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
             ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
-            ->add('observacion1',null, array('label' => 'Observación'))
-            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            //->add('observacion1',null, array('label' => 'Observación'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Creado el'))
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag')
             //->add('usuarioIngresoDiag')
@@ -36,13 +36,13 @@ class EnfMtlDiagnosticoAdmin extends Admin
         $listMapper
             //->add('id')
             ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
-            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
             ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
             ->add('observacion1',null, array('label' => 'Observación'))
-            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            ->add('usuarioIngresoDiag',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Creado el'))
             //->add('fechaModificacionDiag')
-            //->add('estadoMtlDiag')
-            //->add('usuarioIngresoDiag')
+            //->add('estadoMtlDiag')           
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -79,13 +79,13 @@ class EnfMtlDiagnosticoAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
-            ->add('idExpediente',null, array('label' => 'Expediente'))
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
             ->add('idCtlDiag',null, array('label' => 'Diagnóstico'))
             ->add('observacion1',null, array('label' => 'Observación'))
-            ->add('fechaIngresoDiag',null, array('label' => 'Fecha de Registro'))
+            ->add('fechaIngresoDiag',null, array('label' => 'Creado el'))
             //->add('fechaModificacionDiag')
             //->add('estadoMtlDiag',null, array('label' => 'Activo'))
-            ->add('usuarioIngresoDiag')
+            ->add('usuarioIngresoDiag',null, array('label' => 'Creado por'))
         ;
     }
     
