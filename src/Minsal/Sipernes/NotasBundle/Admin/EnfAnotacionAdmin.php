@@ -17,13 +17,13 @@ class EnfAnotacionAdmin extends Admin
     {
         $datagridMapper
            // ->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('edadAnotacion')
-            ->add('observacionAnot')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('edadAnotacion',null, array('label' => 'Edad'))
+            //->add('observacionAnot')
             //->add('estadoAnotacion')
-            ->add('usuarioAnotacion')
-            ->add('fechaIngresoAnota')
+            ->add('usuarioAnotacion',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoAnota',null, array('label' => 'Creado el'))
             //->add('fechaModAnota')
         ;
     }
@@ -35,13 +35,13 @@ class EnfAnotacionAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('edadAnotacion')
-            ->add('observacionAnot')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('edadAnotacion',null, array('label' => 'Edad'))
+            ->add('observacionAnot',null, array('label' => 'Observación'))
             //->add('estadoAnotacion')
-            ->add('usuarioAnotacion')
-            ->add('fechaIngresoAnota')
+            ->add('usuarioAnotacion',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoAnota',null, array('label' => 'Creado el'))
             //->add('fechaModAnota')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -60,10 +60,10 @@ class EnfAnotacionAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('edadAnotacion',null, array('label' => 'Edad'))
-            ->add('observacionAnot')
+            ->add('idEmpCorr',null, array('label' => 'Numero de Empleado', 'required' => true))  
+            ->add('idExpediente',null, array('label' => 'Numero de Expediente', 'required' => true))
+            ->add('edadAnotacion',null, array('label' => 'Edad', 'required' => true))
+            ->add('observacionAnot',null, array('label' => 'Observación'))
             //->add('estadoAnotacion')
             //->add('usuarioAnotacion')
             //->add('fechaIngresoAnota')
@@ -79,13 +79,13 @@ class EnfAnotacionAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('edadAnotacion')
-            ->add('observacionAnot')
-            ->add('estadoAnotacion')
-            ->add('usuarioAnotacion')
-            ->add('fechaIngresoAnota')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('edadAnotacion',null, array('label' => 'Edad'))
+            ->add('observacionAnot',null, array('label' => 'Observación'))
+            //->add('estadoAnotacion')
+            ->add('usuarioAnotacion',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoAnota',null, array('label' => 'Creado el'))
             //->add('fechaModAnota')
         ;
     }

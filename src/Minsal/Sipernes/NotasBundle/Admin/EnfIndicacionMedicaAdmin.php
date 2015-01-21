@@ -17,14 +17,15 @@ class EnfIndicacionMedicaAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('tratamientoInd')
-            ->add('dosisInd')
-            ->add('indicacionInd')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            //->add('tratamientoInd',null, array('label' => 'Tratamiento'))
+            //->add('dosisInd',null, array('label' => 'Dosis'))
+            //->add('indicacionInd',null, array('label' => 'Indicación'))
+            //->add('observacionInd',null, array('label' => 'Observación'))
             //->add('estadoInd')
-            ->add('usuarioInd')
-            ->add('fechaIngresoInd')
+            ->add('usuarioInd',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInd',null, array('label' => 'Creado el'))
             //->add('fechaModInd')
         ;
     }
@@ -36,13 +37,15 @@ class EnfIndicacionMedicaAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('tratamientoInd')
-            ->add('dosisInd')
-            ->add('indicacionInd')
-            ->add('observacionInd')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('tratamientoInd',null, array('label' => 'Tratamiento'))
+            ->add('dosisInd',null, array('label' => 'Dosis'))
+            ->add('indicacionInd',null, array('label' => 'Indicación'))
+            ->add('observacionInd',null, array('label' => 'Observación'))
             //->add('estadoInd')
-            ->add('usuarioInd')
-            ->add('fechaIngresoInd')
+            ->add('usuarioInd',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInd',null, array('label' => 'Creado el'))
             //->add('fechaModInd')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -61,12 +64,12 @@ class EnfIndicacionMedicaAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('tratamientoInd')
-            ->add('dosisInd')
-            ->add('indicacionInd')
-            ->add('observacionInd')
+            ->add('idEmpCorr',null, array('label' => 'Numero de Empleado', 'required' => true))  
+            ->add('idExpediente',null, array('label' => 'Numero de Expediente', 'required' => true))
+            ->add('tratamientoInd',null, array('label' => 'Tratamiento', 'required' => true))
+            ->add('dosisInd',null, array('label' => 'Dosis', 'required' => true))
+            ->add('indicacionInd',null, array('label' => 'Indicación', 'required' => true))
+            ->add('observacionInd',null, array('label' => 'Observación'))
             //->add('estadoInd')
             //->add('usuarioInd')
             //->add('fechaIngresoInd')
@@ -81,15 +84,15 @@ class EnfIndicacionMedicaAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('tratamientoInd')
-            ->add('dosisInd')
-            ->add('indicacionInd')
-            ->add('observacionInd')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('tratamientoInd',null, array('label' => 'Tratamiento'))
+            ->add('dosisInd',null, array('label' => 'Dosis'))
+            ->add('indicacionInd',null, array('label' => 'Indicación'))
+            ->add('observacionInd',null, array('label' => 'Observación'))
             //->add('estadoInd')
-            ->add('usuarioInd')
-            ->add('fechaIngresoInd')
+            ->add('usuarioInd',null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInd',null, array('label' => 'Creado el'))
             //->add('fechaModInd')
         ;
     }
