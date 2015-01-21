@@ -36,8 +36,8 @@ class EnfMtlIntervencionAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('idEmpCorr',null, array('label' => 'Numero de enfermera'))
-            ->add('idSecIngreso',null, array('label' => 'Expediente'))
+            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
             ->add('idIntervencion',null, array('label' => 'Intervencion'))
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
@@ -82,7 +82,7 @@ class EnfMtlIntervencionAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
-            ->add('idSecIngreso',null, array('label' => 'Numero de expediente'))
+            ->add('idExpediente',null, array('label' => 'Numero de expediente'))
             ->add('idIntervencion',null, array('label' => 'Seleccione intervencion'))
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))

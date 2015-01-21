@@ -17,11 +17,12 @@ class EnfCtlIntervencionAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('descripcionInterven')
-            ->add('fechaIngresoInterven')
-            ->add('usuarioInterven')
-            ->add('fechaModificacionInterven')
-            ->add('estadoCltInterv')
+            ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('descripcionInterven', null, array('label' => 'Intervención'))
+            ->add('estadoCltInterv', null, array('label' => 'Activo'))
+            ->add('usuarioInterven', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInterven', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionInterven')
         ;
     }
 
@@ -32,10 +33,11 @@ class EnfCtlIntervencionAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('descripcionInterven')
-            ->add('estadoCltInterv')
-            ->add('usuarioInterven')
-            ->add('fechaIngresoInterven')
+            ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('descripcionInterven', null, array('label' => 'Intervención'))
+            ->add('estadoCltInterv', null, array('label' => 'Activo'))
+            ->add('usuarioInterven', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInterven', null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterven')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -55,7 +57,7 @@ class EnfCtlIntervencionAdmin extends Admin
         $formMapper
             //->add('id')
             ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
-            ->add('descripcionInterven', null, array('label' => 'Intervención'))
+            ->add('descripcionInterven', null, array('label' => 'Digite Intervención'))
             //->add('fechaIngresoInterven')
             //->add('usuarioInterven')
             //->add('fechaModificacionInterven')
@@ -70,11 +72,11 @@ class EnfCtlIntervencionAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('idSubprotocolo')
-            ->add('descripcionInterven')
-            ->add('estadoCltInterv')
-            ->add('usuarioInterven')
-            ->add('fechaIngresoInterven')  
+            ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('descripcionInterven', null, array('label' => 'Intervención'))
+            ->add('estadoCltInterv', null, array('label' => 'Activo'))
+            ->add('usuarioInterven', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoInterven', null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterven')
             
         ;
