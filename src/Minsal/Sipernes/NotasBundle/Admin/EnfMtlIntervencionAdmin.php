@@ -20,12 +20,13 @@ class EnfMtlIntervencionAdmin extends Admin
             ->add('idEmpCorr',null, array('label' => 'Numero de Empleado'))
             ->add('idExpediente',null, array('label' => 'Numero de Expediente'))
             ->add('idIntervencion',null, array('label' => 'Intervención'))
+            ->add('usuarioIngresoInterv',null, array('label' => 'Creado por'))
             ->add('fechaIngresoInterv',null, array('label' => 'Fecha de registro'))
             //->add('fechaModificacionInterv')
             //->add('observacionInterv')
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            //->add('usuarioIngresoInterv')
+            
         ;
     }
 
@@ -42,7 +43,7 @@ class EnfMtlIntervencionAdmin extends Admin
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
+            ->add('fechaIngresoInterv',null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterv') 
             //->add('usuarioIngresoInterv')    
             ->add('_action', 'actions', array(
@@ -87,7 +88,7 @@ class EnfMtlIntervencionAdmin extends Admin
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
+            ->add('fechaIngresoInterv',null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterv')
             ->add('usuarioIngresoInterv')
             
