@@ -94,7 +94,7 @@ class EnfAnotacionAdmin extends Admin
     
      public function getTemplate($name) {
         switch ($name) {
-            case 'edita':
+            case 'edit':
                 return 'MinsalSipernesNotasBundle:AnotacionRegistro:mtlanotacion.html.twig';
                 break;
             //case 'create':

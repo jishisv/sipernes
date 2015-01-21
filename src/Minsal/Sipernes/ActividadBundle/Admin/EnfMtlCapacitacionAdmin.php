@@ -102,6 +102,21 @@ class EnfMtlCapacitacionAdmin extends Admin
         ;
     }
     
+   
+    public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesActividadBundle:CapacitacionRegistro:mtlcapacitacion.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
     
     /*
      * Método que se ejecuta antes de realizar una inserción.

@@ -91,5 +91,20 @@ class SecSignosVitalesAdmin extends Admin
             ->add('observacionSig')
         ;
     }
+    
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesNotasBundle:SignosVitalesRegistro:mtlsignosvitales.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
   
 }

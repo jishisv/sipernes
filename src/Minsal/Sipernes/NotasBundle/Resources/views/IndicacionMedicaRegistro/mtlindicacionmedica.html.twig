@@ -56,7 +56,7 @@
                         <div class="{{ form_group.class|default('col-md-12') }}">
                             <div class="box box-success">
                                 <div class="box-header">
-                                    <h4 class="box-title">Registrar Anotación
+                                    <h4 class="box-title">Registrar Indicación Médica
                                         {# admin.trans(name, {}, form_group.translation_domain) #}
                                     </h4>
                                 </div>
@@ -70,8 +70,9 @@
                                             <table class="dat_paciente">
 
                                                 <tr class="dat_paciente_sec">
-                                                    <td colspan="4">Datos de Anotación</td>
+                                                    <td colspan="4">Datos de Indicación Médica</td>
                                                 </tr>
+
                                                 
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idEmpCorr])}}
@@ -79,40 +80,60 @@
                                                             <div class="sonata-ba-form-error">
                                                                 {{form_errors(form[form_group.fields.idEmpCorr])}}
                                                             </div>
-                                                        {% endif %}
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idExpediente])}}
                                                         {% if form_errors(form[form_group.fields.idExpediente])|length > 0 %}
                                                             <div class="sonata-ba-form-error">
                                                                 {{form_errors(form[form_group.fields.idExpediente])}}
                                                             </div>
+                                                        {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.tratamientoInd])}}
+                                                        {% if form_errors(form[form_group.fields.tratamientoInd])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.tratamientoInd])}}
+                                                            </div>
                                                         {% endif %}
+                                                    </td>
+                                                </tr>
+                                                                                             
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.dosisInd])}}
+                                                        {% if form_errors(form[form_group.fields.dosisInd])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.dosisInd])}}
+                                                            </div>
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>{{form_row(form[form_group.fields.edadAnotacion])}}
-                                                        {% if form_errors(form[form_group.fields.edadAnotacion])|length > 0 %}
+                                                    <td>{{form_row(form[form_group.fields.indicacionInd])}}
+                                                        {% if form_errors(form[form_group.fields.indicacionInd])|length > 0 %}
                                                             <div class="sonata-ba-form-error">
-                                                                {{form_errors(form[form_group.fields.edadAnotacion])}}
+                                                                {{form_errors(form[form_group.fields.indicacionInd])}}
                                                             </div>
-                                                        {% endif %}
+                                                        {% endif %}						      
                                                     </td>
                                                 </tr>
                                                 
-                                                <tr>
-                                                    <td>{{form_row(form[form_group.fields.observacionAnot])}}
-                                                        {% if form_errors(form[form_group.fields.observacionAnot])|length > 0 %}
+                                                 <tr>
+                                                    <td>{{form_row(form[form_group.fields.observacionInd])}}
+                                                        {% if form_errors(form[form_group.fields.observacionInd])|length > 0 %}
                                                             <div class="sonata-ba-form-error">
-                                                                {{form_errors(form[form_group.fields.observacionAnot])}}
+                                                                {{form_errors(form[form_group.fields.observacionInd])}}
                                                             </div>
-                                                        {% endif %}
+                                                        {% endif %}						      
                                                     </td>
-                                                </tr>
-                                                
+                                                </tr>                                                                                              
+
                                                 <tr>
 
 

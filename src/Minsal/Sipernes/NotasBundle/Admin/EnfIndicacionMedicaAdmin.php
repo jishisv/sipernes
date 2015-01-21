@@ -95,6 +95,21 @@ class EnfIndicacionMedicaAdmin extends Admin
     }
     
     
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesNotasBundle:IndicacionMedicaRegistro:mtlindicacionmedica.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
      public function prePersist($EnfIndicacionMedica) {
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfIndicacionMedica->setusuarioInd($user);
