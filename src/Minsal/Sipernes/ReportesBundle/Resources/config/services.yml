@@ -124,3 +124,45 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\CtlEstablecimiento, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 22}
+
+    minsal_sipernes_reportes.admin.mnt_paciente:
+        class: Minsal\Sipernes\ReportesBundle\Admin\MntPacienteAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\MntPaciente, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 23}
+
+    minsal_sipernes_reportes.admin.mnt_expediente:
+        class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\MntExpediente, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 24}
+
+    minsal_sipernes_reportes.admin.mnt_empleado:
+        class: Minsal\Sipernes\ReportesBundle\Admin\MntEmpleadoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\MntEmpleado, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 25}
+
+    minsal_sipernes_reportes.admin.fos_user_user:
+        class: Minsal\Sipernes\ReportesBundle\Admin\FosUserUserAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\FosUserUser, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 26}
+
+    minsal_sipernes_reportes.admin.sec_ingreso:
+        class: Minsal\Sipernes\ReportesBundle\Admin\SecIngresoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\SecIngreso, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 27}
+
+    minsal_sipernes_reportes.admin.fos_user_group:
+        class: Minsal\Sipernes\ReportesBundle\Admin\FosUserGroupAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\FosUserGroup, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 28}
+
+    minsal_sipernes_reportes.admin.mnt_expediente_establecimiento:
+        class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteEstablecimientoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\MntExpedienteEstablecimiento, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 29}
