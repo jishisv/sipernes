@@ -88,7 +88,7 @@ class EnfHistoricoActividadAdmin extends Admin
     public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesReportesBundle:Reportes:reporte_prueba2.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_conso_activ.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);
