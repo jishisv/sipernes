@@ -57,10 +57,10 @@ services:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaMicAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de Micronutrientes}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de micronutrientes}
 
     minsal_sipernes_aplicaciones.admin.enf_dosis_esquema_mic:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaMicAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaMic, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de Micronutriente}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de micronutriente}

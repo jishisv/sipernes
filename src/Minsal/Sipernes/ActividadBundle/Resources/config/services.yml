@@ -3,13 +3,13 @@ services:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlActividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo Tipo de Actividades}
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo tipo de actividades}
 
     minsal_sipernes_actividad.admin.enf_ctl_subactividad:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlSubactividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubactividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo de Actividades}
+            - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo de actividades}
 
     minsal_sipernes_actividad.admin.enf_mtl_actividad:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfMtlActividadAdmin

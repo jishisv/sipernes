@@ -82,3 +82,45 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaInventario, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 15}
+
+    minsal_sipernes_reportes.admin.ctl_tipo_atencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlTipoAtencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlTipoAtencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 16}
+
+    minsal_sipernes_reportes.admin.ctl_municipio:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlMunicipioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlMunicipio, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 17}
+
+    minsal_sipernes_reportes.admin.ctl_pais:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlPaisAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlPais, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 18}
+
+    minsal_sipernes_reportes.admin.ctl_departamento:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlDepartamentoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlDepartamento, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 19}
+
+    minsal_sipernes_reportes.admin.ctl_area_atencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlAreaAtencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlAreaAtencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 20}
+
+    minsal_sipernes_reportes.admin.ctl_atencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlAtencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlAtencion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 21}
+
+    minsal_sipernes_reportes.admin.ctl_establecimiento:
+        class: Minsal\Sipernes\ReportesBundle\Admin\CtlEstablecimientoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\CtlEstablecimiento, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 22}
