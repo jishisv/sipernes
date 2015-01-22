@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Minsal\SipernesBundle\Entity\EnfCtlFinanciamiento;
+use Doctrine\ORM\EntityRepository;
 
 class EnfMtlCapacitacionAdmin extends Admin
 {
@@ -71,7 +73,11 @@ class EnfMtlCapacitacionAdmin extends Admin
             ->add('idEmpCorr', null, array('label' => 'Numero Empleado','required' => true))
            // ->add('usuarioCapacitacion')
             ->add('temaCapacitacion', null, array('label' => 'Tema a impartir','required' => true))
-            ->add('idFinanciamiento', null, array('label' => 'Financiado por','required' => true))
+            ->add('idFinanciamiento', null, array('label' => 'Financiado por','required' => true,
+                'class' => 'MinsalSipernesBundle:EnfCtlFinanciamiento',
+            'query_builder' => function(EntityRepository $repository) {
+                return $repository->obtenerFinActivo();
+            }))
             ->add('montoFinanciamientoCap', null, array('label' => 'Monto ($)','required' => true))
             ->add('asistenciaCapacitacion', null, array('label' => 'Numero de asistencia','required' => true))
             ->add('horasDuracionCap', null, array('label' => 'Horas en capacitación','required' => true))

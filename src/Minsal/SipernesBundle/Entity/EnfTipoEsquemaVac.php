@@ -37,6 +37,27 @@ class EnfTipoEsquemaVac
     private $dosisMaxima;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado_tipo_vac", type="boolean", nullable=true)
+     */
+    private $estadoTipoVac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_tipo_vac", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoTipoVac;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso_tipo_vac", type="date", nullable=true)
+     */
+    private $fechaIngresoTipoVac;
+
+    /**
      * @var \EnfEsquemaVac
      *
      * @ORM\ManyToOne(targetEntity="EnfEsquemaVac")
@@ -105,6 +126,75 @@ class EnfTipoEsquemaVac
     }
 
     /**
+     * Set estadoTipoVac
+     *
+     * @param boolean $estadoTipoVac
+     * @return EnfTipoEsquemaVac
+     */
+    public function setEstadoTipoVac($estadoTipoVac)
+    {
+        $this->estadoTipoVac = $estadoTipoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoTipoVac
+     *
+     * @return boolean 
+     */
+    public function getEstadoTipoVac()
+    {
+        return $this->estadoTipoVac;
+    }
+
+    /**
+     * Set usuarioIngresoTipoVac
+     *
+     * @param string $usuarioIngresoTipoVac
+     * @return EnfTipoEsquemaVac
+     */
+    public function setUsuarioIngresoTipoVac($usuarioIngresoTipoVac)
+    {
+        $this->usuarioIngresoTipoVac = $usuarioIngresoTipoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoTipoVac
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoTipoVac()
+    {
+        return $this->usuarioIngresoTipoVac;
+    }
+
+    /**
+     * Set fechaIngresoTipoVac
+     *
+     * @param \DateTime $fechaIngresoTipoVac
+     * @return EnfTipoEsquemaVac
+     */
+    public function setFechaIngresoTipoVac($fechaIngresoTipoVac)
+    {
+        $this->fechaIngresoTipoVac = $fechaIngresoTipoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngresoTipoVac
+     *
+     * @return \DateTime 
+     */
+    public function getFechaIngresoTipoVac()
+    {
+        return $this->fechaIngresoTipoVac;
+    }
+
+    /**
      * Set idEsquemaVac
      *
      * @param \Minsal\SipernesBundle\Entity\EnfEsquemaVac $idEsquemaVac
@@ -127,7 +217,7 @@ class EnfTipoEsquemaVac
         return $this->idEsquemaVac;
     }
     
-    public function __toString() {
+     public function __toString() {
     return $this->nombreTipoEsq ? $this->nombreTipoEsq : '';
     }
 }

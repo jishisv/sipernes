@@ -69,16 +69,16 @@ services:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfAnotacionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfAnotacion, MinsalSipernesNotasBundle:EnfAnotacionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registrar Anotación}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Anotación}
 
     minsal_sipernes_notas.admin.enf_indicacion_medica:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfIndicacionMedicaAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfIndicacionMedica, MinsalSipernesNotasBundle:EnfIndicacionMedicaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registar Indicación Médica}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Indicación Médica}
 
     minsal_sipernes_notas.admin.sec_signos_vitales:
         class: Minsal\Sipernes\NotasBundle\Admin\SecSignosVitalesAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\SecSignosVitales, MinsalSipernesNotasBundle:SecSignosVitalesAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registar Signos Vitales}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Signos Vitales}

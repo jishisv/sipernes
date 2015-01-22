@@ -3,13 +3,13 @@ services:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfEsquemaVacAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfEsquemaVac, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Esquema de vacunación}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo fase de vacunación}
 
     minsal_sipernes_aplicaciones.admin.enf_tipo_esquema_vac:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaVacAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Tipo de Esquema de vacunación}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de vacunación}
 
     minsal_sipernes_aplicaciones.admin.enf_ctl_tipo_componente:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlTipoComponenteAdmin
@@ -39,10 +39,28 @@ services:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaVacAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Dosis esquema de vacunación}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de vacuna}
 
     minsal_sipernes_aplicaciones.admin.enf_mov_inventario:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfMovInventarioAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfMovInventario, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Movimiento de inventario}
+
+    minsal_sipernes_aplicaciones.admin.enf_esquema_mic:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfEsquemaMicAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfEsquemaMic, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo fase de micronutriente}
+
+    minsal_sipernes_aplicaciones.admin.enf_tipo_esquema_mic:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaMicAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de Micronutrientes}
+
+    minsal_sipernes_aplicaciones.admin.enf_dosis_esquema_mic:
+        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaMicAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaMic, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de Micronutriente}
