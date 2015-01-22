@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfTipoEsquemaMic" table="enf_tipo_esquema_mic">
+    <indexes>
+      <index name="IDX_665692DE3653B628" columns="id_esquema_mic"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreTipoEsqMic" type="string" column="nombre_tipo_esq_mic" length="100" nullable="true"/>
+    <field name="dosisMaximaMic" type="decimal" column="dosis_maxima_mic" precision="10" scale="0" nullable="true"/>
+    <field name="estadoTipoMic" type="boolean" column="estado_tipo_mic" nullable="true"/>
+    <field name="usuarioIngresoTipoMic" type="string" column="usuario_ingreso_tipo_mic" length="40" nullable="true"/>
+    <field name="fechaIngresoTipoMic" type="date" column="fecha_ingreso_tipo_mic" nullable="true"/>
+    <many-to-one field="idEsquemaMic" target-entity="EnfEsquemaMic">
+      <join-columns>
+        <join-column name="id_esquema_mic" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
