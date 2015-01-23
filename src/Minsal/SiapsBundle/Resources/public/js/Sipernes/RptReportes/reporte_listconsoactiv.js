@@ -116,14 +116,14 @@ $(document).ready(function () {
 
 
 //            alert('entro aqui 7');
-          alert(Routing.generate('rpt_con_act') + '/prueba2/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val()  + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo");
+          alert(Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val()  + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo");
 //            if ($('#municipios').val() == 'Seleccione..')
 //                alert('Debe seleccionar un municipio');
 //
 //            // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
 //            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
 //            else
-            var url = Routing.generate('rpt_con_act') + '/prueba2/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val() + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val() + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo";
 //            alert('Entro saqui 8');{fecha_inicio}/{fecha_fin}/{actividades}/{subactividades}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_act"
             window.open(url, '_blank');
             return false;

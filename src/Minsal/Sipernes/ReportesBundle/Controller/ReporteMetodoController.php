@@ -40,15 +40,23 @@ class ReporteMetodoController extends Controller
     /**
      *@Route("/rpt_con_act/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{actividades}/{subactividades}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_act", options={"expose"=true})
      */
-    public function ReporteConsolidadoActividadesAction($report_name, $report_format, $PRUEBA, $id_servicio = 0) {
+    public function ReporteConsolidadoActividadesAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $actividades, $subactividades, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
-        $jasperReport->setReportName("prueba2");
-        $jasperReport->setReportFormat("PDF");
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
        $jasperReport->setReportParams(array(
-            'PRUEBA' => 'HOLA',
-            'id_servicio' => 0
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'actividades'=>  $actividades,
+            'subactividades'=>  $subactividades,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+            'codigo_expediente' => $codigo_expediente,
+            'codigo_enfermera' => $codigo_enfermera,
         ));
        
    
