@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfMtlCapacitacion
  *
- * @ORM\Table(name="enf_mtl_capacitacion", indexes={@ORM\Index(name="IDX_84E7CBB3F19F7BFD", columns={"id_financiamiento"})})
+ * @ORM\Table(name="enf_mtl_capacitacion", indexes={@ORM\Index(name="IDX_84E7CBB3F19F7BFD", columns={"id_financiamiento"}), @ORM\Index(name="IDX_84E7CBB33FE83A49", columns={"id_emp_corr"})})
  * @ORM\Entity
  */
 class EnfMtlCapacitacion
@@ -94,6 +94,16 @@ class EnfMtlCapacitacion
      * })
      */
     private $idFinanciamiento;
+
+    /**
+     * @var \MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="MntEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_emp_corr", referencedColumnName="id")
+     * })
+     */
+    private $idEmpCorr;
 
 
 
@@ -335,5 +345,28 @@ class EnfMtlCapacitacion
     public function getIdFinanciamiento()
     {
         return $this->idFinanciamiento;
+    }
+
+    /**
+     * Set idEmpCorr
+     *
+     * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
+     * @return EnfMtlCapacitacion
+     */
+    public function setIdEmpCorr(\Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr = null)
+    {
+        $this->idEmpCorr = $idEmpCorr;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpCorr
+     *
+     * @return \Minsal\SipernesBundle\Entity\MntEmpleado 
+     */
+    public function getIdEmpCorr()
+    {
+        return $this->idEmpCorr;
     }
 }

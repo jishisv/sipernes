@@ -56,7 +56,9 @@ class EnfCtlActividad
      * @ORM\Column(name="fecha_modificacion_cat_act", type="date", nullable=true)
      */
     private $fechaModificacionCatAct;
-    
+
+
+
     /**
      * Get id
      *

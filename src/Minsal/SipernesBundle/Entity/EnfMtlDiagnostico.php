@@ -3,8 +3,7 @@
 namespace Minsal\SipernesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-//@ORM\Index(name="IDX_84C983A5E007AEB5", columns={"id_sec_histo_clin"}),
-//, @ORM\Index(name="IDX_84C983A5AAD50B15", columns={"mtl_id_expediente"})
+
 /**
  * EnfMtlDiagnostico
  *
@@ -52,6 +51,13 @@ class EnfMtlDiagnostico
     private $estadoMtlDiag;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_diag", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoDiag;
+
+    /**
      * @var \MntEmpleado
      *
      * @ORM\ManyToOne(targetEntity="MntEmpleado")
@@ -70,37 +76,17 @@ class EnfMtlDiagnostico
      * })
      */
     private $idCtlDiag;
-/*
+
     /**
-     * @var \SecHistorialClinico
-     *
-     * @ORM\ManyToOne(targetEntity="SecHistorialClinico")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_sec_histo_clin", referencedColumnName="id")
-     * })
-     */  /*
-    private $idSecHistoClin;
-*/
-   /**
      * @var \MntExpediente
      *
      * @ORM\ManyToOne(targetEntity="MntExpediente")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
      * })
-     */   
-   private $idExpediente;
-/* 
-    /**
-     * @var \MntExpediente
-     *
-     * @ORM\ManyToOne(targetEntity="MntExpediente")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mtl_id_expediente", referencedColumnName="id")
-     * })
-     */ /*
-    private $mtlExpediente;
- */
+     */
+    private $idExpediente;
+
 
 
     /**
@@ -206,6 +192,29 @@ class EnfMtlDiagnostico
     }
 
     /**
+     * Set usuarioIngresoDiag
+     *
+     * @param string $usuarioIngresoDiag
+     * @return EnfMtlDiagnostico
+     */
+    public function setUsuarioIngresoDiag($usuarioIngresoDiag)
+    {
+        $this->usuarioIngresoDiag = $usuarioIngresoDiag;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoDiag
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoDiag()
+    {
+        return $this->usuarioIngresoDiag;
+    }
+
+    /**
      * Set idEmpCorr
      *
      * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
@@ -250,30 +259,7 @@ class EnfMtlDiagnostico
     {
         return $this->idCtlDiag;
     }
-/*
-    /**
-     * Set idSecHistoClin
-     *
-     * @param \Minsal\SipernesBundle\Entity\SecHistorialClinico $idSecHistoClin
-     * @return EnfMtlDiagnostico
-     */ /*
-    public function setIdSecHistoClin(\Minsal\SipernesBundle\Entity\SecHistorialClinico $idSecHistoClin = null)
-    {
-        $this->idSecHistoClin = $idSecHistoClin;
 
-        return $this;
-    }
-
-    /**
-     * Get idSecHistoClin
-     *
-     * @return \Minsal\SipernesBundle\Entity\SecHistorialClinico 
-     */  /*
-    public function getIdSecHistoClin()
-    {
-        return $this->idSecHistoClin;
-    }
-*/
     /**
      * Set idExpediente
      *
@@ -296,27 +282,4 @@ class EnfMtlDiagnostico
     {
         return $this->idExpediente;
     }
-/* 
-    /**
-     * Set mtlExpediente
-     *
-     * @param \Minsal\SipernesBundle\Entity\MntExpediente $mtlExpediente
-     * @return EnfMtlDiagnostico
-     */
- /*   public function setMtlExpediente(\Minsal\SipernesBundle\Entity\MntExpediente $mtlExpediente = null)
-    {
-        $this->mtlExpediente = $mtlExpediente;
-
-        return $this;
-    }
-*/
-/*    /**
-     * Get mtlExpediente
-     *
-     * @return \Minsal\SipernesBundle\Entity\MntExpediente 
-     */
-/*    public function getMtlExpediente()
-    {
-        return $this->mtlExpediente;
-    } */
 }

@@ -7,6 +7,7 @@
       <index name="IDX_5BA20B9FEDEF355D" columns="id_tipo_esq"/>
       <index name="IDX_5BA20B9F6D7590AD" columns="id_movimiento"/>
       <index name="IDX_5BA20B9F701624C4" columns="id_expediente"/>
+      <index name="IDX_5BA20B9F1D8176FA" columns="id_modalidad"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -21,6 +22,11 @@
     <many-to-one field="idExpediente" target-entity="MntExpediente">
       <join-columns>
         <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idModalidad" target-entity="EnfModalidad">
+      <join-columns>
+        <join-column name="id_modalidad" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idMovimiento" target-entity="EnfMovInventario">

@@ -5,6 +5,7 @@
       <index name="IDX_5185AF503FE83A49" columns="id_emp_corr"/>
       <index name="IDX_5185AF50701624C4" columns="id_expediente"/>
       <index name="IDX_5185AF503A5C634D" columns="id_subactividad"/>
+      <index name="IDX_5185AF505C03EB6E" columns="id_ctl_actividad"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -15,6 +16,11 @@
     <field name="cantidadActEnf" type="decimal" column="cantidad_act_enf" precision="10" scale="0" nullable="true"/>
     <field name="tiempoActEnf" type="time" column="tiempo_act_enf" nullable="true"/>
     <field name="estadoMtlAct" type="boolean" column="estado_mtl_act" nullable="true"/>
+    <many-to-one field="idCtlActividad" target-entity="EnfCtlActividad">
+      <join-columns>
+        <join-column name="id_ctl_actividad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idSubactividad" target-entity="EnfCtlSubactividad">
       <join-columns>
         <join-column name="id_subactividad" referenced-column-name="id"/>

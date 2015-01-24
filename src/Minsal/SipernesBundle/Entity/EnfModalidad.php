@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfModalidad
  *
- * @ORM\Table(name="enf_modalidad", indexes={@ORM\Index(name="IDX_5608CF14DC13B9AD", columns={"id_dosis_esq"})})
+ * @ORM\Table(name="enf_modalidad")
  * @ORM\Entity
  */
 class EnfModalidad
@@ -30,14 +30,25 @@ class EnfModalidad
     private $nombreModalidad;
 
     /**
-     * @var \EnfDosisEsquemaVac
+     * @var boolean
      *
-     * @ORM\ManyToOne(targetEntity="EnfDosisEsquemaVac")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_dosis_esq", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="estado_mod", type="boolean", nullable=true)
      */
-    private $idDosisEsq;
+    private $estadoMod;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_mod", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoMod;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso_mod", type="date", nullable=true)
+     */
+    private $fechaIngresoMod;
 
 
 
@@ -75,25 +86,71 @@ class EnfModalidad
     }
 
     /**
-     * Set idDosisEsq
+     * Set estadoMod
      *
-     * @param \Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac $idDosisEsq
+     * @param boolean $estadoMod
      * @return EnfModalidad
      */
-    public function setIdDosisEsq(\Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac $idDosisEsq = null)
+    public function setEstadoMod($estadoMod)
     {
-        $this->idDosisEsq = $idDosisEsq;
+        $this->estadoMod = $estadoMod;
 
         return $this;
     }
 
     /**
-     * Get idDosisEsq
+     * Get estadoMod
      *
-     * @return \Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac 
+     * @return boolean 
      */
-    public function getIdDosisEsq()
+    public function getEstadoMod()
     {
-        return $this->idDosisEsq;
+        return $this->estadoMod;
+    }
+
+    /**
+     * Set usuarioIngresoMod
+     *
+     * @param string $usuarioIngresoMod
+     * @return EnfModalidad
+     */
+    public function setUsuarioIngresoMod($usuarioIngresoMod)
+    {
+        $this->usuarioIngresoMod = $usuarioIngresoMod;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoMod
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoMod()
+    {
+        return $this->usuarioIngresoMod;
+    }
+
+    /**
+     * Set fechaIngresoMod
+     *
+     * @param \DateTime $fechaIngresoMod
+     * @return EnfModalidad
+     */
+    public function setFechaIngresoMod($fechaIngresoMod)
+    {
+        $this->fechaIngresoMod = $fechaIngresoMod;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngresoMod
+     *
+     * @return \DateTime 
+     */
+    public function getFechaIngresoMod()
+    {
+        return $this->fechaIngresoMod;
     }
 }

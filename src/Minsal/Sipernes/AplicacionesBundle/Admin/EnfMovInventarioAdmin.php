@@ -69,6 +69,7 @@ class EnfMovInventarioAdmin extends Admin
             ->add('estadoMov')
             ->add('empleadoEnvio')
             ->add('empleadoRecivio')
+            
         ;
     }
 

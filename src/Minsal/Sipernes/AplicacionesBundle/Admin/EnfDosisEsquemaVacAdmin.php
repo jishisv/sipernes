@@ -24,6 +24,8 @@ class EnfDosisEsquemaVacAdmin extends Admin
             ->add('usuarioDosisEsq')
             ->add('fechaIngresoDosisEsq')
             ->add('fechaModDosis')
+            ->add('idTipoEsq') 
+            ->add('idModalidad')
         ;
     }
 
@@ -41,6 +43,8 @@ class EnfDosisEsquemaVacAdmin extends Admin
             ->add('usuarioDosisEsq')
             ->add('fechaIngresoDosisEsq')
             ->add('fechaModDosis')
+            ->add('idTipoEsq') 
+            ->add('idModalidad')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -57,16 +61,18 @@ class EnfDosisEsquemaVacAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-//            ->add('id')
+//          ->add('id')
             ->add('idComponente',null, array('label' => 'Tipo de Componente'))
             ->add('idEmpCorr', null, array('label' => 'Codigo del Empleado'))
 //            ->add('idTipoEsq', null, array('label' => 'Tipo de esquema'))
             ->add('idMovimiento',null, array('label' => 'Tipo de Movimiento'))
-            ->add('idExpediente','text', array('label' => 'Codigo de expediente'))
+            ->add('idExpediente',null, array('label' => 'Codigo de expediente'))
             ->add('dosis','text', array('label' => 'Dosis'))
             ->add('centroEducativo','text', array('label' => 'Centro Educativo'))
             ->add('fechaDosisEsq','date', array('label' => 'Fecha'))
             ->add('estadoDosisEsq')
+            ->add('idTipoEsq') 
+            ->add('idModalidad')
 //            ->add('usuarioDosisEsq')
 //            ->add('fechaIngresoDosisEsq')
 //            ->add('fechaModDosis')
@@ -87,6 +93,8 @@ class EnfDosisEsquemaVacAdmin extends Admin
             ->add('usuarioDosisEsq')
             ->add('fechaIngresoDosisEsq')
             ->add('fechaModDosis')
+            ->add('idTipoEsq') 
+            ->add('idModalidad')
         ;
     }
 }
