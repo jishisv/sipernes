@@ -4,13 +4,13 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
-        $('#subactividades').select2({
+
+    $('#subactividades').select2({
         width: '60%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
+
     $('#deptos').select2({
         width: '60%',
         placeholder: 'Seleccione...',
@@ -24,7 +24,7 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
+
     $('#tipoestablecimientos').select2({
         width: '60%',
         placeholder: 'Seleccione...',
@@ -77,6 +77,10 @@ $(document).ready(function () {
         return false;
     });
 
+    $("#id_reporte_paciente_diagnostico").click(function () {
+        alert(Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo");
+    });
+
     $("#id_reporte_prueba").click(function () {
 //        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
@@ -116,14 +120,14 @@ $(document).ready(function () {
 
 
 //            alert('entro aqui 7');
-          alert(Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val()  + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo");
+            alert(Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo");
 //            if ($('#municipios').val() == 'Seleccione..')
 //                alert('Debe seleccionar un municipio');
 //
 //            // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
 //            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
 //            else
-            var url = Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val()  + '/' + $('#actividades').val() + '/' + $('#subactividades').val()  + '/' + $('#deptos').val() + '/' + $('#municipios').val()  + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val()  + '/' + $('#codigo_expediente').val()  + '/' + $('#codigo_enfermera').val() + '/' +"Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_act') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
 //            alert('Entro saqui 8');{fecha_inicio}/{fecha_fin}/{actividades}/{subactividades}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_act"
             window.open(url, '_blank');
             return false;
@@ -166,7 +170,7 @@ $(document).ready(function () {
     });
 
 ////////////////////llenado de combos de actividades//////////////////////
- $.getJSON(Routing.generate('get_all_actividades'),
+    $.getJSON(Routing.generate('get_all_actividades'),
             function (data) {
 //               alert("entre a deptos de shcp");
                 $.each(data.actividades, function (indice, aux) {
@@ -174,7 +178,7 @@ $(document).ready(function () {
                 });
             });
 
- $("#actividades").on('change', function (event) { // aqui el JSON });
+    $("#actividades").on('change', function (event) { // aqui el JSON });
         $('#subactividades option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
@@ -198,7 +202,7 @@ $(document).ready(function () {
     });
 
 ////////////////////llenado de combos de establecimientos//////////////////////
- $.getJSON(Routing.generate('get_all_establecimientos'),
+    $.getJSON(Routing.generate('get_all_establecimientos'),
             function (data) {
 //               alert("entre a deptos de shcp");
                 $.each(data.establecimientos, function (indice, aux) {
@@ -206,7 +210,7 @@ $(document).ready(function () {
                 });
             });
 
- $("#establecimientos").on('change', function (event) { // aqui el JSON });
+    $("#establecimientos").on('change', function (event) { // aqui el JSON });
         $('#tipoestablecimientos option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
