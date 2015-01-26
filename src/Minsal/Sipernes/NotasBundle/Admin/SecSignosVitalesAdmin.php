@@ -17,14 +17,14 @@ class SecSignosVitalesAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('frecuenciaCardiaca')
-            ->add('presionArterial')
-            ->add('frecuenciaRespiratoria')
-            ->add('peso')
-            ->add('talla')
-            ->add('temperatura')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+//            ->add('frecuenciaCardiaca')
+//            ->add('presionArterial')
+//            ->add('frecuenciaRespiratoria')
+//            ->add('peso')
+//            ->add('talla')
+//            ->add('temperatura')
         ;
     }
 
@@ -35,15 +35,15 @@ class SecSignosVitalesAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('frecuenciaCardiaca')
-            ->add('presionArterial')
-            ->add('frecuenciaRespiratoria')
-            ->add('peso')
-            ->add('talla')
-            ->add('temperatura')
-            ->add('observacionSig')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('frecuenciaCardiaca',null, array('label' => 'Frecuencia Cardiaca'))
+            ->add('presionArterial',null, array('label' => 'Presion Arterial'))
+            ->add('frecuenciaRespiratoria',null, array('label' => 'Frecuencia Respiratoria'))
+            ->add('peso',null, array('label' => 'Peso'))
+            ->add('talla',null, array('label' => 'Talla'))
+            ->add('temperatura',null, array('label' => 'Temperatura'))
+            ->add('observacionSig',null, array('label' => 'Observación'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -61,15 +61,15 @@ class SecSignosVitalesAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('frecuenciaCardiaca')
-            ->add('presionArterial')
-            ->add('frecuenciaRespiratoria')
-            ->add('peso')
-            ->add('talla')
-            ->add('temperatura')
-            ->add('observacionSig')
+            ->add('idEmpCorr',null, array('label' => 'Numero de Empleado', 'required' => true))  
+            ->add('idExpediente',null, array('label' => 'Numero de Expediente', 'required' => true))
+            ->add('frecuenciaCardiaca',null, array('label' => 'Frecuencia Cardiaca', 'required' => true))
+            ->add('presionArterial',null, array('label' => 'Presion Arterial', 'required' => true))
+            ->add('frecuenciaRespiratoria',null, array('label' => 'Frecuencia Respiratoria', 'required' => true))
+            ->add('peso',null, array('label' => 'Peso', 'required' => true))
+            ->add('talla',null, array('label' => 'Talla', 'required' => true))
+            ->add('temperatura',null, array('label' => 'Temperatura', 'required' => true))
+            ->add('observacionSig',null, array('label' => 'Observación'))
         ;
     }
 
@@ -80,15 +80,15 @@ class SecSignosVitalesAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('idEmpCorr')  
-            ->add('idExpediente')
-            ->add('frecuenciaCardiaca')
-            ->add('presionArterial')
-            ->add('frecuenciaRespiratoria')
-            ->add('peso')
-            ->add('talla')
-            ->add('temperatura')
-            ->add('observacionSig')
+            ->add('idEmpCorr',null, array('label' => 'Numero Empleado'))  
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
+            ->add('frecuenciaCardiaca',null, array('label' => 'Frecuencia Cardiaca'))
+            ->add('presionArterial',null, array('label' => 'Presion Arterial'))
+            ->add('frecuenciaRespiratoria',null, array('label' => 'Frecuencia Respiratoria'))
+            ->add('peso',null, array('label' => 'Peso'))
+            ->add('talla',null, array('label' => 'Talla'))
+            ->add('temperatura',null, array('label' => 'Temperatura'))
+            ->add('observacionSig',null, array('label' => 'Observación'))
         ;
     }
     

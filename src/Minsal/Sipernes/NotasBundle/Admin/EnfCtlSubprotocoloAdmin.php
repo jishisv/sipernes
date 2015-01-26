@@ -18,14 +18,14 @@ class EnfCtlSubprotocoloAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('concepto')
-            ->add('etiologia')
-            ->add('nombreSubprotocolo')
-            ->add('fechaIngresoSubpro')
-            ->add('fechaModificacionSubpro')
-            ->add('usuarioSubpro')
-            ->add('estadoSubpro')
+            //->add('id')
+            ->add('nombreSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('estadoSubpro', null, array('label' => 'Activo','required' => False))
+            //->add('concepto')
+            //->add('etiologia')
+            ->add('usuarioSubpro', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoSubpro', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionSubpro')
         ;
     }
 
@@ -36,12 +36,12 @@ class EnfCtlSubprotocoloAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('nombreSubprotocolo')
-            ->add('estadoSubpro')
+            ->add('nombreSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('estadoSubpro', null, array('label' => 'Activo','required' => False))
             //->add('concepto')
             //->add('etiologia')
-            ->add('usuarioSubpro')
-            ->add('fechaIngresoSubpro')
+            ->add('usuarioSubpro', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoSubpro', null, array('label' => 'Creado el'))
             //->add('fechaModificacionSubpro')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -60,14 +60,14 @@ class EnfCtlSubprotocoloAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idProtocolo',null, array('label' => 'Seleccione protocolo','required' => true,
+            ->add('idProtocolo',null, array('label' => 'Seleccione Tipo de protocolo','required' => true,
             'class' => 'MinsalSipernesBundle:EnfCtlProtocolo',
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerProtActivo();
             }))
-            ->add('nombreSubprotocolo','text', array('label' => 'Nombre del subprotocolo'))
-            ->add('concepto','text', array('label' => 'Concepto'))
-            ->add('etiologia','text', array('label' => 'Etiología '))
+            ->add('nombreSubprotocolo','text', array('label' => 'Digite el nombre del protocolo'))
+            ->add('concepto','text', array('label' => 'Digite el Concepto'))
+            ->add('etiologia','text', array('label' => 'Digite la Etiología '))
             
             //->add('fechaIngresoSubpro')
             //->add('fechaModificacionSubpro')
@@ -83,13 +83,12 @@ class EnfCtlSubprotocoloAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('idProtocolo')
-            ->add('nombreSubprotocolo')         
-            ->add('concepto')
-            ->add('etiologia')
-            ->add('estadoSubpro')
-            ->add('usuarioSubpro')
-            ->add('fechaIngresoSubpro')
+            ->add('nombreSubprotocolo', null, array('label' => 'Protocolo'))
+            ->add('estadoSubpro', null, array('label' => 'Activo','required' => False))
+            //->add('concepto')
+            //->add('etiologia')
+            ->add('usuarioSubpro', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoSubpro', null, array('label' => 'Creado el'))
             //->add('fechaModificacionSubpro')
                  
         ;

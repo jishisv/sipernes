@@ -20,12 +20,13 @@ class EnfMtlIntervencionAdmin extends Admin
             ->add('idEmpCorr',null, array('label' => 'Numero de Empleado'))
             ->add('idExpediente',null, array('label' => 'Numero de Expediente'))
             ->add('idIntervencion',null, array('label' => 'Intervención'))
+            ->add('usuarioIngresoInterv',null, array('label' => 'Creado por'))
             ->add('fechaIngresoInterv',null, array('label' => 'Fecha de registro'))
             //->add('fechaModificacionInterv')
             //->add('observacionInterv')
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            //->add('usuarioIngresoInterv')
+            
         ;
     }
 
@@ -36,13 +37,13 @@ class EnfMtlIntervencionAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('idEmpCorr',null, array('label' => 'Numero de enfermera'))
-            ->add('idSecIngreso',null, array('label' => 'Expediente'))
+            ->add('idEmpCorr',null, array('label' => 'Numero Enfermera'))
+            ->add('idExpediente',null, array('label' => 'Numero Expediente'))
             ->add('idIntervencion',null, array('label' => 'Intervencion'))
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
+            ->add('fechaIngresoInterv',null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterv') 
             //->add('usuarioIngresoInterv')    
             ->add('_action', 'actions', array(
@@ -82,12 +83,12 @@ class EnfMtlIntervencionAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('idEmpCorr',null, array('label' => 'Numero de empleado'))
-            ->add('idSecIngreso',null, array('label' => 'Numero de expediente'))
+            ->add('idExpediente',null, array('label' => 'Numero de expediente'))
             ->add('idIntervencion',null, array('label' => 'Seleccione intervencion'))
             ->add('observacionInterv',null, array('label' => 'Observación'))
             ->add('efectivoInterv',null, array('label' => 'Efectivo'))
             //->add('estadoMtlInterv')
-            ->add('fechaIngresoInterv',null, array('label' => 'Registrado'))
+            ->add('fechaIngresoInterv',null, array('label' => 'Creado el'))
             //->add('fechaModificacionInterv')
             ->add('usuarioIngresoInterv')
             

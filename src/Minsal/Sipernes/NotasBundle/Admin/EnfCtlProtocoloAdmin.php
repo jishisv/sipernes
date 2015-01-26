@@ -16,12 +16,12 @@ class EnfCtlProtocoloAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('nombreProtocolo')
-            ->add('fechaIngresoProto')
-            ->add('fechaModificacionProto')
-            ->add('usuarioProto')
-            ->add('estadoProt')
+            //->add('id')
+            ->add('nombreProtocolo', null, array('label' => 'Tipo de Protocolo'))
+            ->add('estadoProt', null, array('label' => 'Activo'))
+            ->add('usuarioProto', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoProto', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionProto')
         ;
     }
 
@@ -32,10 +32,10 @@ class EnfCtlProtocoloAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('nombreProtocolo')
-            ->add('estadoProt')
-            ->add('usuarioProto')
-            ->add('fechaIngresoProto')
+            ->add('nombreProtocolo', null, array('label' => 'Tipo de Protocolo'))
+            ->add('estadoProt', null, array('label' => 'Activo'))
+            ->add('usuarioProto', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoProto', null, array('label' => 'Creado el'))
             //->add('fechaModificacionProto')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -54,7 +54,7 @@ class EnfCtlProtocoloAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('nombreProtocolo','text', array('label' => 'Nombre de protocolo'))
+            ->add('nombreProtocolo','text', array('label' => 'Digite el nombre del tipo de protocolo'))
             //->add('fechaIngresoProto')
             //->add('fechaModificacionProto')
             //->add('usuarioProto')
@@ -68,12 +68,12 @@ class EnfCtlProtocoloAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('nombreProtocolo')
-            ->add('fechaIngresoProto')
-            ->add('fechaModificacionProto')
-            ->add('usuarioProto')
-            ->add('estadoProt')
+            //->add('id')
+            ->add('nombreProtocolo', null, array('label' => 'Tipo de Protocolo'))
+            ->add('estadoProt', null, array('label' => 'Activo'))
+            ->add('usuarioProto', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoProto', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionProto')
         ;
     }
     
