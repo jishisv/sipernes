@@ -468,7 +468,36 @@ public function getNumEmpleadoEnfermeraAction() {
                   ->getArrayResult();             
 
         return new Response(json_encode($empleados));
-}   
+}
+
+ /**
+     *@Route("protocolos/todos/", name="get_all_protocolos", options={"expose"=true})
+     */
+      public function getProtocolosAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlProtocolo o";
+      $protocolos['protocolos'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($protocolos));
+    }
+    
+    /**
+     *@Route("todos/los/protocolos/por/{id}", name="get_sub_protocolos", options={"expose"=true})
+     */
+public function getSubProtocolosByProtocoloAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlSubprotocolo o
+                WHERE o.id = :id";
+        $subprotocolos['subprotocolos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($subprotocolos));
+    }
     
 }
 

@@ -66,6 +66,20 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
+    
+     $('#protocolo').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
+
+
+
+    $('#subprotocolo').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
 
     $("#fecha_inicio").datepicker().mask("99-99-9999");
     $("#fecha_fin").datepicker().mask("99-99-9999");
@@ -945,8 +959,39 @@ $(document).ready(function () {
 //                });
 //    });
 
+////////////////////llenado de combos de Protocolo y SubProtocolo//////////////////////
+    $.getJSON(Routing.generate('get_all_protocolos'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.protocolos, function (indice, aux) {
+                    $('#protocolo').append('<option value="' + aux.id + '">' + aux.nombreProtocolo + '</option>');
+                });
+            });
 
+    $("#protocolo").on('change', function (event) { // aqui el JSON });
+        $('#subprotocolo option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#subprotocolo').select2({
+                selected: 'true',
+                width: '60%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
 
+        });
+        $.getJSON(Routing.generate('get_sub_protocolos') + '/' + $('#protocolo').val(),
+                function (data) {
+                    $('subprotocolos').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.subprotocolos, function (indice, aux) {
+                        $('#subprotocolo').append('<option value="' + aux.id + '">' + aux.nombreSubprotocolo + '</option>');
+                    });
+
+                });
+    });
+
+   
 
 
 });
