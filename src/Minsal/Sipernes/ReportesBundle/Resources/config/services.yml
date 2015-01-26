@@ -3,13 +3,13 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoCapacitacionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoCapacitacion, MinsalSipernesReportesBundle:ReportePrueba1]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 1 Capacitacion}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de pacientes atendidos versus diagnosticos de enfermeria}
 
     minsal_sipernes_reportes.admin.enf_historico_actividad:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoActividad, MinsalSipernesReportesBundle:ReportePrueba2]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 2 Actividad}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Actividades Realizadas}
 
     minsal_sipernes_reportes.admin.enf_historico_intervencion:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoIntervencionAdmin
@@ -21,7 +21,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHitoricoDiagnosticoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHitoricoDiagnostico, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 4}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Anotaciones de Enfermería a Pacientes}
 
     minsal_sipernes_reportes.admin.enf_historico_dosis:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoDosisAdmin

@@ -242,7 +242,8 @@ class ReporteMetodoController extends Controller
         return new Response(json_encode($subactividades));
     }
     
-    /**
+    
+     /**
      *@Route("/all/obtener/establecimientos/", name="get_all_establecimientos", options={"expose"=true})
      */
       public function getEstablecimientoAction() {
@@ -271,6 +272,93 @@ class ReporteMetodoController extends Controller
 
         return new Response(json_encode($subestablecimientos));
     }
+    
+    /**
+     *@Route("tipos/diag/all/diagnosticos/", name="get_tipos_diagnos", options={"expose"=true})
+     */
+      public function getTiposDiagnosticosAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfClase o";
+      $tipos_diagnosticos['tipos_diagnosticos'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipos_diagnosticos));
+    }
+    
+    /**
+     *@Route("diag/all/diagnosticos/{id}", name="get_diag", options={"expose"=true})
+     */
+public function getDiagnosticosbyTipoAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlDiagnostico o
+                WHERE o.id = :id";
+        $diagnosticos['diagnosticos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($diagnosticos));
+    }
+    
+    /**
+     *@Route("bytipos/micro/all/", name="get_tipos_micro", options={"expose"=true})
+     */
+      public function getTiposMicronutrientesAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfClase o";
+      $tipos_diagnosticos['tipos_diagnosticos'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipos_diagnosticos));
+    }
+    
+    /**
+     *@Route("diag/all/diagnosticos/{id}", name="get_diag", options={"expose"=true})
+     */
+public function getMicronutrientesbyTipoAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlDiagnostico o
+                WHERE o.id = :id";
+        $diagnosticos['diagnosticos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($diagnosticos));
+    }
+    
+    /**
+     *@Route("expedientes/codigo/all/", name="get_expedientes_enf", options={"expose"=true})
+     */
+      public function getNumExpedientePacienteAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:MntExpediente o";
+      $pacientes['pacientes'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($pacientes));
+    }
+    
+    /**
+     *@Route("Num/Empleado/all/Empleados/", name="get_empleados_enf", options={"expose"=true})
+     */
+public function getNumEmpleadoEnfermeraAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:MntEmpleado o";
+                
+        $empleados['empleados'] = $em->createQuery($dql)
+                  ->getArrayResult();             
+
+        return new Response(json_encode($empleados));
+}   
     
 }
 

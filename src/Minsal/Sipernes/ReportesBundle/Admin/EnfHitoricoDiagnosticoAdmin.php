@@ -76,4 +76,15 @@ class EnfHitoricoDiagnosticoAdmin extends Admin
             ->add('estadoHistDiag')
         ;
     }
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_conso_anot.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

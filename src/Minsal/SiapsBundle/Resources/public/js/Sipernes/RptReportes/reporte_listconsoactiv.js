@@ -38,6 +38,34 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
+    
+     $('#tipo_diag').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
+
+
+
+    $('#diagnostico').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
+    
+     $('#tipo_micro').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
+
+
+
+    $('#micro').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
 
     $("#fecha_inicio").datepicker().mask("99-99-9999");
     $("#fecha_fin").datepicker().mask("99-99-9999");
@@ -469,8 +497,74 @@ $(document).ready(function () {
 
                 });
     });
+    
+    
+    ////////////////////llenado de combos de actividades//////////////////////
+    $.getJSON(Routing.generate('get_all_actividades'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.actividades, function (indice, aux) {
+                    $('#actividades').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
+                });
+            });
 
-////////////////////llenado de combos de establecimientos//////////////////////
+    $("#actividades").on('change', function (event) { // aqui el JSON });
+        $('#subactividades option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#subactividades').select2({
+                selected: 'true',
+                width: '60%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_all_sub_actividades') + '/' + $('#actividades').val(),
+                function (data) {
+                    $('#subactividades').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.subactividades, function (indice, aux) {
+                        $('#subactividades').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
+                    });
+
+                });
+    });
+
+////////////////////llenado de combos de Diagnostico//////////////////////
+    $.getJSON(Routing.generate('get_tipos_diagnos'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.tipos_diagnosticos, function (indice, aux) {
+                    $('#tipo_diag').append('<option value="' + aux.id + '">' + aux.nombreClase + '</option>');
+                });
+            });
+
+    $("#tipo_diag").on('change', function (event) { // aqui el JSON });
+        $('#diagnostico option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#diagnostico').select2({
+                selected: 'true',
+                width: '60%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_diag') + '/' + $('#tipo_diag').val(),
+                function (data) {
+                    $('diagnosticos').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.diagnosticos, function (indice, aux) {
+                        $('#diagnostico').append('<option value="' + aux.id + '">' + aux.nombreDiagnostico + '</option>');
+                    });
+
+                });
+    });
+
+
+////////////////////llenado de combos de Establecimiento//////////////////////
     $.getJSON(Routing.generate('get_all_establecimientos'),
             function (data) {
 //               alert("entre a deptos de shcp");
@@ -501,6 +595,107 @@ $(document).ready(function () {
 
                 });
     });
+
+////////////////////llenado de combos de Paciente //////////////////////
+    $.getJSON(Routing.generate('get_expedientes_enf'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.pacientes, function (indice, aux) {
+                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.numero + '</option>');
+                });
+            });
+
+//    $("#establecimientos").on('change', function (event) { // aqui el JSON });
+//        $('#tipoestablecimientos option').each(function (index, val) {
+//            $(this).remove();
+//            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+//            $('#tipoestablecimientos').select2({
+//                selected: 'true',
+//                width: '60%',
+//                placeholder: 'Seleccione...'
+////                allowClear: true
+//            });
+//
+//        });
+//        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
+//                function (data) {
+//                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+////                    alert("entre a municipios de shcp");
+//                    $.each(data.subestablecimientos, function (indice, aux) {
+//                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+//                    });
+//
+//                });
+//    });
+
+
+///////////////////llenado de combos de Enfermera//////////////////////
+    $.getJSON(Routing.generate('get_empleados_enf'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.empleados, function (indice, aux) {
+                    $('#cod_enf').append('<option value="' + aux.id + '">' + aux.idempleado + '</option>');
+                });
+            });
+
+//    $("#establecimientos").on('change', function (event) { // aqui el JSON });
+//        $('#tipoestablecimientos option').each(function (index, val) {
+//            $(this).remove();
+//            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+//            $('#tipoestablecimientos').select2({
+//                selected: 'true',
+//                width: '60%',
+//                placeholder: 'Seleccione...'
+////                allowClear: true
+//            });
+//
+//        });
+//        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
+//                function (data) {
+//                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+////                    alert("entre a municipios de shcp");
+//                    $.each(data.subestablecimientos, function (indice, aux) {
+//                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+//                    });
+//
+//                });
+//    });
+
+
+
+////////////////////llenado de combos de Micronutrientes//////////////////////
+//    $.getJSON(Routing.generate('get_all_establecimientos'),
+//            function (data) {
+////               alert("entre a deptos de shcp");
+//                $.each(data.establecimientos, function (indice, aux) {
+//                    $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+//                });
+//            });
+//
+//    $("#establecimientos").on('change', function (event) { // aqui el JSON });
+//        $('#tipoestablecimientos option').each(function (index, val) {
+//            $(this).remove();
+//            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+//            $('#tipoestablecimientos').select2({
+//                selected: 'true',
+//                width: '60%',
+//                placeholder: 'Seleccione...'
+////                allowClear: true
+//            });
+//
+//        });
+//        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#tipo_diag').val(),
+//                function (data) {
+//                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+////                    alert("entre a municipios de shcp");
+//                    $.each(data.subestablecimientos, function (indice, aux) {
+//                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+//                    });
+//
+//                });
+//    });
+
+
 
 
 

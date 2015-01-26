@@ -80,4 +80,15 @@ class EnfHistoricoIntervencionAdmin extends Admin
             ->add('estadoHistInterv')
         ;
     }
+    
+    public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_micro_plani.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }
