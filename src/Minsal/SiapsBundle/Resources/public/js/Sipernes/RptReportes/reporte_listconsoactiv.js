@@ -285,7 +285,7 @@ $(document).ready(function () {
         }
     });
 
-    // 58. vacunacion vs planificadas
+    // 58. consolidado de anotaciones realizadas
     $("#id_reporte_cons_anot").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
             if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
@@ -329,7 +329,7 @@ $(document).ready(function () {
         }
     });    
 
-    //59
+    //59. consolidado de diagnostico a pacientes
     $("#id_reporte_cons_diag").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
             if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
@@ -374,9 +374,259 @@ $(document).ready(function () {
     });    
 
 
-    //60
-    
+    //60. micronutrientes aplicados
+    $("#id_reporte_micronutrientes_aplicados").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#micronutrientesAplicados"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#micronutrientesAplicados"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
 
+            var url = Routing.generate('rpt_micr_aplic') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+    
+    //61. id_reporte_vacuna_aplicadas
+    $("#id_reporte_vacuna_aplicadas").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#vacunasAplicadas"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#vacunasAplicadas"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_vac_aplic') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+    
+    //62. pacientes y diagnosticos grafica
+    $("#id_reporte_paciente_diagnostico_grafica").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#pacientesDiagnosticosGrafica"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#pacientesDiagnosticosGrafica"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+            if ($('#tipo_diagnostico').val() === '' || $('#diagnostico').val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe llenar ambos datos para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#pacientesDiagnosticosGrafica"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#tipo_diagnostico").val() === '')
+                            $("#tipo_diagnostico").focus();
+                        else
+                            $("#diagnostico").focus();
+                    }
+                });
+                return false;
+            }
+
+//            var grafico = $("input[name='grafica']:checked").val();
+
+            var url = Routing.generate('rpt_pac_dig_graf') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val()  + '/' + $("input[name='grafica']:checked").val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    // 63. mensuales de produccion
+    $("#id_reporte_mensual_produccion").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#mensualesProduccion"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#mensualesProduccion"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+            if ($('#tipo_produccion').val() === '' || $('#produccion').val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe llenar ambos datos para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#mensualesProduccion"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#tipo_produccion").val() === '')
+                            $("#tipo_produccion").focus();
+                        else
+                            $("#produccion").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_mens_prod') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_produccion').val() + '/' + $('#produccion').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //64. consolidado semanal de anotaciones
+    $("#id_reporte_cons_anot_semanal").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoAnotaciones"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoAnotaciones"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_anot_sem') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
 
     $("#id_reporte_prueba").click(function () {
 //        alert('entro aqui 2');

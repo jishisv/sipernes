@@ -96,7 +96,11 @@ class EnfHistoricoCapacitacionAdmin extends Admin
     public function getTemplate($name) {
         switch ($name) {
             case 'list':
+
                 return 'MinsalSipernesReportesBundle:Reportes:reporte_pac_diag.html.twig';
+
+              //  return 'MinsalSipernesReportesBundle:Reportes:reporte_sema_anot.html.twig';
+
                 break;
             default:
                 return parent::getTemplate($name);
