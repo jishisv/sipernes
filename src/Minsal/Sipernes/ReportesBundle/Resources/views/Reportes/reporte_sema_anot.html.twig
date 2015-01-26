@@ -1,4 +1,4 @@
-{# src/Minsal/SeguimientoBundle/Resources/views/SecIngreso/reporte_pac_diag.html.twig #}
+{# src/Minsal/SeguimientoBundle/Resources/views/SecIngreso/reporte_list.html.twig #}
 {% extends 'SonataAdminBundle::layout.html.twig' %}
 {% block stylesheets %}
     {{parent()}}
@@ -13,13 +13,13 @@
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_listconsoactiv.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block sonata_admin_content %}
-    <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Comparativo de micronutrientes aplicados</h4>
+    <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Consolidado semanal de anotaciones de enfermería a pacientes</h4>
     <center>
-        <form  id="micronutrientesAplicados" method="post" >
+        <form  id="consolidadoSemanalAnotaciones" method="post" >
             <table class="table table-bordered ">
                 <tbody>
                     <tr>
-                        <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Par&aacute;metros</strong></td>
+                        <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Opciones de Contenido</strong></td>
                     </tr>
                     <tr>
                 <div id="divdomreg">
@@ -30,35 +30,44 @@
                 <td class=" "><strong>Fecha Final</strong></td>
                 <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>
                 </tr>
-
                 <tr>
                     <td class="" ><strong>Departamento:</strong></td>
-                    <td><select id="deptos" name="deptos">
+                    <td>
+                        <select id="deptos" name="deptos">
                             <option></option>
                         </select></td>
-
                     <td class="" ><strong>Municipio:</strong></td>
                     <td><select id="municipios" name="municipios">
                             <option selected="true">Seleccione..</option>
-                        </select></td>
+                        </select>
+                    </td>
                 </tr>
-
                 <tr>
                     <td class="" ><strong>Tipo establecimiento:</strong></td>
                     <td><select id="establecimientos" name="establecimientos">
                             <option selected="true">Seleccione..</option>
                         </select></td>
-
                     <td class="" ><strong>Establecimiento:</strong></td>
                     <td><select id="tipoestablecimientos" name="tipoestablecimientos">
                             <option></option>
                         </select></td>
                 </tr>
-
+                <tr>
+                    <td class="" ><strong>Código Expediente:</strong></td>
+                    <td><input id="codigo_expediente" name="codigo_expediente" type="text"  /></td>
+                    <td class="" ><strong>Nombre Paciente:</strong></td>
+                    <td><input id="paciente" name="paciente" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td class="" ><strong>Código Enfermera:</strong></td>
+                    <td><input id="codigo_enfermera" name="codigo_enfermera" type="text"  /></td>
+                    <td class="" ><strong>Nombre Enfermera:</strong></td>
+                    <td><input id="enfermera" name="enfermera" type="text"  /></td>
+                </tr>
                 </tbody>
             </table>
             <div class="well form-actions">
-                <input type="button" class="btn btn-primary" id="id_reporte_micronutrientes_aplicados" name="btn_generate" value="Consultar"/>
+                <input type="button" class="btn btn-primary" id="id_reporte_cons_anot_semanal" name="btn_generate" value="Generar Reporte"/>
             </div>
         </form>
         <div id="resultado" ></div>

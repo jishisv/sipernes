@@ -111,8 +111,6 @@ class ReporteMetodoController extends Controller
 
     /**
      *@Route("/rpt_vac_plan/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipovacuna}/{presentacion}/{id_servicio}", name="rpt_vac_plan", options={"expose"=true})
-     * 
-     * 
      */
     public function ReporteVacunasPlanificadasAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipovacuna, $presentacion, $id_servicio = 0) {
 
@@ -182,6 +180,118 @@ class ReporteMetodoController extends Controller
         return $jasperReport->buildReport();
     }
 
+    /**
+     *@Route("/rpt_micr_aplic/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{id_servicio}", name="rpt_micr_aplic", options={"expose"=true})
+     */
+    public function ReporteMicronutrientesAplicadosAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $id_servicio = 0) {
+
+        $jasperReport = $this->container->get('jasper.build.reports');
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        $jasperReport->setReportParams(array(
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+        ));
+
+        return $jasperReport->buildReport();
+    }
+
+    /**
+     *@Route("/rpt_vac_aplic/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{id_servicio}", name="rpt_vac_aplic", options={"expose"=true})
+     */
+    public function ReporteVacunasAplicadasAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $id_servicio = 0) {
+
+        $jasperReport = $this->container->get('jasper.build.reports');
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        $jasperReport->setReportParams(array(
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+        ));
+
+        return $jasperReport->buildReport();
+    }
+
+    /**
+     *@Route("/rpt_pac_dig_graf/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiagnostico}/{diagnostico}/{grafico}/{id_servicio}", name="rpt_pac_dig_graf", options={"expose"=true})
+     */
+    public function ReportePacienteDiagnosticosGrafAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiagnostico, $diagnostico, $grafico, $id_servicio = 0) {
+
+        $jasperReport = $this->container->get('jasper.build.reports');
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        $jasperReport->setReportParams(array(
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipo_diagnostico' => $tipodiagnostico,
+            'diagnostico' => $diagnostico,
+            'grafico' => $grafico,
+        ));
+
+        return $jasperReport->buildReport();
+    }
+
+    /**
+     *@Route("/rpt_mens_prod/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipoproduccion}/{produccion}/{id_servicio}", name="rpt_mens_prod", options={"expose"=true})
+     */
+    public function ReporteMensualProduccionAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipoproduccion, $produccion, $id_servicio = 0) {
+
+        $jasperReport = $this->container->get('jasper.build.reports');
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        $jasperReport->setReportParams(array(
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipo_produccion' => $tipoproduccion,
+            'produccion' => $produccion,
+        ));
+
+        return $jasperReport->buildReport();
+    }
+
+    /**
+     *@Route("/rpt_con_anot_sem/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_anot_sem", options={"expose"=true})
+     */
+    public function ReporteConsolidadoSemanalActividadesAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
+
+        $jasperReport = $this->container->get('jasper.build.reports');
+        $jasperReport->setReportName($report_name);
+        $jasperReport->setReportFormat($report_format);
+        $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        $jasperReport->setReportParams(array(
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_fin' => $fecha_fin,
+            'deptos'=>  $deptos,
+            'municipios' => $municipios,
+            'establecimientos' => $establecimientos,
+            'tipoestablecimientos' => $tipoestablecimientos,
+            'codigo_expediente' => $codigo_expediente,
+            'codigo_enfermera' => $codigo_enfermera,
+        ));
+
+        return $jasperReport->buildReport();
+    }
+
      /**
      *@Route("/obtener/municipios/hospitalarios/todos/{id}", name="get_all_munic", options={"expose"=true})
      */
@@ -196,8 +306,8 @@ class ReporteMetodoController extends Controller
          
         return new Response(json_encode($municipios));
     }
-    
-   
+
+
    /**
      *@Route("/obtener/deptos/todos/", name="get_all_deptos", options={"expose"=true})
      */

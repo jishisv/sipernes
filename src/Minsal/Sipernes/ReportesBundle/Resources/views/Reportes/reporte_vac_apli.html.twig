@@ -13,9 +13,9 @@
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_listconsoactiv.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block sonata_admin_content %}
-    <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Comparativo de micronutrientes aplicados</h4>
+    <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Comparativo de Vacunas Aplicadas</h4>
     <center>
-        <form  id="micronutrientesAplicados" method="post" >
+        <form  id="vacunasAplicadas" method="post" >
             <table class="table table-bordered ">
                 <tbody>
                     <tr>
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
             <div class="well form-actions">
-                <input type="button" class="btn btn-primary" id="id_reporte_micronutrientes_aplicados" name="btn_generate" value="Consultar"/>
+                <input type="button" class="btn btn-primary" id="id_reporte_vacuna_aplicadas" name="btn_generate" value="Consultar"/>
             </div>
         </form>
         <div id="resultado" ></div>
