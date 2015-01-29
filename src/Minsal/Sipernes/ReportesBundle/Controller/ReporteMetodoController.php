@@ -477,7 +477,8 @@ public function getNumEmpleadoEnfermeraAction() {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:EnfCtlProtocolo o";
+                FROM MinsalSipernesBundle:EnfCtlProtocolo o 
+                WHERE o.estadoProt = true";
       $protocolos['protocolos'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -492,7 +493,8 @@ public function getSubProtocolosByProtocoloAction($id) {
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfCtlSubprotocolo o
-                WHERE o.id = :id";
+                WHERE o.id = :id
+                and o.estadoSubpro = true";
         $subprotocolos['subprotocolos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                 
 
