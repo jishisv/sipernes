@@ -97,7 +97,7 @@ class EnfHistoricoCapacitacionAdmin extends Admin
         switch ($name) {
             case 'list':
 
-                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_anot.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_inmun.html.twig';
 
               //  return 'MinsalSipernesReportesBundle:Reportes:reporte_sema_anot.html.twig';
 
