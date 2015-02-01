@@ -860,7 +860,7 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
             alert(url);
             window.open(url, '_blank');
             return false;
@@ -871,10 +871,444 @@ $(document).ready(function () {
     });
 
     //73. Informe diario de anotaciones de enfermería por paciente
+    $("#id_reporte_diario_anot").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioAnotac"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioAnotac"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
 
+            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
 
+    //74. Informe diario de diagnósticos de enfermería a paciente hospitalario
+    $("#id_reporte_diario_enfer").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioEnferm"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioEnferm"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
 
+            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
 
+    //75. Reporte diario de actividades realizadas por el personal de enfermería
+    $("#id_reporte_diario_activ").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioActividad"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioActividad"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_activ_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //76. Reporte diario de capacitaciones realizadas por enfermera
+    $("#id_reporte_diario_capacit").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioCapacitacion"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioCapacitacion"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#capacitacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //77. Reporte de control de existencias y descargo de vacunas por día
+    $("#id_reporte_control_vac").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoControlVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoControlVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_control_vac') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //78. Reporte diario de niños inmunizados en un área geográfica
+    $("#id_reporte_diario_inmun").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoInmunizadosGeo"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoInmunizadosGeo"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_inmun_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#deptos2').val() + '/' + $('#municipios2').val() + '/' + $('#sector').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //79. Reporte diario de intervenciones efectuadas por el personal de enfermería
+    $("#id_reporte_diario_interv").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioIntervenc"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioIntervenc"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_interv_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#tipointervencion').val() + '/' + $('#intervencion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //80. Reporte de registros diarios de producción de vacunas
+    $("#id_reporte_diario_prod_vac").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioProdVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioProdVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_produc_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //81. Reporte diario de protocolos efectuados por el personal de enfermería consolidadoDiarioProtocol
+    $("#id_reporte_diario_protocol").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioProtocol"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioProtocol"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_protoc_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //82. Reporte diario del registro de vacunas entregadas y recibidas por el personal de las distintas disciplinas
+    $("#id_reporte_diario_disc_vac").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioDiscVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioDiscVacun"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_disc_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#disciplina').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });    
 
 
 
@@ -944,7 +1378,7 @@ $(document).ready(function () {
             function (data) {
 //                alert("entre a deptos de shcp");
                 $.each(data.deptos, function (indice, aux) {
-                    $('#deptos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    $('#deptos, #deptos2').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
                 });
             });
 
@@ -967,6 +1401,29 @@ $(document).ready(function () {
 //                    alert("entre a municipios de shcp");
                     $.each(data.municipios, function (indice, aux) {
                         $('#municipios').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    });
+
+                });
+    });
+
+    $("#deptos2").on('change', function (event) { // aqui el JSON });
+        $('#municipios2 option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#municipios2').select2({
+                selected: 'true',
+                width: '60%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_all_munic') + '/' + $('#deptos2').val(),
+                function (data) {
+                    $('#municipios2').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.municipios, function (indice, aux) {
+                        $('#municipios2').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
                     });
 
                 });
