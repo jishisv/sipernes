@@ -642,6 +642,248 @@ $(document).ready(function () {
         }
     });
 
+    //65. consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días
+    $("#id_reporte_cons_diag_siete").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var url = Routing.generate('rpt_con_diag_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+    
+    //66. Consolidado de micronutrientes aplicados en los últimos 7 días
+    $("#id_reporte_cons_micro_siete").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#micro').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //67. consolidado de vacunas aplicadas en los últimos 7 días
+    $("#id_reporte_cons_vac_siete").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var url = Routing.generate('rpt_con_vac_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //68. listado de actividades realizadas por el personal de enfermería de los últimos 7 días 
+    $("#id_reporte_cons_activ_siete").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //69. Reporte de registros semanales de dosis de vacunas aplicadas
+    $("#id_reporte_cons_vacuna_semanal").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoSemanalVacunaciones"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoSemanalVacunaciones"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_vacuna_semanal') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //70. Consolidado diario de diagnósticos realizados por el personal de enfermería
+    $("#id_reporte_diario_diag").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioDiagnosticos"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioDiagnosticos"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_diag_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //71. Consolidado diario de aplicación de micronutrientes
+    $("#id_reporte_diario_micro").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioMicronu"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioMicronu"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+    
+    //72. Consolidado diario de vacunación
+    $("#id_reporte_diario_vac").click(function () {
+        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "Debe de seleccionar ambas fechas para generar el reporte."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioAnotac"));
+                $("#error").dialog({
+                    close: function () {
+                        if ($("#fecha_inicio").val() === '')
+                            $("#fecha_inicio").focus();
+                        else
+                            $("#fecha_fin").focus();
+                    }
+                });
+                return false;
+            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+                ($('#error')) ? $('#error').remove() : '';
+                var elem = $("<div id='error' title='Error de llenado'><center>" +
+                        "La fecha de inicio debe de ser menor que la fecha fin."
+                        + "</center></div>");
+                elem.insertAfter($("#consolidadoDiarioAnotac"));
+                $("#error").dialog({
+                    close: function () {
+                        $("#fecha_inicio").val('');
+                        $("#fecha_fin").val('');
+                        $("#fecha_inicio").focus();
+                    }
+                });
+                return false;
+            }
+
+            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            alert(url);
+            window.open(url, '_blank');
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+
+    //73. Informe diario de anotaciones de enfermería por paciente
+
+
+
+
+
+
+
+
+
+
+
+
+
     $("#id_reporte_prueba").click(function () {
 //        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
