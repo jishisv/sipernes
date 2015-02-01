@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -230,22 +230,12 @@ WHERE
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="489" y="0" width="31" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="550" y="0" width="19" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="531" y="0" width="37" height="20" uuid="6c9b5860-c152-41bf-8d9c-b9641ec0ea9f"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="519" y="0" width="13" height="20" uuid="2ffde8df-59d4-43f6-b911-973ab5e59eb1"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="448" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<reportElement x="507" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
@@ -262,14 +252,23 @@ WHERE
 			</staticText>
 			<textField>
 				<reportElement style="table" x="265" y="0" width="56" height="33" uuid="d510ee5a-fc5e-4323-8b0c-87d55c911652"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalAsis}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="423" y="0" width="80" height="33" uuid="96072e91-676b-46e8-ade5-84370c3bdc18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalMonto}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="503" y="0" width="66" height="33" uuid="9edaff2f-0329-423b-9c32-6e6884dc5d2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalHora}]]></textFieldExpression>
 			</textField>
 		</band>

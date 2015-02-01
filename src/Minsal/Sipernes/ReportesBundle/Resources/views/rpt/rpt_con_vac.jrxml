@@ -42,44 +42,41 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select row_number() over (order by t.nombre) n,t.nombre establecimiento,t.nombre_componente1 tipo,sum(t.dosis) dosis,sum(t.aplicadas) aplicadas,sum(t.pendientes) pendientes from (
-SELECT
-  ctl_establecimiento.nombre,
-  enf_ctl_tipo_componente.nombre_componente1,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) dosis,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=2) aplicadas,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1)-(select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) pendientes
+		<![CDATA[SELECT row_number() over (order by ctl_departamento.nombre) n,
+  ctl_departamento.nombre departamento,
+  ctl_municipio.nombre municipio,
+  ctl_establecimiento.nombre establecimiento,
+  sum(enf_mov_inventario.cantidad_mov) dosisAplicadas
 FROM
-  public.enf_componente,
   public.ctl_establecimiento,
-  public.enf_ctl_tipo_componente,
+  public.ctl_departamento,
+  public.ctl_municipio,
   public.mnt_expediente,
+  public.enf_componente,
+  public.enf_ctl_tipo_componente,
   public.enf_dosis_esquema_vac,
   public.enf_mov_inventario
 WHERE
-  enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
+  ctl_establecimiento.id_municipio = ctl_municipio.id AND
+  ctl_municipio.id_departamento = ctl_departamento.id AND
   mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
+  enf_componente.id_tipo_componente = 1 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
-  enf_dosis_esquema_vac.id_movimiento = enf_mov_inventario.id) t group by t.nombre,t.nombre_componente1;]]>
+  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
+  enf_dosis_esquema_vac.id_movimiento = enf_mov_inventario.id AND
+  enf_mov_inventario.id_tipo_inventario=2
+  group by ctl_departamento.nombre,
+  ctl_municipio.nombre,
+  ctl_establecimiento.nombre;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
+	<field name="departamento" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="tipo" class="java.lang.String"/>
-	<field name="dosis" class="java.math.BigDecimal"/>
-	<field name="aplicadas" class="java.math.BigDecimal"/>
-	<field name="pendientes" class="java.math.BigDecimal"/>
-	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{dosis}]]></initialValueExpression>
-	</variable>
+	<field name="dosisaplicadas" class="java.math.BigDecimal"/>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{aplicadas}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{aplicadas}]]></initialValueExpression>
-	</variable>
-	<variable name="TotalPen" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{pendientes}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{pendientes}]]></initialValueExpression>
+		<variableExpression><![CDATA[$F{dosisaplicadas}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{dosisaplicadas}]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -127,7 +124,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Comparativo Vacunación vrs Planificadas]]></text>
+				<text><![CDATA[Consolidado de Vacunación]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="60" y="49" width="59" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
@@ -148,28 +145,21 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Tipo]]></text>
+				<text><![CDATA[Departamento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="319" y="49" width="61" height="31" backcolor="#CCCCCC" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
+				<reportElement style="table_TH" x="319" y="49" width="125" height="31" backcolor="#CCCCCC" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Dosis Programadas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="table_TH" x="380" y="49" width="64" height="31" backcolor="#CCCCCC" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[Dosis Aplicadas]]></text>
+				<text><![CDATA[Municipio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="444" y="49" width="58" height="31" backcolor="#CCCCCC" uuid="57b9c614-2781-41ed-b259-fb43c9882a58"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Dosis Pendientes]]></text>
+				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -188,34 +178,29 @@ WHERE
 			<textField>
 				<reportElement style="table" x="219" y="0" width="100" height="35" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="319" y="0" width="61" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+				<reportElement style="table" x="319" y="0" width="125" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="380" y="0" width="64" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{aplicadas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="444" y="0" width="58" height="35" uuid="9b34ea23-ee93-49cc-9fe2-adb2ba77e2a1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{pendientes}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dosisaplicadas}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="551" y="0" width="19" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="549" y="0" width="20" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="509" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<reportElement x="507" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
@@ -224,32 +209,18 @@ WHERE
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" x="54" y="0" width="265" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" x="54" y="0" width="390" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="table" x="319" y="0" width="61" height="33" uuid="f688767d-b2f1-46d5-b619-a76e5a9129ab"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{TotalPro}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="380" y="0" width="64" height="33" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{TotalApl}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement style="table" x="444" y="0" width="58" height="33" uuid="f921903f-6ad9-407a-a8a0-e5f5e6eb50f9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{TotalPen}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{TotalApl}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
