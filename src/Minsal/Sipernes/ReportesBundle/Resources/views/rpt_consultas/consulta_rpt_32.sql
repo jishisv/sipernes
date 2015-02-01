@@ -1,8 +1,8 @@
 SELECT 
-  mnt_empleado.nombre Enfermera, 
+  mnt_empleado.nombreempleado Enfermera, 
   ctl_establecimiento.nombre Establecimiento, 
   mnt_paciente.primer_nombre nombrepaciente, 
-  mnt_paciente.segundo_nombre nombrepaciente, 
+  mnt_paciente.primer_apellido apellidopaciente, 
   enf_ctl_protocolo.nombre_protocolo nombreprotocolo, 
   enf_ctl_subprotocolo.nombre_subprotocolo nombresubprotocolo, 
   enf_ctl_fase_intervencion.nombre_fase fase, 
