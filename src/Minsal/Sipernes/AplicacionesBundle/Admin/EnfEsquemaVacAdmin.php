@@ -17,10 +17,13 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $datagridMapper
            // ->add('id')
-            ->add('anioEsquemaVac')
-            ->add('nombreEsquemaVac')
-            ->add('edadMinima')
-            ->add('edadMaxima')
+            ->add('anioEsquemaVac', null, array('label' => 'Año'))
+            //->add('nombreEsquemaVac')
+            //->add('edadMinima', null, array('label' => 'Mes Mínimo'))
+            //->add('edadMaxima', null, array('label' => 'Mes Máximo'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
         ;
     }
 
@@ -32,9 +35,12 @@ class EnfEsquemaVacAdmin extends Admin
         $listMapper
             //->add('id')
             ->add('anioEsquemaVac', null, array('label' => 'Año'))
-            ->add('nombreEsquemaVac', null, array('label' => 'Nombre'))
-            ->add('edadMinima', null, array('label' => 'Edad Mínima'))
-            ->add('edadMaxima', null, array('label' => 'Edad Máxima'))
+            ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
+            //->add('edadMinima', null, array('label' => 'Edad Mínima'))
+            //->add('edadMaxima', null, array('label' => 'Edad Máxima'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -52,10 +58,13 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $formMapper
            // ->add('id')
-            ->add('anioEsquemaVac', null, array('label' => 'Año','max_length' => 4,'required' => true))
-            ->add('nombreEsquemaVac', 'text', array('label' => 'Nombre','max_length' => 150,'required' => true))
-            ->add('edadMinima', null, array('label' => 'Edad Mínima','max_length' => 4,'required' => true))
-            ->add('edadMaxima',null, array('label' => 'Edad Máxima','max_length' => 4,'required' => true))
+            ->add('anioEsquemaVac', null, array('label' => 'Digite el Año de la fase','max_length' => 4,'required' => true))
+            ->add('nombreEsquemaVac', 'text', array('label' => 'Digite el nombre de la fase ','max_length' => 150,'required' => true))
+            //->add('edadMinima', null, array('label' => 'Digite el meses mínimo de la fase','max_length' => 4,'required' => true))
+            //->add('edadMaxima',null, array('label' => 'Digite el meses máximo de la fase','max_length' => 4,'required' => true))
+            ->add('estadoVac', null, array('label' => 'Activo','required' => false))
+            //->add('usuarioIngresoVac')
+            //->add('fechaIngresoVac')
         ;
     }
 
@@ -66,10 +75,23 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('anioEsquemaVac')
-            ->add('nombreEsquemaVac')
-            ->add('edadMinima')
-            ->add('edadMaxima')
+            ->add('anioEsquemaVac', null, array('label' => 'Año'))
+            ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
+            //->add('edadMinima', null, array('label' => 'Edad Mínima'))
+            //->add('edadMaxima', null, array('label' => 'Edad Máxima'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
         ;
     }
+    
+    
+    
+     public function prePersist($EnfEsquemaVac) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfEsquemaVac->setusuarioIngresoVac($user);
+        $EnfEsquemaVac->setfechaIngresoVac(new \DateTime());
+       
+    }
+    
 }

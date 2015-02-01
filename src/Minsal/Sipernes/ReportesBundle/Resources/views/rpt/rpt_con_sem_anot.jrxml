@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="193"/>
+	<property name="ireport.y" value="22"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -42,39 +42,30 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT row_number() over (order by enf_ctl_diagnostico.cod_diagnostico) n,
-  ctl_establecimiento.nombre,
-  enf_clase.nombre_clase,
-  enf_dominio.nombre_dominio,
-  enf_ctl_diagnostico.nombre_diagnostico,
-  count(enf_ctl_diagnostico.cod_diagnostico)
+		<![CDATA[SELECT
+  mnt_empleado.nombre Enfermera,
+  ctl_establecimiento.nombre establecimiento,
+  enf_anotacion.observacion_anot Anotacion,
+  mnt_paciente.primer_nombre Paciente
+
 FROM
-  public.enf_ctl_diagnostico,
   public.ctl_establecimiento,
-  public.enf_clase,
-  public.enf_dominio,
+  public.mnt_expediente_establecimiento,
   public.mnt_expediente,
-  public.enf_mtl_diagnostico
+  public.enf_anotacion,
+  public.mnt_empleado,
+  public.mnt_paciente
 WHERE
-  enf_clase.id = enf_ctl_diagnostico.id_clase AND
-  enf_dominio.id = enf_clase.id_dominio AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  enf_mtl_diagnostico.id_expediente = mnt_expediente.id AND
-  enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id
-group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnostico,enf_clase.nombre_clase,enf_dominio.nombre_dominio,ctl_establecimiento.nombre;]]>
+  ctl_establecimiento.id = mnt_expediente_establecimiento.id AND
+  mnt_expediente.id_establecimiento = mnt_expediente_establecimiento.id_establecimiento AND
+  mnt_expediente.id = enf_anotacion.id_expediente AND
+  mnt_expediente.id_paciente = mnt_paciente.id AND
+  enf_anotacion.id_emp_corr = mnt_empleado.id;]]>
 	</queryString>
-	<field name="n" class="java.lang.Long"/>
-	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[Nombre del área de atención]]></fieldDescription>
-	</field>
-	<field name="nombre_clase" class="java.lang.String"/>
-	<field name="nombre_dominio" class="java.lang.String"/>
-	<field name="nombre_diagnostico" class="java.lang.String"/>
-	<field name="count" class="java.lang.Long"/>
-	<variable name="total" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{count}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{count}]]></initialValueExpression>
-	</variable>
+	<field name="enfermera" class="java.lang.String"/>
+	<field name="establecimiento" class="java.lang.String"/>
+	<field name="anotacion" class="java.lang.String"/>
+	<field name="paciente" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -117,56 +108,42 @@ group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnost
 	<columnHeader>
 		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="166" y="4" width="237" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="134" y="8" width="297" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Diagnosticos]]></text>
+				<text><![CDATA[Consolidado Semanal de Anotaciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="21" y="46" width="63" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="0" y="46" width="117" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[Enfermera]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="84" y="46" width="116" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="117" y="46" width="177" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="200" y="46" width="100" height="34" backcolor="#999999" uuid="73bef72c-bfeb-4c00-be27-5530c46dea66"/>
+				<reportElement style="table_CH" x="294" y="46" width="168" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Clase]]></text>
+				<text><![CDATA[Anotación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="300" y="46" width="100" height="34" backcolor="#999999" uuid="c10fc28c-abbe-478f-afef-a248ccd6430f"/>
+				<reportElement style="table_CH" x="462" y="46" width="107" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Dominio]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="table_CH" x="400" y="46" width="100" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Diagnostico]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="table_CH" x="500" y="46" width="54" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cantidad]]></text>
+				<text><![CDATA[Paciente]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="454" y="14" width="100" height="20" uuid="1e8d8ed7-9397-4e77-a2fc-793655c356f8"/>
+				<reportElement x="471" y="18" width="100" height="20" uuid="7fc5d3f4-39cf-4917-993e-717c4b7cc954"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
@@ -174,46 +151,36 @@ group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnost
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="21" y="0" width="63" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" x="0" y="0" width="117" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{enfermera}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="84" y="0" width="116" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" x="117" y="0" width="177" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="200" y="0" width="100" height="35" uuid="8e0c8ca7-afa6-4631-8a76-fca1daa276e3"/>
+				<reportElement style="table" x="294" y="0" width="168" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_clase}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{anotacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="300" y="0" width="100" height="35" uuid="d3d08486-77ea-4a80-8e14-f28e44475767"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_dominio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="400" y="0" width="100" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_diagnostico}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="500" y="0" width="54" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
+				<reportElement style="table" x="462" y="0" width="107" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{paciente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="554" y="0" width="17" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="550" y="0" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="512" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<reportElement x="507" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
@@ -221,15 +188,8 @@ group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnost
 	</pageFooter>
 	<summary>
 		<band height="50">
-			<textField>
-				<reportElement style="table" x="500" y="0" width="54" height="30" uuid="21190f14-3060-4658-8679-82968053b96c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement style="table" x="21" y="0" width="479" height="30" uuid="130e4f24-4e73-423c-9226-614ebfc41e35"/>
+				<reportElement style="table" x="54" y="0" width="408" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -237,4 +197,15 @@ group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnost
 			</staticText>
 		</band>
 	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="134" y="17" width="270" height="20" uuid="74606d9f-c611-4890-98ed-bd52ad76f662"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No hay datos que mostrar]]></text>
+			</staticText>
+		</band>
+	</noData>
 </jasperReport>

@@ -57,8 +57,8 @@ class EnfDominioAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('codDominio','text', array('label' => 'Digite el código de Dominio'))
-            ->add('nombreDominio','text', array('label' => 'Digite el nombre de Dominio'))
+            ->add('codDominio',null, array('label' => 'Digite el código de Dominio','max_length' => 5))
+            ->add('nombreDominio',null, array('label' => 'Digite el nombre de Dominio','required' => True))
             ->add('estadoDominio', null, array('label' => 'Activo','required' => False))
             //->add('fechaIngresoDom')
             //->add('fechaModificacionDom')

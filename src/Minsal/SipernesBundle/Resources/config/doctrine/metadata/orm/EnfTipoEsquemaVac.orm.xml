@@ -9,6 +9,9 @@
     </id>
     <field name="nombreTipoEsq" type="string" column="nombre_tipo_esq" length="100" nullable="true"/>
     <field name="dosisMaxima" type="decimal" column="dosis_maxima" precision="10" scale="0" nullable="true"/>
+    <field name="estadoTipoVac" type="boolean" column="estado_tipo_vac" nullable="true"/>
+    <field name="usuarioIngresoTipoVac" type="string" column="usuario_ingreso_tipo_vac" length="40" nullable="true"/>
+    <field name="fechaIngresoTipoVac" type="date" column="fecha_ingreso_tipo_vac" nullable="true"/>
     <many-to-one field="idEsquemaVac" target-entity="EnfEsquemaVac">
       <join-columns>
         <join-column name="id_esquema_vac" referenced-column-name="id"/>
