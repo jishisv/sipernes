@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="193"/>
 	<property name="ireport.y" value="22"/>
 	<style name="table">
 		<box>
@@ -161,6 +161,10 @@ WHERE
 				</textElement>
 				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="469" y="18" width="100" height="20" uuid="840ad8b2-d060-4de7-9441-0a6f7ac83a29"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
