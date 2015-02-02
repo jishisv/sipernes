@@ -64,8 +64,8 @@ class EnfIndicacionMedicaAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEmpCorr',null, array('label' => 'Numero de Empleado', 'required' => true))  
-            ->add('idExpediente',null, array('label' => 'Numero de Expediente', 'required' => true))
+            ->add('idEmpCorr',null, array('label' => 'Numero de empleado', 'required' => true))  
+            ->add('idExpediente',null, array('label' => 'Numero de expediente', 'required' => true))
             ->add('tratamientoInd',null, array('label' => 'Tratamiento', 'required' => true))
             ->add('dosisInd',null, array('label' => 'Dosis', 'required' => true))
             ->add('indicacionInd',null, array('label' => 'Indicación', 'required' => true))
