@@ -43,46 +43,41 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-
-  ctl_establecimiento.nombre,
-  enf_clase.nombre_clase,
-  enf_dominio.nombre_dominio,
-  enf_ctl_diagnostico.nombre_diagnostico,
- count( enf_ctl_diagnostico.id) Cantidad
+  ctl_establecimiento.nombre as establecimiento,
+  enf_ctl_subactividad.nombre_subactividad as actividad,
+  SUM(enf_mtl_actividad.cantidad_act_enf)as cantidad,
+  SUM(enf_mtl_actividad.tiempo_act_enf) as tiempo
 FROM
-  public.mnt_expediente,
   public.mnt_empleado,
-  public.mnt_paciente,
-  public.ctl_establecimiento,
-  public.enf_mtl_diagnostico,
-  public.enf_ctl_diagnostico,
-  public.enf_clase,
-  public.enf_dominio
+  public.enf_mtl_actividad,
+  public.enf_ctl_subactividad,
+  public.enf_ctl_actividad,
+  public.mnt_expediente,
+  public.ctl_establecimiento
 WHERE
-  mnt_expediente.id_paciente = mnt_paciente.id AND
-  mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
-  ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
-  enf_mtl_diagnostico.id_emp_corr = mnt_empleado.id AND
-  enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
-  enf_ctl_diagnostico.id_clase = enf_clase.id AND
-  enf_dominio.id = enf_clase.id_dominio
-  group by
+  mnt_empleado.id = enf_mtl_actividad.id_emp_corr AND
+  enf_ctl_subactividad.id = enf_mtl_actividad.id_subactividad AND
+  enf_ctl_actividad.id = enf_ctl_subactividad.id_actividad AND
+  mnt_expediente.id = enf_mtl_actividad.id_expediente AND
+  ctl_establecimiento.id = mnt_expediente.id_establecimiento
 
+GROUP BY enf_ctl_subactividad.nombre_subactividad,
   ctl_establecimiento.nombre,
-  enf_clase.nombre_clase,
-  enf_dominio.nombre_dominio,
-  enf_ctl_diagnostico.nombre_diagnostico]]>
+  enf_mtl_actividad.fecha_modificacion_act,
+  enf_mtl_actividad.cantidad_act_enf,
+  enf_mtl_actividad.tiempo_act_enf]]>
 	</queryString>
-	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[Nombre del área de atención]]></fieldDescription>
-	</field>
-	<field name="nombre_clase" class="java.lang.String"/>
-	<field name="nombre_dominio" class="java.lang.String"/>
-	<field name="nombre_diagnostico" class="java.lang.String"/>
-	<field name="cantidad" class="java.lang.Long"/>
-	<variable name="Total" class="java.lang.Integer" calculation="Sum">
+	<field name="establecimiento" class="java.lang.String"/>
+	<field name="actividad" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="tiempo" class="org.postgresql.util.PGInterval"/>
+	<variable name="TotalCan" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>
+	</variable>
+	<variable name="TotalTem" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{tiempo}.getMinutes()]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{tiempo}.getMinutes()]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -130,87 +125,87 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte Diario de Protocolo]]></text>
+				<text><![CDATA[Consolidado de Actividades]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="8" y="46" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="45" y="46" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="79" y="46" width="130" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="116" y="46" width="161" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="330" y="46" width="181" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="469" y="46" width="78" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Dominio]]></text>
+				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
 				<reportElement x="652" y="16" width="100" height="20" uuid="b9cba9ef-bfff-4289-b8ce-92e634f9b36e"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="511" y="46" width="163" height="34" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<reportElement style="table_TH" x="547" y="46" width="72" height="34" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Diagnostico]]></text>
+				<text><![CDATA[Tiempo (min)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="209" y="46" width="121" height="34" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<reportElement style="table_TH" x="277" y="46" width="192" height="34" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Clase]]></text>
+				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="674" y="46" width="66" height="34" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
+				<reportElement style="table_TH" x="619" y="46" width="92" height="34" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Cantidad]]></text>
+				<text><![CDATA[Rendimiento]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="8" y="0" width="71" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" x="45" y="0" width="71" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="79" y="0" width="130" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" x="116" y="0" width="161" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="330" y="0" width="181" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_dominio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="511" y="0" width="163" height="35" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_diagnostico}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="209" y="0" width="121" height="35" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_clase}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="674" y="0" width="66" height="35" uuid="a9c48678-500c-42a7-aac5-de09fe045cc2"/>
+				<reportElement style="table" x="469" y="0" width="78" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="547" y="0" width="72" height="35" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tiempo}.getMinutes()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="277" y="0" width="192" height="35" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{actividad}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" x="619" y="0" width="92" height="35" uuid="a9c48678-500c-42a7-aac5-de09fe045cc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -231,19 +226,33 @@ WHERE
 	<summary>
 		<band height="50">
 			<textField>
-				<reportElement style="table" mode="Opaque" x="674" y="0" width="66" height="31" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<reportElement style="table" mode="Opaque" x="469" y="0" width="78" height="31" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{TotalCan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" mode="Opaque" x="8" y="0" width="666" height="31" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<reportElement style="table" mode="Opaque" x="45" y="0" width="424" height="31" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="547" y="0" width="72" height="31" uuid="09207127-340b-49a2-ae12-9a568b588420"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalTem}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" mode="Opaque" x="619" y="0" width="92" height="31" uuid="9c5da354-f157-4960-b2a0-726933b3565a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 	<noData>

@@ -125,7 +125,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte Diario de Intervenciones]]></text>
+				<text><![CDATA[Reporte Diario de Protocolo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="8" y="46" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
