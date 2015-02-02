@@ -64,4 +64,14 @@ class CtlPaisAdmin extends Admin
             ->add('activo')
         ;
     }
+         public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_siete_diag.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

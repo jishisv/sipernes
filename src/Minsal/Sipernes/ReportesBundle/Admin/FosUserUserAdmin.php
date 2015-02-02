@@ -256,4 +256,14 @@ class FosUserUserAdmin extends Admin
             ->add('idArea')
         ;
     }
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_interv.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+     }
 }

@@ -72,7 +72,7 @@ class EnfTrazaInventarioAdmin extends Admin
         public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesReportesBundle:Reportes:reporte_vac_micro.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_sem_vac.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);

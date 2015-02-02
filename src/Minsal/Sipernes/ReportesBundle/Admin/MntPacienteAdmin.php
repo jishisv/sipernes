@@ -236,4 +236,14 @@ class MntPacienteAdmin extends Admin
             ->add('fechaMod')
         ;
     }
+        public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_disc_vac.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

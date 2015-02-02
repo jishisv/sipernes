@@ -108,4 +108,15 @@ class CtlEstablecimientoAdmin extends Admin
             ->add('tipoFarmacia')
         ;
     }
+    
+         public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_vac_plan.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

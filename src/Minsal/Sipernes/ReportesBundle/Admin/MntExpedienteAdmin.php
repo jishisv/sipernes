@@ -76,4 +76,15 @@ class MntExpedienteAdmin extends Admin
             ->add('horaCreacion')
         ;
     }
+    
+        public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_enfer.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }
