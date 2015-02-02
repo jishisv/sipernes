@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfMtlActividad
  *
- * @ORM\Table(name="enf_mtl_actividad", indexes={@ORM\Index(name="IDX_5185AF503FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5185AF50701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5185AF503A5C634D", columns={"id_subactividad"}), @ORM\Index(name="IDX_5185AF505C03EB6E", columns={"id_ctl_actividad"})})
+ * @ORM\Table(name="enf_mtl_actividad", indexes={@ORM\Index(name="IDX_5185AF503FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5185AF50701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5185AF503A5C634D", columns={"id_subactividad"}), @ORM\Index(name="IDX_5185AF505C03EB6E")})
  * @ORM\Entity
  */
 class EnfMtlActividad
@@ -94,16 +94,7 @@ class EnfMtlActividad
      */
     private $idSubactividad;
 
-    /**
-     * @var \EnfCtlActividad
-     *
-     * @ORM\ManyToOne(targetEntity="EnfCtlActividad")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_ctl_actividad", referencedColumnName="id")
-     * })
-     */
-    private $idCtlActividad;
-
+    
 
 
     /**
@@ -323,26 +314,5 @@ class EnfMtlActividad
         return $this->idSubactividad;
     }
 
-    /**
-     * Set idCtlActividad
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfCtlActividad $idCtlActividad
-     * @return EnfMtlActividad
-     */
-    public function setIdCtlActividad(\Minsal\SipernesBundle\Entity\EnfCtlActividad $idCtlActividad = null)
-    {
-        $this->idCtlActividad = $idCtlActividad;
-
-        return $this;
-    }
-
-    /**
-     * Get idCtlActividad
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfCtlActividad 
-     */
-    public function getIdCtlActividad()
-    {
-        return $this->idCtlActividad;
-    }
+    
 }

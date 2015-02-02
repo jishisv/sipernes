@@ -277,7 +277,6 @@ class EnfCtlDiagnostico
         return $this->idClase;
     }
     
-    
      public function __toString() {
     return $this->nombreDiagnostico ? $this->nombreDiagnostico : '';
     }

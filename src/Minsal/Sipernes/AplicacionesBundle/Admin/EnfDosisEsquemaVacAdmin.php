@@ -16,16 +16,19 @@ class EnfDosisEsquemaVacAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('dosis')
-            ->add('centroEducativo')
-            ->add('fechaDosisEsq')
-            ->add('estadoDosisEsq')
-            ->add('usuarioDosisEsq')
-            ->add('fechaIngresoDosisEsq')
-            ->add('fechaModDosis')
-            ->add('idTipoEsq') 
-            ->add('idModalidad')
+            //->add('id')
+            ->add('idEmpCorr', null, array('label' => 'Código Empleado'))
+            ->add('idExpediente',null, array('label' => 'Código Expediente'))
+            ->add('idTipoEsq', null, array('label' => 'Vacuna')) 
+            //->add('dosis', null, array('label' => 'Dosis'))
+            //->add('centroEducativo')
+            //->add('fechaDosisEsq')
+            //->add('estadoDosisEsq')
+            ->add('usuarioDosisEsq', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDosisEsq', null, array('label' => 'Creado el'))
+            //->add('fechaModDosis')
+            
+            //->add('idModalidad')
         ;
     }
 
@@ -35,16 +38,19 @@ class EnfDosisEsquemaVacAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('dosis')
-            ->add('centroEducativo')
-            ->add('fechaDosisEsq')
-            ->add('estadoDosisEsq')
-            ->add('usuarioDosisEsq')
-            ->add('fechaIngresoDosisEsq')
-            ->add('fechaModDosis')
-            ->add('idTipoEsq') 
-            ->add('idModalidad')
+           //->add('id')
+            ->add('idEmpCorr', null, array('label' => 'Código Empleado'))
+            ->add('idExpediente',null, array('label' => 'Código Expediente'))
+            ->add('idTipoEsq', null, array('label' => 'Vacuna')) 
+            ->add('dosis', null, array('label' => 'Dosis'))
+            //->add('centroEducativo')
+            //->add('fechaDosisEsq')
+            //->add('estadoDosisEsq')
+            ->add('usuarioDosisEsq', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDosisEsq', null, array('label' => 'Creado el'))
+            //->add('fechaModDosis')
+            
+            //->add('idModalidad')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -63,18 +69,18 @@ class EnfDosisEsquemaVacAdmin extends Admin
         $formMapper
 //          ->add('id')
             
-            ->add('idEmpCorr', null, array('label' => 'Codigo del Empleado'))
-            ->add('idExpediente',null, array('label' => 'Codigo de expediente'))
-            ->add('idComponente',null, array('label' => 'Componente'))
-            ->add('idTipoEsq') 
-            ->add('idModalidad')
+            ->add('idEmpCorr', null, array('label' => 'Código de Empleado','required' => true))
+            ->add('idExpediente',null, array('label' => 'Código de Expediente','required' => true))
+            //->add('idComponente',null, array('label' => 'Componente'))
+            ->add('idTipoEsq',null, array('label' => 'Vacuna','required' => true)) 
+            //->add('idModalidad')
 //            ->add('idTipoEsq', null, array('label' => 'Tipo de esquema'))
             //->add('idMovimiento',null, array('label' => 'Tipo de Movimiento'))
             
-            ->add('dosis','text', array('label' => 'Dosis'))
-            ->add('centroEducativo','text', array('label' => 'Centro Educativo'))
-            ->add('fechaDosisEsq','date', array('label' => 'Fecha'))
-            ->add('estadoDosisEsq')
+            //->add('dosis','text', array('label' => 'Dosis'))
+            //->add('centroEducativo','text', array('label' => 'Centro Educativo'))
+            //->add('fechaDosisEsq','date', array('label' => 'Fecha'))
+            //->add('estadoDosisEsq')
             
             
 //            ->add('usuarioDosisEsq')
@@ -89,16 +95,49 @@ class EnfDosisEsquemaVacAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('dosis')
-            ->add('centroEducativo')
-            ->add('fechaDosisEsq')
-            ->add('estadoDosisEsq')
-            ->add('usuarioDosisEsq')
-            ->add('fechaIngresoDosisEsq')
-            ->add('fechaModDosis')
-            ->add('idTipoEsq') 
-            ->add('idModalidad')
+            //->add('id')
+            ->add('idEmpCorr', null, array('label' => 'Código Empleado'))
+            ->add('idExpediente',null, array('label' => 'Código Expediente'))
+            ->add('idTipoEsq', null, array('label' => 'Vacuna')) 
+            ->add('dosis', null, array('label' => 'Dosis'))
+            //->add('centroEducativo')
+            //->add('fechaDosisEsq')
+            //->add('estadoDosisEsq')
+            ->add('usuarioDosisEsq', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoDosisEsq', null, array('label' => 'Creado el'))
+            //->add('fechaModDosis')
+            
+            //->add('idModalidad')
         ;
+    }
+    
+    
+    
+    
+    public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesAplicacionesBundle:VacunaRegistro:mtlvacuna.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    
+    
+    
+    public function prePersist($EnfDosisEsquemaVac) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfDosisEsquemaVac->setusuarioDosisEsq($user);
+        $EnfDosisEsquemaVac->setfechaIngresoDosisEsq(new \DateTime());
+        $EnfDosisEsquemaVac->setdosis(1);
+        $EnfDosisEsquemaVac->setestadoDosisEsq(true);
+       
     }
 }

@@ -1,11 +1,11 @@
 SELECT 
-  mnt_empleado.nombre Enfermera, 
+  mnt_empleado.nombreempleado Enfermera, 
   ctl_establecimiento.nombre establecimiento, 
   mnt_paciente.primer_nombre nombrepaciente, 
-  mnt_paciente.segundo_nombre nombrepaciente, 
+  mnt_paciente.segundo_nombre apellidopaciente, 
   enf_ctl_protocolo.nombre_protocolo nombreprotocolo, 
   mnt_expediente.numero expediente, 
-  enf_mtl_intervencion.id_emp_corr codigoenfermera, 
+  mnt_empleado.idempleado codigoenfermera,
   enf_mtl_intervencion.observacion_interv obervacion
 FROM 
   public.mnt_expediente, 

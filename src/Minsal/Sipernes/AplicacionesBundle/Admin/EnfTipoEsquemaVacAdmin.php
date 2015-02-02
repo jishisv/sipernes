@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Minsal\SipernesBundle\Entity\EnfEsquemaVac;
+use Doctrine\ORM\EntityRepository;
 
 class EnfTipoEsquemaVacAdmin extends Admin
 {
@@ -17,8 +19,12 @@ class EnfTipoEsquemaVacAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('nombreTipoEsq')
-            ->add('dosisMaxima')
+            ->add('idEsquemaVac', null, array('label' => 'Fase')) 
+            ->add('nombreTipoEsq', null, array('label' => 'Vacuna'))
+            //->add('dosisMaxima')
+            ->add('estadoTipoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoTipoVac', null, array('label' => 'Creado el'))
         ;
     }
 
@@ -29,9 +35,12 @@ class EnfTipoEsquemaVacAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('idEsquemaVac', null, array('label' => 'Esquema')) 
-            ->add('nombreTipoEsq', null, array('label' => 'Tipo de esquema'))
-            ->add('dosisMaxima', null, array('label' => 'Dosis Máxima'))
+            ->add('idEsquemaVac', null, array('label' => 'Fase')) 
+            ->add('nombreTipoEsq', null, array('label' => 'Vacuna'))
+            //->add('dosisMaxima', null, array('label' => 'Dosis Máxima'))
+            ->add('estadoTipoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoTipoVac', null, array('label' => 'Creado el'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -49,9 +58,16 @@ class EnfTipoEsquemaVacAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idEsquemaVac', null, array('label' => 'Esquema','required' => true))    
-            ->add('nombreTipoEsq', 'text', array('label' => 'Nombre','max_length' => 150,'required' => true))
-            ->add('dosisMaxima', null, array('label' => 'Dosis Máxima','max_length' => 150,'required' => true))
+            ->add('idEsquemaVac', null, array('label' => 'Seleccione fase','required' => true,
+                'class' => 'MinsalSipernesBundle:EnfEsquemaVac',
+            'query_builder' => function(EntityRepository $repository) {
+                return $repository->obtenerEsqVacActivo();
+            }))    
+            ->add('nombreTipoEsq', 'text', array('label' => 'Digite el nombre de vacuna','max_length' => 150,'required' => true))
+            //->add('dosisMaxima', null, array('label' => 'Dosis Máxima','max_length' => 150,'required' => true))
+            ->add('estadoTipoVac', null, array('label' => 'Activo'))
+            //->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
+            //->add('fechaIngresoTipoVac', null, array('label' => 'Creado el'))
         ;
     }
 
@@ -62,8 +78,22 @@ class EnfTipoEsquemaVacAdmin extends Admin
     {
         $showMapper
             //->add('id')
-            ->add('nombreTipoEsq')
-            ->add('dosisMaxima')
+            ->add('idEsquemaVac', null, array('label' => 'Fase')) 
+            ->add('nombreTipoEsq', null, array('label' => 'Vacuna'))
+            //->add('dosisMaxima')
+            ->add('estadoTipoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoTipoVac', null, array('label' => 'Creado el'))
         ;
     }
+    
+    
+    public function prePersist($EnfTipoEsquemaVac) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfTipoEsquemaVac->setusuarioIngresoTipoVac($user);
+        $EnfTipoEsquemaVac->setfechaIngresoTipoVac(new \DateTime());
+       
+    }
+    
+    
 }

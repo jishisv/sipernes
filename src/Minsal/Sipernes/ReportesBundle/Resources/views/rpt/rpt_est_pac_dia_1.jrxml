@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="304"/>
+	<property name="ireport.y" value="309"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -137,6 +137,10 @@ enf_ctl_diagnostico.nombre_diagnostico;]]>
 				</textElement>
 				<text><![CDATA[Cantidad Paciente]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="469" y="18" width="100" height="20" uuid="9d264b56-791d-435d-b150-602537e8e6d1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -200,6 +204,7 @@ enf_ctl_diagnostico.nombre_diagnostico;]]>
 						<seriesExpression><![CDATA[$F{nombre_diagnostico}]]></seriesExpression>
 						<categoryExpression><![CDATA["Diagnostico"]]></categoryExpression>
 						<valueExpression><![CDATA[$F{pacientes}]]></valueExpression>
+						<labelExpression><![CDATA["Gráfico"]]></labelExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
