@@ -68,4 +68,15 @@ class EnfTrazaInventarioAdmin extends Admin
             ->add('cambioInv')
         ;
     }
+    
+        public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_vac_micro.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

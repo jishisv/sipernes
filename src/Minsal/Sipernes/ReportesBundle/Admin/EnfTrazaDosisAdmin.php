@@ -68,4 +68,15 @@ class EnfTrazaDosisAdmin extends Admin
             ->add('fechaIngresoTrazaDosis')
         ;
     }
+    
+       public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_nomic_plan.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

@@ -68,4 +68,15 @@ class EnfTrazaActividadAdmin extends Admin
             ->add('fechaTrazaAct')
         ;
     }
+    
+       public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_mens_prod.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

@@ -72,4 +72,15 @@ class EnfHistoricoInventarioAdmin extends Admin
             ->add('estadoHistInvent')
         ;
     }
+    
+        public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_anot.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

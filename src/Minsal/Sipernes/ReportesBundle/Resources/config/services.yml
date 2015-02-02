@@ -27,49 +27,49 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoDosisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoDosis, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 5}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de vacunación versus planificadas}
 
     minsal_sipernes_reportes.admin.enf_historico_nota:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoNotaAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoNota, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 6}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Diagnósticos Efectuados por el Personal de Enfermería a Pacientes Hospitalarios}
 
     minsal_sipernes_reportes.admin.enf_historico_inventario:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoInventarioAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoInventario, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 7}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Informe diario de anotaciones de enfermería por paciente}
 
     minsal_sipernes_reportes.admin.enf_traza_capacitacion:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaCapacitacionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaCapacitacion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 8}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado diario de diagnósticos realizados por el personal de enfermería}
 
     minsal_sipernes_reportes.admin.enf_traza_intervencion:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaIntervencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaIntervencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 9}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado diario de aplicación de micronutrientes}
 
     minsal_sipernes_reportes.admin.enf_traza_diagnostico:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDiagnosticoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDiagnostico, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 10}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado diario de vacunación}
 
     minsal_sipernes_reportes.admin.enf_traza_actividad:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaActividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 11}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte de registros mensuales de producción}
 
     minsal_sipernes_reportes.admin.enf_traza_dosis:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDosisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDosis, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte Prueba 13}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de micronutrientes aplicados}
 
     minsal_sipernes_reportes.admin.enf_traza_nota:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaNotaAdmin
