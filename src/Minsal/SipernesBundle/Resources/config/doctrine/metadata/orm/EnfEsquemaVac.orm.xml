@@ -8,5 +8,8 @@
     <field name="nombreEsquemaVac" type="string" column="nombre_esquema_vac" length="40" nullable="true"/>
     <field name="edadMinima" type="decimal" column="edad_minima" precision="10" scale="0" nullable="true"/>
     <field name="edadMaxima" type="decimal" column="edad_maxima" precision="10" scale="0" nullable="true"/>
+    <field name="estadoVac" type="boolean" column="estado_vac" nullable="true"/>
+    <field name="usuarioIngresoVac" type="string" column="usuario_ingreso_vac" length="40" nullable="true"/>
+    <field name="fechaIngresoVac" type="date" column="fecha_ingreso_vac" nullable="true"/>
   </entity>
 </doctrine-mapping>

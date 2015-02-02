@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfCtlFinanciamiento
  *
  * @ORM\Table(name="enf_ctl_financiamiento")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoFinanciamientoRepository")
  */
 class EnfCtlFinanciamiento
 {
@@ -184,7 +184,7 @@ class EnfCtlFinanciamiento
         return $this->estadoFinanciamiento;
     }
     
-     public function __toString() {
+    public function __toString() {
     return $this->nombreFinanciamiento ? $this->nombreFinanciamiento : '';
     }
 }

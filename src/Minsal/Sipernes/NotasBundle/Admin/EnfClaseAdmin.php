@@ -19,7 +19,7 @@ class EnfClaseAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('codClase', null, array('label' => 'Código'))
+            ->add('codClase', null, array('label' => 'Código','max_length' => 5))
             ->add('nombreClase', null, array('label' => 'Clase'))
             ->add('estadoClase', null, array('label' => 'Activo'))
             ->add('usuarioClase', null, array('label' => 'Creado por'))
@@ -66,7 +66,7 @@ class EnfClaseAdmin extends Admin
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerDomActivo();
             }))
-            ->add('codClase', null, array('label' => 'Digite el código de la clase','required' => true))
+            ->add('codClase', null, array('label' => 'Digite el código de la clase','required' => true,'max_length' => 5))
             ->add('nombreClase', null, array('label' => 'Digite el nombre de la clase','required' => true))
             ->add('estadoClase', null, array('label' => 'Activo','required' => false))
             //->add('fechaIngresoClase')

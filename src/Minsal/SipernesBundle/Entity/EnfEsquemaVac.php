@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfEsquemaVac
  *
  * @ORM\Table(name="enf_esquema_vac")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoEsqVacRepository")
  */
 class EnfEsquemaVac
 {
@@ -49,6 +49,27 @@ class EnfEsquemaVac
      * @ORM\Column(name="edad_maxima", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $edadMaxima;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado_vac", type="boolean", nullable=true)
+     */
+    private $estadoVac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario_ingreso_vac", type="string", length=40, nullable=true)
+     */
+    private $usuarioIngresoVac;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso_vac", type="date", nullable=true)
+     */
+    private $fechaIngresoVac;
 
 
 
@@ -152,6 +173,75 @@ class EnfEsquemaVac
     public function getEdadMaxima()
     {
         return $this->edadMaxima;
+    }
+
+    /**
+     * Set estadoVac
+     *
+     * @param boolean $estadoVac
+     * @return EnfEsquemaVac
+     */
+    public function setEstadoVac($estadoVac)
+    {
+        $this->estadoVac = $estadoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoVac
+     *
+     * @return boolean 
+     */
+    public function getEstadoVac()
+    {
+        return $this->estadoVac;
+    }
+
+    /**
+     * Set usuarioIngresoVac
+     *
+     * @param string $usuarioIngresoVac
+     * @return EnfEsquemaVac
+     */
+    public function setUsuarioIngresoVac($usuarioIngresoVac)
+    {
+        $this->usuarioIngresoVac = $usuarioIngresoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioIngresoVac
+     *
+     * @return string 
+     */
+    public function getUsuarioIngresoVac()
+    {
+        return $this->usuarioIngresoVac;
+    }
+
+    /**
+     * Set fechaIngresoVac
+     *
+     * @param \DateTime $fechaIngresoVac
+     * @return EnfEsquemaVac
+     */
+    public function setFechaIngresoVac($fechaIngresoVac)
+    {
+        $this->fechaIngresoVac = $fechaIngresoVac;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngresoVac
+     *
+     * @return \DateTime 
+     */
+    public function getFechaIngresoVac()
+    {
+        return $this->fechaIngresoVac;
     }
     
     public function __toString() {

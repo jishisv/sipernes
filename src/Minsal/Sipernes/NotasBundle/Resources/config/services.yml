@@ -3,19 +3,19 @@ services:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfDominioAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfDominio, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Dominios de Diagnósticos}
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Dominios de diagnósticos}
 
     minsal_sipernes_notas.admin.enf_clase:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfClaseAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfClase, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Clases de Diagnósticos}
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Clases de diagnósticos}
 
     minsal_sipernes_notas.admin.enf_ctl_diagnostico:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlDiagnosticoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlDiagnostico, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Catálogo de Diagnósticos}
+            - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Catálogo de diagnósticos}
 
     minsal_sipernes_notas.admin.enf_mtl_diagnostico:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlDiagnosticoAdmin
@@ -27,19 +27,19 @@ services:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlProtocoloAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlProtocolo, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Protocolos}
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de protocolos}
 
     minsal_sipernes_notas.admin.enf_ctl_subprotocolo:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlSubprotocoloAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubprotocolo, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Subprotocolos}
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de subprotocolos}
 
     minsal_sipernes_notas.admin.enf_ctl_intervencion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlIntervencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlIntervencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de Intervenciones}
+            - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de intervenciones}
 
     minsal_sipernes_notas.admin.enf_ctl_fase_intervencion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlFaseIntervencionAdmin
@@ -69,16 +69,16 @@ services:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfAnotacionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfAnotacion, MinsalSipernesNotasBundle:EnfAnotacionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registrar Anotación}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Anotación}
 
     minsal_sipernes_notas.admin.enf_indicacion_medica:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfIndicacionMedicaAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfIndicacionMedica, MinsalSipernesNotasBundle:EnfIndicacionMedicaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registar Indicación Médica}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Indicación médica}
 
     minsal_sipernes_notas.admin.sec_signos_vitales:
         class: Minsal\Sipernes\NotasBundle\Admin\SecSignosVitalesAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\SecSignosVitales, MinsalSipernesNotasBundle:SecSignosVitalesAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registar Signos Vitales}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Signos vitales}

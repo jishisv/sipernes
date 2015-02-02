@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfDosisEsquemaVac
  *
- * @ORM\Table(name="enf_dosis_esquema_vac", indexes={@ORM\Index(name="IDX_5BA20B9FBF16C07B", columns={"id_componente"}), @ORM\Index(name="IDX_5BA20B9F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5BA20B9FEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_5BA20B9F6D7590AD", columns={"id_movimiento"}), @ORM\Index(name="IDX_5BA20B9F701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5BA20B9F1D8176FA", columns={"id_modalidad"})})
+ * @ORM\Table(name="enf_dosis_esquema_vac", indexes={@ORM\Index(name="IDX_5BA20B9F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5BA20B9FEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_5BA20B9F701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class EnfDosisEsquemaVac
@@ -72,16 +72,6 @@ class EnfDosisEsquemaVac
     private $fechaModDosis;
 
     /**
-     * @var \EnfComponente
-     *
-     * @ORM\ManyToOne(targetEntity="EnfComponente")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_componente", referencedColumnName="id")
-     * })
-     */
-    private $idComponente;
-
-    /**
      * @var \MntEmpleado
      *
      * @ORM\ManyToOne(targetEntity="MntEmpleado")
@@ -102,16 +92,6 @@ class EnfDosisEsquemaVac
     private $idTipoEsq;
 
     /**
-     * @var \EnfMovInventario
-     *
-     * @ORM\ManyToOne(targetEntity="EnfMovInventario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_movimiento", referencedColumnName="id")
-     * })
-     */
-    private $idMovimiento;
-
-    /**
      * @var \MntExpediente
      *
      * @ORM\ManyToOne(targetEntity="MntExpediente")
@@ -120,16 +100,6 @@ class EnfDosisEsquemaVac
      * })
      */
     private $idExpediente;
-
-    /**
-     * @var \EnfModalidad
-     *
-     * @ORM\ManyToOne(targetEntity="EnfModalidad")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_modalidad", referencedColumnName="id")
-     * })
-     */
-    private $idModalidad;
 
 
 
@@ -305,29 +275,6 @@ class EnfDosisEsquemaVac
     }
 
     /**
-     * Set idComponente
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfComponente $idComponente
-     * @return EnfDosisEsquemaVac
-     */
-    public function setIdComponente(\Minsal\SipernesBundle\Entity\EnfComponente $idComponente = null)
-    {
-        $this->idComponente = $idComponente;
-
-        return $this;
-    }
-
-    /**
-     * Get idComponente
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfComponente 
-     */
-    public function getIdComponente()
-    {
-        return $this->idComponente;
-    }
-
-    /**
      * Set idEmpCorr
      *
      * @param \Minsal\SipernesBundle\Entity\MntEmpleado $idEmpCorr
@@ -374,29 +321,6 @@ class EnfDosisEsquemaVac
     }
 
     /**
-     * Set idMovimiento
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfMovInventario $idMovimiento
-     * @return EnfDosisEsquemaVac
-     */
-    public function setIdMovimiento(\Minsal\SipernesBundle\Entity\EnfMovInventario $idMovimiento = null)
-    {
-        $this->idMovimiento = $idMovimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get idMovimiento
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfMovInventario 
-     */
-    public function getIdMovimiento()
-    {
-        return $this->idMovimiento;
-    }
-
-    /**
      * Set idExpediente
      *
      * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
@@ -417,28 +341,5 @@ class EnfDosisEsquemaVac
     public function getIdExpediente()
     {
         return $this->idExpediente;
-    }
-
-    /**
-     * Set idModalidad
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfModalidad $idModalidad
-     * @return EnfDosisEsquemaVac
-     */
-    public function setIdModalidad(\Minsal\SipernesBundle\Entity\EnfModalidad $idModalidad = null)
-    {
-        $this->idModalidad = $idModalidad;
-
-        return $this;
-    }
-
-    /**
-     * Get idModalidad
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfModalidad 
-     */
-    public function getIdModalidad()
-    {
-        return $this->idModalidad;
     }
 }
