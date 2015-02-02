@@ -132,4 +132,14 @@ class MntEmpleadoAdmin extends Admin
             ->add('idarea')
         ;
     }
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_inmun.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+     }
 }

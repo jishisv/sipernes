@@ -68,4 +68,14 @@ class CtlDepartamentoAdmin extends Admin
             ->add('abreviatura')
         ;
     }
+          public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_siete_micro.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

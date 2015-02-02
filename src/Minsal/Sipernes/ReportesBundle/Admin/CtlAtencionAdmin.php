@@ -64,4 +64,17 @@ class CtlAtencionAdmin extends Admin
             ->add('codigoBusqueda')
         ;
     }
+          public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_vac_apli.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    
 }

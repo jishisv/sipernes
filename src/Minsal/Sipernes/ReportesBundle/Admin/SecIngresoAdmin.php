@@ -132,4 +132,14 @@ class SecIngresoAdmin extends Admin
             ->add('responsableTarjeta')
         ;
     }
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_produc_vac.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+     }
 }

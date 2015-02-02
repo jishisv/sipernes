@@ -64,4 +64,14 @@ class FosUserGroupAdmin extends Admin
             ->add('roles')
         ;
     }
+    public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_protoc.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+     }
 }

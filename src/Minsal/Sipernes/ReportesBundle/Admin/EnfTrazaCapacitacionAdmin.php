@@ -68,4 +68,6 @@ class EnfTrazaCapacitacionAdmin extends Admin
             ->add('cambioTraCapa')
         ;
     }
+    
+   
 }

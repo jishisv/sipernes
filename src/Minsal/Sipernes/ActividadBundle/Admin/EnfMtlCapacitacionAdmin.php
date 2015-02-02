@@ -70,7 +70,7 @@ class EnfMtlCapacitacionAdmin extends Admin
             //->add('id')   
             //->add('fechaIngresoCap')
             ->add('fechaCapacitacion', null, array('label' => 'Fecha de capacitación','required' => true))
-            ->add('idEmpCorr', null, array('label' => 'Numero Empleado','required' => true))
+            ->add('idEmpCorr', null, array('label' => 'Numero empleado','required' => true))
            // ->add('usuarioCapacitacion')
             ->add('temaCapacitacion', null, array('label' => 'Tema a impartir','required' => true))
             ->add('idFinanciamiento', null, array('label' => 'Financiado por','required' => true,

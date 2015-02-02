@@ -68,4 +68,14 @@ class EnfTrazaNotaAdmin extends Admin
             ->add('cambioTraNota')
         ;
     }
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'list':
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_pac_diag_graf.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

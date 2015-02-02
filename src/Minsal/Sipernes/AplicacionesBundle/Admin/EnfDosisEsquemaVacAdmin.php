@@ -69,8 +69,8 @@ class EnfDosisEsquemaVacAdmin extends Admin
         $formMapper
 //          ->add('id')
             
-            ->add('idEmpCorr', null, array('label' => 'Código de Empleado','required' => true))
-            ->add('idExpediente',null, array('label' => 'Código de Expediente','required' => true))
+            ->add('idEmpCorr', null, array('label' => 'Código de empleado','required' => true))
+            ->add('idExpediente',null, array('label' => 'Código de expediente','required' => true))
             //->add('idComponente',null, array('label' => 'Componente'))
             ->add('idTipoEsq',null, array('label' => 'Vacuna','required' => true)) 
             //->add('idModalidad')
