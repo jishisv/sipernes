@@ -15,7 +15,7 @@
 {% block sonata_admin_content %}
     <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Estadistica de pacientes atendidos y diagnosticos de enfermeria</h4>
     <center>
-        <form  id="pacientesDiagnosticosGrafica" method="post" >
+        <form  id="pacientesDiagnosticos" method="post" >
             <table class="table table-bordered ">
                 <tbody>
                     <tr>
@@ -57,12 +57,16 @@
 
                 <tr>
                     <td class="" ><strong>Tipo Diagnostico:</strong></td>
-                    <td><input id="tipo_diagnostico" name="tipo_diagnostico" type="text"  /></td>
+                    <td><select id="tipo_diag" name="tipo_diag">
+                            <option selected="true">Seleccione..</option>
+                        </select></td>
                     <td class="" ><strong>Diagnostico:</strong></td>
-                    <td><input id="diagnostico" name="diagnostico" type="text"  /></td>
-                </tr>
+                    <td><select id="diagnostico" name="diagnostico">
+                            <option selected="true">Seleccione..</option>
+                        </select></td>
 
-                <tr>
+                </tr>
+                 <tr>
                     <td class="" ><strong>Tipo Gráfica:</strong></td>
                     <td colspan="3">
                         <input id="grafica_barra" checked="checked" name="grafica" value="barra" type="radio"  /> Barra
