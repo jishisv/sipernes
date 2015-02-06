@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="841"/>
-	<property name="ireport.y" value="183"/>
+	<property name="ireport.x" value="336"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -193,7 +193,7 @@ WHERE
 			<textField>
 				<reportElement style="table" x="364" y="0" width="152" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalasistentes} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalasistentes}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="798" y="0" width="113" height="35" uuid="579299c0-b181-4909-98a7-946024f1127f"/>
@@ -232,34 +232,40 @@ WHERE
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="50">
+		<band height="33">
 			<textField>
-				<reportElement style="table" x="642" y="17" width="156" height="33" uuid="e1905039-023c-480d-9bc9-21ba61cbd5f0"/>
+				<reportElement style="table" x="642" y="0" width="156" height="33" uuid="e1905039-023c-480d-9bc9-21ba61cbd5f0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{totalmonto}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" x="60" y="17" width="304" height="33" uuid="4bcbdc99-f383-4fce-8d03-ff7cbfc4daf8"/>
+				<reportElement style="table" x="60" y="0" width="304" height="33" uuid="4bcbdc99-f383-4fce-8d03-ff7cbfc4daf8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
-			<textField>
-				<reportElement style="table" x="798" y="17" width="113" height="33" uuid="36ba4f97-cdc3-4048-a6ce-39f1c90964a9"/>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" x="798" y="0" width="113" height="33" uuid="36ba4f97-cdc3-4048-a6ce-39f1c90964a9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{totalhoras}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="364" y="17" width="152" height="33" uuid="3d25f598-62d0-455a-8c53-dbe1dce22388"/>
+				<reportElement style="table" x="364" y="0" width="152" height="33" uuid="3d25f598-62d0-455a-8c53-dbe1dce22388"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{totalasist}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" x="516" y="0" width="126" height="33" uuid="c3a2a68e-5d94-485d-843d-66d52f6c8bb0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 			</textField>
 		</band>
 	</summary>
