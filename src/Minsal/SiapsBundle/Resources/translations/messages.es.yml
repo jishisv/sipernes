@@ -15,6 +15,8 @@
 'Mnt Conexion List' : 'Conexion - Listado'
 'Mnt Expediente List': 'Expedientes Creados'
 'Mnt Expediente Listarexpedientes': ''
+
+
 #FORMULARIO DE PACIENTE
 'idAreaCotizacion' : 'Área Cotización'
 'numeroDocIdeResponsable' : 'Número Documento Responsable'
@@ -58,3 +60,8 @@ fos_user.password.mismatch: 'La nueva constraseña no coinciden'
 'Cit Citas Dia List': 'Citas'
 
 
+#FORMULARIOS DE ACTIVIDAD
+'Enf Ctl Actividad List': 'Catálogo tipo de actividades'
+'Enf Ctl Subactividad List': 'Catálogo de actividades'
+'Enf Mtl Actividad List': 'Registrar actividad realizada'
+'Enf Mtl Actividad Edit': ''
