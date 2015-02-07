@@ -308,7 +308,7 @@ class ReporteMetodoController extends Controller
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
-            'codigoExp' => $codigo_expediente,
+//            'codigoExp' => $codigo_expediente,
             'codigoEnf' => $codigo_enfermera,
             'id_servicio' => 0,
         ));

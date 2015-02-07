@@ -38,8 +38,8 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
-     $('#tipo_diag').select2({
+
+    $('#tipo_diag').select2({
         width: '60%',
         placeholder: 'Seleccione...',
         allowClear: true
@@ -52,8 +52,8 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
-     $('#tipo_micro').select2({
+
+    $('#tipo_micro').select2({
         width: '60%',
         placeholder: 'Seleccione...',
         allowClear: true
@@ -66,8 +66,8 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
-     $('#protocolo').select2({
+
+    $('#protocolo').select2({
         width: '60%',
         placeholder: 'Seleccione...',
         allowClear: true
@@ -169,8 +169,9 @@ $(document).ready(function () {
                 return false;
             }
 //alert('jpuerga');
-            var url = Routing.generate('rpt_pac_dig') + '/rpt_com_pa_diag/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_pac_dig') + '/rpt_com_pa_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -228,9 +229,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_micr_plan') + '/rpt_com_mic_pla/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_micr_plan') + '/rpt_com_mic_pla/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -288,9 +289,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_vac_plan') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_vac_plan') + '/rpt_com_vac_pla/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -333,7 +334,8 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_con_anot') + '/rpt_con_anot/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_anot') + '/rpt_con_anot/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -341,7 +343,7 @@ $(document).ready(function () {
         else {
             return false;
         }
-    });    
+    });
 
     //59. consolidado de diagnostico a pacientes
     $("#id_reporte_cons_diag").click(function () {
@@ -377,15 +379,16 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_con_diag') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_diag') + '/rpt_con_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
         else {
             return false;
         }
-    });    
+    });
 
 
     //60. micronutrientes aplicados
@@ -422,8 +425,9 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_micr_aplic') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_micr_aplic') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -431,7 +435,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    
+
     //61. id_reporte_vacuna_aplicadas
     $("#id_reporte_vacuna_aplicadas").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
@@ -465,9 +469,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_vac_aplic') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_vac_aplic') + '/rpt_actividad/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -475,7 +479,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    
+
     //62. pacientes y diagnosticos grafica
     $("#id_reporte_paciente_diagnostico_grafica").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
@@ -528,7 +532,12 @@ $(document).ready(function () {
 
 //            var grafico = $("input[name='grafica']:checked").val();
 
-            var url = Routing.generate('rpt_pac_dig_graf') + '/rpt_est_pac_dia/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val()  + '/' + $("input[name='grafica']:checked").val() + '/' + "Reporte_Nuevo";
+            var formato = $("input[name='formato_rpt']:checked").val();
+            if ($("input[name='grafica']:checked").val() == 'barra') {
+                var url = Routing.generate('rpt_pac_dig_graf') + '/rpt_est_pac_dia_1/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val() + '/' + $("input[name='grafica']:checked").val() + '/' + "Reporte_Nuevo";
+            } else {
+                var url = Routing.generate('rpt_pac_dig_graf') + '/rpt_est_pac_dia/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diagnostico').val() + '/' + $('#diagnostico').val() + '/' + $("input[name='grafica']:checked").val() + '/' + "Reporte_Nuevo";
+            }
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -587,9 +596,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_mens_prod') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_produccion').val() + '/' + $('#produccion').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_mens_prod') + '/rpt_prod_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_produccion').val() + '/' + $('#produccion').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -631,9 +640,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_anot_sem') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_anot_sem') + '/rpt_con_sem_anot/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -645,7 +654,8 @@ $(document).ready(function () {
     //65. consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días
     $("#id_reporte_cons_diag_siete").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            var url = Routing.generate('rpt_con_diag_siete') + '/rpt_con_dia_diag_ult/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_diag_siete') + '/rpt_con_dia_diag_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
             //alert(url);
             window.open(url, '_blank');
             return false;
@@ -654,12 +664,13 @@ $(document).ready(function () {
             return false;
         }
     });
-    
+
     //66. Consolidado de micronutrientes aplicados en los últimos 7 días
     $("#id_reporte_cons_micro_siete").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#micro').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#micro').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -671,8 +682,9 @@ $(document).ready(function () {
     //67. consolidado de vacunas aplicadas en los últimos 7 días
     $("#id_reporte_cons_vac_siete").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            var url = Routing.generate('rpt_con_vac_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_vac_siete') + '/rpt_actividad/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -684,8 +696,9 @@ $(document).ready(function () {
     //68. listado de actividades realizadas por el personal de enfermería de los últimos 7 días 
     $("#id_reporte_cons_activ_siete").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_actividad/PDF/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -728,8 +741,9 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_con_vacuna_semanal') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_vacuna_semanal') + '/rpt_actividad/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -772,8 +786,9 @@ $(document).ready(function () {
                 return false;
             }
 
-            var url = Routing.generate('rpt_con_diag_diario') + '/rpt_con_dia_diag/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            //alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_diag_diario') + '/rpt_con_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -815,9 +830,10 @@ $(document).ready(function () {
                 });
                 return false;
             }
+            var formato = $("input[name='formato_rpt']:checked").val();
 
-            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -825,7 +841,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    
+
     //72. Consolidado diario de vacunación
     $("#id_reporte_diario_vac").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
@@ -859,9 +875,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_con_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -903,9 +919,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_anot_diario/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -947,9 +963,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_con_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -991,9 +1007,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_activ_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_activ_diario') + '/rpt_con_act/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1035,9 +1051,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#capacitacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_actividad/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#capacitacion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1079,9 +1095,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_control_vac') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_control_vac') + '/rpt_diario_vac_ent_y_rec/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1123,9 +1139,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_inmun_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#deptos2').val() + '/' + $('#municipios2').val() + '/' + $('#sector').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_inmun_diario') + '/rpt_diario_niños_inmun/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#deptos2').val() + '/' + $('#municipios2').val() + '/' + $('#sector').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1167,9 +1183,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_interv_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#tipointervencion').val() + '/' + $('#intervencion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_interv_diario') + '/rpt_dia_inter/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#tipointervencion').val() + '/' + $('#intervencion').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1211,9 +1227,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_produc_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_produc_vac_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1255,9 +1271,9 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_protoc_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_protoc_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
@@ -1299,16 +1315,16 @@ $(document).ready(function () {
                 });
                 return false;
             }
-
-            var url = Routing.generate('rpt_con_disc_vac_diario') + '/rpt_actividad/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#disciplina').val() + '/' + "Reporte_Nuevo";
-            alert(url);
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_disc_vac_diario') + '/rpt_diario_vac_ent_y_rec/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#disciplina').val() + '/' + "Reporte_Nuevo";
+//            alert(url);
             window.open(url, '_blank');
             return false;
         }
         else {
             return false;
         }
-    });    
+    });
 
 
 
@@ -1364,7 +1380,8 @@ $(document).ready(function () {
 //            // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
 //            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
 //            else
-            var url = Routing.generate('rpt_con_act') + '/rpt_con_act/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            var formato = $("input[name='formato_rpt']:checked").val();
+            var url = Routing.generate('rpt_con_act') + '/rpt_con_act/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
 //            alert('Entro saqui 8');{fecha_inicio}/{fecha_fin}/{actividades}/{subactividades}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_act"
             window.open(url, '_blank');
             return false;
@@ -1460,8 +1477,8 @@ $(document).ready(function () {
 
                 });
     });
-    
-    
+
+
     ////////////////////llenado de combos de actividades//////////////////////
     $.getJSON(Routing.generate('get_all_actividades'),
             function (data) {
@@ -1690,7 +1707,7 @@ $(document).ready(function () {
                 });
     });
 
-   
+
 
 
 });

@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                     <td class="" ><strong>Código Expediente:</strong></td>
-                     <td><select id="cod_exp" name="cod_exp">
+                    <td><select id="cod_exp" name="cod_exp">
                             <option selected="true">Seleccione..</option>
                         </select></td>
                     <td class="" ><strong>Nombre Paciente:</strong></td>
@@ -62,11 +62,18 @@
                 </tr>
                 <tr>
                     <td class="" ><strong>Código Enfermera:</strong></td>
-                     <td><select id="cod_enf" name="cod_enf">
+                    <td><select id="cod_enf" name="cod_enf">
                             <option selected="true">Seleccione..</option>
                         </select></td>
                     <td class="" ><strong>Nombre Enfermera:</strong></td>
                     <td><input id="enfermera" name="enfermera" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td class="" ><strong>Formato Reporte:</strong></td>
+                    <td colspan="3">
+                        <input id="formato_rpt_pdf" checked="checked" name="formato_rpt" value="PDF" type="radio"  /> PDF
+                        <input id="formato_rpt_xls" name="formato_rpt" value="XLS" type="radio"  /> Hoja de Calculo
+                    </td>
                 </tr>
                 </tbody>
             </table>

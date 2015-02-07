@@ -7,7 +7,7 @@
 
 {% block javascripts %}
     {{parent()}}
-{# 73 #}
+    {# 73 #}
     <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_listconsoactiv.js') }}" type="text/javascript"></script>
@@ -73,6 +73,13 @@
                         </select></td>
                     <td class="" ><strong>Nombre Enfermera:</strong></td>
                     <td><input id="enfermera" name="enfermera" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td class="" ><strong>Formato Reporte:</strong></td>
+                    <td colspan="3">
+                        <input id="formato_rpt_pdf" checked="checked" name="formato_rpt" value="PDF" type="radio"  /> PDF
+                        <input id="formato_rpt_xls" name="formato_rpt" value="XLS" type="radio"  /> Hoja de Calculo
+                    </td>
                 </tr>
                 </tbody>
             </table>
