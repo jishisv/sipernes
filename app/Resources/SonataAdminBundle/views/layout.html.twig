@@ -51,7 +51,8 @@
             $('body').removeClass('skin-black');
             $('aside.left-side').removeClass('left-side');
             {% if app.user.getId() is defined %}
-                $('body').append('<div class="page-footer"><img class="dtic-footer" src="{{ asset("bundles/applicationcore/images/dtic.png") }}" alt="dtic"/>Sistema Informático de Apoyo SIPERNES - Universidad de El Salvador</div>');
+                $('body').append('<div class="page-footer"><img class="dtic-footer" src="{{ asset("bundles/applicationcore/images/ues_2.png") }}" alt="dtic"/>Sistema informático de apoyo a la gestión y monitoreo de servicios integrales de salud que proporciona el personal de enfermería SIPERNES - Universidad de El Salvador</div>');
+{#                $('body').append('<div class="page-footer"><img class="dtic-footer" src="{{ asset("bundles/applicationcore/images/dtic.png") }}" alt="dtic"/>Sistema informático de apoyo a la gestión y monitoreo de servicios integrales de salud que proporciona el personal de enfermería SIPERNES - Universidad de El Salvador</div>');#}
             {% endif %}
         });
     </script>
