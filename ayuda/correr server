@@ -1,0 +1,14 @@
+ 
+ebian@debian:~$ su
+Contraseña: 
+root@debian:/home/debian# /opt/jasperreports-server-cp-5.6.1/./ctlscript.sh start
+Using CATALINA_BASE:   /opt/jasperreports-server-cp-5.6.1/apache-tomcat
+Using CATALINA_HOME:   /opt/jasperreports-server-cp-5.6.1/apache-tomcat
+Using CATALINA_TMPDIR: /opt/jasperreports-server-cp-5.6.1/apache-tomcat/temp
+Using JRE_HOME:        /opt/jasperreports-server-cp-5.6.1/java
+Using CLASSPATH:       /opt/jasperreports-server-cp-5.6.1/apache-tomcat/bin/bootstrap.jar:/opt/jasperreports-server-cp-5.6.1/apache-tomcat/bin/tomcat-juli.jar
+Using CATALINA_PID:    /opt/jasperreports-server-cp-5.6.1/apache-tomcat/temp/catalina.pid
+/opt/jasperreports-server-cp-5.6.1/apache-tomcat/scripts/ctl.sh : tomcat started
+root@debian:/home/debian# /opt/jasperreports-server-cp-5.6.1/./ctlscript.sh start
+/opt/jasperreports-server-cp-5.6.1/apache-tomcat/scripts/ctl.sh : tomcat (pid 3799) already running
+root@debian:/home/debian# 

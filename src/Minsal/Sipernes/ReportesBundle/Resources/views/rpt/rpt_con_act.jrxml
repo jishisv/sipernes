@@ -41,6 +41,9 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="subactividad" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre as establecimiento,
@@ -59,7 +62,13 @@ WHERE
   enf_ctl_subactividad.id = enf_mtl_actividad.id_subactividad AND
   enf_ctl_actividad.id = enf_ctl_subactividad.id_actividad AND
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
-  ctl_establecimiento.id = mnt_expediente.id_establecimiento
+  ctl_establecimiento.id = mnt_expediente.id_establecimiento and
+  mnt_expediente.numero= $P{codigoExp} and
+mnt_empleado.idempleado = $P{codigoEmp} and
+enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') and
+enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpfin}, 'dd/MM/YYYY') and
+enf_ctl_subactividad.id=$P{subactividad}
+
 
 GROUP BY enf_ctl_subactividad.nombre_subactividad,
   ctl_establecimiento.nombre,
