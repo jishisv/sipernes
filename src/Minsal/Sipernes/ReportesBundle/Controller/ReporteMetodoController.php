@@ -60,9 +60,9 @@ class ReporteMetodoController extends Controller
     }
 
     /**
-     *@Route("/rpt_pac_dig/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiagnostico}/{diagnostico}/{id_servicio}", name="rpt_pac_dig", options={"expose"=true})
+     *@Route("/rpt_pac_dig/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipo_diag}/{diagnostico}/{id_servicio}", name="rpt_pac_dig", options={"expose"=true})
      */
-    public function ReportePacienteDiagnosticosAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiagnostico, $diagnostico, $id_servicio = 0) {
+    public function ReportePacienteDiagnosticosAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipo_diag, $diagnostico, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -74,6 +74,7 @@ class ReporteMetodoController extends Controller
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => 'vacio',
             'codigoEnf' => 'vacio',
+            'tipo_diag' => $tipo_diag,
             'id_servicio' => 0
         ));
 
