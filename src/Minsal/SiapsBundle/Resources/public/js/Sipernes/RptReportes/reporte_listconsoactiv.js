@@ -335,7 +335,24 @@ $(document).ready(function () {
             }
 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_anot') + '/rpt_con_anot/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var tipoNota = $("input[name='tipo_nota']:checked").val();
+            if(tipoNota=='Anotacion'){
+                var tipoNota = 'rpt_con_anot_1';
+            }else{
+                if(tipoNota=='Signo'){
+                    var tipoNota='rpt_con_anot_2';
+                }
+                else{
+                    if(tipoNota==''){
+                        var tipoNota='rpt_con_anot_3';
+                    }else{
+                        var tipoNota='rpt_con_anot';
+                    }
+                }
+            }
+                        
+            var url = Routing.generate('rpt_con_anot') + '/'+tipoNota +'/'+ formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+//            var url = Routing.generate('rpt_con_anot') + '/rpt_con_anot/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -380,7 +397,7 @@ $(document).ready(function () {
             }
 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_diag') + '/rpt_con_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_diag') + '/rpt_con_dia_diag_pac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;

@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -48,11 +48,15 @@
   count(sec_signos_vitales.observacion_sig) cantidadsignos
 FROM
   mnt_empleado,
+mnt_expediente,
   ctl_establecimiento,
  sec_signos_vitales
 
   where mnt_empleado.id_establecimiento = ctl_establecimiento.id and
-   sec_signos_vitales.id_emp_corr = mnt_empleado.id
+   sec_signos_vitales.id_emp_corr = mnt_empleado.id and
+sec_signos_vitales.id_expediente = mnt_expediente.id and
+mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) and
+sec_signos_vitales.id_expediente = coalesce($P{codigoExp},sec_signos_vitales.id_expediente)
 group by
   ctl_establecimiento.nombre,
   sec_signos_vitales.observacion_sig;]]>

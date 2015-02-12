@@ -139,6 +139,12 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportName($report_name);
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
+        if($codigo_enfermera == 'Seleccione..' || $codigo_enfermera=='Seleccione...'){
+            $codigo_enfermera=null;
+        }
+        if($codigo_expediente == 'Seleccione..' || $codigo_expediente=='Seleccione...'){
+            $codigo_expediente=null;
+        }
        $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
             'fpfin' => $fecha_fin,
@@ -166,13 +172,13 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
        $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin_fin' => $fecha_fin,
+            'fpfin' => $fecha_fin,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
            'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => $codigo_expediente,
-            'codigoEnf' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
         ));
        
