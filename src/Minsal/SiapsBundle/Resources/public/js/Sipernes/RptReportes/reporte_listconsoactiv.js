@@ -80,6 +80,12 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
+    
+    $('#capacitacion').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
 
     $("#fecha_inicio").datepicker().mask("99-99-9999");
     $("#fecha_fin").datepicker().mask("99-99-9999");
@@ -1725,7 +1731,14 @@ $(document).ready(function () {
                 });
     });
 
-
+////////////////////llenado de combo de capacitacion//////////////////////
+    $.getJSON(Routing.generate('get_all_capacitaciones'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.capacitaciones, function (indice, aux) {
+                    $('#capacitacion').append('<option value="' + aux.id + '">' + aux.temaCapacitacion + '</option>');
+                });
+            });
 
 
 });

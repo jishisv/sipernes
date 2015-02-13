@@ -945,6 +945,20 @@ public function getSubProtocolosByProtocoloAction($id) {
 
         return new Response(json_encode($subprotocolos));
     }
+ 
+ /**
+     *@Route("tipos/cap/capacitaciones/", name="get_all_capacitaciones", options={"expose"=true})
+     */
+      public function getCapacitacionesAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfMtlCapacitacion o";
+      $capacitaciones['capacitaciones'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($capacitaciones));
+    }
     
 }
 
