@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="161"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -58,8 +58,8 @@ FROM
 WHERE
   enf_clase.id = enf_ctl_diagnostico.id_clase AND
   enf_dominio.id = enf_clase.id_dominio AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  enf_mtl_diagnostico.id_expediente = mnt_expediente.id AND
+  mnt_expediente.id_establecimiento = $P{tipoEstable}/*ctl_establecimiento.id*/ AND
+  enf_mtl_diagnostico.id_expediente = $P{codigoExp}/*mnt_expediente.id*/ AND
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id
 group by enf_ctl_diagnostico.cod_diagnostico,enf_ctl_diagnostico.nombre_diagnostico,enf_clase.nombre_clase,enf_dominio.nombre_dominio,ctl_establecimiento.nombre;]]>
 	</queryString>
