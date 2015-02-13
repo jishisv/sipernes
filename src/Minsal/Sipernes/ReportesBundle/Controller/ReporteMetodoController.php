@@ -566,14 +566,12 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
-            'deptos'=>  $deptos,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'capacitacion' => $capacitacion,
-            'codigo_enfermera' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
