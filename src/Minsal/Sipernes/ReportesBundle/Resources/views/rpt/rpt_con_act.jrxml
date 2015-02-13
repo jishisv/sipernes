@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="44"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -42,6 +42,9 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subactividad" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="municipio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -63,11 +66,13 @@ WHERE
   enf_ctl_actividad.id = enf_ctl_subactividad.id_actividad AND
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
   ctl_establecimiento.id = mnt_expediente.id_establecimiento and
-  mnt_expediente.numero= $P{codigoExp} and
-mnt_empleado.idempleado = $P{codigoEmp} and
+  mnt_expediente.id= $P{codigoExp} and
+mnt_empleado.id = $P{codigoEmp} and
 enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') and
 enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpfin}, 'dd/MM/YYYY') and
 enf_ctl_subactividad.id=$P{subactividad}
+ and
+ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio)
 
 
 GROUP BY enf_ctl_subactividad.nombre_subactividad,

@@ -49,6 +49,8 @@ class ReporteMetodoController extends Controller
        $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
             'fpfin' => $fecha_fin,
+            'subactividad'=>$subactividades,
+            'municipio'=>$municipios,
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => $codigo_expediente,
             'codigoEmp' => $codigo_enfermera,
