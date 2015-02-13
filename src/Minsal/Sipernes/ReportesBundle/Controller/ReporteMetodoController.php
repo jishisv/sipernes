@@ -51,7 +51,7 @@ class ReporteMetodoController extends Controller
             'fpfin' => $fecha_fin,
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => $codigo_expediente,
-            'codigoEnf' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0
         ));
        
@@ -73,7 +73,7 @@ class ReporteMetodoController extends Controller
             'fpfin' => $fecha_fin,
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => 'vacio',
-            'codigoEnf' => 'vacio',
+            'codigoEmp' => 'vacio',
             'tipo_diag' => $tipo_diag,
             'id_servicio' => 0
         ));
@@ -153,7 +153,7 @@ class ReporteMetodoController extends Controller
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => $codigo_expediente,
-            'codigoEnf' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
         ));
        
@@ -173,9 +173,7 @@ class ReporteMetodoController extends Controller
        $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
             'fpfin' => $fecha_fin,
-//            'deptos'=>  $deptos,
-//            'municipios' => $municipios,
-//            'establecimientos' => $establecimientos,
+            'municipio' => $municipios,
            'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => $codigo_expediente,
             'codigoEmp' => $codigo_enfermera,
@@ -245,7 +243,7 @@ class ReporteMetodoController extends Controller
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
             'codigoExp' => 'vacio',
-            'codigoEnf' => 'vacio',
+            'codigoEmp' => 'vacio',
             'id_servicio' => 0,
 //            'tipo_diagnostico' => $tipodiagnostico,
 //            'diagnostico' => $diagnostico,
@@ -316,7 +314,7 @@ class ReporteMetodoController extends Controller
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
 //            'codigoExp' => $codigo_expediente,
-            'codigoEnf' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
         ));
 
@@ -823,7 +821,7 @@ class ReporteMetodoController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idEstablecimientoPadre = :id";
+                WHERE o.idTipoEstablecimiento.id = :id";
         $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                 
 

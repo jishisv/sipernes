@@ -43,6 +43,9 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="municipio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
@@ -76,10 +79,12 @@ WHERE
   mnt_expediente.id = enf_mtl_intervencion.id_expediente AND
   mnt_expediente.id_paciente = mnt_paciente.id AND
   mnt_expediente.id_establecimiento = ctl_establecimiento.id and
-mnt_empleado.id = $P{codigoEmp}::integer and
-mnt_expediente.id = $P{codigoExp}::integer and
-enf_mtl_diagnostico.fecha_ingreso_diag >= to_date($P{fpini},'DD-MM-YYYY') AND
-enf_mtl_diagnostico.fecha_ingreso_diag < to_date($P{fpfin},'DD-MM-YYYY')]]>
+mnt_empleado.id = coalesce($P{codigoEmp},mnt_empleado.id) and
+mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
+enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
+enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
+ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
+ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="codexp" class="java.lang.Integer"/>
