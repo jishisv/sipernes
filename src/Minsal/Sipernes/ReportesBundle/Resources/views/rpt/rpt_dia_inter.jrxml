@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -68,8 +68,8 @@ WHERE
   enf_ctl_protocolo.id = enf_ctl_subprotocolo.id_protocolo AND
   enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
   enf_ctl_intervencion.id = enf_ctl_fase_intervencion.id_intervencion AND
-  enf_mtl_intervencion.id_expediente = mnt_expediente.id AND
-  enf_mtl_intervencion.id_emp_corr = mnt_empleado.id AND
+  enf_mtl_intervencion.id_expediente = $P{codigoExp}/*mnt_expediente.id*/ AND
+  enf_mtl_intervencion.id_emp_corr =  $P{codigoEmp}/*mnt_empleado.id*/ AND
   enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id;]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>

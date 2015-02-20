@@ -86,6 +86,11 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
+    $('#financiamiento').select2({
+        width: '60%',
+        placeholder: 'Seleccione...',
+        allowClear: true
+    });
 
     $("#fecha_inicio").datepicker().mask("99-99-9999");
     $("#fecha_fin").datepicker().mask("99-99-9999");
@@ -1075,7 +1080,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_dia_cap/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#capacitacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_dia_cap/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#financiamiento').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1740,6 +1745,15 @@ $(document).ready(function () {
                 });
             });
 
+////////////////////llenado de combo de capacitacion//////////////////////
+    $.getJSON(Routing.generate('get_all_financiamiento'),
+            function (data) {
+//               alert("entre a deptos de shcp");
+                $.each(data.financiamiento, function (indice, aux) {
+                    $('#financiamiento').append('<option value="' + aux.id + '">' + aux.nombreFinanciamiento + '</option>');
+                });
+            });
+            
 
 });
 

@@ -67,24 +67,37 @@ FROM
   enf_ctl_subprotocolo,
   mnt_empleado,
   mnt_expediente,
-  mnt_paciente
+  mnt_paciente,
+enf_clase
 WHERE
   enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id AND
+enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
+enf_ctl_subprotocolo.id_protocolo = enf_ctl_protocolo.id AND
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
-  enf_ctl_subprotocolo.id_protocolo = enf_ctl_protocolo.id AND
-  enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
-  mnt_empleado.id = enf_mtl_intervencion.id_emp_corr AND
+  enf_ctl_diagnostico.id_clase = enf_clase.id and
   mnt_empleado.id = enf_mtl_diagnostico.id_emp_corr AND
   mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
-  mnt_expediente.id = enf_mtl_intervencion.id_expediente AND
   mnt_expediente.id_paciente = mnt_paciente.id AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id and
+
 mnt_empleado.id = coalesce($P{codigoEmp},mnt_empleado.id) and
 mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
-ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)]]>
+ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
+
+group by
+Establecimiento,
+codExp,
+Expediente,
+Paciente,
+codEnf,
+CodigoEnfermera,
+NombreEnfermera,
+Diagnostico,
+Intervencion
+
+order by Diagnostico ]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="codexp" class="java.lang.Integer"/>

@@ -559,9 +559,9 @@ class ReporteMetodoController extends Controller
     }
 
     /**
-     *@Route("/rpt_con_capac_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{capacitacion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_capac_diario", options={"expose"=true})
+     *@Route("/rpt_con_capac_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{financiado}/{codigo_enfermera}/{id_servicio}", name="rpt_con_capac_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioCapacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $capacitacion, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioCapacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $financiado, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -572,7 +572,7 @@ class ReporteMetodoController extends Controller
             'fpfin' => $fecha_fin,
             'municipios' => $municipios,
             'tipoEstable' => $tipoestablecimientos,
-            'capacitacion' => $capacitacion,
+            'financiado' => $financiado,
             'codigoEmp' => $codigo_enfermera,
         ));
 
@@ -960,6 +960,19 @@ public function getSubProtocolosByProtocoloAction($id) {
         return new Response(json_encode($capacitaciones));
     }
     
+    /**
+     *@Route("tipos/cap/financiamiento/", name="get_all_financiamiento", options={"expose"=true})
+     */
+      public function getFinanciamientoAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlFinanciamiento o";
+      $financiamiento['financiamiento'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($financiamiento));
+    }
 }
 
 ?>

@@ -15,7 +15,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoIntervencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoIntervencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de micronutrientes aplicados versus planificados}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de capacitaciones realizadas por enfermera}
 
     minsal_sipernes_reportes.admin.enf_hitorico_diagnostico:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfHitoricoDiagnosticoAdmin
