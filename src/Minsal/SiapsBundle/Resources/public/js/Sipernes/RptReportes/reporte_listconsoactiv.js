@@ -1647,6 +1647,18 @@ $(document).ready(function () {
                 });
             });
 
+
+///funcion para mostrar el nombre del empleado
+$("#cod_enf").on("change",function(){
+    var id=$(this).val();
+     $.getJSON(Routing.generate('get_nombre_empleado')+"/"+id,function (data){var emp
+         $(data.datosempleado).each(function (){                
+                emp=this.nombreempleado
+         })
+         $("#enfermera").val(emp);
+     })
+    
+})
 //    $("#establecimientos").on('change', function (event) { // aqui el JSON });
 //        $('#tipoestablecimientos option').each(function (index, val) {
 //            $(this).remove();
