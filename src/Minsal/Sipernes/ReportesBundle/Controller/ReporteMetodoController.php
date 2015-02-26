@@ -973,6 +973,22 @@ public function getSubProtocolosByProtocoloAction($id) {
 
         return new Response(json_encode($financiamiento));
     }
+   /**
+     *@Route("obtener/nombreempleado/por/{id}", name="get_nombre_empleado", options={"expose"=true})
+     */
+public function getNombreEmpleadobyNitAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:MntEmpleado o
+                WHERE o.id = :id";
+        $datosempleado['datosempleado'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($datosempleado));
+    }
+    
+    
 }
 
 ?>
