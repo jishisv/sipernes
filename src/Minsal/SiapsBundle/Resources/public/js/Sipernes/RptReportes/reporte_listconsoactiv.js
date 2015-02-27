@@ -1659,6 +1659,18 @@ $("#cod_enf").on("change",function(){
      })
     
 })
+
+///funcion para mostrar el nombre del paciente
+$("#cod_exp").on("change",function(){
+    var id=$(this).val();
+     $.getJSON(Routing.generate('get_nombre_paciente')+"/"+id,function (data){var pac
+         $(data.paciente).each(function (){                
+                pac=this.primerNombre;
+         })
+         $("#paciente").val(pac);
+     })
+    
+})
 //    $("#establecimientos").on('change', function (event) { // aqui el JSON });
 //        $('#tipoestablecimientos option').each(function (index, val) {
 //            $(this).remove();

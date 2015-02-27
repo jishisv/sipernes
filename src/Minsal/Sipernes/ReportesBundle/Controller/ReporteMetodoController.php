@@ -987,6 +987,25 @@ public function getNombreEmpleadobyNitAction($id) {
 
         return new Response(json_encode($datosempleado));
     }
+ /**
+     *@Route("obtener/nombrepaciente/por/expediente/{id}", name="get_nombre_paciente", options={"expose"=true})
+ */     
+public function getNombrePacientebIdAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+//        $dql = "SELECT o
+//                FROM MinsalSipernesBundle:MntExpediente o inner join o.idPaciente pac
+//                WHERE o.id = pac.id and o.id = :id";
+//        $datospaciente['datospaciente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+           
+        $conexion = $em->getRepository('MinsalSiapsBundle:MntConexion');
+        $conn = $em->getRepository('MinsalSiapsBundle:MntConexion')->getConexionGenerica($conexion);
+        
+        $sql = "select * from mnt_expediente exp inner join mnt_paciente pac
+        on(exp.id = pac.id) where exp.id = :id";
+        $datospaciente['datospaciente'] = $conn->query($sql)->setParameter('id', $id)->getArrayResult();
+        return new Response(json_encode($datospaciente));
+    }
     
     
 }
