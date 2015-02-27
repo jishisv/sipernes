@@ -65,3 +65,9 @@ fos_user.password.mismatch: 'La nueva constraseña no coinciden'
 'Enf Ctl Subactividad List': 'Catálogo de actividades'
 'Enf Mtl Actividad List': 'Registrar actividad realizada'
 'Enf Mtl Actividad Edit': ''
+
+
+#FORMULARIOS PARA REPORTES
+'Enf Historico Capacitacion List' : 'Comparativo de pacientes'
+
+'EnfMtlActividad' : 'PRUEBA'
