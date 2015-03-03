@@ -243,4 +243,8 @@ class EnfEsquemaMic
     {
         return $this->fechaIngresoMic;
     }
+    
+     public function __toString() {
+    return $this->nombreEsquemaMic ? $this->nombreEsquemaMic : '';
+    }
 }
