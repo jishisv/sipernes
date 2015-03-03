@@ -246,4 +246,8 @@ class EnfClase
     {
         return $this->idDominio;
     }
+    
+    public function __toString() {
+    return $this->nombreClase ? $this->nombreClase : '';
+    }
 }
