@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfEsquemaMic" table="enf_esquema_mic">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="anioEsquemaMic" type="decimal" column="anio_esquema_mic" precision="4" scale="0" nullable="true"/>
+    <field name="nombreEsquemaMic" type="string" column="nombre_esquema_mic" length="40" nullable="true"/>
+    <field name="edadMinimaMic" type="decimal" column="edad_minima_mic" precision="10" scale="0" nullable="true"/>
+    <field name="edadMaximaMic" type="decimal" column="edad_maxima_mic" precision="10" scale="0" nullable="true"/>
+    <field name="estadoMic" type="boolean" column="estado_mic" nullable="true"/>
+    <field name="usuarioIngresoMic" type="string" column="usuario_ingreso_mic" length="40" nullable="true"/>
+    <field name="fechaIngresoMic" type="date" column="fecha_ingreso_mic" nullable="true"/>
+  </entity>
+</doctrine-mapping>

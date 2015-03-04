@@ -216,8 +216,4 @@ class EnfTipoEsquemaMic
     {
         return $this->idEsquemaMic;
     }
-    
-     public function __toString() {
-    return $this->nombreTipoEsqMic ? $this->nombreTipoEsqMic : '';
-    }
 }

@@ -2,10 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="EnfDosisEsquemaVac" table="enf_dosis_esquema_vac">
     <indexes>
-      <index name="IDX_5BA20B9FBF16C07B" columns="id_componente"/>
       <index name="IDX_5BA20B9F3FE83A49" columns="id_emp_corr"/>
       <index name="IDX_5BA20B9FEDEF355D" columns="id_tipo_esq"/>
-      <index name="IDX_5BA20B9F6D7590AD" columns="id_movimiento"/>
       <index name="IDX_5BA20B9F701624C4" columns="id_expediente"/>
     </indexes>
     <id name="id" type="integer" column="id">
@@ -23,11 +21,6 @@
         <join-column name="id_expediente" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idMovimiento" target-entity="EnfMovInventario">
-      <join-columns>
-        <join-column name="id_movimiento" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idTipoEsq" target-entity="EnfTipoEsquemaVac">
       <join-columns>
         <join-column name="id_tipo_esq" referenced-column-name="id"/>
@@ -36,11 +29,6 @@
     <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
       <join-columns>
         <join-column name="id_emp_corr" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idComponente" target-entity="EnfComponente">
-      <join-columns>
-        <join-column name="id_componente" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

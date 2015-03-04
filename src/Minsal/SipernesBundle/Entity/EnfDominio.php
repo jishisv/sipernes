@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfDominio
  *
  * @ORM\Table(name="enf_dominio")
- * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\ClaseDiagRepository")
+ * @ORM\Entity
  */
 class EnfDominio
 {
@@ -212,9 +212,5 @@ class EnfDominio
     public function getEstadoDominio()
     {
         return $this->estadoDominio;
-    }
-    
-     public function __toString() {
-    return $this->nombreDominio ? $this->nombreDominio : '';
     }
 }

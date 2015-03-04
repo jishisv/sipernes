@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfCtlActividad
  *
  * @ORM\Table(name="enf_ctl_actividad")
- * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoActividadRepository")
+ * @ORM\Entity
  */
 class EnfCtlActividad
 {
@@ -182,9 +182,5 @@ class EnfCtlActividad
     public function getFechaModificacionCatAct()
     {
         return $this->fechaModificacionCatAct;
-    }
-    
-    public function __toString() {
-    return $this->nombreActividad ? $this->nombreActividad : '';
     }
 }

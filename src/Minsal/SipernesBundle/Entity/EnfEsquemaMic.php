@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfEsquemaMic
  *
  * @ORM\Table(name="enf_esquema_mic")
- * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoEsqMicRepository")
+ * @ORM\Entity
  */
 class EnfEsquemaMic
 {
@@ -242,9 +242,5 @@ class EnfEsquemaMic
     public function getFechaIngresoMic()
     {
         return $this->fechaIngresoMic;
-    }
-    
-     public function __toString() {
-    return $this->nombreEsquemaMic ? $this->nombreEsquemaMic : '';
     }
 }

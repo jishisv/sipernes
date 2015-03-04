@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfCtlProtocolo
  *
  * @ORM\Table(name="enf_ctl_protocolo")
- * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoProtRepository")
+ * @ORM\Entity
  */
 class EnfCtlProtocolo
 {
@@ -182,9 +182,5 @@ class EnfCtlProtocolo
     public function getEstadoProt()
     {
         return $this->estadoProt;
-    }
-    
-     public function __toString() {
-    return $this->nombreProtocolo ? $this->nombreProtocolo : '';
     }
 }

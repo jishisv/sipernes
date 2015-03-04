@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfDosisEsquemaMic
  *
- * @ORM\Table(name="enf_dosis_esquema_mic", indexes={@ORM\Index(name="IDX_8308CD063FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_8308CD068E3BF975", columns={"id_tipo_esq_mic"}), @ORM\Index(name="IDX_8308CD06701624C4", columns={"id_expediente"})})
+ * @ORM\Table(name="enf_dosis_esquema_mic", indexes={@ORM\Index(name="IDX_8308CD063FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_8308CD06701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_8308CD068E3BF975", columns={"id_tipo_esq_mic"})})
  * @ORM\Entity
  */
 class EnfDosisEsquemaMic
@@ -82,16 +82,6 @@ class EnfDosisEsquemaMic
     private $idEmpCorr;
 
     /**
-     * @var \EnfTipoEsquemaMic
-     *
-     * @ORM\ManyToOne(targetEntity="EnfTipoEsquemaMic")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tipo_esq_mic", referencedColumnName="id")
-     * })
-     */
-    private $idTipoEsqMic;
-
-    /**
      * @var \MntExpediente
      *
      * @ORM\ManyToOne(targetEntity="MntExpediente")
@@ -100,6 +90,16 @@ class EnfDosisEsquemaMic
      * })
      */
     private $idExpediente;
+
+    /**
+     * @var \EnfTipoEsquemaMic
+     *
+     * @ORM\ManyToOne(targetEntity="EnfTipoEsquemaMic")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_esq_mic", referencedColumnName="id")
+     * })
+     */
+    private $idTipoEsqMic;
 
 
 
@@ -298,29 +298,6 @@ class EnfDosisEsquemaMic
     }
 
     /**
-     * Set idTipoEsqMic
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic $idTipoEsqMic
-     * @return EnfDosisEsquemaMic
-     */
-    public function setIdTipoEsqMic(\Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic $idTipoEsqMic = null)
-    {
-        $this->idTipoEsqMic = $idTipoEsqMic;
-
-        return $this;
-    }
-
-    /**
-     * Get idTipoEsqMic
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic 
-     */
-    public function getIdTipoEsqMic()
-    {
-        return $this->idTipoEsqMic;
-    }
-
-    /**
      * Set idExpediente
      *
      * @param \Minsal\SipernesBundle\Entity\MntExpediente $idExpediente
@@ -341,5 +318,28 @@ class EnfDosisEsquemaMic
     public function getIdExpediente()
     {
         return $this->idExpediente;
+    }
+
+    /**
+     * Set idTipoEsqMic
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic $idTipoEsqMic
+     * @return EnfDosisEsquemaMic
+     */
+    public function setIdTipoEsqMic(\Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic $idTipoEsqMic = null)
+    {
+        $this->idTipoEsqMic = $idTipoEsqMic;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoEsqMic
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic 
+     */
+    public function getIdTipoEsqMic()
+    {
+        return $this->idTipoEsqMic;
     }
 }

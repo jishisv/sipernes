@@ -276,8 +276,4 @@ class EnfCtlSubactividad
     {
         return $this->idActividad;
     }
-    
-    public function __toString() {
-    return $this->nombreSubactividad ? $this->nombreSubactividad : '';
-    }
 }

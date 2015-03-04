@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfBitacoraDosis" table="enf_bitacora_dosis">
+    <indexes>
+      <index name="IDX_17FCE8CEDC13B9AD" columns="id_dosis_esq"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="dosisHist" type="string" column="dosis_hist" length="10" nullable="true"/>
+    <field name="centroEducativoHist" type="string" column="centro_educativo_hist" length="200" nullable="true"/>
+    <field name="fechaDosisEsqHist" type="date" column="fecha_dosis_esq_hist" nullable="true"/>
+    <field name="estadoDosisEsqHist" type="boolean" column="estado_dosis_esq_hist" nullable="true"/>
+    <field name="usuarioDosisEsqHist" type="string" column="usuario_dosis_esq_hist" length="40" nullable="true"/>
+    <field name="fechaIngresoDosisHist" type="date" column="fecha_ingreso_dosis_hist" nullable="true"/>
+    <field name="fechaModificacionDosisHist" type="date" column="fecha_modificacion_dosis_hist" nullable="true"/>
+    <many-to-one field="idDosisEsq" target-entity="EnfDosisEsquemaVac">
+      <join-columns>
+        <join-column name="id_dosis_esq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

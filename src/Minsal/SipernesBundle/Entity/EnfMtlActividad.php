@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfMtlActividad
  *
- * @ORM\Table(name="enf_mtl_actividad", indexes={@ORM\Index(name="IDX_5185AF503FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5185AF50701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5185AF503A5C634D", columns={"id_subactividad"}), @ORM\Index(name="IDX_5185AF505C03EB6E")})
+ * @ORM\Table(name="enf_mtl_actividad", indexes={@ORM\Index(name="IDX_5185AF503FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5185AF50701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_5185AF503A5C634D", columns={"id_subactividad"})})
  * @ORM\Entity
  */
 class EnfMtlActividad
@@ -94,7 +94,6 @@ class EnfMtlActividad
      */
     private $idSubactividad;
 
-    
 
 
     /**
@@ -313,6 +312,4 @@ class EnfMtlActividad
     {
         return $this->idSubactividad;
     }
-
-    
 }

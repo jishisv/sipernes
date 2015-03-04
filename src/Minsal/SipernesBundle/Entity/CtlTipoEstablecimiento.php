@@ -1,6 +1,6 @@
 <?php
 
-namespace Minsal\shcpBundle\Entity;
+namespace Minsal\SipernesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

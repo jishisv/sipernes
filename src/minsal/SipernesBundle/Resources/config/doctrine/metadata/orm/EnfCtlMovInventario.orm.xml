@@ -6,5 +6,7 @@
     </id>
     <field name="nombreTipoInventatrio" type="string" column="nombre_tipo_inventatrio" length="50" nullable="true"/>
     <field name="estadoCtlMov" type="boolean" column="estado_ctl_mov" nullable="true"/>
+    <field name="usuarioIngresoMov" type="string" column="usuario_ingreso_mov" length="40" nullable="true"/>
+    <field name="fechaIngresoMov" type="date" column="fecha_ingreso_mov" nullable="true"/>
   </entity>
 </doctrine-mapping>
