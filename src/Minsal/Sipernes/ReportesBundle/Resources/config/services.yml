@@ -29,9 +29,9 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de vacunación versus planificadas}
 
-    minsal_sipernes_reportes.admin.enf_historico_nota:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoNotaAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoNota, SonataAdminBundle:CRUD]
+    minsal_sipernes_reportes.admin.enf_bitacora_nota:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraNotaAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraNota, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Diagnósticos Efectuados por el Personal de Enfermería a Pacientes Hospitalarios}
 
@@ -166,3 +166,5 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\MntExpedienteEstablecimiento, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de capacitaciones realizadas por enfermera}
+
+    

@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class EnfHistoricoNotaAdmin extends Admin
+class EnfBitacoraNotaAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -76,8 +76,8 @@ class EnfHistoricoNotaAdmin extends Admin
             ->add('fechaIngresoHistNotas')
         ;
     }
-    
-       public function getTemplate($name) {
+        
+    public function getTemplate($name) {
         switch ($name) {
             case 'list':
                 return 'MinsalSipernesReportesBundle:Reportes:reporte_conso_diag.html.twig';
