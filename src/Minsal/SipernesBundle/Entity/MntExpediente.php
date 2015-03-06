@@ -249,4 +249,8 @@ class MntExpediente
     {
         return $this->idPaciente;
     }
+    
+      public function __toString() {
+        return $this->numero ? $this->numero : '';
+    }
 }

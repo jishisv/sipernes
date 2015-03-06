@@ -735,4 +735,8 @@ class MntEmpleado
     {
         return $this->idTipoEmpleado;
     }
+    
+    public function __toString() {
+        return $this->idempleado?:'';
+    }
 }

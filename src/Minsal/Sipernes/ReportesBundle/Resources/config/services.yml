@@ -1,31 +1,31 @@
 services:
-    minsal_sipernes_reportes.admin.enf_bitacora_capacitacion:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraCapacitacionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraCapacitacion, MinsalSipernesReportesBundle:ReportePrueba1]
+    minsal_sipernes_reportes.admin.enf_historico_capacitacion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoCapacitacionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoCapacitacion, MinsalSipernesReportesBundle:ReportePrueba1]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de pacientes atendidos versus diagnosticos de enfermeria}
 
-    minsal_sipernes_reportes.admin.enf_bitacora_actividad:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraActividadAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraActividad, MinsalSipernesReportesBundle:ReportePrueba2]
+    minsal_sipernes_reportes.admin.enf_historico_actividad:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoActividadAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoActividad, MinsalSipernesReportesBundle:ReportePrueba2]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Actividades Realizadas}
 
-    minsal_sipernes_reportes.admin.enf_bitacora_intervencion:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraIntervencionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraIntervencion, SonataAdminBundle:CRUD]
+    minsal_sipernes_reportes.admin.enf_historico_intervencion:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoIntervencionAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoIntervencion, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de capacitaciones realizadas por enfermera}
 
-    minsal_sipernes_reportes.admin.enf_bitacora_diagnostico:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraDiagnosticoAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraDiagnostico, SonataAdminBundle:CRUD]
+    minsal_sipernes_reportes.admin.enf_hitorico_diagnostico:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHitoricoDiagnosticoAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHitoricoDiagnostico, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Anotaciones de Enfermería a Pacientes}
 
-    minsal_sipernes_reportes.admin.enf_bitacora_dosis:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraDosisAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraDosis, SonataAdminBundle:CRUD]
+    minsal_sipernes_reportes.admin.enf_historico_dosis:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoDosisAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoDosis, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de vacunación versus planificadas}
 
@@ -35,9 +35,9 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Diagnósticos Efectuados por el Personal de Enfermería a Pacientes Hospitalarios}
 
-    minsal_sipernes_reportes.admin.enf_bitacora_inventario:
-        class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraInventarioAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraInventario, SonataAdminBundle:CRUD]
+    minsal_sipernes_reportes.admin.enf_historico_inventario:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfHistoricoInventarioAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfHistoricoInventario, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Informe diario de anotaciones de enfermería por paciente}
 

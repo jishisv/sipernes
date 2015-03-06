@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfDosisEsquemaVac
  *
  * @ORM\Table(name="enf_dosis_esquema_vac", indexes={@ORM\Index(name="IDX_5BA20B9F3FE83A49", columns={"id_emp_corr"}), @ORM\Index(name="IDX_5BA20B9FEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_5BA20B9F701624C4", columns={"id_expediente"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoEsqVacRepository")
  */
 class EnfDosisEsquemaVac
 {
@@ -341,5 +341,9 @@ class EnfDosisEsquemaVac
     public function getIdExpediente()
     {
         return $this->idExpediente;
+    }
+    
+    public function __toString() {
+    return $this->nombreEsquemaVac ? $this->nombreEsquemaVac : '';
     }
 }
