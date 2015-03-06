@@ -1,3 +1,39 @@
+var FuncAfterClose = function () {
+    $("#fecha_inicio").val('');
+    $("#fecha_fin").val('');
+    $("#fecha_inicio").focus();
+};
+var FuncAfterClose2 = function () {
+    if ($("#fecha_inicio").val() === '')
+        $("#fecha_inicio").focus();
+    else
+        $("#fecha_fin").focus();
+};
+var ValidPacientesAtendVSDiagnosticoEnferme = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Delag = false;be de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#tipo_diag option:selected").val() == "0" || $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var Alerta = function (text, funcAfter) {
+    var elem = $("<div id='error' title='Error de llenado'><center>" +
+            text
+            + "</center></div>");
+    elem.insertAfter($("body"));
+    $("#error").dialog({
+        close: function () {
+            eval(funcAfter);
+        }
+    });
+};
 $(document).ready(function () {
     $('#actividades').select2({
         width: '60%',
@@ -80,7 +116,7 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
-    
+
     $('#capacitacion').select2({
         width: '60%',
         placeholder: 'Seleccione...',
@@ -98,32 +134,22 @@ $(document).ready(function () {
     $("#emitir_informe").click(function () {
         if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
             ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "Debe de seleccionar ambas fechas para generar el reporte."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function () {
-                    if ($("#fecha_inicio").val() == '')
-                        $("#fecha_inicio").focus();
-                    else
-                        $("#fecha_fin").focus();
-                }
-            });
+            Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
             return false;
         } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
             ($('#error')) ? $('#error').remove() : '';
-            var elem = $("<div id='error' title='Error de llenado'><center>" +
-                    "La fecha de inicio debe de ser menor que la fecha fin."
-                    + "</center></div>");
-            elem.insertAfter($("#pacientesIngresados"));
-            $("#error").dialog({
-                close: function () {
-                    $("#fecha_inicio").val('');
-                    $("#fecha_fin").val('');
-                    $("#fecha_inicio").focus();
-                }
-            });
+            Alerta("La fecha de inicio debe de ser menor que la fecha fin.", FuncAfterClose);
+//            var elem = $("<div id='error' title='Error de llenado'><center>" +
+//                    "La fecha de inicio debe de ser menor que la fecha fin."
+//                    + "</center></div>");
+//            elem.insertAfter($("#pacientesIngresados"));
+//            $("#error").dialog({
+//                close: function () {
+//                    $("#fecha_inicio").val('');
+//                    $("#fecha_fin").val('');
+//                    $("#fecha_inicio").focus();
+//                }
+//            });
         } else {
             $('#resultado').load(Routing.generate('get_municipios'), {'datos': $('#pacientesIngresados').serialize()});
         }
@@ -132,21 +158,10 @@ $(document).ready(function () {
 
     // 54. pacientes vs diagnosticos
     $("#id_reporte_paciente_diagnostico").click(function () {
+
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#pacientesDiagnosticos"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidPacientesAtendVSDiagnosticoEnferme();
+            if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -1360,7 +1375,7 @@ $(document).ready(function () {
 
 
 
-
+//Consolidado de actividades realizadas
 
     $("#id_consolidado_actividad").click(function () {
 //        alert('entro aqui 2');
@@ -1649,28 +1664,30 @@ $(document).ready(function () {
 
 
 ///funcion para mostrar el nombre del empleado
-$("#cod_enf").on("change",function(){
-    var id=$(this).val();
-     $.getJSON(Routing.generate('get_nombre_empleado')+"/"+id,function (data){var emp
-         $(data.datosempleado).each(function (){                
-                emp=this.nombreempleado
-         })
-         $("#enfermera").val(emp);
-     })
-    
-})
+    $("#cod_enf").on("change", function () {
+        var id = $(this).val();
+        $.getJSON(Routing.generate('get_nombre_empleado') + "/" + id, function (data) {
+            var emp
+            $(data.datosempleado).each(function () {
+                emp = this.nombreempleado
+            })
+            $("#enfermera").val(emp);
+        })
+
+    })
 
 ///funcion para mostrar el nombre del paciente
-$("#cod_exp").on("change",function(){
-    var id=$(this).val();
-     $.getJSON(Routing.generate('get_nombre_paciente')+"/"+id,function (data){var pac
-         $(data.paciente).each(function (){                
-                pac=this.primerNombre;
-         })
-         $("#paciente").val(pac);
-     })
-    
-})
+    $("#cod_exp").on("change", function () {
+        var id = $(this).val();
+        $.getJSON(Routing.generate('get_nombre_paciente') + "/" + id, function (data) {
+            var pac
+            $(data.paciente).each(function () {
+                pac = this.primerNombre;
+            })
+            $("#paciente").val(pac);
+        })
+
+    })
 //    $("#establecimientos").on('change', function (event) { // aqui el JSON });
 //        $('#tipoestablecimientos option').each(function (index, val) {
 //            $(this).remove();
@@ -1777,7 +1794,7 @@ $("#cod_exp").on("change",function(){
                     $('#financiamiento').append('<option value="' + aux.id + '">' + aux.nombreFinanciamiento + '</option>');
                 });
             });
-            
+
 
 });
 
