@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfBitacoraDiagnostico" table="enf_bitacora_diagnostico">
+    <indexes>
+      <index name="IDX_BCA01F46A48933A" columns="id_registro_diag"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="observacionHist" type="string" column="observacion_hist" length="500" nullable="true"/>
+    <field name="usuarioHistDiag" type="string" column="usuario_hist_diag" length="40" nullable="true"/>
+    <field name="fechaIngresoHistDiag" type="date" column="fecha_ingreso_hist_diag" nullable="true"/>
+    <field name="fechaModificacionHistDiag" type="date" column="fecha_modificacion_hist_diag" nullable="true"/>
+    <field name="estadoHistDiag" type="boolean" column="estado_hist_diag" nullable="true"/>
+    <many-to-one field="idRegistroDiag" target-entity="EnfMtlDiagnostico">
+      <join-columns>
+        <join-column name="id_registro_diag" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

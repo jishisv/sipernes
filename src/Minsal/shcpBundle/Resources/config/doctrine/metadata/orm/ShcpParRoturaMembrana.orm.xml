@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParRoturaMembrana" table="shcp_par_rotura_membrana">
+    <indexes>
+      <index name="IDX_2C26F723D766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="rotuExistencia" type="string" column="rotu_existencia" nullable="true"/>
+    <field name="rotuFecha" type="date" column="rotu_fecha" nullable="true"/>
+    <field name="rotuHora" type="time" column="rotu_hora" nullable="true"/>
+    <field name="rotuMen37sem" type="string" column="rotu_men_37sem" nullable="true"/>
+    <field name="rotuMayIgual18hrs" type="string" column="rotu_may_igual_18hrs" nullable="true"/>
+    <field name="rotuTemp" type="decimal" column="rotu_temp" precision="6" scale="2" nullable="true"/>
+    <field name="roturaTempMayIgual38c" type="string" column="rotura_temp_may_igual_38c" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

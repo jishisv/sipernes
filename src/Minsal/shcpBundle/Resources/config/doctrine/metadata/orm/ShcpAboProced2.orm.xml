@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboProced2" table="shcp_abo_proced2">
+    <indexes>
+      <index name="IDX_C7B8D603C5D115CC" columns="id_proced1"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="proc2TamUterino" type="integer" column="proc2_tam_uterino" nullable="true"/>
+    <field name="proc2Histeromet" type="integer" column="proc2_histeromet" nullable="true"/>
+    <field name="proc2Anexos" type="string" column="proc2_anexos" nullable="true"/>
+    <field name="proc2Fetidez" type="string" column="proc2_fetidez" nullable="true"/>
+    <field name="proc2Restos" type="string" column="proc2_restos" nullable="true"/>
+    <field name="proc2RestosInspec" type="string" column="proc2_restos_inspec" nullable="true"/>
+    <field name="proc2AnatPtg" type="string" column="proc2_anat_ptg" nullable="true"/>
+    <field name="proc2Compli" type="string" column="proc2_compli" nullable="true"/>
+    <field name="proc2CompliQuirur" type="string" column="proc2_compli_quirur" nullable="true"/>
+    <field name="proc2OtraCompliQuirur" type="string" column="proc2_otra_compli_quirur" length="25" nullable="true"/>
+    <field name="proc2CompliAnest" type="string" column="proc2_compli_anest" nullable="true"/>
+    <field name="proc2OtraCompliAnest" type="string" column="proc2_otra_compli_anest" length="25" nullable="true"/>
+    <field name="proc2RepaLesionUter" type="string" column="proc2_repa_lesion_uter" nullable="true"/>
+    <field name="proc2RepaLesionCerv" type="string" column="proc2_repa_lesion_cerv" nullable="true"/>
+    <field name="proc2Histerect" type="string" column="proc2_histerect" nullable="true"/>
+    <field name="proc2Sepsis" type="string" column="proc2_sepsis" nullable="true"/>
+    <field name="proc2Respons" type="string" column="proc2_respons" length="100" nullable="true"/>
+    <many-to-one field="idProced1" target-entity="ShcpAboProced1">
+      <join-columns>
+        <join-column name="id_proced1" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

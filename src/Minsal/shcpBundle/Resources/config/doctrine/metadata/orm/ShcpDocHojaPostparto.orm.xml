@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocHojaPostparto" table="shcp_doc_hoja_postparto">
+    <indexes>
+      <index name="IDX_2229FAFF93489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="hpostFecha" type="date" column="hpost_fecha" nullable="true"/>
+    <field name="hpostHora" type="time" column="hpost_hora" nullable="true"/>
+    <field name="hpostDiasPostParto" type="integer" column="hpost_dias_post_parto" nullable="true"/>
+    <field name="hpostComplic" type="string" column="hpost_complic" length="150" nullable="true"/>
+    <field name="hpostCtrlPre" type="string" column="hpost_ctrl_pre" nullable="true"/>
+    <field name="hpostApegoPrecoz" type="string" column="hpost_apego_precoz" nullable="true"/>
+    <field name="hpostToxoideRes" type="string" column="hpost_toxoide_res" nullable="true"/>
+    <field name="hpostNumeroDosis" type="integer" column="hpost_numero_dosis" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfMtlNota" table="enf_mtl_nota">
+    <indexes>
+      <index name="IDX_C7BCADA15F5B16B6" columns="id_ctl_nota"/>
+      <index name="IDX_C7BCADA13FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_C7BCADA1701624C4" columns="id_expediente"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaModificacionNota" type="date" column="fecha_modificacion_nota" nullable="true"/>
+    <field name="usuarioNota" type="string" column="usuario_nota" length="40" nullable="true"/>
+    <field name="observacionNota" type="string" column="observacion_nota" length="500" nullable="true"/>
+    <field name="estadoMtlNota" type="boolean" column="estado_mtl_nota" nullable="true"/>
+    <field name="fechaIngresoNota" type="date" column="fecha_ingreso_nota" nullable="true"/>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCtlNota" target-entity="EnfCtlNota">
+      <join-columns>
+        <join-column name="id_ctl_nota" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

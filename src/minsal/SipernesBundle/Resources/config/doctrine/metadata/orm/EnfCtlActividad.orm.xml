@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlActividad" table="enf_ctl_actividad">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreActividad" type="string" column="nombre_actividad" length="50" nullable="true"/>
+    <field name="estadoAct" type="boolean" column="estado_act" nullable="true"/>
+    <field name="usuarioIngresoCatAct" type="string" column="usuario_ingreso_cat_act" length="40" nullable="true"/>
+    <field name="fechaIngresoCatAct" type="date" column="fecha_ingreso_cat_act" nullable="true"/>
+    <field name="fechaModificacionCatAct" type="date" column="fecha_modificacion_cat_act" nullable="true"/>
+  </entity>
+</doctrine-mapping>

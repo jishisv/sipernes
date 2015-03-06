@@ -1,0 +1,67 @@
+.textos.form-control{
+	
+	float: left;
+	width: 150px;
+	margin: 0 auto;
+}
+
+.presion.form-control{
+	
+	float: left;
+	width: 20%;
+	margin: 0 auto;
+}
+
+	.presion.form-control label{
+		width: 35px;
+		
+	}
+
+/*.dat_paciente{
+	border-spacing: 40px;
+	border-collapse: separate;
+}*/
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+	}
+
+	.dat_paciente tr{
+		height: 50px;
+	}
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+	}
+
+	.dat_paciente tr td{
+		width: 25%;
+	}
+/*.dat_paciente_sec{
+	border-spacing: 30px;
+	border-collapse: collapse;	
+}*/
+
+#fechayhora{
+	margin: 0 auto;
+	width: 80%;
+}
+
+	#fechayhora tr td{
+		width: 30%;
+	}
+
+	#fechayhora label{
+		width: 50px;
+	}
+
+.list-unstyled li{
+	float: left;
+	width: 100%;
+}
+
+.fechacal.obligatorio.form-control, .textos.obligatorio.hora.form-control {
+	width: 120px;
+}
+
+

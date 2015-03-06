@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecTiporeferencia" table="sec_tiporeferencia">
+    <id name="idtiporeferencia" type="integer" column="idtiporeferencia">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tiporeferencia" type="string" column="tiporeferencia" length="100" nullable="true"/>
+    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+  </entity>
+</doctrine-mapping>

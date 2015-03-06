@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfTrazaCapacitacion" table="enf_traza_capacitacion">
+    <indexes>
+      <index name="IDX_3DE95E9A79827853" columns="id_capacitacion"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioTraCap" type="string" column="usuario_tra_cap" length="40" nullable="true"/>
+    <field name="fechaIngresoTraCapa" type="date" column="fecha_ingreso_tra_capa" nullable="true"/>
+    <field name="cambioTraCapa" type="string" column="cambio_tra_capa" length="200" nullable="true"/>
+    <many-to-one field="idCapacitacion" target-entity="EnfMtlCapacitacion">
+      <join-columns>
+        <join-column name="id_capacitacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

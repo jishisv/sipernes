@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfDominio" table="enf_dominio">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codDominio" type="decimal" column="cod_dominio" precision="10" scale="0" nullable="false"/>
+    <field name="nombreDominio" type="string" column="nombre_dominio" length="50" nullable="true"/>
+    <field name="fechaIngresoDom" type="date" column="fecha_ingreso_dom" nullable="true"/>
+    <field name="fechaModificacionDom" type="date" column="fecha_modificacion_dom" nullable="true"/>
+    <field name="usuarioDom" type="string" column="usuario_dom" length="40" nullable="true"/>
+    <field name="estadoDominio" type="boolean" column="estado_dominio" nullable="true"/>
+  </entity>
+</doctrine-mapping>

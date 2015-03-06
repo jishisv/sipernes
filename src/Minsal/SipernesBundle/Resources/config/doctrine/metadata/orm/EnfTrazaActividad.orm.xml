@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfTrazaActividad" table="enf_traza_actividad">
+    <indexes>
+      <index name="IDX_CB0DD4949BC097A1" columns="id_registro_actividad"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioTraAct" type="string" column="usuario_tra_act" length="40" nullable="true"/>
+    <field name="cambioTraAct" type="string" column="cambio_tra_act" length="200" nullable="true"/>
+    <field name="fechaTrazaAct" type="date" column="fecha_traza_act" nullable="true"/>
+    <many-to-one field="idRegistroActividad" target-entity="EnfMtlActividad">
+      <join-columns>
+        <join-column name="id_registro_actividad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

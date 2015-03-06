@@ -1,0 +1,248 @@
+{# src/Minsal/SiapsBundle/Resource/view/ShcpExpMaterno/edit.html.twig 
+   Vista para la creación y actualización de un paciente 
+#}
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+  <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/General/list.css') }}" type="text/css" media="all" /> 
+ <link rel="stylesheet" href="{{ asset('bundles/minsalshcp/css/ShcpExpMaterno/form-edit.css') }}" type="text/css" media="all" /> 
+   
+{% endblock %}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalshcp/js/MntPacienteAdmin/MntPaciente_edit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
+
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ admin.generateUrl('list') }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    {{ 'link_action_list'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            {% endif %}
+
+            {% block sonata_pre_fieldsets %}
+                <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% for name, form_group in admin.formgroups %}
+                        <div class="{{ form_group.class|default('col-md-12') }}" >
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {# admin.trans(name, {}, form_group.translation_domain) #}
+                                    </h4>
+                                </div>
+                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form_group.description != false %}
+                                            <p>{{ form_group.description|raw }}</p>
+                                        {% endif %}
+                                        <center>
+                                            <h2>Inscripci&oacuten Expediente Materno</h2>
+                                            <div class="contenedor"><h3>Registro CLAP</h3>
+                                 
+                 <table class="dat_paciente" >
+                     <tr class="dat_paciente_sec">
+                     <td colspan=3 class="titulo">Datos Personales</td> 
+                     </tr>
+                      <tr>
+                        <td><label >N&uacutemero CLAP</label></td> 
+                        <td><label>Documento de identidad</label></td>  
+                         <td><label>N&uacutemero de Expediente</label></td>    
+                       </tr>
+                        <tr> 
+                          <td><label class="clap">{{form_widget(form.expClap)}}</label></td>
+                          <td><label class="doc">{{ form_widget(form.expDocIdent) }} </label></td>
+                          <td><h3>{{object.idMntExpediente}}</h3></td>
+                         </tr> 
+                          <tr>
+                           <td colspan=3 >
+                            <center>
+                                    <table width= 400px >
+                                           <tr>
+                                            <td colspan=2 ><label >Nombre paciente</label></td> 
+                                            
+                                             
+                                         </tr>
+                                          <tr>
+                                              <td colspan=2 ><label class="nombre">{{ form_widget(form.expNombre) }}</label></td>
+                                              
+                                         </tr>
+                                          <tr>
+                                            <td colspan=2 ><label>Apellido paciente</label></td> 
+                                            
+                                             </tr>
+                                              <tr>
+                                              <td  colspan=2 ><label class="nombre">{{ form_widget(form.expApellido) }}</label></td>
+                                             </tr>
+                                             </table>
+                             </center> </td>
+                           </tr>
+                            
+                               <tr>
+                                <td><label>Departamento</label></td> 
+                                <td><label>Municipio</label></td>
+                                <td><label>Tel&eacutefono</label></td>
+                             </tr>
+                              <tr>
+                              <td>{{ form_widget(form.expDepto) }}</td>
+                              <td>{{ form_widget(form.expMuni) }}</td>
+                              <td><label class="clap">{{ form_widget(form.expTelefono) }}</label></td>
+                             </tr> 
+                           
+                               <tr>
+                           <td colspan=3 >
+                            <center>
+                                    <table width= 300px >
+                               <tr>
+                                   
+                                <td  colspan=2 ><label>Direcci&oacuten</label></td> 
+                                
+                             </tr>
+                              <tr>
+                                  <td  colspan=2 ><label class="grande">{{ form_widget(form.expDireccion) }}</label></td>
+                             
+                             </tr> 
+                                     
+                             <tr>   <td style=" padding-left: 120px; "><label class="mini"><font  aling="left">Edad</font></label></td>
+                                          
+                                      <td  rowspan=2 ><label>Edad < 15 o mayor de 35</label>{{ form_widget(form.expEdadRgo) }}</td> 
+                                  
+                                           </tr>
+                                           <tr>
+                                           <td style=" padding-left: 120px; "><label class="mini">{{ form_widget(form.expEdad )}}</label></td> 
+                                          </tr>
+                                        
+                                   </table>
+                             </center> </td>
+                           </tr>
+                             <tr class="dat_paciente_sec">
+                                <td colspan=3 >Raza y Estudios</td> 
+                             </tr>
+                             <tr><td colspan=3 >
+                            <center> 
+                                            <table width= 300px >
+                           <tr>  
+                                <td colspan=3><label>Etnia</label></td>
+                        
+                         <td><label>Estudios</label></td> <td>&nbsp;</td>
+                         <td rowspan=3>
+                             <label>Alfabeta{{ form_widget(form.expAlfabeta) }}</label> 
+                            </td>
+                          
+                        
+                          </tr>   
+                            <tr>   
+                                <td class="lista" rowspan=2 colspan=3>{{ form_widget(form.expEtnia) }}</td> 
+                               <td class="lista">{{ form_widget(form.expEstudios) }}</td> <td>&nbsp;</td>
+                                </tr>
+                                <tr>    
+                                    <td ><label  style=" text-align: right; padding-right: 0px; ">Años en el mayor nivel</label></td><td>
+                                           <label class="mini"> {{ form_widget(form.expAniosNivelStudio) }}</label></td></tr>
+                             
+                                   
+                                   </table>
+                             </center> </td>
+                           </tr ><tr class="dat_paciente_sec">
+                                <td colspan=3>Estado Familiar</td> 
+                             </tr>
+                                <tr>                                                  
+                                  <td><label>Estado Civil</label></td>
+                              <td rowspan=2>
+                                 <label>Vive sola
+                                 
+                                {{ form_widget(form.expViveSola)}}</label>
+                                                              </td>
+                            </tr>
+                            <tr> 
+                                <td class="lista">{{ form_widget(form.expEstado) }}</td>  
+                               </tr> 
+                               <tr class="dat_paciente_sec">
+                                <td colspan=3 class="titulo">Control de seguimiento</td> 
+                             </tr>
+                              <tr>
+                              <td><label>Tipo de control</label></td>  
+                                </tr> <tr>
+                         <td class="lista">{{ form_widget(form.expTipoControl) }}</td>
+                                            </tr> 
+                                           </table>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                                {#</div>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+{% endblock %}

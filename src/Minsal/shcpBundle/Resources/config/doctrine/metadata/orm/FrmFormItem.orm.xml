@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FrmFormItem" table="frm_form_item">
+    <indexes>
+      <index name="IDX_D77F6F37AAE0DD79" columns="id_tipo_objeto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreDescriptivo" type="text" column="nombre_descriptivo" nullable="false"/>
+    <field name="tipoOrigen" type="integer" column="tipo_origen" nullable="false"/>
+    <field name="mensajeAyuda" type="text" column="mensaje_ayuda" nullable="true"/>
+    <field name="inscripcion" type="integer" column="inscripcion" nullable="true"/>
+    <field name="validacionEspecial" type="text" column="validacion_especial" nullable="true"/>
+    <field name="activo" type="boolean" column="activo" nullable="false"/>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="false"/>
+    <field name="fechaFin" type="date" column="fecha_fin" nullable="true"/>
+    <many-to-one field="idTipoObjeto" target-entity="CtlTipoObjeto">
+      <join-columns>
+        <join-column name="id_tipo_objeto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

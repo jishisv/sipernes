@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlSubactividad" table="enf_ctl_subactividad">
+    <indexes>
+      <index name="IDX_E7BB2606DC70121" columns="id_actividad"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreSubactividad" type="string" column="nombre_subactividad" length="50" nullable="true"/>
+    <field name="fechaIngresoSubact" type="date" column="fecha_ingreso_subact" nullable="true"/>
+    <field name="fechaModificacionSubact" type="date" column="fecha_modificacion_subact" nullable="true"/>
+    <field name="usuarioIngresoSubact" type="string" column="usuario_ingreso_subact" length="40" nullable="true"/>
+    <field name="estadoSubact" type="boolean" column="estado_subact" nullable="true"/>
+    <field name="cantidadSubact" type="decimal" column="cantidad_subact" precision="10" scale="0" nullable="true"/>
+    <field name="tiempoSubact" type="time" column="tiempo_subact" nullable="true"/>
+    <many-to-one field="idActividad" target-entity="EnfCtlActividad">
+      <join-columns>
+        <join-column name="id_actividad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

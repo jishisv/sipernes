@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlTipoComponente" table="enf_ctl_tipo_componente">
+    <id name="id" type="decimal" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreComponente1" type="string" column="nombre_componente1" length="50" nullable="true"/>
+    <field name="fechaIngresoCompo" type="date" column="fecha_ingreso_compo" nullable="true"/>
+    <field name="fechaModificacionCompo" type="date" column="fecha_modificacion_compo" nullable="true"/>
+    <field name="usuarioCtlComp" type="string" column="usuario_ctl_comp" length="40" nullable="true"/>
+    <field name="estadoTclTComp" type="boolean" column="estado_tcl_t_comp" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsAnteEnfermedad" table="shcp_ins_ante_enfermedad">
+    <indexes>
+      <index name="IDX_38120F1C78323381" columns="id_enfermedad"/>
+      <index name="IDX_38120F1CED1232DF" columns="id_antecedent_obste"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="anenfFamiliar" type="string" column="anenf_familiar" nullable="true"/>
+    <field name="anenfPersonal" type="string" column="anenf_personal" nullable="true"/>
+    <field name="anenfOtra" type="string" column="anenf_otra" length="20" nullable="true"/>
+    <many-to-one field="idAntecedentObste" target-entity="ShcpInsAntecedentObste">
+      <join-columns>
+        <join-column name="id_antecedent_obste" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEnfermedad" target-entity="ShcpInsCtlEnfermedad">
+      <join-columns>
+        <join-column name="id_enfermedad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

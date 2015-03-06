@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FarmTransferenciashospitales" table="farm_transferenciashospitales">
+    <indexes>
+      <index name="IDX_345519DEF58EA699" columns="idmedicina"/>
+      <index name="IDX_345519DE5B5F2589" columns="idpersonal"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cantidad" type="decimal" column="cantidad" precision="11" scale="3" nullable="false"/>
+    <field name="idestablecimientoorigen" type="integer" column="idestablecimientoorigen" nullable="false"/>
+    <field name="idestablecimientodestino" type="integer" column="idestablecimientodestino" nullable="false"/>
+    <field name="justificacion" type="text" column="justificacion" nullable="false"/>
+    <field name="fechatransferencia" type="datetime" column="fechatransferencia" nullable="false"/>
+    <field name="idestado" type="string" column="idestado" nullable="false"/>
+    <field name="cantidad1" type="decimal" column="cantidad1" precision="11" scale="3" nullable="true"/>
+    <field name="idlote" type="integer" column="idlote" nullable="true"/>
+    <field name="cantidad2" type="decimal" column="cantidad2" precision="11" scale="3" nullable="true"/>
+    <field name="idlote2" type="decimal" column="idlote2" precision="11" scale="3" nullable="true"/>
+    <field name="idmodalidad" type="integer" column="idmodalidad" nullable="false"/>
+    <many-to-one field="idpersonal" target-entity="FarmUsuarios">
+      <join-columns>
+        <join-column name="idpersonal" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idmedicina" target-entity="FarmCatalogoproductos">
+      <join-columns>
+        <join-column name="idmedicina" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,12 @@
+/**********  Para tablas ******************/
+.dat_paciente{
+    text-align: left;
+
+    position: relative;
+    width: 60%; 
+   color:black;
+}
+td.area {
+
+     padding-bottom: 8px;
+}

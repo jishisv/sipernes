@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntRangohora" table="mnt_rangohora">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="horaIni" type="time" column="hora_ini" nullable="true"/>
+    <field name="horaFin" type="time" column="hora_fin" nullable="true"/>
+    <field name="modulo" type="string" column="modulo" length="60" nullable="true"/>
+    <field name="idusuarioreg" type="integer" column="idusuarioreg" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+    <field name="meridianoini" type="string" column="meridianoini" length="2" nullable="true"/>
+    <field name="meridianofin" type="string" column="meridianofin" length="2" nullable="true"/>
+  </entity>
+</doctrine-mapping>

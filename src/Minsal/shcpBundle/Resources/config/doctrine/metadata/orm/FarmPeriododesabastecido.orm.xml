@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FarmPeriododesabastecido" table="farm_periododesabastecido">
+    <indexes>
+      <index name="IDX_7E114945F58EA699" columns="idmedicina"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechainicio" type="date" column="fechainicio" nullable="false"/>
+    <field name="fechafin" type="date" column="fechafin" nullable="false"/>
+    <field name="promediorecetas" type="integer" column="promediorecetas" nullable="false"/>
+    <field name="promediodiarias" type="decimal" column="promediodiarias" precision="11" scale="3" nullable="false"/>
+    <field name="idestablecimiento" type="integer" column="idestablecimiento" nullable="false"/>
+    <field name="idmodalidad" type="integer" column="idmodalidad" nullable="false"/>
+    <many-to-one field="idmedicina" target-entity="FarmCatalogoproductos">
+      <join-columns>
+        <join-column name="idmedicina" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

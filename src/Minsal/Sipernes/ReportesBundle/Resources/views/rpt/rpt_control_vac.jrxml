@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="230"/>
+	<property name="ireport.y" value="192"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="id_servicio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codigoEmp" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codigoExp" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipoEstable" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fpini" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fpfin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+  ctl_establecimiento.nombre Establecimiento,
+  enf_ctl_tipo_componente.nombre_componente1 Tipodevacuna,
+  enf_inventario.existencia existencia,
+  enf_mov_inventario.cantidad_mov Transferidas
+FROM
+  public.ctl_establecimiento,
+  public.mnt_empleado,
+  public.enf_componente,
+  public.enf_ctl_tipo_componente,
+  public.enf_inventario,
+  public.enf_mov_inventario,
+  public.enf_ctl_mov_inventario
+WHERE
+  mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
+  mnt_empleado.id = enf_mov_inventario.id_emp_corr AND
+  enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
+  enf_inventario.id = enf_componente.id_inventario AND
+  enf_mov_inventario.id_inventario = enf_inventario.id AND
+  enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id;]]>
+	</queryString>
+	<field name="establecimiento" class="java.lang.String"/>
+	<field name="tipodevacuna" class="java.lang.String"/>
+	<field name="existencia" class="java.math.BigDecimal"/>
+	<field name="transferidas" class="java.math.BigDecimal"/>
+	<variable name="TotalExis" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{existencia}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{existencia}]]></initialValueExpression>
+	</variable>
+	<variable name="TotalTrans" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{transferidas}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{transferidas}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="20" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ministerio de Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="39" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Unidad de Enfermeria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="173" y="1" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ee057968-9785-4e29-bbcd-08234a56fc03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[República de El Salvador]]></text>
+			</staticText>
+			<image>
+				<reportElement x="34" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
+				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/escudo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="427" y="4" width="142" height="78" uuid="5a1f9a67-ec4b-4be8-9610-1d02a9b3de02"/>
+				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/minsal.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="134" y="8" width="297" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de control de existencia y descargo de vacunas por día]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="37" y="49" width="59" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Correlativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="196" y="49" width="100" height="31" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Tipo de Vacuna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="296" y="49" width="88" height="31" backcolor="#CCCCCC" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Existencias]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="469" y="18" width="100" height="20" uuid="c2116dc1-3378-42c6-be2d-7576b71b065b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TH" x="96" y="49" width="100" height="31" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Establecimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="384" y="49" width="64" height="31" backcolor="#CCCCCC" uuid="493805ef-e42b-4964-bd55-f1176c6a57af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Recibidas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="448" y="49" width="82" height="31" backcolor="#CCCCCC" uuid="138f20a3-a2b2-40d5-99ce-3f577b2e8d99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Transferidas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement style="table" x="37" y="0" width="59" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="96" y="0" width="100" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="196" y="0" width="100" height="35" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="297" y="0" width="87" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{existencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="384" y="0" width="64" height="35" uuid="bb15b33b-a89a-4b4b-83de-f4d7524fe950"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			</textField>
+			<textField>
+				<reportElement style="table" x="448" y="0" width="82" height="35" uuid="1af75aeb-bf5a-4c5b-a000-10725d118f3e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{transferidas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="551" y="0" width="19" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="509" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<staticText>
+				<reportElement style="table" x="37" y="0" width="260" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" x="379" y="0" width="69" height="33" uuid="1384f791-8a37-43dc-8956-469c14dcee4a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement style="table" x="296" y="0" width="83" height="33" uuid="9d04fb78-024b-44e4-a6c2-3496a479f432"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalExis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="448" y="0" width="82" height="33" uuid="df587caf-6473-4a72-b68d-b472ec4d968b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalTrans}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="134" y="17" width="270" height="20" uuid="74606d9f-c611-4890-98ed-bd52ad76f662"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No hay datos que mostrar]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

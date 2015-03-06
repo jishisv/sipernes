@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfHistoricoNota" table="enf_historico_nota">
+    <indexes>
+      <index name="IDX_ECD164B0BFAE4CCD" columns="id_registro_nota"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="observacionHistNota" type="string" column="observacion_hist_nota" length="500" nullable="true"/>
+    <field name="usuarioHistNota" type="string" column="usuario_hist_nota" length="40" nullable="true"/>
+    <field name="fechaModHistNota" type="date" column="fecha_mod_hist_nota" nullable="true"/>
+    <field name="estadoHistNota" type="boolean" column="estado_hist_nota" nullable="true"/>
+    <field name="fechaIngresoHistNotas" type="date" column="fecha_ingreso_hist_notas" nullable="true"/>
+    <many-to-one field="idRegistroNota" target-entity="EnfMtlNota">
+      <join-columns>
+        <join-column name="id_registro_nota" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

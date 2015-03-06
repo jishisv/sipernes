@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FarmTransferencias" table="farm_transferencias">
+    <indexes>
+      <index name="IDX_92D2D473F58EA699" columns="idmedicina"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cantidad" type="decimal" column="cantidad" precision="11" scale="3" nullable="false"/>
+    <field name="idareaorigen" type="integer" column="idareaorigen" nullable="false"/>
+    <field name="idareadestino" type="integer" column="idareadestino" nullable="true"/>
+    <field name="justificacion" type="text" column="justificacion" nullable="false"/>
+    <field name="fechatransferencia" type="date" column="fechatransferencia" nullable="false"/>
+    <field name="idpersonal" type="integer" column="idpersonal" nullable="false"/>
+    <field name="idestado" type="string" column="idestado" nullable="false"/>
+    <field name="cantidad1" type="decimal" column="cantidad1" precision="11" scale="3" nullable="true"/>
+    <field name="idlote" type="integer" column="idlote" nullable="false"/>
+    <field name="cantidad2" type="decimal" column="cantidad2" precision="11" scale="3" nullable="true"/>
+    <field name="idlote2" type="integer" column="idlote2" nullable="true"/>
+    <field name="idestablecimiento" type="integer" column="idestablecimiento" nullable="false"/>
+    <field name="idmodalidad" type="integer" column="idmodalidad" nullable="false"/>
+    <many-to-one field="idmedicina" target-entity="FarmCatalogoproductos">
+      <join-columns>
+        <join-column name="idmedicina" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

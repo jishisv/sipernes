@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboAdmisionProceden" table="shcp_abo_admision_proceden">
+    <indexes>
+      <index name="IDX_666AECC17DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_666AECC193489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="adproFechaIngreso" type="date" column="adpro_fecha_ingreso" nullable="true"/>
+    <field name="adproHoraMin" type="time" column="adpro_hora_min" nullable="true"/>
+    <field name="adproHospEmb" type="string" column="adpro_hosp_emb" nullable="true"/>
+    <field name="adproDiasHosp" type="integer" column="adpro_dias_hosp" nullable="true"/>
+    <field name="adproEdadGestSem" type="integer" column="adpro_edad_gest_sem" nullable="true"/>
+    <field name="adproEdadGestDias" type="integer" column="adpro_edad_gest_dias" nullable="true"/>
+    <field name="adproEgFumEco" type="string" column="adpro_eg_fum_eco" nullable="true"/>
+    <field name="adproTipoAcomp" type="string" column="adpro_tipo_acomp" nullable="true"/>
+    <field name="adproTraslado" type="string" column="adpro_traslado" nullable="true"/>
+    <field name="adproDetalleTraslado" type="string" column="adpro_detalle_traslado" length="100" nullable="true"/>
+    <field name="adproTipoTransport" type="string" column="adpro_tipo_transport" nullable="true"/>
+    <field name="adproTiemTraslDia" type="integer" column="adpro_tiem_trasl_dia" nullable="true"/>
+    <field name="adproTiemTraslHrs" type="integer" column="adpro_tiem_trasl_hrs" nullable="true"/>
+    <field name="adproTiemTraslMin" type="integer" column="adpro_tiem_trasl_min" nullable="true"/>
+    <field name="adproDigitadorResp" type="bigint" column="adpro_digitador_resp" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

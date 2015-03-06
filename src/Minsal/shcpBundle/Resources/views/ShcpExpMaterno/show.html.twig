@@ -1,0 +1,91 @@
+
+
+{% extends base_template %}
+
+{#% block actions %}
+    <li>{% include 'SonataAdminBundle:Button:edit_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>
+{% endblock %#}
+
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% block show %}
+
+ 
+      {#****************** aca poner redireccion a exp materno show ******************      
+            
+        <a style="position:absolute;float:right;margin-bottom:20px;top:50px;left:50px;" class="btn btn-info" href="{{ path('admin_minsal_shcp_shcpexpmaterno_list') }}">
+           <span class="glyphicon glyphicon-list"></span>
+               Volver 
+        </a>
+           
+   {#*******************************************************************************#}   
+
+    <div class="sonata-ba-view">
+
+        {{ sonata_block_render_event('sonata.admin.show.top', { 'admin': admin, 'object': object }) }}
+
+        {% for name, view_group in admin.showgroups %}
+ 
+    <table width=400px align= center border=0 >
+           <tr>
+               <td align= center colspan=3 class="titulo"><h4> Registro de Documentos</h4> </td>
+           </tr>
+           <tr>
+               <td align= center><b>Nombre Paciente</b></td>
+               <td align= center><b> Apellidos Paciente</b></td>  
+               
+          </tr>   
+             <tr>
+                <td  align= center>{{object.expNombre}}</td>
+                <td align= center>{{object.expApellido}}</td> 
+          </tr> 
+          <tr>
+              <td colspan=3 > &nbsp;</td>
+          </tr>
+    </table>
+        
+        <center>
+            {% if empleado == 2 %}
+            <a id="buscar" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocresultado_create',{'tipo_cuestionario':'1','id_expmaterno':object.id,'tipo_empleado':empleado }) }}">
+
+                                <span class="glyphicon glyphicon-search"></span>
+                                Hoja Filtro
+                            </a>
+
+                            <a id="buscarGlobal" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocresultado_edit',{'id':6,'tipo_cuestionario':'2','id_expmaterno':object.id,'tipo_empleado':empleado })}}">
+                                <span class="glyphicon glyphicon-search"></span>
+                                Tamizaje Violencia
+                            </a>
+                            <a id="limpiar" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocplanparto_create',{'id_expmaterno':object.id}) }}">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Plan de Parto
+                            </a>
+            {% else %}
+            <a id="buscar" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocresultado_create',{'tipo_cuestionario':'1','id_expmaterno':object.id,'tipo_empleado':empleado }) }}">
+
+                                <span class="glyphicon glyphicon-search"></span>
+                                Hoja Filtro
+                            </a>
+
+                            <a id="buscarGlobal" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocresultado_edit',{'id':6,'tipo_cuestionario':'2','id_expmaterno':object.id,'tipo_empleado':empleado })}}">
+                                <span class="glyphicon glyphicon-search"></span>
+                                Tamizaje Violencia
+                            </a>
+                            <a id="limpiar" class="btn btn-primary" href="{{ path('admin_minsal_shcp_shcpdocplanparto2_create',{'id_expmaterno':object.id}) }}">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Plan de Parto Parte 2
+                            </a>
+            {% endif %}
+                
+      </center>
+        {% endfor %}
+
+        {{ sonata_block_render_event('sonata.admin.show.bottom', { 'admin': admin, 'object': object }) }}
+
+    </div>
+{% endblock %}
+

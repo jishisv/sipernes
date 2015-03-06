@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlSubprotocolo" table="enf_ctl_subprotocolo">
+    <indexes>
+      <index name="IDX_1AE4C543F098E264" columns="id_protocolo"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="concepto" type="string" column="concepto" length="500" nullable="true"/>
+    <field name="etiologia" type="string" column="etiologia" length="100" nullable="true"/>
+    <field name="nombreSubprotocolo" type="string" column="nombre_subprotocolo" length="150" nullable="true"/>
+    <field name="fechaIngresoSubpro" type="date" column="fecha_ingreso_subpro" nullable="true"/>
+    <field name="fechaModificacionSubpro" type="date" column="fecha_modificacion_subpro" nullable="true"/>
+    <field name="usuarioSubpro" type="string" column="usuario_subpro" length="40" nullable="true"/>
+    <field name="estadoSubpro" type="boolean" column="estado_subpro" nullable="true"/>
+    <many-to-one field="idProtocolo" target-entity="EnfCtlProtocolo">
+      <join-columns>
+        <join-column name="id_protocolo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

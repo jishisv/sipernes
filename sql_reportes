@@ -1,0 +1,15 @@
+select * from enf_mtl_actividad act
+left outer join enf_ctl_subactividad sact on (act.id_subactividad = sact.id)
+left outer join enf_ctl_actividad cact on (sact.id_actividad = cact.id)
+left outer join mnt_empleado emp on (act.id_emp_corr = emp.id)
+left outer join mnt_expediente exp on (act.id_expediente=exp.id)
+where
+emp.idempleado = 'ACL0003' and
+exp.numero = '28772-14' and
+sact.id = 1 and
+act.estado_mtl_act = true;
+
+
+--select * from mnt_empleado where idempleado ='ACL0003';
+--select * from mnt_expediente where numero ='28772-14';
+--select * from mnt_empleado where idempleado ='ACL0003';

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecDetallediagnosticos" table="sec_detallediagnosticos">
+    <indexes>
+      <index name="IDX_11EE581E8843C691" columns="idtipodiagnostico"/>
+      <index name="IDX_11EE581E4990AE1E" columns="iddiagnosticosproc"/>
+    </indexes>
+    <id name="iddetalle" type="integer" column="iddetalle">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idcie10" type="string" column="idcie10" length="5" nullable="true"/>
+    <many-to-one field="iddiagnosticosproc" target-entity="SecDiagnosticosProcedimientos">
+      <join-columns>
+        <join-column name="iddiagnosticosproc" referenced-column-name="iddiagnosticosproc"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idtipodiagnostico" target-entity="MntTiposdiagnosticos">
+      <join-columns>
+        <join-column name="idtipodiagnostico" referenced-column-name="idtipodiagnostico"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

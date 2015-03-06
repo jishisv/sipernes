@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfMtlCapacitacion" table="enf_mtl_capacitacion">
+    <indexes>
+      <index name="IDX_84E7CBB3F19F7BFD" columns="id_financiamiento"/>
+      <index name="IDX_84E7CBB33FE83A49" columns="id_emp_corr"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaIngresoCap" type="date" column="fecha_ingreso_cap" nullable="true"/>
+    <field name="fechaCapacitacion" type="date" column="fecha_capacitacion" nullable="true"/>
+    <field name="temaCapacitacion" type="string" column="tema_capacitacion" length="100" nullable="true"/>
+    <field name="asistenciaCapacitacion" type="decimal" column="asistencia_capacitacion" precision="10" scale="0" nullable="true"/>
+    <field name="montoFinanciamientoCap" type="float" column="monto_financiamiento_cap" precision="10" scale="0" nullable="true"/>
+    <field name="horasDuracionCap" type="decimal" column="horas_duracion_cap" precision="10" scale="0" nullable="true"/>
+    <field name="establecimientoCap" type="string" column="establecimiento_cap" length="200" nullable="true"/>
+    <field name="estadoCapacitacion" type="boolean" column="estado_capacitacion" nullable="true"/>
+    <field name="usuarioCapacitacion" type="string" column="usuario_capacitacion" length="200" nullable="true"/>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFinanciamiento" target-entity="EnfCtlFinanciamiento">
+      <join-columns>
+        <join-column name="id_financiamiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

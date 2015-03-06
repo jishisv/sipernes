@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsCtlEnfermedad" table="shcp_ins_ctl_enfermedad">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="enfNombre" type="string" column="enf_nombre" length="60" nullable="true"/>
+    <field name="enfTipo" type="string" column="enf_tipo" nullable="true"/>
+    <field name="enfEstado" type="string" column="enf_estado" nullable="true"/>
+    <field name="enfCodigo" type="string" column="enf_codigo" nullable="true"/>
+  </entity>
+</doctrine-mapping>

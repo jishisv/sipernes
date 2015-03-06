@@ -1,0 +1,162 @@
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+{%block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('bundles/minsalsiaps/css/MntPacienteAdmin/list.css') }}" type="text/css" media="all" />  
+{%endblock%}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/MntPacienteAdmin/MntPaciente_list.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{%endblock%}
+{% block sonata_admin_content -%}
+
+<br>
+<p align="justify"><strong>Creacion de CLAP</strong></p>
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {% set url = admin.id(object) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form id="form_paciente"
+              {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+              role="form"
+              action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}" {{ form_enctype(form) }}
+              method="POST"
+              {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+              >
+
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <a style="position:relative;float:right;margin-bottom:20px;" class="btn btn-info" href="{{ admin.generateUrl('list') }}">
+                    <span class="glyphicon glyphicon-list"></span>
+                    {{ 'link_action_list'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            {% endif %}
+
+
+<table class="table table-bordered ">
+
+    <tbody>
+        <tr>
+            <td class="sonata-ba-list-field-header ">xxx</td>
+            <td class="sonata-ba-list-field-header ">yyy</td>
+         </tr>
+
+        <tr>
+            <td>{{ form_label(form.expNombre)}} {{ form_widget(form.expNombre)}}</td>
+            <td>{{ form_label(form.expApellido)}} {{ form_widget(form.expApellido)}}</td>      
+        </tr>
+        <tr>
+            <td>{{ form_label(form.expDireccion)}} {{ form_widget(form.expDireccion)}}</td>
+            <td>{{ form_label(form.expTelefono)}} {{ form_widget(form.expTelefono)}}</td>      
+        </tr>
+        <tr>
+            <td>{{ form_label(form.expEdad)}} {{ form_widget(form.expEdad)}}</td>
+            <td>{{ form_label(form.expEdadRgo)}} {{ form_widget(form.expEdadRgo)}}</td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.expEtnia)}} {{ form_widget(form.expEtnia)}}</td>
+            <td>{{ form_label(form.expAlfabeta)}} {{ form_widget(form.expAlfabeta)}}</td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.expEstudios)}} {{ form_widget(form.expEstudios)}}</td>
+            <td>{{ form_label(form.expAniosNivelStudio)}} {{ form_widget(form.expAniosNivelStudio)}}</td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.expViveSola)}} {{ form_widget(form.expViveSola)}}</td>
+            <td>{{ form_label(form.expDocIdent)}} {{ form_widget(form.expDocIdent)}}</td>      
+        </tr>
+      <tr>
+            <td>{{ form_label(form.expMuni)}} {{ form_widget(form.expMuni)}}</td>
+            <td>{{ form_label(form.expDepto)}} {{ form_widget(form.expDepto)}}</td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.expEstado)}} {{ form_widget(form.expEstado)}}</td>
+            <td>{{ form_label(form.expTipoControl)}} {{ form_widget(form.expTipoControl)}}</td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.expClap)}} {{ form_widget(form.expClap)}}</td>
+            <td> </td>      
+        </tr>
+         <tr>
+            <td>{{ form_label(form.idMntExpediente)}} {{ form_widget(form.idMntExpediente)}}</td>
+            <td>{{ form_label(form.idEstablecimiento)}} {{ form_widget(form.idEstablecimiento)}}</td>      
+        </tr>
+        
+
+        </tr>
+        <tr>
+            <td>{{ form_label(form.expDireccion)}} {{ form_widget(form.expDireccion)}}</td>
+            <td>{{ form_label(form.expTelefono)}} {{ form_widget(form.expTelefono)}}</td>  
+             
+        </tr>
+        <tr>
+            <td>{{ form_label(form.expDireccion)}} {{ form_widget(form.expDireccion)}}</td>
+            <td>{{ form_label(form.expTelefono)}} {{ form_widget(form.expTelefono)}}</td> 
+             
+        </tr>
+        
+
+    </tbody>
+
+</table>
+
+  {% block sonata_post_fieldsets %}
+                </div>
+            {% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="well well-small form-actions">
+                    {% if app.request.isxmlhttprequest %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                        {% endif %}
+                    {% else %}
+                        {% if admin.supportsPreviewMode %}
+                            <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                <i class="fa fa-eye"></i>
+                                {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        {% endif %}
+                        {% if admin.id(object) is not null %}
+                            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                           
+                            {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                                <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.hasroute('list') %}
+                                <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> Guardar</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+
+{% endblock %}
+
+{% endblock %}
+
+
+
+

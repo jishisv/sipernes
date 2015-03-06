@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpExpMaterno" table="shcp_exp_materno">
+    <indexes>
+      <index name="IDX_73D83D42D9F3B251" columns="id_mnt_expediente"/>
+      <index name="IDX_73D83D427DFA12F6" columns="id_establecimiento"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="expNombre" type="string" column="exp_nombre" length="100" nullable="true"/>
+    <field name="expApellido" type="string" column="exp_apellido" length="100" nullable="true"/>
+    <field name="expDireccion" type="string" column="exp_direccion" length="200" nullable="true"/>
+    <field name="expTelefono" type="string" column="exp_telefono" nullable="true"/>
+    <field name="expFechaCreacion" type="date" column="exp_fecha_creacion" nullable="true"/>
+    <field name="expEdad" type="integer" column="exp_edad" nullable="true"/>
+    <field name="expEdadRgo" type="string" column="exp_edad_rgo" nullable="true"/>
+    <field name="expEtnia" type="string" column="exp_etnia" nullable="true"/>
+    <field name="expAlfabeta" type="string" column="exp_alfabeta" nullable="true"/>
+    <field name="expEstudios" type="string" column="exp_estudios" nullable="true"/>
+    <field name="expAniosNivelStudio" type="integer" column="exp_anios_nivel_studio" nullable="true"/>
+    <field name="expViveSola" type="string" column="exp_vive_sola" nullable="true"/>
+    <field name="expMuni" type="integer" column="exp_muni" nullable="true"/>
+    <field name="expDepto" type="integer" column="exp_depto" nullable="true"/>
+    <field name="expDocIdent" type="string" column="exp_doc_ident" length="20" nullable="true"/>
+    <field name="expEstado" type="string" column="exp_estado" nullable="true"/>
+    <field name="expTipoControl" type="string" column="exp_tipo_control" nullable="true"/>
+    <field name="expClap" type="string" column="exp_clap" nullable="true"/>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idMntExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_mnt_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

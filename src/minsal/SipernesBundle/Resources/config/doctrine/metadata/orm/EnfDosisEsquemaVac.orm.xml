@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfDosisEsquemaVac" table="enf_dosis_esquema_vac">
+    <indexes>
+      <index name="IDX_5BA20B9F3FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_5BA20B9FEDEF355D" columns="id_tipo_esq"/>
+      <index name="IDX_5BA20B9F701624C4" columns="id_expediente"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="dosis" type="string" column="dosis" length="10" nullable="true"/>
+    <field name="centroEducativo" type="string" column="centro_educativo" length="200" nullable="true"/>
+    <field name="fechaDosisEsq" type="date" column="fecha_dosis_esq" nullable="true"/>
+    <field name="estadoDosisEsq" type="boolean" column="estado_dosis_esq" nullable="true"/>
+    <field name="usuarioDosisEsq" type="string" column="usuario_dosis_esq" length="40" nullable="true"/>
+    <field name="fechaIngresoDosisEsq" type="date" column="fecha_ingreso_dosis_esq" nullable="true"/>
+    <field name="fechaModDosis" type="date" column="fecha_mod_dosis" nullable="true"/>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoEsq" target-entity="EnfTipoEsquemaVac">
+      <join-columns>
+        <join-column name="id_tipo_esq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

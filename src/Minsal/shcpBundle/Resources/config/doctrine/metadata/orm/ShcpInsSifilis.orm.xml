@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsSifilis" table="shcp_ins_sifilis">
+    <indexes>
+      <index name="IDX_AC4338B993489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="sifiPruNotResMnos20" type="string" column="sifi_pru_not_res_mnos20" nullable="true"/>
+    <field name="sifiPruNotSemMnos20" type="integer" column="sifi_pru_not_sem_mnos20" nullable="true"/>
+    <field name="sifiPruTreResMnos20" type="string" column="sifi_pru_tre_res_mnos20" nullable="true"/>
+    <field name="sifiPruTreSemMnos20" type="integer" column="sifi_pru_tre_sem_mnos20" nullable="true"/>
+    <field name="sifiPruNotResMas20" type="string" column="sifi_pru_not_res_mas20" nullable="true"/>
+    <field name="sifiPruNotSemMas20" type="integer" column="sifi_pru_not_sem_mas20" nullable="true"/>
+    <field name="sifiPruTreResMas20" type="string" column="sifi_pru_tre_res_mas20" nullable="true"/>
+    <field name="sifiPruTreSemMas20" type="integer" column="sifi_pru_tre_sem_mas20" nullable="true"/>
+    <field name="sifiTrataMnos20" type="string" column="sifi_trata_mnos20" nullable="true"/>
+    <field name="sifiTrataSemMnos20" type="integer" column="sifi_trata_sem_mnos20" nullable="true"/>
+    <field name="sifiTrataParMnos20" type="string" column="sifi_trata_par_mnos20" nullable="true"/>
+    <field name="sifiTrataMas20" type="string" column="sifi_trata_mas20" nullable="true"/>
+    <field name="sifiTrataSemMas20" type="integer" column="sifi_trata_sem_mas20" nullable="true"/>
+    <field name="sifiTrataParMas20" type="string" column="sifi_trata_par_mas20" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

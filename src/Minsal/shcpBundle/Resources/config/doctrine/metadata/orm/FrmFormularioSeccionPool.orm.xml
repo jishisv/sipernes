@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FrmFormularioSeccionPool" table="frm_formulario_seccion_pool">
+    <indexes>
+      <index name="IDX_E647D45AA7C7EF6A" columns="id_formulario"/>
+      <index name="IDX_E647D45A3DE02BDB" columns="id_padre"/>
+      <index name="IDX_E647D45AC14F1F47" columns="id_seccion_pool"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_formulario_seccion_pool" columns="id_formulario,id_seccion_pool"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="orden" type="integer" column="orden" nullable="false"/>
+    <field name="isCollection" type="boolean" column="is_collection" nullable="false"/>
+    <many-to-one field="idSeccionPool" target-entity="FrmSeccionPool">
+      <join-columns>
+        <join-column name="id_seccion_pool" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPadre" target-entity="FrmFormularioSeccionPool">
+      <join-columns>
+        <join-column name="id_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormulario" target-entity="FrmFormulario">
+      <join-columns>
+        <join-column name="id_formulario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

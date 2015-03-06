@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntProcedimientoEstablecimiento" table="mnt_procedimiento_establecimiento">
+    <indexes>
+      <index name="fki_mnt_empleado_mnt_procedimiento_establecimiento" columns="id_empleado"/>
+      <index name="fki_mnt_rango_hora_mnt_procedimiento_establecimiento" columns="id_rangohora"/>
+      <index name="fki_mnt_ciq_mnt_procedimiento_establecimiento" columns="id_ciq"/>
+      <index name="fki_mnt_area_mod_estab_mnt_procedimiento_establecimiento" columns="id_area_mod_estab"/>
+      <index name="fki_ctl_establecimiento_mnt_procedimiento_establecimiento" columns="id_establecimiento"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="techomaximo" type="integer" column="techomaximo" nullable="true"/>
+    <field name="cantidadacupo" type="integer" column="cantidadacupo" nullable="true"/>
+    <field name="tiempoprevio" type="integer" column="tiempoprevio" nullable="true"/>
+    <field name="dia" type="integer" column="dia" nullable="true"/>
+    <field name="yrs" type="integer" column="yrs" nullable="true"/>
+    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+    <field name="idusuariomod" type="smallint" column="idusuariomod" nullable="true"/>
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="true"/>
+    <many-to-one field="idRangohora" target-entity="MntRangohora">
+      <join-columns>
+        <join-column name="id_rangohora" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCiq" target-entity="MntCiq">
+      <join-columns>
+        <join-column name="id_ciq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAreaModEstab" target-entity="MntAreaModEstab">
+      <join-columns>
+        <join-column name="id_area_mod_estab" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

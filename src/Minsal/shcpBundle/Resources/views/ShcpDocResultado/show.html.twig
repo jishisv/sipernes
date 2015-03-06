@@ -1,0 +1,85 @@
+
+
+{% extends base_template %}
+
+{% block actions %}
+    <li>{% include 'SonataAdminBundle:Button:edit_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% block show %}
+    <div class="sonata-ba-view">
+
+        {{ sonata_block_render_event('sonata.admin.show.top', { 'admin': admin, 'object': object }) }}
+
+        <table>
+            <tr>
+                <th>Nombre Paciente</th>
+                <th>Edad</th>
+                 <th></th>
+                <th>No Expediente</th>
+                <th></td>
+                <th>No Clap</th>
+            </tr>
+            <tr>{% for pacient in paciente %}
+                <td>{{pacient.exp_nombre}} {{pacient.exp_apellido}}</td>
+                <td>{{pacient.exp_edad}}</td>
+                <td></td>
+                <td>{{pacient.numero}}</td>
+                <td></td>
+                <td>{{pacient.exp_clap}}</td>
+                {%endfor%}
+            </tr>
+            <tr>
+                <th>
+                    Preguntas Hoja Filtro
+                </th>          
+      {% for i,pregunta in ctlpreguntafiltro %}
+                         <tr> 
+                             <td>{{ pregunta.preg_detalle }}</td>
+                             <td>&nbsp;</td>
+                             <td>
+                                    {% if  object.resulHojaFiltro|slice(i,1)!='0' %}
+                                        SI
+                                    {% else %}
+                                        NO
+                                    {% endif %}
+                                   
+                             </td>
+                         </tr>
+                        
+       {% endfor %}
+                         <tr>
+                             <td>&nbsp;</td>
+                         </tr>
+            <tr>
+                <th>
+                    Preguntas Tamizaje
+                </th>          
+      {% for j,pregunta2 in ctlpreguntatamizaje %}
+                         <tr> 
+                             <td>{{ pregunta2.preg_detalle }}</td>
+                             <td>&nbsp;</td>
+                             <td>
+                                    {% if  object.resulTamizaje|slice(j,1)!='0' %}
+                                        SI
+                                    {% else %}
+                                        NO
+                                    {% endif %}
+                                      
+                             </td>
+                         </tr>
+                        
+       {% endfor %}
+        </table>
+
+
+        {{ sonata_block_render_event('sonata.admin.show.bottom', { 'admin': admin, 'object': object }) }}
+
+    </div>
+{% endblock %}
+

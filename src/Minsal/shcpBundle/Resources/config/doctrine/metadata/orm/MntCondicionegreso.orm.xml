@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntCondicionegreso" table="mnt_condicionegreso">
+    <id name="idcondicion" type="integer" column="idcondicion">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="desccondicion" type="string" column="desccondicion" length="25" nullable="false"/>
+    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="false"/>
+    <field name="idusuariomod" type="smallint" column="idusuariomod" nullable="false"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="false"/>
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="false"/>
+  </entity>
+</doctrine-mapping>

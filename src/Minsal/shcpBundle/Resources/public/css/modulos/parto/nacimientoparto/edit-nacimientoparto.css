@@ -1,0 +1,202 @@
+
+
+.fechacal.form-control, .hora.form-control {
+	width: 120px;
+	margin-left: 20px;
+}
+
+	
+
+.textos.form-control{
+	
+	float: left;
+	width: 150px;
+	margin-left: 20px;
+}
+
+.dat_paciente {
+	width: 90%;
+	min-width: 800px;
+}
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+	}
+
+	.dat_paciente tr:nth-child(1) td{
+		vertical-align: middle;
+
+	}
+
+	.dat_paciente tr:nth-child(2) td:nth-child(1){
+		width: 50%;		
+	}
+
+	.dat_paciente tr:nth-child(5) td:nth-child(1) .list-unstyled,.dat_paciente tr:nth-child(9) td:nth-child(1) .list-unstyled{
+
+		width: 80%;		
+	}
+
+	.dat_paciente tr{
+		height: 50px;
+		padding: 20px;
+	}
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+	}
+
+	.dat_paciente tr:nth-child(15) td:first-child{
+		width: 100px;
+	}
+
+	.dat_paciente tr:nth-child(5) td:nth-child(3) label, .dat_paciente tr:nth-child(7) td:nth-child(4) label, .dat_paciente tr:nth-child(11) td:nth-child(1) label{
+		width: 60px;
+	}
+
+	.dat_paciente tr td:nth-child(1){
+		width: 150px;
+	}
+
+	.dat_paciente td{
+		vertical-align: top;
+	}
+
+	.dat_paciente tr:nth-child(even) td{
+		height: 70px;
+		vertical-align: bottom;
+		padding-bottom: 10px;
+	}
+
+	.dat_paciente tr:nth-child(2n) td{
+		text-align: center;
+	}
+
+	.dat_paciente tr:nth-child(6) td:nth-child(2) label{
+		width: 100%;
+	}
+
+	.dat_paciente tr:nth-child(7) td:nth-child(3) ul{
+		width: 50px;
+	}
+
+	.dat_paciente tr:nth-child(8) td:nth-child(3) label{
+		
+		width: 60px;
+		text-align: center;
+	}
+
+	.dat_paciente tr:nth-child(6) td:nth-child(3){
+		text-align: center;
+	}
+
+	#placenta td{
+		width: 120px;
+	}
+
+	#placenta label{
+		width: 60px;
+	}
+
+	#ocitaciones td{
+		width: 250px;
+	}
+
+	#ocitaciones label{
+		width: 60px;
+	}
+	
+#indicacion{
+	width: 50%;
+	
+}
+
+
+
+	
+
+	#indicacion tr:nth-child(2) td:nth-child(2).select2-container.select2-allowclear{
+		width: 100px;
+		
+	}
+
+	#indicacion tr:nth-child(2) label{
+		width: 80px;
+		
+	}
+
+.desplegable{
+	width: 150px;
+}
+
+#medicina {
+	margin: 0 auto;
+	width: 95%;
+	border: 1px solid black;
+	padding-right: 20px;
+}
+	#medicina tr{
+		height: 20px;
+	}
+
+	#medicina td{
+		width: 14%;
+		vertical-align: middle;
+		height: 20px;
+		border: 1px solid black;
+	}
+
+
+	#medicina td label{
+		width: 100%;
+	}
+
+	#medicina td:last-child label{
+		width: 95px;
+	}
+
+	#medicina tr:nth-child(2) td:last-child label{
+		width: 110px;
+		
+	}
+
+	#medicina tr:nth-child(3) td:last-child label, #medicina tr:nth-child(5) td:last-child label{
+		
+		width: 110px;
+
+	}
+
+	#medicina tr:nth-child(2) td:last-child .select2-container , #medicina tr:nth-child(2) td:last-child .select2-container-active{
+		width: 150px;
+		background: red;
+	}
+
+	#select2-drop{
+		width: 110px;
+	}
+
+.presion.form-control{
+	
+	float: left;
+	width: 20%;
+	margin: 0 auto;
+}
+
+
+
+.hora{
+	width: 80px;
+}
+
+
+.select2-container{
+	width:100px;
+}
+
+#atendio label{
+	width: 200px;
+}
+
+#atendio input{
+	width: 200px;
+}

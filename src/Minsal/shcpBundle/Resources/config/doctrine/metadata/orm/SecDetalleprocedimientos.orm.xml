@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecDetalleprocedimientos" table="sec_detalleprocedimientos">
+    <indexes>
+      <index name="fki_mnt_ciq_sec_detalleprocedimientos" columns="idciq"/>
+      <index name="IDX_F942ADE04990AE1E" columns="iddiagnosticosproc"/>
+      <index name="IDX_F942ADE0A3405215" columns="id_tipo_procedimiento"/>
+    </indexes>
+    <id name="idprocedimientos" type="integer" column="idprocedimientos">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idTipoProcedimiento" target-entity="MntTipoProcedimiento">
+      <join-columns>
+        <join-column name="id_tipo_procedimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iddiagnosticosproc" target-entity="SecDiagnosticosProcedimientos">
+      <join-columns>
+        <join-column name="iddiagnosticosproc" referenced-column-name="iddiagnosticosproc"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idciq" target-entity="MntCiq">
+      <join-columns>
+        <join-column name="idciq" referenced-column-name="codigo"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

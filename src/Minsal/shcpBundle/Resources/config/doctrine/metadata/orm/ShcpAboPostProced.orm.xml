@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpAboPostProced" table="shcp_abo_post_proced">
+    <indexes>
+      <index name="IDX_CA15838BCDD53299" columns="id_admin_proceden"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="postpFechaFin" type="date" column="postp_fecha_fin" nullable="true"/>
+    <field name="postProcedimiento" type="time" column="post_procedimiento_" nullable="true"/>
+    <field name="postpConsejCuidBas" type="string" column="postp_consej_cuid_bas" nullable="true"/>
+    <field name="postpRespCuidBas" type="string" column="postp_resp_cuid_bas" length="30" nullable="true"/>
+    <field name="postpConsejSigAlarma" type="string" column="postp_consej_sig_alarma" nullable="true"/>
+    <field name="postpRespSigAlarma" type="string" column="postp_resp_sig_alarma" length="30" nullable="true"/>
+    <field name="postpConsejAnticon" type="string" column="postp_consej_anticon" nullable="true"/>
+    <field name="postpRespAnticon" type="string" column="postp_resp_anticon" length="30" nullable="true"/>
+    <field name="postpCitaSeg" type="string" column="postp_cita_seg" nullable="true"/>
+    <field name="postpRespCitaSeg" type="string" column="postp_resp_cita_seg" length="30" nullable="true"/>
+    <field name="postpFecCtrlSeg" type="date" column="postp_fec_ctrl_seg" nullable="true"/>
+    <field name="postpInfeccGeniPelv" type="string" column="postp_infecc_geni_pelv" nullable="true"/>
+    <field name="postpDanioOrgPelv" type="string" column="postp_danio_org_pelv" nullable="true"/>
+    <field name="postpHemogTardExces" type="string" column="postp_hemog_tard_exces" nullable="true"/>
+    <field name="postpShock" type="string" column="postp_shock" nullable="true"/>
+    <field name="postpOtraComp" type="string" column="postp_otra_comp" nullable="true"/>
+    <field name="postpOtraCompDetalle" type="string" column="postp_otra_comp_detalle" length="30" nullable="true"/>
+    <many-to-one field="idAdminProceden" target-entity="ShcpAboAdmisionProceden">
+      <join-columns>
+        <join-column name="id_admin_proceden" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

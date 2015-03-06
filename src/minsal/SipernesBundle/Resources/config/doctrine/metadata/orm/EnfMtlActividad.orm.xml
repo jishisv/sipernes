@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfMtlActividad" table="enf_mtl_actividad">
+    <indexes>
+      <index name="IDX_5185AF503FE83A49" columns="id_emp_corr"/>
+      <index name="IDX_5185AF50701624C4" columns="id_expediente"/>
+      <index name="IDX_5185AF503A5C634D" columns="id_subactividad"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioIngresoAct" type="string" column="usuario_ingreso_act" length="40" nullable="true"/>
+    <field name="fechaIngresoAct" type="date" column="fecha_ingreso_act" nullable="true"/>
+    <field name="fechaModificacionAct" type="date" column="fecha_modificacion_act" nullable="true"/>
+    <field name="cantidadActEnf" type="decimal" column="cantidad_act_enf" precision="10" scale="0" nullable="true"/>
+    <field name="tiempoActEnf" type="time" column="tiempo_act_enf" nullable="true"/>
+    <field name="estadoMtlAct" type="boolean" column="estado_mtl_act" nullable="true"/>
+    <many-to-one field="idSubactividad" target-entity="EnfCtlSubactividad">
+      <join-columns>
+        <join-column name="id_subactividad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpCorr" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_emp_corr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

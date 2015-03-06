@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfBitacoraCapacitacion" table="enf_bitacora_capacitacion">
+    <indexes>
+      <index name="IDX_BDDC11ED79827853" columns="id_capacitacion"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaCapacitacionHistCap" type="date" column="fecha_capacitacion_hist_cap" nullable="true"/>
+    <field name="temaCapacitacionHistCap" type="string" column="tema_capacitacion_hist_cap" length="100" nullable="true"/>
+    <field name="asistenciaHisCap" type="decimal" column="asistencia_his_cap" precision="10" scale="0" nullable="true"/>
+    <field name="montoFinanciamientoHistCap" type="float" column="monto_financiamiento_hist_cap" precision="10" scale="0" nullable="true"/>
+    <field name="horasDuracionHisCap" type="decimal" column="horas_duracion_his_cap" precision="10" scale="0" nullable="true"/>
+    <field name="establecimientoHistCap" type="string" column="establecimiento_hist_cap" length="200" nullable="true"/>
+    <field name="estadoHisCap" type="boolean" column="estado_his_cap" nullable="true"/>
+    <field name="usuarioHistCap" type="string" column="usuario_hist_cap" length="200" nullable="true"/>
+    <field name="fechaIngresoHistCapa" type="date" column="fecha_ingreso_hist_capa" nullable="true"/>
+    <many-to-one field="idCapacitacion" target-entity="EnfMtlCapacitacion">
+      <join-columns>
+        <join-column name="id_capacitacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

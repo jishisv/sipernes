@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlPersonaTestNacionalidades" table="ctl_persona_test_nacionalidades">
+    <indexes>
+      <index name="IDX_5515643BB0DC2AB1" columns="id_nacionalidad"/>
+      <index name="IDX_5515643B8F781FEB" columns="id_persona"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idPersona" target-entity="CtlPersonaTest">
+      <join-columns>
+        <join-column name="id_persona" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idNacionalidad" target-entity="CtlNacionalidad">
+      <join-columns>
+        <join-column name="id_nacionalidad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecEgresos" table="sec_egresos">
+    <indexes>
+      <index name="IDX_EC2A7FF82693E5E4" columns="idsubserviciotraslado"/>
+      <index name="IDX_EC2A7FF8E034E90" columns="idcondicion"/>
+      <index name="IDX_EC2A7FF86724C8DC" columns="idusuariomod"/>
+      <index name="IDX_EC2A7FF813B895A1" columns="idusuarioreg"/>
+      <index name="IDX_EC2A7FF84990AE1E" columns="iddiagnosticosproc"/>
+    </indexes>
+    <id name="idegreso" type="integer" column="idegreso">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idingreso" type="integer" column="idingreso" nullable="true"/>
+    <field name="egresosinconsenmedico" type="string" column="egresosinconsenmedico" length="150" nullable="true"/>
+    <field name="fechaegreso" type="date" column="fechaegreso" nullable="false"/>
+    <field name="horaegreso" type="time" column="horaegreso" nullable="false"/>
+    <field name="fechaentrega" type="date" column="fechaentrega" nullable="false"/>
+    <field name="horaentrega" type="time" column="horaentrega" nullable="false"/>
+    <field name="trasladootrohospital" type="integer" column="trasladootrohospital" nullable="true"/>
+    <field name="idempleado" type="string" column="idempleado" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="false"/>
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="false"/>
+    <field name="diasuci" type="integer" column="diasuci" nullable="true"/>
+    <field name="embpartopuerperio" type="smallint" column="embpartopuerperio" nullable="true"/>
+    <field name="identificador" type="string" column="identificador" nullable="false"/>
+    <many-to-one field="iddiagnosticosproc" target-entity="SecDiagnosticosProcedimientos">
+      <join-columns>
+        <join-column name="iddiagnosticosproc" referenced-column-name="iddiagnosticosproc"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusuarioreg" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="idusuarioreg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusuariomod" target-entity="MntUsuarios">
+      <join-columns>
+        <join-column name="idusuariomod" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idcondicion" target-entity="MntCondicionegreso">
+      <join-columns>
+        <join-column name="idcondicion" referenced-column-name="idcondicion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsubserviciotraslado" target-entity="CtlAtencion">
+      <join-columns>
+        <join-column name="idsubserviciotraslado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

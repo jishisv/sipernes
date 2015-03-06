@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParAdmision" table="shcp_par_admision">
+    <indexes>
+      <index name="IDX_FC111E9693489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="admFechaIngreso" type="date" column="adm_fecha_ingreso" nullable="true"/>
+    <field name="admCarnet" type="string" column="adm_carnet" nullable="true"/>
+    <field name="admConsultaPrenatal" type="integer" column="adm_consulta_prenatal" nullable="true"/>
+    <field name="admHospEmbarazo" type="string" column="adm_hosp_embarazo" nullable="true"/>
+    <field name="admDiasHosp" type="integer" column="adm_dias_hosp" nullable="true"/>
+    <field name="admCorticoideAnte" type="string" column="adm_corticoide_ante" nullable="true"/>
+    <field name="admSemanaInicio" type="integer" column="adm_semana_inicio" nullable="true"/>
+    <field name="admInicio" type="string" column="adm_inicio" nullable="true"/>
+    <field name="admDigitadorResp" type="bigint" column="adm_digitador_resp" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

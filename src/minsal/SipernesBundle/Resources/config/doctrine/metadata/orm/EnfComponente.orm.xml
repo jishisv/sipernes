@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfComponente" table="enf_componente">
+    <indexes>
+      <index name="IDX_F8EF86BDCF93CE22" columns="id_inventario"/>
+      <index name="IDX_F8EF86BDEDEF355D" columns="id_tipo_esq"/>
+      <index name="IDX_F8EF86BD6244810C" columns="id_tipo_componente"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="presentacion" type="string" column="presentacion" length="100" nullable="true"/>
+    <field name="usuarioComponente" type="string" column="usuario_componente" length="40" nullable="true"/>
+    <field name="fechaIngresoComponente" type="date" column="fecha_ingreso_componente" nullable="true"/>
+    <field name="fechaModificacionComponente" type="date" column="fecha_modificacion_componente" nullable="true"/>
+    <field name="estadoComponente" type="boolean" column="estado_componente" nullable="true"/>
+    <many-to-one field="idTipoComponente" target-entity="EnfCtlTipoComponente">
+      <join-columns>
+        <join-column name="id_tipo_componente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoEsq" target-entity="EnfTipoEsquemaVac">
+      <join-columns>
+        <join-column name="id_tipo_esq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idInventario" target-entity="EnfInventario">
+      <join-columns>
+        <join-column name="id_inventario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

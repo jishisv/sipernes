@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParPresent" table="shcp_par_present">
+    <indexes>
+      <index name="IDX_6181903CD766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="presEdadGestaSem" type="integer" column="pres_edad_gesta_sem" nullable="true"/>
+    <field name="presEdadGestaDias" type="integer" column="pres_edad_gesta_dias" nullable="true"/>
+    <field name="presBasadoEn" type="string" column="pres_basado_en" nullable="true"/>
+    <field name="presPresentSituacion" type="string" column="pres_present_situacion" nullable="true"/>
+    <field name="presTamFetalAcorde" type="string" column="pres_tam_fetal_acorde" nullable="true"/>
+    <field name="presAcompTrabajoParto" type="string" column="pres_acomp_trabajo_parto" nullable="true"/>
+    <field name="presAcompParto" type="string" column="pres_acomp_parto" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

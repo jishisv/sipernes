@@ -1,0 +1,97 @@
+<?php
+
+namespace Minsal\Sipernes\AplicacionesBundle\Admin;
+
+use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
+
+class EnfEsquemaVacAdmin extends Admin
+{
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+           // ->add('id')
+            ->add('anioEsquemaVac', null, array('label' => 'Año'))
+            //->add('nombreEsquemaVac')
+            //->add('edadMinima', null, array('label' => 'Mes Mínimo'))
+            //->add('edadMaxima', null, array('label' => 'Mes Máximo'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
+        ;
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            //->add('id')
+            ->add('anioEsquemaVac', null, array('label' => 'Año'))
+            ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
+            //->add('edadMinima', null, array('label' => 'Edad Mínima'))
+            //->add('edadMaxima', null, array('label' => 'Edad Máxima'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+        ;
+    }
+
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+           // ->add('id')
+            ->add('anioEsquemaVac', null, array('label' => 'Digite el Año de la fase','max_length' => 4,'required' => true))
+            ->add('nombreEsquemaVac', 'text', array('label' => 'Digite el nombre de la fase ','max_length' => 150,'required' => true))
+            //->add('edadMinima', null, array('label' => 'Digite el meses mínimo de la fase','max_length' => 4,'required' => true))
+            //->add('edadMaxima',null, array('label' => 'Digite el meses máximo de la fase','max_length' => 4,'required' => true))
+            ->add('estadoVac', null, array('label' => 'Activo','required' => false))
+            //->add('usuarioIngresoVac')
+            //->add('fechaIngresoVac')
+        ;
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            //->add('id')
+            ->add('anioEsquemaVac', null, array('label' => 'Año'))
+            ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
+            //->add('edadMinima', null, array('label' => 'Edad Mínima'))
+            //->add('edadMaxima', null, array('label' => 'Edad Máxima'))
+            ->add('estadoVac', null, array('label' => 'Activo'))
+            ->add('usuarioIngresoVac', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoVac', null, array('label' => 'Creado el'))
+        ;
+    }
+    
+    
+    
+     public function prePersist($EnfEsquemaVac) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfEsquemaVac->setusuarioIngresoVac($user);
+        $EnfEsquemaVac->setfechaIngresoVac(new \DateTime());
+       
+    }
+    
+}

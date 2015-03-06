@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpParRecienNacido" table="shcp_par_recien_nacido">
+    <indexes>
+      <index name="IDX_26767CEFD766E548" columns="id_admision_parto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="renOrden" type="string" column="ren_orden" nullable="true"/>
+    <field name="renSexo" type="string" column="ren_sexo" nullable="true"/>
+    <field name="renPeso" type="integer" column="ren_peso" nullable="true"/>
+    <field name="renPesoMen2500" type="string" column="ren_peso_men2500" nullable="true"/>
+    <field name="renPesoMay4000" type="string" column="ren_peso_may4000" nullable="true"/>
+    <field name="renPerimetroCefal" type="decimal" column="ren_perimetro_cefal" precision="6" scale="2" nullable="true"/>
+    <field name="renLongitud" type="decimal" column="ren_longitud" precision="6" scale="2" nullable="true"/>
+    <field name="renEdadGestSem" type="integer" column="ren_edad_gest_sem" nullable="true"/>
+    <field name="renEdadGestDias" type="integer" column="ren_edad_gest_dias" nullable="true"/>
+    <field name="renCalculadoPor" type="string" column="ren_calculado_por" nullable="true"/>
+    <field name="renPesoEdadGest" type="string" column="ren_peso_edad_gest" nullable="true"/>
+    <field name="renApgar1min" type="string" column="ren_apgar_1min" nullable="true"/>
+    <field name="renApgar5min" type="string" column="ren_apgar_5min" nullable="true"/>
+    <field name="renReanima" type="string" column="ren_reanima" nullable="true"/>
+    <field name="renFalleceLugarParto" type="string" column="ren_fallece_lugar_parto" nullable="true"/>
+    <field name="renReferido" type="string" column="ren_referido" nullable="true"/>
+    <field name="renDefectConge" type="string" column="ren_defect_conge" nullable="true"/>
+    <field name="renOtroDefectConge" type="string" column="ren_otro_defect_conge" nullable="true"/>
+    <field name="renVihExpuesto" type="string" column="ren_vih_expuesto" nullable="true"/>
+    <field name="renVihTratamient" type="string" column="ren_vih_tratamient" nullable="true"/>
+    <field name="renMeconio1dia" type="string" column="ren_meconio_1dia" nullable="true"/>
+    <field name="renNeoAtendPor" type="string" column="ren_neo_atend_por" nullable="true"/>
+    <field name="renAtendNeo" type="bigint" column="ren_atend_neo" nullable="true"/>
+    <many-to-one field="idAdmisionParto" target-entity="ShcpParAdmision">
+      <join-columns>
+        <join-column name="id_admision_parto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

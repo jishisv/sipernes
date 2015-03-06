@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpInsSida" table="shcp_ins_sida">
+    <indexes>
+      <index name="IDX_92F01CD593489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="sidaSolMnos20" type="string" column="sida_sol_mnos20" nullable="true"/>
+    <field name="sidaPruMnos20" type="string" column="sida_pru_mnos20" nullable="true"/>
+    <field name="sidaMnos20Sd" type="string" column="sida_mnos20_sd" nullable="true"/>
+    <field name="sidaTarvMnos20" type="string" column="sida_tarv_mnos20" nullable="true"/>
+    <field name="sidaSolMas20" type="string" column="sida_sol_mas20" nullable="true"/>
+    <field name="sidaPruMas20" type="string" column="sida_pru_mas20" nullable="true"/>
+    <field name="sidaMas20Sd" type="string" column="sida_mas20_sd" nullable="true"/>
+    <field name="sidaTarvMas20" type="string" column="sida_tarv_mas20" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfCtlFaseIntervencion" table="enf_ctl_fase_intervencion">
+    <indexes>
+      <index name="IDX_3654D7AD3F170EFF" columns="id_intervencion"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreFase" type="string" column="nombre_fase" length="100" nullable="true"/>
+    <field name="fechaIngresoFase" type="date" column="fecha_ingreso_fase" nullable="true"/>
+    <field name="fechaModificacionFase" type="date" column="fecha_modificacion_fase" nullable="true"/>
+    <field name="usuarioFase" type="string" column="usuario_fase" length="40" nullable="true"/>
+    <field name="estadoFase" type="boolean" column="estado_fase" nullable="true"/>
+    <many-to-one field="idIntervencion" target-entity="EnfCtlIntervencion">
+      <join-columns>
+        <join-column name="id_intervencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

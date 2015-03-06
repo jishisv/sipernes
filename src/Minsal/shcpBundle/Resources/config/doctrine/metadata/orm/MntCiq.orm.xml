@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntCiq" table="mnt_ciq">
+    <indexes>
+      <index name="IDX_36321B7A3405215" columns="id_tipo_procedimiento"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_mnt_ciq" columns="codigo"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigo" type="string" column="codigo" length="6" nullable="false"/>
+    <field name="procedimiento" type="string" column="procedimiento" length="250" nullable="false"/>
+    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="true"/>
+    <field name="idusuariomod" type="smallint" column="idusuariomod" nullable="true"/>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="true"/>
+    <many-to-one field="idTipoProcedimiento" target-entity="MntTipoProcedimiento">
+      <join-columns>
+        <join-column name="id_tipo_procedimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

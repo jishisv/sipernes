@@ -1,0 +1,48 @@
+.textos.form-control{
+	
+	float: left;
+	width: 150px;
+	margin: 0 auto;
+}
+
+.presion.form-control{
+	
+	float: left;
+	width: 20%;
+	margin: 0 auto;
+}
+
+	.presion.form-control label{
+		width: 35px;
+		
+	}
+
+/*.dat_paciente{
+	border-spacing: 40px;
+	border-collapse: separate;
+}*/
+
+	.dat_paciente tr:nth-child(1){
+		height: 35px;
+	}
+
+	.dat_paciente tr{
+		height: 50px;
+	}
+
+	.dat_paciente tr td:first-child{
+		padding-left: 20px;
+	}
+
+	.dat_paciente tr td{
+		width: 25%;
+	}
+/*.dat_paciente_sec{
+	border-spacing: 30px;
+	border-collapse: collapse;	
+}*/
+
+.list-unstyled li{
+	float: left;
+	width: 80px
+}

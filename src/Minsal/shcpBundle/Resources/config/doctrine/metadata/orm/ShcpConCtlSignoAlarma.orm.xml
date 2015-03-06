@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpConCtlSignoAlarma" table="shcp_con_ctl_signo_alarma">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="sigNombre" type="string" column="sig_nombre" length="200" nullable="true"/>
+    <field name="sigTipo" type="string" column="sig_tipo" nullable="true"/>
+    <field name="sigEstado" type="string" column="sig_estado" nullable="true"/>
+  </entity>
+</doctrine-mapping>

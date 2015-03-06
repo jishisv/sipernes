@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfEsquemaVac" table="enf_esquema_vac">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="anioEsquemaVac" type="decimal" column="anio_esquema_vac" precision="4" scale="0" nullable="true"/>
+    <field name="nombreEsquemaVac" type="string" column="nombre_esquema_vac" length="40" nullable="true"/>
+    <field name="edadMinima" type="decimal" column="edad_minima" precision="10" scale="0" nullable="true"/>
+    <field name="edadMaxima" type="decimal" column="edad_maxima" precision="10" scale="0" nullable="true"/>
+    <field name="estadoVac" type="boolean" column="estado_vac" nullable="true"/>
+    <field name="usuarioIngresoVac" type="string" column="usuario_ingreso_vac" length="40" nullable="true"/>
+    <field name="fechaIngresoVac" type="date" column="fecha_ingreso_vac" nullable="true"/>
+  </entity>
+</doctrine-mapping>

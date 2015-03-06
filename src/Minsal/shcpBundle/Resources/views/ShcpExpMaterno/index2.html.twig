@@ -1,0 +1,61 @@
+{% extends 'SonataAdminBundle::layout.html.twig' %}
+{%block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('bundles/minsalsiaps/css/MntPacienteAdmin/list.css') }}" type="text/css" media="all" />  
+{%endblock%}
+
+{%block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/MntPacienteAdmin/MntPaciente_list.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
+{%endblock%}
+    {% block actions %}
+    <li>{% include 'SonataAdminBundle:Core:create_button.html.twig' %}</li>
+{% endblock %}
+{% block sonata_admin_content -%}
+ <center>
+    <h1>Exp Materno</h1>
+   
+    <table class="table table-bordered ">
+
+            <tr>
+                <td class="sonata-ba-list-field-header ">Id</td>
+                <td class="sonata-ba-list-field-header ">Nombre</td>
+                <td class="sonata-ba-list-field-header ">Apellido</td>
+                <td class="sonata-ba-list-field-header ">Direccion</td>
+                <td class="sonata-ba-list-field-header ">Telefono</td>
+                <td class="sonata-ba-list-field-header ">Editar</td>
+            </tr>
+        <tbody>
+        {% for entity in admin.datagrid.results%}
+            <tr>
+      
+               <td> {{ entity.id }}</td>
+                <td> {{ entity.expNombre }}</td>
+                <td> {{ entity.expApellido }}</td>
+                <td> {{ entity.expDireccion }}</td>
+                 <td> {{ entity.expTelefono }}</td>
+                <td> 
+                <ul>
+             
+    <a class="sonata-action-element" href="{{ admin.generateObjectUrl('edit', entity) }}">
+        <i class="fa fa-edit"></i>
+        {{ 'link_action_edit'|trans({}, 'SonataAdminBundle') }}</a>
+
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<br><br/>
+             <div class="pull-right">
+
+             </div>   
+    </center>
+ 
+    <br><br>
+{% endblock -%}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ShcpDocPlanParto" table="shcp_doc_plan_parto">
+    <indexes>
+      <index name="IDX_11175EE893489788" columns="id_exp_materno"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="planLugarControl" type="string" column="plan_lugar_control" length="125" nullable="true"/>
+    <field name="planFechaInicio" type="date" column="plan_fecha_inicio" nullable="true"/>
+    <field name="planNomPerInicia" type="string" column="plan_nom_per_inicia" length="125" nullable="true"/>
+    <field name="planHospPlaneaParto" type="string" column="plan_hosp_planea_parto" length="125" nullable="true"/>
+    <field name="planAcomParto" type="string" column="plan_acom_parto" length="100" nullable="true"/>
+    <field name="planSalirAntsFec" type="string" column="plan_salir_ants_fec" nullable="true"/>
+    <field name="planDondIria" type="string" column="plan_dond_iria" nullable="true"/>
+    <field name="planDireccion" type="string" column="plan_direccion" length="150" nullable="true"/>
+    <field name="planNomPerTransp" type="string" column="plan_nom_per_transp" length="100" nullable="true"/>
+    <field name="planTelPerTransp" type="string" column="plan_tel_per_transp" nullable="true"/>
+    <many-to-one field="idExpMaterno" target-entity="ShcpExpMaterno">
+      <join-columns>
+        <join-column name="id_exp_materno" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
