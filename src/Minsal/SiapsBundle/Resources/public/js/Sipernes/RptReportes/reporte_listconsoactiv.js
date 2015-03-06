@@ -23,6 +23,20 @@ var ValidPacientesAtendVSDiagnosticoEnferme = function () {
     return flag;
 };
 
+var ValidConsoActivRea = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Delag = false;be de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#tipo_diag option:selected").val() == "0" || $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
 var Alerta = function (text, funcAfter) {
     var elem = $("<div id='error' title='Error de llenado'><center>" +
             text
@@ -1380,7 +1394,10 @@ $(document).ready(function () {
     $("#id_consolidado_actividad").click(function () {
 //        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-//            alert('entro aqui 3');
+         var resp = ValidConsoActivRea();
+            if (resp == false) {
+                return false;
+            } else 
             if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
 //                alert('entro aqui 4');
                 ($('#error')) ? $('#error').remove() : '';
