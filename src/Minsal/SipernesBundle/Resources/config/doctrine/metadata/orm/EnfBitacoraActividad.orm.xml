@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EnfBitacoraActividad" table="enf_bitacora_actividad">
+    <indexes>
+      <index name="IDX_44B296B9BC097A1" columns="id_registro_actividad"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuarioIngresoHistAct" type="string" column="usuario_ingreso_hist_act" length="40" nullable="true"/>
+    <field name="fechaIngresoHistAct" type="date" column="fecha_ingreso_hist_act" nullable="true"/>
+    <field name="fechaModificacionHistAct" type="date" column="fecha_modificacion_hist_act" nullable="true"/>
+    <field name="cantidadHistActEnf" type="decimal" column="cantidad_hist_act_enf" precision="10" scale="0" nullable="true"/>
+    <field name="tiempoHistActEnf" type="time" column="tiempo_hist_act_enf" nullable="true"/>
+    <field name="expedienteHistAct" type="decimal" column="expediente_hist_act" precision="10" scale="0" nullable="true"/>
+    <field name="estadoHisAct" type="boolean" column="estado_his_act" nullable="true"/>
+    <many-to-one field="idRegistroActividad" target-entity="EnfMtlActividad">
+      <join-columns>
+        <join-column name="id_registro_actividad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

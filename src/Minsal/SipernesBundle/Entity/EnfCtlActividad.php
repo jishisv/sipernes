@@ -184,7 +184,7 @@ class EnfCtlActividad
         return $this->fechaModificacionCatAct;
     }
     
-    public function __toString() {
+     public function __toString() {
     return $this->nombreActividad ? $this->nombreActividad : '';
     }
 }
