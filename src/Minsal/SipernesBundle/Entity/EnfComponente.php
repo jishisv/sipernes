@@ -282,4 +282,8 @@ class EnfComponente
     {
         return $this->idTipoComponente;
     }
+    
+     public function __toString() {
+    return $this->presentacion ? $this->presentacion : '';
+    }
 }

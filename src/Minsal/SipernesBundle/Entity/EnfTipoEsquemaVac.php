@@ -216,4 +216,9 @@ class EnfTipoEsquemaVac
     {
         return $this->idEsquemaVac;
     }
+    
+     public function __toString() {
+    return $this->nombreTipoEsq ? $this->nombreTipoEsq : '';
+    }
+   
 }

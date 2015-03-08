@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfEsquemaVac
  *
  * @ORM\Table(name="enf_esquema_vac")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoEsqVacRepository")
  */
 class EnfEsquemaVac
 {
@@ -242,5 +242,9 @@ class EnfEsquemaVac
     public function getFechaIngresoVac()
     {
         return $this->fechaIngresoVac;
+    }
+    
+     public function __toString() {
+    return $this->nombreEsquemaVac ? $this->nombreEsquemaVac : '';
     }
 }
