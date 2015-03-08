@@ -137,6 +137,103 @@ var ValidDiagDiaInfEnf = function () {
     return flag;
 };
 
+var ValidConsoDiarioMicro = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+};
+
+var ValidConsoDiarioVac = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+};
+
+var ValidMicroAplicados = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+}; 
+
+var ValidReporteRegistrosDosisVacApli = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+}; 
+
+var ValidConSemAnotEnfPac = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" || $("#cod_exp option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+}; //ValidListActUl7Dias();
+
+var ValidListActUl7Dias = function () {
+    var flag = true;
+  if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" || $("#tipo_actividad option:selected").val() == "0" || $("#actividad option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+}; //ValidListActUl7Dias();
 var Alerta = function (text, funcAfter) {
     var elem = $("<div id='error' title='Mensaje de Error'><center>" +
             text
@@ -528,20 +625,9 @@ $(document).ready(function () {
     //60. micronutrientes aplicados
     $("#id_reporte_micronutrientes_aplicados").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#micronutrientesAplicados"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidMicroAplicados();
+            if (resp == false) {
+                
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -732,20 +818,8 @@ $(document).ready(function () {
     //64. consolidado semanal de anotaciones
     $("#id_reporte_cons_anot_semanal").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoAnotaciones"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidConSemAnotEnfPac();
+            if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -818,6 +892,10 @@ $(document).ready(function () {
     //68. listado de actividades realizadas por el personal de enfermería de los últimos 7 días 
     $("#id_reporte_cons_activ_siete").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var resp = ValidListActUl7Dias();
+            if (resp == false) {
+                return false;
+            } 
             var formato = $("input[name='formato_rpt']:checked").val();
             var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
@@ -832,20 +910,8 @@ $(document).ready(function () {
     //69. Reporte de registros semanales de dosis de vacunas aplicadas
     $("#id_reporte_cons_vacuna_semanal").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoSemanalVacunaciones"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+             var resp = ValidReporteRegistrosDosisVacApli();
+            if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -910,20 +976,9 @@ $(document).ready(function () {
     //71. Consolidado diario de aplicación de micronutrientes
     $("#id_reporte_diario_micro").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioMicronu"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidConsoDiarioMicro();
+            if (resp == false) {
+                
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -955,22 +1010,11 @@ $(document).ready(function () {
     //72. Consolidado diario de vacunación
     $("#id_reporte_diario_vac").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioAnotac"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+           var resp = ValidConsoDiarioVac();
+            if (resp == false) {
+                
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
