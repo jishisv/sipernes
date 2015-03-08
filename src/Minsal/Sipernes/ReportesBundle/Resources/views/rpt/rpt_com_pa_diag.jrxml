@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="22"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -41,6 +41,12 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="diagnostico" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipo_diag" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT row_number() over (order by mnt_paciente.id) n,
   ctl_establecimiento.nombre,
@@ -56,7 +62,10 @@ WHERE
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_mtl_diagnostico.id_expediente = mnt_expediente.id AND
   mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  mnt_expediente.id_paciente = mnt_paciente.id
+  mnt_expediente.id_paciente = mnt_paciente.id and
+  enf_ctl_diagnostico.id = $P{diagnostico} and
+enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
+enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag)
 group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimiento.nombre;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
@@ -146,9 +155,19 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="462" y="18" width="100" height="20" uuid="6faf7516-8571-4dbe-a800-d7d1c0b1e41f"/>
+				<reportElement x="0" y="18" width="100" height="20" uuid="6faf7516-8571-4dbe-a800-d7d1c0b1e41f"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="548" y="18" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="506" y="18" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -176,18 +195,7 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="550" y="0" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="507" y="0" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Página]]></text>
-			</staticText>
-		</band>
+		<band height="20" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="50">

@@ -13,9 +13,25 @@ var ValidPacientesAtendVSDiagnosticoEnferme = function () {
     var flag = true;
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Delag = false;be de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#tipo_diag option:selected").val() == "0" || $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
+    } else if ($("#tipo_diag option:selected").val() == "0" || 
+            $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidGrafPacientesAtendVSDiagnosticoEnferme = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#tipo_diag option:selected").val() == "0" || 
+            $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -27,9 +43,93 @@ var ValidConsoActivRea = function () {
     var flag = true;
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Delag = false;be de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#tipo_diag option:selected").val() == "0" || $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
+    } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || 
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidCapEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#financiamiento option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidAnotEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidDiagEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidDiagDiaEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#tipo_diag option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+    }
+    return flag;
+};
+
+var ValidDiagDiaInfEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+            $("#tipo_diag option:selected").val() == "0" || 
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -38,7 +138,7 @@ var ValidConsoActivRea = function () {
 };
 
 var Alerta = function (text, funcAfter) {
-    var elem = $("<div id='error' title='Error de llenado'><center>" +
+    var elem = $("<div id='error' title='Mensaje de Error'><center>" +
             text
             + "</center></div>");
     elem.insertAfter($("body"));
@@ -343,22 +443,10 @@ $(document).ready(function () {
     // 58. consolidado de anotaciones realizadas
     $("#id_reporte_cons_anot").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoAnotaciones"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidAnotEnf();
+            if (resp == false) {
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }  else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
@@ -405,22 +493,11 @@ $(document).ready(function () {
     //59. consolidado de diagnostico a pacientes
     $("#id_reporte_cons_diag").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiagnosticos"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidDiagEnf();
+            if (resp == false) {
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }
+            else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
@@ -540,22 +617,10 @@ $(document).ready(function () {
     //62. pacientes y diagnosticos grafica
     $("#id_reporte_paciente_diagnostico_grafica").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#pacientesDiagnosticosGrafica"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+             var resp = ValidGrafPacientesAtendVSDiagnosticoEnferme();
+            if (resp == false) {
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
@@ -812,20 +877,8 @@ $(document).ready(function () {
     //70. Consolidado diario de diagnósticos realizados por el personal de enfermería
     $("#id_reporte_diario_diag").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioDiagnosticos"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidDiagDiaEnf();
+            if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -990,22 +1043,10 @@ $(document).ready(function () {
     //74. Informe diario de diagnósticos de enfermería a paciente hospitalario
     $("#id_reporte_diario_enfer").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioEnferm"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidDiagDiaInfEnf();
+            if (resp == false) {
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
@@ -1021,7 +1062,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_con_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_inf_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1078,20 +1119,8 @@ $(document).ready(function () {
     //76. Reporte diario de capacitaciones realizadas por enfermera
     $("#id_reporte_diario_capacit").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioCapacitacion"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+            var resp = ValidCapEnf();
+            if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -1394,26 +1423,8 @@ $(document).ready(function () {
     $("#id_consolidado_actividad").click(function () {
 //        alert('entro aqui 2');
         if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-         var resp = ValidConsoActivRea();
+            var resp = ValidConsoActivRea();
             if (resp == false) {
-                return false;
-            } else 
-            if ($("#fecha_inicio").val() == '' || $("#fecha_fin").val() == '') {
-//                alert('entro aqui 4');
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#pacientesIngresados"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() == '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
-//                alert('entro aqui 5');
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
@@ -1431,15 +1442,26 @@ $(document).ready(function () {
                 return false;
             }
 
-
-//            alert('entro aqui 7');
-//            alert(Routing.generate('rpt_con_act') + '/rpt_con_act/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#codigo_expediente').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo");
-//            if ($('#municipios').val() == 'Seleccione..')
-//                alert('Debe seleccionar un municipio');
-//
-//            // url = Routing.generate('total_ingresos') + '/rpt_resumen_ingresos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val();
-//            // url = Routing.generate('infor_abortos') + '/rpt_inf_abortos/PDF/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#municipios').val() + '/' + "Informe de abortos";
-//            else
+//            if ($('#actividades').val() === 'Seleccione..' || $('#subactividades').val() === ''
+//                    || $('#deptos').val() === 'Seleccione..' || $('#municipios').val() === ''
+//                    || $('#establecimientos').val() === 'Seleccione..' || $('#tipoestablecimientos').val() === '' 
+//                    || $('#cod_exp').val() === 'Seleccione..' || $('#cod_enf').val() === 'Seleccione..') {
+//                ($('#error')) ? $('#error').remove() : '';
+//                var elem = $("<div id='error' title='Error de llenado'><center>" +
+//                        "Debe seleccionar todos lo combos."
+//                        + "</center></div>");
+//                elem.insertAfter($("#pacientesIngresados"));
+//                $("#error").dialog({
+//                    close: function () {
+//                        if ($("#actividades").val() === '')
+//                            $("#actividades").focus();
+//                        else
+//                            $("#subactividades").focus();
+//                    }
+//                });
+//                return false;
+//            }
+            
             var formato = $("input[name='formato_rpt']:checked").val();
             var url = Routing.generate('rpt_con_act') + '/rpt_con_act/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert('Entro saqui 8');{fecha_inicio}/{fecha_fin}/{actividades}/{subactividades}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_act"

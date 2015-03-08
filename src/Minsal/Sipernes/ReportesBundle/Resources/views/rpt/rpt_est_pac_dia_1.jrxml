@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="309"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -39,6 +39,12 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="fpfin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="diagnostico" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipo_diag" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -55,9 +61,11 @@ ctl_establecimiento
 
 where
 enf_mtl_diagnostico.id_expediente = mnt_expediente.id and
-enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id and
-enf_ctl_diagnostico.id_clase = enf_clase.id and
-enf_clase.id_dominio = enf_dominio.id
+enf_ctl_diagnostico.id = enf_mtl_diagnostico.id_ctl_diag and
+enf_clase.id = enf_ctl_diagnostico.id_clase and
+enf_dominio.id = enf_clase.id_dominio and
+enf_clase.id = $P{tipo_diag} and
+enf_dominio.id = $P{diagnostico}
 
 GROUP BY
 enf_ctl_diagnostico.nombre_diagnostico;]]>
