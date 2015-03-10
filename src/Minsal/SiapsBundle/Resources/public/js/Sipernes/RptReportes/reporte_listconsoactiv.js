@@ -1763,10 +1763,10 @@ $(document).ready(function () {
 ////////////////////llenado de combos de Establecimiento//////////////////////
     $.getJSON(Routing.generate('get_all_establecimientos'),
             function (data) {
-                $('#establecimientos').append('<option value="1">Hospitales</option>');
-//                $.each(data.establecimientos, function (indice, aux) {
-//                    $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
-//                });
+            //    $('#establecimientos').append('<option value="1">Hospitales</option>');
+                $.each(data.establecimientos, function (indice, aux) {
+                    $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                });
             });
 
     $("#establecimientos").on('change', function (event) { // aqui el JSON });
@@ -1781,16 +1781,16 @@ $(document).ready(function () {
             });
 
         });
-        $('#tipoestablecimientos').append('<option value="25">Hospital Nacional Antiguo Cuzcatlan</option>');
-//        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
-//                function (data) {
-//                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
-////                    alert("entre a municipios de shcp");
-////                    $.each(data.subestablecimientos, function (indice, aux) {
-////                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
-////                    });
+       // $('#tipoestablecimientos').append('<option value="25">Hospital Nacional Antiguo Cuzcatlan</option>');
+        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
+               function (data) {
+                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+                    //alert("entre a municipios de shcp");
+                    $.each(data.subestablecimientos, function (indice, aux) {
+                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    });
 //$('#tipoestablecimientos').append('<option value="9">Hospital Nacional Antiguo Cuzcatlan</option>');
-//                });
+                });
     });
 
 ////////////////////llenado de combos de Paciente //////////////////////

@@ -806,8 +806,8 @@ class ReporteMetodoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idEstablecimientoPadre is null";
+                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o";
+                //WHERE o.idEstablecimientoPadre is null";
         $establecimientos['establecimientos'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -822,7 +822,7 @@ class ReporteMetodoController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idTipoEstablecimiento.id = :id";
+                WHERE o.idTipoEstablecimiento= :id";
         $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                 
 
