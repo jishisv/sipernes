@@ -1798,7 +1798,7 @@ $(document).ready(function () {
             function (data) {
 //               alert("entre a deptos de shcp");
                 $.each(data.pacientes, function (indice, aux) {
-                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.numero + '</option>');
+                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.id + '</option>');
                 });
             });
 
@@ -1854,10 +1854,10 @@ $(document).ready(function () {
         var id = $(this).val();
         $.getJSON(Routing.generate('get_nombre_paciente') + "/" + id, function (data) {
             var pac
-            $(data.paciente).each(function () {
-                pac = this.primerNombre;
+            $(data.datospaciente).each(function () {
+                pac = this.idPaciente.primerNombre +" "+ this.idPaciente.segundoNombre +" "+ this.idPaciente.primerApellido +" "+ this.idPaciente.segundoApellido;
             })
-            $("#paciente").val(pac);
+            $("#nombre_paciente").val(pac);
         })
 
     })
