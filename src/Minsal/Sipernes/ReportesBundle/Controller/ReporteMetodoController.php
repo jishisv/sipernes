@@ -822,7 +822,7 @@ class ReporteMetodoController extends Controller
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idTipoEstablecimiento= :id";
+                WHERE o.idTipoEstablecimiento= :id ORDER BY o.id ASC";
         $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
                 
 
