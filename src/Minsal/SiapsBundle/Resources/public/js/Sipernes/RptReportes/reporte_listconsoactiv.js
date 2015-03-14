@@ -1818,7 +1818,7 @@ $(document).ready(function () {
             function (data) {
 //               alert("entre a deptos de shcp");
                 $.each(data.pacientes, function (indice, aux) {
-                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.id + '</option>');
+                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.numero + '</option>');
                 });
             });
 
