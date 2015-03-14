@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports_siaps_seguimiento/siaps/seguimiento/rpt_con_dia_diag_pac"/>
@@ -121,7 +121,7 @@ order by Diagnostico]]>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Ministerio de Salud]]></text>
+				<text><![CDATA[UNIDAD DE ENFERMERIA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="370" y="41" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
@@ -129,7 +129,7 @@ order by Diagnostico]]>
 					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Unidad de Enfermeria]]></text>
+				<text><![CDATA[SIPERNES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="370" y="3" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ee057968-9785-4e29-bbcd-08234a56fc03"/>
@@ -137,7 +137,7 @@ order by Diagnostico]]>
 					<font fontName="SansSerif" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[República de El Salvador]]></text>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
 				<reportElement x="34" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
@@ -177,10 +177,11 @@ order by Diagnostico]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nombre]]></text>
+				<text><![CDATA[Nombre del paciente]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="8" y="16" width="100" height="20" uuid="b9cba9ef-bfff-4289-b8ce-92e634f9b36e"/>
+				<reportElement x="8" y="16" width="120" height="20" uuid="b9cba9ef-bfff-4289-b8ce-92e634f9b36e"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -188,7 +189,7 @@ order by Diagnostico]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Codigo Enfermera]]></text>
+				<text><![CDATA[Código Enfermera]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="174" y="46" width="89" height="34" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
@@ -202,32 +203,37 @@ order by Diagnostico]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nombre]]></text>
+				<text><![CDATA[Nombre del personal de enfermería]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="687" y="46" width="135" height="34" backcolor="#999999" uuid="9cbf1a1a-98bd-4cbc-954c-6930247da413"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Diagnostico]]></text>
+				<text><![CDATA[Diagnóstico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="822" y="46" width="131" height="34" backcolor="#999999" uuid="7251159d-fbdc-45d3-bb07-a3fa17751c4d"/>
+				<reportElement style="table_CH" x="822" y="46" width="134" height="34" backcolor="#999999" uuid="7251159d-fbdc-45d3-bb07-a3fa17751c4d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Intervención]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="944" y="16" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="916" y="16" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="902" y="16" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="874" y="16" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="936" y="16" width="20" height="20" uuid="f6cd0af9-e63b-48f8-819f-d42a5264a6bd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -268,7 +274,7 @@ order by Diagnostico]]>
 				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="822" y="0" width="131" height="35" uuid="0bee8411-4b82-4ae8-aa77-7614f887b834"/>
+				<reportElement style="table" x="822" y="0" width="134" height="35" uuid="0bee8411-4b82-4ae8-aa77-7614f887b834"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{intervencion}]]></textFieldExpression>
 			</textField>
@@ -280,7 +286,7 @@ order by Diagnostico]]>
 	<summary>
 		<band height="50">
 			<textField>
-				<reportElement style="table" mode="Opaque" x="822" y="0" width="131" height="31" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<reportElement style="table" mode="Opaque" x="822" y="0" width="134" height="31" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
