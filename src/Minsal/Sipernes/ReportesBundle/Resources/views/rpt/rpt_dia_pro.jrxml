@@ -90,7 +90,7 @@ WHERE
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Ministerio de Salud]]></text>
+				<text><![CDATA[UNIDAD DE ENFERMERIA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="352" y="39" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
@@ -98,7 +98,7 @@ WHERE
 					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Unidad de Enfermeria]]></text>
+				<text><![CDATA[SIPERNES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="352" y="1" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ee057968-9785-4e29-bbcd-08234a56fc03"/>
@@ -106,7 +106,7 @@ WHERE
 					<font fontName="SansSerif" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[República de El Salvador]]></text>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
 				<reportElement x="34" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>

@@ -89,7 +89,7 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Ministerio de Salud]]></text>
+				<text><![CDATA[UNIDAD DE ENFERMERIA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="173" y="39" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
@@ -97,7 +97,7 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Unidad de Enfermeria]]></text>
+				<text><![CDATA[SIPERNES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="173" y="1" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ee057968-9785-4e29-bbcd-08234a56fc03"/>
@@ -105,7 +105,7 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 					<font fontName="SansSerif" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[República de El Salvador]]></text>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
 				<reportElement x="34" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
@@ -127,68 +127,74 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 				<text><![CDATA[Comparativo Pacientes vrs Diagnosticos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="54" y="46" width="63" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="1" y="46" width="63" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="117" y="46" width="177" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="64" y="46" width="200" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="294" y="46" width="168" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="264" y="46" width="245" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diagnostico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="462" y="46" width="54" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
+				<reportElement style="table_CH" x="509" y="46" width="63" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="0" y="18" width="100" height="20" uuid="6faf7516-8571-4dbe-a800-d7d1c0b1e41f"/>
+			<textField pattern="dd/MM/yyyy hh:mm a">
+				<reportElement x="0" y="18" width="120" height="20" uuid="6faf7516-8571-4dbe-a800-d7d1c0b1e41f"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="548" y="18" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="532" y="18" width="20" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="506" y="18" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="490" y="18" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="552" y="18" width="20" height="20" uuid="321dbd51-456e-41e9-986e-04f140b0f664"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="54" y="0" width="63" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" x="1" y="0" width="63" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="117" y="0" width="177" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement style="table" x="64" y="0" width="200" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="294" y="0" width="168" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement style="table" x="264" y="0" width="245" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombre_diagnostico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="462" y="0" width="54" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
+				<reportElement style="table" x="509" y="0" width="63" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
@@ -200,14 +206,14 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 	<summary>
 		<band height="50">
 			<textField>
-				<reportElement style="table" x="462" y="0" width="54" height="33" uuid="c463e0fb-ca27-4980-a3d0-9d376a54d65d"/>
+				<reportElement style="table" x="509" y="0" width="63" height="33" uuid="c463e0fb-ca27-4980-a3d0-9d376a54d65d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" x="54" y="0" width="408" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" x="1" y="0" width="508" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
