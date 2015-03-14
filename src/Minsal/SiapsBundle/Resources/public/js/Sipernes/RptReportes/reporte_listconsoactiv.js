@@ -447,19 +447,19 @@ var Alerta = function (text, funcAfter) {
 };
 $(document).ready(function () {
     $('#actividades').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#subactividades').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#deptos').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -467,13 +467,13 @@ $(document).ready(function () {
 
 
     $('#municipios').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#tipoestablecimientos').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -481,13 +481,13 @@ $(document).ready(function () {
 
 
     $('#establecimientos').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#tipo_diag').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -495,13 +495,13 @@ $(document).ready(function () {
 
 
     $('#diagnostico').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#tipo_micro').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -509,13 +509,13 @@ $(document).ready(function () {
 
 
     $('#micro').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#protocolo').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -523,18 +523,18 @@ $(document).ready(function () {
 
 
     $('#subprotocolo').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
 
     $('#capacitacion').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
     $('#financiamiento').select2({
-        width: '60%',
+        width: '100%',
         placeholder: 'Seleccione...',
         allowClear: true
     });
@@ -1638,7 +1638,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#municipios').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -1661,7 +1661,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#municipios2').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -1693,7 +1693,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#subactividades').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -1726,7 +1726,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#subactividades').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -1758,7 +1758,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#diagnostico').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -1791,7 +1791,7 @@ $(document).ready(function () {
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#tipoestablecimientos').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
               
                 placeholder: 'Seleccione...'
                 
@@ -1818,7 +1818,7 @@ $(document).ready(function () {
             function (data) {
 //               alert("entre a deptos de shcp");
                 $.each(data.pacientes, function (indice, aux) {
-                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.id + '</option>');
+                    $('#cod_exp').append('<option value="' + aux.id + '">' + aux.numero + '</option>');
                 });
             });
 
