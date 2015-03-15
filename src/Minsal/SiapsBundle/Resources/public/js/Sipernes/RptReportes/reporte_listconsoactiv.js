@@ -226,12 +226,16 @@ var ValidConSemAnotEnfPac = function () {
 var ValidListActUl7Dias = function () {
     var flag = true;
   if (
-            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" || $("#fecha_inicio").val() == null ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" || 
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" || $("#tipo_actividad option:selected").val() == "0" || $("#actividad option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
-      
+            
+    }else if ($("#fecha_inicio").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar la fecha inicial para generar el reporte.", FuncAfterClose2);
+        flag = false;
     }
     return flag;
 };
