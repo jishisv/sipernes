@@ -135,11 +135,11 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 	<columnHeader>
 		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="255" y="6" width="257" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="228" y="6" width="300" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Actividades]]></text>
+				<text><![CDATA[Consolidado de Actividades Realizadas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="1" y="46" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>

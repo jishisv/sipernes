@@ -124,7 +124,7 @@ group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimie
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Comparativo Pacientes vrs Diagnosticos]]></text>
+				<text><![CDATA[Comparativo Pacientes vrs Diagnósticos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="1" y="46" width="63" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
