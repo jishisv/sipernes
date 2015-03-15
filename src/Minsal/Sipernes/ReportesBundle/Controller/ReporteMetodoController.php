@@ -245,11 +245,11 @@ class ReporteMetodoController extends Controller
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
-            'codigoExp' => 'vacio',
-            'codigoEmp' => 'vacio',
+            'codigoExp' => 0,
+            'codigoEmp' => 0,
             'id_servicio' => 0,
-//            'tipo_diagnostico' => $tipodiagnostico,
-//            'diagnostico' => $diagnostico,
+            'tipo_diag' => $tipodiagnostico,
+            'diagnostico' => $diagnostico
 //            'grafico' => $grafico,
         ));
 
