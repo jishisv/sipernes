@@ -226,7 +226,7 @@ var ValidConSemAnotEnfPac = function () {
 var ValidListActUl7Dias = function () {
     var flag = true;
   if (
-            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" || $("#fecha_inicio").val() == null ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" || $("#tipo_actividad option:selected").val() == "0" || $("#actividad option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -1075,7 +1075,7 @@ $(document).ready(function () {
                 return false;
             } 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act_ult_7/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#fecha_inicio').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;

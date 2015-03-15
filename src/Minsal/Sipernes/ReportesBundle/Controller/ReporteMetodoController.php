@@ -369,9 +369,9 @@ class ReporteMetodoController extends Controller
     }
 
     /**
-     *@Route("/rpt_con_activ_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipovacuna}/{presentacion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_activ_siete", options={"expose"=true})
+     *@Route("/rpt_con_activ_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{fecha_inicio}/{codigo_enfermera}/{id_servicio}", name="rpt_con_activ_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteActivAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipovacuna, $presentacion, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteActivAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $fecha_inicio, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -382,8 +382,8 @@ class ReporteMetodoController extends Controller
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
             'tipoestablecimientos' => $tipoestablecimientos,
-            'tipovacuna' => $tipovacuna,
-            'presentacion' => $presentacion,
+            'fpini' => $fecha_inicio,
+            
             'codigo_enfermera' => $codigo_enfermera,
         ));
 
