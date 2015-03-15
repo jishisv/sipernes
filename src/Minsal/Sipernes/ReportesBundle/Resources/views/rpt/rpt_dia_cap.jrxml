@@ -230,7 +230,7 @@ enf_ctl_financiamiento.id = coalesce($P{financiado},enf_ctl_financiamiento.id) a
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="$ #,##0.00">
 				<reportElement style="table" x="735" y="0" width="120" height="35" uuid="2a2105dc-a5a3-4db7-9616-7357579f8e3f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{montofinanciamiento}]]></textFieldExpression>
@@ -252,7 +252,7 @@ enf_ctl_financiamiento.id = coalesce($P{financiado},enf_ctl_financiamiento.id) a
 	</pageFooter>
 	<summary>
 		<band height="33">
-			<textField>
+			<textField pattern="$ #,##0.00">
 				<reportElement style="table" x="735" y="0" width="120" height="33" uuid="e1905039-023c-480d-9bc9-21ba61cbd5f0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>

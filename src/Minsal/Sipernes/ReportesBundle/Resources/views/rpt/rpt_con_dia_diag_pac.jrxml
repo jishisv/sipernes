@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports_siaps_seguimiento/siaps/seguimiento/rpt_con_dia_diag_pac"/>
@@ -116,7 +116,7 @@ order by Diagnostico]]>
 	<pageHeader>
 		<band height="89" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Transparent" x="370" y="22" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
+				<reportElement mode="Transparent" x="370" y="23" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -124,7 +124,7 @@ order by Diagnostico]]>
 				<text><![CDATA[UNIDAD DE ENFERMERIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="370" y="41" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
+				<reportElement mode="Transparent" x="370" y="43" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -152,7 +152,7 @@ order by Diagnostico]]>
 	<columnHeader>
 		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="142" y="6" width="639" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="163" y="6" width="639" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>

@@ -74,7 +74,7 @@ WHERE
 	<pageHeader>
 		<band height="89" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Transparent" x="173" y="20" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
+				<reportElement mode="Transparent" x="173" y="21" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="136f707f-ac98-45c9-9a57-a6a21c5f6b7e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -82,7 +82,7 @@ WHERE
 				<text><![CDATA[UNIDAD DE ENFERMERIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="173" y="39" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
+				<reportElement mode="Transparent" x="173" y="41" width="225" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="abd08fca-1da9-40a7-969f-4ce5d9b55fa8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -110,7 +110,7 @@ WHERE
 	<columnHeader>
 		<band height="108" splitType="Stretch">
 			<staticText>
-				<reportElement x="134" y="5" width="317" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="135" y="5" width="317" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -124,39 +124,40 @@ WHERE
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="65" y="76" width="100" height="32" backcolor="#999999" uuid="049fe644-797e-4dfa-a1db-e03eafcbedee"/>
+				<reportElement style="table_TH" x="65" y="76" width="108" height="32" backcolor="#999999" uuid="049fe644-797e-4dfa-a1db-e03eafcbedee"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="165" y="76" width="100" height="32" backcolor="#999999" uuid="58dbe4ad-ba0d-4c24-9eef-0e959d6c05d5"/>
+				<reportElement style="table_TH" x="173" y="76" width="80" height="32" backcolor="#999999" uuid="58dbe4ad-ba0d-4c24-9eef-0e959d6c05d5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código Expediente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="253" y="76" width="68" height="32" backcolor="#999999" uuid="adecabc3-4a7b-4cdb-ba4d-06c65b39dd6e"/>
+				<reportElement style="table_TH" x="253" y="76" width="78" height="32" backcolor="#999999" uuid="adecabc3-4a7b-4cdb-ba4d-06c65b39dd6e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre Paciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="321" y="76" width="100" height="32" backcolor="#999999" uuid="249607ab-efcb-4b6a-a7d6-d9905702c7da"/>
+				<reportElement style="table_TH" x="331" y="76" width="80" height="32" backcolor="#999999" uuid="249607ab-efcb-4b6a-a7d6-d9905702c7da"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código Enfermera]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy hh:mm a">
-				<reportElement x="1" y="15" width="100" height="20" uuid="e85d79ef-0499-4792-87d6-672adaff5bd6"/>
+				<reportElement x="1" y="15" width="120" height="20" uuid="e85d79ef-0499-4792-87d6-672adaff5bd6"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="421" y="76" width="82" height="32" backcolor="#999999" uuid="eedad1a6-d5ab-46c1-b1b4-2ed91bf617cf"/>
+				<reportElement style="table_TH" x="411" y="76" width="92" height="32" backcolor="#999999" uuid="eedad1a6-d5ab-46c1-b1b4-2ed91bf617cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -170,15 +171,20 @@ WHERE
 				<text><![CDATA[Anotación]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="550" y="15" width="19" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<reportElement x="528" y="15" width="19" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="508" y="15" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="486" y="15" width="42" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Página]]></text>
 			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="547" y="15" width="20" height="20" uuid="aadedcfa-81e5-41d6-8263-460d3056d039"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -189,27 +195,22 @@ WHERE
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="65" y="0" width="100" height="35" uuid="39776850-7fec-4500-91e1-1cbad591e659"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="165" y="0" width="88" height="35" uuid="a5bddd63-daa7-48d1-8c54-721b267fad2c"/>
+				<reportElement style="table" x="173" y="0" width="80" height="35" uuid="a5bddd63-daa7-48d1-8c54-721b267fad2c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{expediente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="253" y="0" width="68" height="35" uuid="1ef21dae-df51-4fdc-af1f-4209bb04e3e7"/>
+				<reportElement style="table" x="253" y="0" width="78" height="35" uuid="1ef21dae-df51-4fdc-af1f-4209bb04e3e7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombrepaciente}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement style="table" x="321" y="0" width="100" height="35" uuid="763cf63c-5d09-4fed-9bac-74908a76b4d8"/>
+				<reportElement style="table" x="331" y="0" width="80" height="35" uuid="763cf63c-5d09-4fed-9bac-74908a76b4d8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{codigoenfermera}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement style="table" x="421" y="0" width="82" height="35" uuid="95b0f6dd-a096-4cb9-bb58-17183a49b63f"/>
+				<reportElement style="table" x="411" y="0" width="92" height="35" uuid="95b0f6dd-a096-4cb9-bb58-17183a49b63f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombreenfermera}]]></textFieldExpression>
 			</textField>
@@ -219,7 +220,8 @@ WHERE
 				<textFieldExpression><![CDATA[$F{anotaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="65" y="0" width="100" height="35" uuid="343ff2c5-8d9f-4919-8b9e-e60779f567cc"/>
+				<reportElement style="table" x="65" y="0" width="108" height="35" uuid="343ff2c5-8d9f-4919-8b9e-e60779f567cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 		</band>
