@@ -171,4 +171,4 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlTipoEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlTipoEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: CtlTipoEstablecimiento}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de actividades realizadas por el personal de enfermería}

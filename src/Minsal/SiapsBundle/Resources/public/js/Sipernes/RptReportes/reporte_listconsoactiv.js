@@ -441,7 +441,24 @@ var ValidRegMenProd = function () {
       
     }
     return flag;
-}; 
+};
+var ValidDiarioActivEnf = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar la fecha inicial para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
+            || $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+};
 var Alerta = function (text, funcAfter) {
     var elem = $("<div id='error' title='Mensaje de Error'><center>" +
             text
@@ -1293,7 +1310,7 @@ $(document).ready(function () {
     //75. Reporte diario de actividades realizadas por el personal de enfermería
     $("#id_reporte_diario_activ").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-             var resp = ValidninosInmunGeo();
+             var resp = ValidDiarioActivEnf();
             if (resp == false) {
                 return false;
                 elem.insertAfter($("#consolidadoDiarioActividad"));
@@ -1301,8 +1318,8 @@ $(document).ready(function () {
                     close: function () {
                         if ($("#fecha_inicio").val() === '')
                             $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
+                        //else
+                            //$("#fecha_fin").focus();
                     }
                 });
                 return false;
@@ -1322,7 +1339,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_activ_diario') + '/rpt_con_act/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#codigo_enfermera').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_activ_diario') + '/rpt_diario_act/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#actividades').val() + '/' + $('#subactividades').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
