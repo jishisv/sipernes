@@ -250,6 +250,10 @@ var ValidConDiarioEnfPacUlt7Dias = function () {
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
       
+    }else if ($("#fecha_inicio").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar la fecha inicial para generar el reporte.", FuncAfterClose2);
+        flag = false;
     }
     return flag;
 };
@@ -1025,7 +1029,7 @@ $(document).ready(function () {
             if (resp == false) {
                 return false;
             } 
-            var url = Routing.generate('rpt_con_diag_siete') + '/rpt_con_dia_diag_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_diag_siete') + '/rpt_con_dia_diag_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_enf').val() + '/' + $('#fecha_inicio').val() + '/' + "Reporte_Nuevo";
             //alert(url);
             window.open(url, '_blank');
             return false;
@@ -1289,11 +1293,9 @@ $(document).ready(function () {
     //75. Reporte diario de actividades realizadas por el personal de enfermería
     $("#id_reporte_diario_activ").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
+             var resp = ValidninosInmunGeo();
+            if (resp == false) {
+                return false;
                 elem.insertAfter($("#consolidadoDiarioActividad"));
                 $("#error").dialog({
                     close: function () {
