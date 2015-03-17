@@ -396,7 +396,7 @@ var ValidAnotEnfPaci = function () {
     var flag = true;
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha inicial para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
@@ -1265,7 +1265,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_anot_diario/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_anot_diario/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1371,7 +1371,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_dia_cap/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#financiamiento').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_capac_diario') + '/rpt_dia_cap/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#financiamiento').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
