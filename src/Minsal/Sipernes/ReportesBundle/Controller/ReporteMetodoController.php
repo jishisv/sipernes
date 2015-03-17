@@ -521,7 +521,7 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin' => $fecha_fin,
+            'fpini' => $fecha_fin,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
@@ -570,7 +570,7 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin' => $fecha_fin,
+            'fpini' => $fecha_fin,
             'municipios' => $municipios,
             'tipoEstable' => $tipoestablecimientos,
             'financiado' => $financiado,
@@ -711,7 +711,7 @@ class ReporteMetodoController extends Controller
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fecha_inicio' => $fecha_fin,
             'deptos'=>  $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
