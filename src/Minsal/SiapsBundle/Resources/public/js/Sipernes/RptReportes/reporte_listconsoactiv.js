@@ -321,9 +321,9 @@ var ValidRegVacEntyRec = function () {
 
 var ValidninosInmunGeo = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() === '' ) {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
@@ -339,15 +339,15 @@ var ValidninosInmunGeo = function () {
 
 var ValidIntervEfecEnf = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() === '' ) {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
             || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
-            || $("#tipointervencion option:selected").val() == "0" || $("#intervencion option:selected").val() == "0"
+          //  || $("#tipointervencion option:selected").val() == "0" || $("#intervencion option:selected").val() == "0"
             || $("#cod_enf option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -359,9 +359,9 @@ var ValidIntervEfecEnf = function () {
 
 var ValidRegDiariosProdVacunas = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() === '' ) {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha inicial para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
@@ -375,9 +375,9 @@ var ValidRegDiariosProdVacunas = function () {
 };
 var ValidReportDiarioProtocolos = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() === '' ) {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
@@ -1297,7 +1297,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_inf_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_enfer_diario') + '/rpt_inf_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1447,7 +1447,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_inmun_diario') + '/rpt_diario_niños_inmun/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#deptos2').val() + '/' + $('#municipios2').val() + '/' + $('#sector').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_inmun_diario') + '/rpt_diario_niños_inmun/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#deptos2').val() + '/' + $('#municipios2').val() + '/' + $('#sector').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1479,7 +1479,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_interv_diario') + '/rpt_dia_inter/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipoprotocolo').val() + '/' + $('#protocolo').val() + '/' + $('#tipointervencion').val() + '/' + $('#intervencion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_interv_diario') + '/rpt_dia_inter/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#protocolo').val() + '/' + $('#subprotocolo').val() + '/' + $('#tipointervencion').val() + '/' + $('#intervencion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1511,7 +1511,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_produc_vac_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_produc_vac_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1543,7 +1543,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_protoc_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#protocolo').val() + '/' + $('#subprotocolo').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_protoc_diario') + '/rpt_dia_pro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#protocolo').val() + '/' + $('#subprotocolo').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
