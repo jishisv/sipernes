@@ -123,9 +123,9 @@ var ValidDiagDiaEnf = function () {
 
 var ValidDiagDiaInfEnf = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() === '' ) {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
             $("#tipo_diag option:selected").val() == "0" || 
@@ -304,9 +304,9 @@ var ValidComVacAplica = function () {
 
 var ValidRegVacEntyRec = function () {
     var flag = true;
-    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+    if ($("#fecha_inicio").val() == '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
