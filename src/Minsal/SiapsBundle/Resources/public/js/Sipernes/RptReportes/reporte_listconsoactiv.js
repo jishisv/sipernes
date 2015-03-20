@@ -1929,37 +1929,37 @@ $(document).ready(function () {
 
 
 
-////////////////////llenado de combos de Micronutrientes//////////////////////
-//    $.getJSON(Routing.generate('get_all_establecimientos'),
-//            function (data) {
-////               alert("entre a deptos de shcp");
-//                $.each(data.establecimientos, function (indice, aux) {
-//                    $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
-//                });
-//            });
-//
-//    $("#establecimientos").on('change', function (event) { // aqui el JSON });
-//        $('#tipoestablecimientos option').each(function (index, val) {
-//            $(this).remove();
-//            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-//            $('#tipoestablecimientos').select2({
-//                selected: 'true',
-//                width: '60%',
-//                placeholder: 'Seleccione...'
-////                allowClear: true
-//            });
-//
-//        });
-//        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#tipo_diag').val(),
-//                function (data) {
-//                    $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
-////                    alert("entre a municipios de shcp");
-//                    $.each(data.subestablecimientos, function (indice, aux) {
-//                        $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
-//                    });
-//
-//                });
-//    });
+////////////////////llenado de combos de Tipo de Componente y Componente//////////////////////
+    $.getJSON(Routing.generate('get_all_tipo_componente'),
+            function (data) {
+
+                $.each(data.tipocomponente, function (indice, aux) {
+                    $('#tipo_vacuna').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
+                });
+            });
+
+    $("#tipo_vacuna").on('change', function (event) { // aqui el JSON });
+        $('#presentacion option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#presentacion').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_componente') + '/' + $('#tipo_vacuna').val(),
+                function (data) {
+                    $('presentacion').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.componente, function (indice, aux) {
+                        $('#presentacion').append('<option value="' + aux.id + '">' + aux.presentacion + '</option>');
+                    });
+
+                });
+    });
 
 ////////////////////llenado de combos de Protocolo y SubProtocolo//////////////////////
     $.getJSON(Routing.generate('get_all_protocolos'),

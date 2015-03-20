@@ -1021,7 +1021,33 @@ public function getNombrePacientebIdAction($id) {
 //                  ->getResult();
         return new Response(json_encode($datospaciente));
     }
-    
+  /**
+     *@Route("tipos/componente/todos", name="get_all_tipo_componente", options={"expose"=true})
+     */
+      public function getTipoComponenteAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o";
+      $tipocomponente['tipocomponente'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipocomponente));
+    }  
+   /**
+     *@Route("obtener/componentes/por/identificador/{id}", name="get_componente", options={"expose"=true})
+     */
+public function getComponentebyIdAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfComponente o
+                WHERE o.id = :id";
+        $componente['componente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($componente));
+    }
     
 }
 
