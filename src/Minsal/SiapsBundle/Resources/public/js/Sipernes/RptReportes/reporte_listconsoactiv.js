@@ -1100,7 +1100,7 @@ $(document).ready(function () {
                 return false;
             } 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act_ult_7/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#fecha_inicio').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_activ_siete') + '/rpt_con_act_ult_7/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#fecha_inicio').val() + '/' + $('#cod_enf').val() + '/' + $('#subactividades').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="135"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="106"/>
+	<property name="ireport.y" value="152"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -46,7 +46,8 @@
   ctl_departamento.nombre departamento,
   ctl_municipio.nombre municipio,
   ctl_establecimiento.nombre establecimiento,
-  sum(enf_mov_inventario.cantidad_mov) dosisAplicadas
+  --sum(enf_mov_inventario.cantidad_mov) dosisAplicadas
+  enf_dosis_esquema_vac.dosis dosisAplicadas
 FROM
   public.ctl_establecimiento,
   public.ctl_departamento,
@@ -54,26 +55,27 @@ FROM
   public.mnt_expediente,
   public.enf_componente,
   public.enf_ctl_tipo_componente,
-  public.enf_dosis_esquema_vac,
-  public.enf_mov_inventario
+  public.enf_dosis_esquema_vac
+  --public.enf_mov_inventario
 WHERE
   ctl_establecimiento.id_municipio = ctl_municipio.id AND
   ctl_municipio.id_departamento = ctl_departamento.id AND
   mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
   enf_componente.id_tipo_componente = 1 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
-  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.id_movimiento = enf_mov_inventario.id AND
-  enf_mov_inventario.id_tipo_inventario=2
+  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id
+  --enf_dosis_esquema_vac.id_movimiento = enf_mov_inventario.id AND
+  --enf_mov_inventario.id_tipo_inventario=2
   group by ctl_departamento.nombre,
   ctl_municipio.nombre,
-  ctl_establecimiento.nombre;]]>
+  ctl_establecimiento.nombre,
+  enf_dosis_esquema_vac.dosis;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="departamento" class="java.lang.String"/>
 	<field name="municipio" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="dosisaplicadas" class="java.math.BigDecimal"/>
+	<field name="dosisaplicadas" class="java.lang.String"/>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosisaplicadas}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{dosisaplicadas}]]></initialValueExpression>

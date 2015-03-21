@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -29,16 +29,10 @@
 	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="fpini" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subactividad" class="java.lang.Integer">
@@ -66,7 +60,6 @@ WHERE
   enf_ctl_actividad.id = enf_ctl_subactividad.id_actividad AND
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
   ctl_establecimiento.id = mnt_expediente.id_establecimiento and
-  mnt_expediente.id= $P{codigoExp} and
 mnt_empleado.id = $P{codigoEmp} and
 enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day and
 enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpini}, 'dd/MM/YYYY') and
@@ -139,7 +132,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Actividades]]></text>
+				<text><![CDATA[Consolidado de Actividades Realizadas por el personal de enfermería en los últimos siete días]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="1" y="46" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
