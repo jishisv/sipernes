@@ -220,5 +220,4 @@ class EnfTipoEsquemaVac
      public function __toString() {
     return $this->nombreTipoEsq ? $this->nombreTipoEsq : '';
     }
-   
 }
