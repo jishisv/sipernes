@@ -153,8 +153,4 @@ class EnfModalidad
     {
         return $this->fechaIngresoMod;
     }
-    
-    public function __toString() {
-    return $this->nombreModalidad ? $this->nombreModalidad : '';
-    }
 }

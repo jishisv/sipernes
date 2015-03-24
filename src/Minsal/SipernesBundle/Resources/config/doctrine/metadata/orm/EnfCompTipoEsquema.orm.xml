@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="EnfInventario" table="enf_inventario">
+  <entity name="EnfCompTipoEsquema" table="enf_comp_tipo_esquema">
     <indexes>
-      <index name="IDX_886A88E4BF16C07B" columns="id_componente"/>
+      <index name="IDX_7D53F8B9BF16C07B" columns="id_componente"/>
+      <index name="IDX_7D53F8B9C5C543BF" columns="id_tipo_esquema"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="existencia" type="decimal" column="existencia" precision="10" scale="0" nullable="true"/>
-    <field name="fechaIngresoInventario" type="date" column="fecha_ingreso_inventario" nullable="true"/>
-    <field name="usuarioInventario" type="string" column="usuario_inventario" length="40" nullable="true"/>
-    <field name="estadoInventario" type="boolean" column="estado_inventario" nullable="true"/>
-    <field name="caducidadInventario" type="date" column="caducidad_inventario" nullable="true"/>
+    <many-to-one field="idTipoEsquema" target-entity="EnfTipoEsquemaVac">
+      <join-columns>
+        <join-column name="id_tipo_esquema" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idComponente" target-entity="EnfComponente">
       <join-columns>
         <join-column name="id_componente" referenced-column-name="id"/>

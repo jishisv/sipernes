@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfInventario
  *
- * @ORM\Table(name="enf_inventario")
+ * @ORM\Table(name="enf_inventario", indexes={@ORM\Index(name="IDX_886A88E4BF16C07B", columns={"id_componente"})})
  * @ORM\Entity
  */
 class EnfInventario
@@ -56,6 +56,16 @@ class EnfInventario
      * @ORM\Column(name="caducidad_inventario", type="date", nullable=true)
      */
     private $caducidadInventario;
+
+    /**
+     * @var \EnfComponente
+     *
+     * @ORM\ManyToOne(targetEntity="EnfComponente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_componente", referencedColumnName="id")
+     * })
+     */
+    private $idComponente;
 
 
 
@@ -182,5 +192,28 @@ class EnfInventario
     public function getCaducidadInventario()
     {
         return $this->caducidadInventario;
+    }
+
+    /**
+     * Set idComponente
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfComponente $idComponente
+     * @return EnfInventario
+     */
+    public function setIdComponente(\Minsal\SipernesBundle\Entity\EnfComponente $idComponente = null)
+    {
+        $this->idComponente = $idComponente;
+
+        return $this;
+    }
+
+    /**
+     * Get idComponente
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfComponente 
+     */
+    public function getIdComponente()
+    {
+        return $this->idComponente;
     }
 }

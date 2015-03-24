@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfComponente
  *
- * @ORM\Table(name="enf_componente", indexes={@ORM\Index(name="IDX_F8EF86BDCF93CE22", columns={"id_inventario"}), @ORM\Index(name="IDX_F8EF86BDEDEF355D", columns={"id_tipo_esq"}), @ORM\Index(name="IDX_F8EF86BD6244810C", columns={"id_tipo_componente"})})
+ * @ORM\Table(name="enf_componente", indexes={@ORM\Index(name="IDX_F8EF86BD6244810C", columns={"id_tipo_componente"})})
  * @ORM\Entity
  */
 class EnfComponente
@@ -58,24 +58,11 @@ class EnfComponente
     private $estadoComponente;
 
     /**
-     * @var \EnfInventario
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="EnfInventario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_inventario", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="nombre_componente", type="string", length=50, nullable=true)
      */
-    private $idInventario;
-
-    /**
-     * @var \EnfTipoEsquemaVac
-     *
-     * @ORM\ManyToOne(targetEntity="EnfTipoEsquemaVac")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tipo_esq", referencedColumnName="id")
-     * })
-     */
-    private $idTipoEsq;
+    private $nombreComponente;
 
     /**
      * @var \EnfCtlTipoComponente
@@ -215,49 +202,26 @@ class EnfComponente
     }
 
     /**
-     * Set idInventario
+     * Set nombreComponente
      *
-     * @param \Minsal\SipernesBundle\Entity\EnfInventario $idInventario
+     * @param string $nombreComponente
      * @return EnfComponente
      */
-    public function setIdInventario(\Minsal\SipernesBundle\Entity\EnfInventario $idInventario = null)
+    public function setNombreComponente($nombreComponente)
     {
-        $this->idInventario = $idInventario;
+        $this->nombreComponente = $nombreComponente;
 
         return $this;
     }
 
     /**
-     * Get idInventario
+     * Get nombreComponente
      *
-     * @return \Minsal\SipernesBundle\Entity\EnfInventario 
+     * @return string 
      */
-    public function getIdInventario()
+    public function getNombreComponente()
     {
-        return $this->idInventario;
-    }
-
-    /**
-     * Set idTipoEsq
-     *
-     * @param \Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac $idTipoEsq
-     * @return EnfComponente
-     */
-    public function setIdTipoEsq(\Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac $idTipoEsq = null)
-    {
-        $this->idTipoEsq = $idTipoEsq;
-
-        return $this;
-    }
-
-    /**
-     * Get idTipoEsq
-     *
-     * @return \Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac 
-     */
-    public function getIdTipoEsq()
-    {
-        return $this->idTipoEsq;
+        return $this->nombreComponente;
     }
 
     /**
@@ -281,9 +245,5 @@ class EnfComponente
     public function getIdTipoComponente()
     {
         return $this->idTipoComponente;
-    }
-    
-     public function __toString() {
-    return $this->presentacion ? $this->presentacion : '';
     }
 }
