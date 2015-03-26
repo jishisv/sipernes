@@ -44,30 +44,22 @@
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
-  enf_esquema_vac.nombre_esquema_vac Nombreesquema,
   enf_componente.nombre_componente Nombrevacuna,
-  count(enf_componente.nombre_componente) Dosis
+  count(enf_dosis_esquema_vac.id) Dosis
 
 FROM
   public.enf_componente,
-  public.enf_ctl_tipo_componente,
   public.mnt_empleado,
   public.ctl_establecimiento,
-  public.enf_dosis_esquema_vac,
-  public.enf_esquema_vac
+  public.enf_dosis_esquema_vac
 WHERE
-  enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
-  mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
-  enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq
+  mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr
 group by
-  enf_esquema_vac.id, Establecimiento, Nombreesquema,Nombrevacuna, Dosis
-order by
-  enf_esquema_vac.id;]]>
+   Establecimiento, Nombrevacuna,Dosis;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="nombreesquema" class="java.lang.String"/>
 	<field name="nombrevacuna" class="java.lang.String"/>
 	<field name="dosis" class="java.lang.Long"/>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
@@ -128,43 +120,36 @@ order by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte de Registros Mensuales de Producción de Vacunas]]></text>
+				<text><![CDATA[Consolidado de Vacunas Aplicadas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="49" width="59" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" x="11" y="49" width="84" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="238" y="49" width="130" height="31" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[Categoría de vacunación]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="table_TH" x="498" y="49" width="64" height="31" backcolor="#CCCCCC" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
+				<reportElement style="table_TH" x="484" y="49" width="78" height="31" backcolor="#CCCCCC" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy h:mm a">
+			<textField pattern="dd/MM/yyyy h.mm a">
 				<reportElement x="11" y="18" width="120" height="20" uuid="c2116dc1-3378-42c6-be2d-7576b71b065b"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="368" y="49" width="130" height="31" backcolor="#CCCCCC" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<reportElement style="table_TH" x="306" y="49" width="178" height="31" backcolor="#CCCCCC" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Vacuna]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="70" y="49" width="168" height="31" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" x="95" y="49" width="211" height="31" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
@@ -190,27 +175,22 @@ order by
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="11" y="0" width="59" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" x="11" y="0" width="84" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="70" y="0" width="168" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" x="95" y="0" width="211" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="238" y="0" width="130" height="35" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombreesquema}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="498" y="0" width="64" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
+				<reportElement style="table" x="484" y="0" width="78" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="368" y="0" width="130" height="35" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+				<reportElement style="table" x="306" y="0" width="178" height="35" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
 			</textField>
@@ -222,14 +202,14 @@ order by
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" x="11" y="0" width="487" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" x="11" y="0" width="473" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="table" x="498" y="0" width="64" height="33" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
+				<reportElement style="table" x="484" y="0" width="78" height="33" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>

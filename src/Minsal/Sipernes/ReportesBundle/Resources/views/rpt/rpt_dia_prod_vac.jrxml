@@ -128,7 +128,7 @@ order by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte de Registros Mensuales de Producción de Vacunas]]></text>
+				<text><![CDATA[Reporte de Registro Diario de Producción de Vacunas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="11" y="49" width="59" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
