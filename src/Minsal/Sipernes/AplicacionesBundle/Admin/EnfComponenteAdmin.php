@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Minsal\SipernesBundle\Entity\EnfCtlTipoComponente;
+use Doctrine\ORM\EntityRepository;
 
 class EnfComponenteAdmin extends Admin
 {
@@ -16,12 +18,14 @@ class EnfComponenteAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('presentacion')
-            ->add('usuarioComponente')
-            ->add('fechaIngresoComponente')
-            ->add('fechaModificacionComponente')
-            ->add('estadoComponente')
+            //->add('id')
+            ->add('idTipoComponente', null, array('label' => 'Componente'))
+            ->add('nombreComponente', null, array('label' => 'Nombre del componente'))
+            ->add('presentacion', null, array('label' => 'Presentación'))
+            ->add('usuarioComponente', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoComponente', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionComponente')
+            ->add('estadoComponente', null, array('label' => 'Activo'))
         ;
     }
 
@@ -31,12 +35,14 @@ class EnfComponenteAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('presentacion')
-            ->add('usuarioComponente')
-            ->add('fechaIngresoComponente')
-            ->add('fechaModificacionComponente')
-            ->add('estadoComponente')
+            //->add('id')
+            ->add('idTipoComponente', null, array('label' => 'Componente'))
+            ->add('nombreComponente', null, array('label' => 'Nombre del componente'))
+            ->add('presentacion', null, array('label' => 'Presentación'))
+            ->add('usuarioComponente', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoComponente', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionComponente')
+            ->add('estadoComponente', null, array('label' => 'Activo'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -54,14 +60,19 @@ class EnfComponenteAdmin extends Admin
     {
         $formMapper
 //            ->add('id')
-            ->add('idInventario', null, array('label' => 'Codigo de Inventario'))
+            ->add('idTipoComponente', null, array('label' => 'Seleccione tipo de componente','required' => true,
+            'class' => 'MinsalSipernesBundle:EnfCtlTipoComponente',
+            'query_builder' => function(EntityRepository $repository) {
+                return $repository->obtenerTipoCompActivo();
+            }))
+            ->add('nombreComponente', null, array('label' => 'Digite nombre del componente'))
 //            ->add('idTipoEsq', null, array('label' => 'Tipo de Esquema'))
 //            ->add('idTipoComponente', null, array('label' => 'Tipo de Componente'))
-            ->add('presentacion', 'text', array('label' => 'Presentacion'))
+            ->add('presentacion', null, array('label' => 'Presentación'))
 //            ->add('usuarioComponente')
 //            ->add('fechaIngresoComponente')
 //            ->add('fechaModificacionComponente')
-            ->add('estadoComponente')
+            ->add('estadoComponente', null, array('label' => 'Activo'))
         ;
     }
 
@@ -71,12 +82,14 @@ class EnfComponenteAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('presentacion')
-            ->add('usuarioComponente')
-            ->add('fechaIngresoComponente')
-            ->add('fechaModificacionComponente')
-            ->add('estadoComponente')
+            //->add('id')
+            ->add('idTipoComponente', null, array('label' => 'Componente'))
+            ->add('nombreComponente', null, array('label' => 'Nombre del componente'))
+            ->add('presentacion', null, array('label' => 'Presentación'))
+            ->add('usuarioComponente', null, array('label' => 'Creado por'))
+            ->add('fechaIngresoComponente', null, array('label' => 'Creado el'))
+            //->add('fechaModificacionComponente')
+            ->add('estadoComponente', null, array('label' => 'Activo'))
         ;
     }
 }

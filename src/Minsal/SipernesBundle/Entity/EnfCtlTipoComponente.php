@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfCtlTipoComponente
  *
  * @ORM\Table(name="enf_ctl_tipo_componente")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoTipoCompRepository")
  */
 class EnfCtlTipoComponente
 {
@@ -182,5 +182,9 @@ class EnfCtlTipoComponente
     public function getEstadoTclTComp()
     {
         return $this->estadoTclTComp;
+    }
+    
+    public function __toString() {
+    return $this->nombreComponente1 ? $this->nombreComponente1 : '';
     }
 }
