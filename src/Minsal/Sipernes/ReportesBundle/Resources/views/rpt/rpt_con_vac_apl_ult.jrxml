@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -120,7 +120,7 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Vacunas Aplicadas]]></text>
+				<text><![CDATA[Consolidado de Vacunas Aplicadas en los Ultimos Siete Días]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="11" y="49" width="84" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
