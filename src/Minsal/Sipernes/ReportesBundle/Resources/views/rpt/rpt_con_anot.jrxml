@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -52,7 +52,12 @@ FROM
   public.ctl_establecimiento,
   public.sec_signos_vitales,
   public.enf_mtl_nota,
-  public.enf_anotacion
+  public.enf_anotacion,
+mnt_expediente
+where
+mnt_expediente.id=coalesce($P{codigoExp},mnt_expediente.id) and
+mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id) and
+ctl_establecimiento.id=coalesce($P{tipoEstable},ctl_establecimiento.id)
 group by
   ctl_establecimiento.nombre,
   enf_anotacion.observacion_anot,
