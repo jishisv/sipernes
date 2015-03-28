@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="135"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -47,9 +47,8 @@
   enf_ctl_tipo_componente.nombre_componente1 Nombrevacuna,
   enf_mov_inventario.cantidad_mov Cantidad,
   enf_mov_inventario.empleado_envio NombreEmpleadoenvio,
-  enf_mov_inventario.empleado_recivio NombreEmpleadorecibio,
-  ctl_area_atencion.nombre Area
-FROM
+  enf_mov_inventario.empleado_recivio NombreEmpleadorecibio
+  FROM
   public.enf_componente,
   public.enf_ctl_tipo_componente,
   public.mnt_empleado,
@@ -62,17 +61,15 @@ WHERE
   enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_mov_inventario.id_emp_corr AND
-  mnt_empleado.idarea = ctl_area_atencion.id AND
   enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
-  enf_mov_inventario.id_inventario = enf_inventario.id AND
-  enf_inventario.id = enf_componente.id_inventario;]]>
+  enf_mov_inventario.id_inventario = enf_inventario.id
+group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreempleadorecibio;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="nombrevacuna" class="java.lang.String"/>
 	<field name="cantidad" class="java.math.BigDecimal"/>
 	<field name="nombreempleadoenvio" class="java.lang.String"/>
 	<field name="nombreempleadorecibio" class="java.lang.String"/>
-	<field name="area" class="java.lang.String"/>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>

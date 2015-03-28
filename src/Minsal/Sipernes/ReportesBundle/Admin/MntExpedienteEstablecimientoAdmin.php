@@ -68,14 +68,15 @@ class MntExpedienteEstablecimientoAdmin extends Admin
             ->add('idNumeroExpediente')
         ;
     }
-    public function getTemplate($name) {
+    
+     public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesReportesBundle:Reportes:reporte_diario_capac.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_micro_plani.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);
                 break;
         }
-     }
+    }
 }
