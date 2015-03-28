@@ -63,7 +63,7 @@ class EnfTipoEsquemaVacAdmin extends Admin
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerEsqVacActivo();
             }))    
-            ->add('nombreTipoEsq', 'text', array('label' => 'Digite el nombre de vacuna','max_length' => 150,'required' => true))
+            ->add('nombreTipoEsq', 'text', array('label' => 'Digite el nombre de aplicación','max_length' => 150,'required' => true))
             //->add('dosisMaxima', null, array('label' => 'Dosis Máxima','max_length' => 150,'required' => true))
             ->add('estadoTipoVac', null, array('label' => 'Activo'))
             //->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
@@ -85,6 +85,22 @@ class EnfTipoEsquemaVacAdmin extends Admin
             ->add('usuarioIngresoTipoVac', null, array('label' => 'Creado por'))
             ->add('fechaIngresoTipoVac', null, array('label' => 'Creado el'))
         ;
+    }
+    
+    
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesAplicacionesBundle:TipoEsquema:ctltipoesquema.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
     
     

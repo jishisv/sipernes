@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfEsquemaVac
  *
- * @ORM\Table(name="enf_esquema_vac")
+ * @ORM\Table(name="enf_esquema_vac", indexes={@ORM\Index(name="IDX_9CB9EE72C07609F3", columns={"id_tipo_aplicacion"})})
  * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoEsqVacRepository")
  */
 class EnfEsquemaVac
@@ -70,6 +70,16 @@ class EnfEsquemaVac
      * @ORM\Column(name="fecha_ingreso_vac", type="date", nullable=true)
      */
     private $fechaIngresoVac;
+
+    /**
+     * @var \EnfCtlTipoComponente
+     *
+     * @ORM\ManyToOne(targetEntity="EnfCtlTipoComponente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_aplicacion", referencedColumnName="id")
+     * })
+     */
+    private $idTipoAplicacion;
 
 
 
@@ -242,6 +252,29 @@ class EnfEsquemaVac
     public function getFechaIngresoVac()
     {
         return $this->fechaIngresoVac;
+    }
+
+    /**
+     * Set idTipoAplicacion
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfCtlTipoComponente $idTipoAplicacion
+     * @return EnfEsquemaVac
+     */
+    public function setIdTipoAplicacion(\Minsal\SipernesBundle\Entity\EnfCtlTipoComponente $idTipoAplicacion = null)
+    {
+        $this->idTipoAplicacion = $idTipoAplicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoAplicacion
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfCtlTipoComponente 
+     */
+    public function getIdTipoAplicacion()
+    {
+        return $this->idTipoAplicacion;
     }
     
     public function __toString() {

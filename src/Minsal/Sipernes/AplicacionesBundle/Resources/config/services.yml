@@ -3,13 +3,13 @@ services:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfEsquemaVacAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfEsquemaVac, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo fase de vacunación}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo fase de aplicación}
 
     minsal_sipernes_aplicaciones.admin.enf_tipo_esquema_vac:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaVacAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac, MinsalSipernesAplicacionesBundle:EnfTipoEsquemaVacAdmin] 
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de vacunación}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de aplicación}
 
     minsal_sipernes_aplicaciones.admin.enf_ctl_tipo_componente:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlTipoComponenteAdmin
@@ -39,7 +39,7 @@ services:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaVacAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de vacuna}
+            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación }
 
     minsal_sipernes_aplicaciones.admin.enf_mov_inventario:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfMovInventarioAdmin

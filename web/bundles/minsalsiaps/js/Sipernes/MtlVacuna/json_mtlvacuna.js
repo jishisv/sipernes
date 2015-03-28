@@ -1,9 +1,17 @@
 
-
 $(document).ready(function() {
+  
+   $('#tipoaplicacion').prepend('<option/>').val(function() {
+        return $('[selected]', this).val();
+    });
+    $('#tipoaplicacion').select2({
+        placeholder: 'Seleccione tipo de aplicación... ',
+        allowClear: true,
+        width: '100%'
+    });
     
-    $('#tipovacuna').select2({
-        placeholder: 'Seleccione Fase de Vacunación... ',
+    $('#tipoesquema').select2({
+        placeholder: 'Seleccione fase de aplicación... ',
         allowClear: true,
         width: '100%'
     });
@@ -12,7 +20,7 @@ $(document).ready(function() {
         return $('[selected]', this).val();
     });
     $('select[id$="_idTipoEsq"]').select2({
-        placeholder: 'Seleccione Vacuna Aplicada... ',
+        placeholder: 'Seleccione aplicación... ',
         allowClear: true,
         width: '100%'
     });
@@ -21,64 +29,93 @@ $(document).ready(function() {
 
    //$('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
    
-    /*CARGAR PROTOCOLOS*/
-      $.getJSON(Routing.generate('get_TipoVac'),
+    /*CARGAR TIPO DE APLICACION*/
+      $.getJSON(Routing.generate('get_TipoAplicacion'),
             function (data) {
-                $.each(data.tipovacuna, function (indice, aux) {
-                    $('#tipovacuna').append('<option value="' + aux.id + '">' + aux.nombreEsquemaVac + '</option>');
+                $.each(data.tipoaplicacion, function (indice, aux) {
+                    $('#tipoaplicacion').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
                 });
             });
 
 
     
-    /*CARGAR SUBPROTOCOLOS*/
-    $('#tipovacuna').change(function() {
-        $('select[id$="_idTipoEsq"]').children().remove();
-        $('select[id$="_idTipoEsq"]').append('<option></option>');
-        $('select[id$="_idTipoEsq"]').select2({
-            placeholder: 'Seleccione Vacuna Aplicada...',
+    /*CARGAR APLICACION*/
+    $('#tipoaplicacion').change(function() {
+        $('#tipoesquema').children().remove();
+        $('#tipoesquema').append('<option></option>');
+        $('#tipoesquema').select2({
+            placeholder: 'Seleccione fase de aplicación...',
             allowClear: true,
             width: '100%'
         });
-        
-        if ($('#tipovacuna').select2('val') == '') {
-            $('select[id$="_idTipoEsq"]').attr('enabled', 'enabled');
+        $('select[id$="_idTipoEsq"]').children().remove();
+        $('select[id$="_idTipoEsq"]').append('<option></option>');
+        $('select[id$="_idTipoEsq"]').select2({
+            placeholder: 'Seleccione aplicación...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#tipoaplicacion').select2('val') == '') {
+            $('#tipoesquema').attr('enabled', 'enabled');
         } else {
-            $.getJSON(Routing.generate('get_Vac') + '/' + $('#tipovacuna').select2('val'),
+            $.getJSON(Routing.generate('get_Aplicacion') + '/' + $('#tipoaplicacion').select2('val'),
                     function(data) {
-                        $.each(data.vacuna, function(indice, aux) {
-                            $('select[id$="_idTipoEsq"]').append($('<option>', {value: aux.id, text: aux.nombreTipoEsq}));
+                        $.each(data.fases, function(indice, aux) {
+                            $('#tipoesquema').append($('<option>', {value: aux.id, text: aux.nombreEsquemaVac}));
                         });
-                        $('#tipovacuna').removeAttr('enabled');
-                        $('select[id$="_idTipoEsq"]').attr('enabled', 'enabled');
+                        $('#tipoaplicacion').removeAttr('enabled');
+                        $('#tipoesquema').attr('enabled', 'enabled');
                     });
 
         }
 
     });
 
-    if (($('#tipovacuna').select2('val') == 68 && $('#subprotocolo').select2('val') == "") || $('#protocolo').select2('val') == '') {
+    if (($('#tipoaplicacion').select2('val') == 68 && $('#subprotocolo').select2('val') == "") || $('#protocolo').select2('val') == '') {
         $('#actividad').select2('val', 68);
-        $('select[id$="_idTipoEsq"]').children().remove();
-        $('select[id$="_idTipoEsq"]').append('<option></option>');
-        $('select[id$="_idTipoEsq"]').select2({
-            placeholder: 'Seleccione Vacuna Aplicada...',
+        $('#tipoesquema').children().remove();
+        $('#tipoesquema').append('<option></option>');
+        $('#tipoesquema').select2({
+            placeholder: 'Seleccione fase de aplicación...',
             allowClear: true,
             width: '100%'
         });
-        $.getJSON(Routing.generate('get_Vac') + '/' + $('#tipovacuna').select2('val'),
+        $.getJSON(Routing.generate('get_Aplicacion') + '/' + $('#tipoaplicacion').select2('val'),
                 function(data) {
-                    $.each(data.vacuna, function(indice, aux) {
-                        $('select[id$="_idTipoEsq"]').append($('<option>', {value: aux.id, text: aux.nombreTipoEsq}));
+                    $.each(data.fases, function(indice, aux) {
+                        $('#tipoesquema').append($('<option>', {value: aux.id, text: aux.nombreEsquemaVac}));
                     });
-                    $('#tipovacuna').removeAttr('disabled');
+                    $('#tipoaplicacion').removeAttr('disabled');
                 });
 
     }
     
 
+    /*CARGAR COMPONENTE*/
+    $('#tipoesquema').on('change', function(e) {
+        $('select[id$="_idTipoEsq"]').children().remove();
+        $('select[id$="_idTipoEsq"]').append('<option></option>');
+        $('select[id$="_idTipoEsq"]').select2({
+            placeholder: 'Seleccione aplicación...',
+            allowClear: true,
+            width: '100%'
+        });
+        if ($('#tipoesquema').select2('val') == '') {
+            $('select[id$="_idTipoEsq"]').attr('enabled', 'enabled');
+        } else {
+            $.getJSON(Routing.generate('get_TipoComponente') + '/' + $('#tipoesquema').select2('val'),
+                    function(data) {
+                        $.each(data.tipocomponente, function(indice, aux) {
+                            $('select[id$="_idTipoEsq"]').append($('<option>', {value: aux.id, text: aux.nombreTipoEsq}));
+                        });
+                        $('select[id$="_idTipoEsq"]').removeAttr('disabled');
+			
+                    });
+        }
+
+    }).focusout(function() {
+        $('select[id$="_idTipoEsq"]').focus();
+    });
   
 
 });
-
-
