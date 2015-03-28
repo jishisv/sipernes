@@ -1028,7 +1028,7 @@ class ReporteMetodoController extends Controller {
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfComponente o
-                WHERE o.id = :id";
+                WHERE o.idTipoComponente = :id";
         $componente['componente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
 
 
