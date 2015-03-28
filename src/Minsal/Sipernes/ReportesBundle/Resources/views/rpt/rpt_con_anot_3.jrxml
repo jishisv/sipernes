@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -49,10 +49,14 @@
 FROM
   mnt_empleado,
   ctl_establecimiento,
-  enf_mtl_nota
+  enf_mtl_nota,
+mnt_expediente
 
   where mnt_empleado.id_establecimiento = ctl_establecimiento.id and
-   enf_mtl_nota.id_emp_corr = mnt_empleado.id
+   enf_mtl_nota.id_emp_corr = mnt_empleado.id and
+mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id) and
+mnt_expediente.id=coalesce($P{codigoExp},mnt_expediente.id) and
+ctl_establecimiento.id=coalesce($P{tipoEstable},ctl_establecimiento.id)
 group by
   ctl_establecimiento.nombre,
   enf_mtl_nota.observacion_nota;]]>

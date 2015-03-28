@@ -117,7 +117,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlAtencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlAtencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de Vacunas Aplicadas}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Vacunas Aplicadas}
 
     minsal_sipernes_reportes.admin.ctl_establecimiento:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlEstablecimientoAdmin

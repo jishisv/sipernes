@@ -75,7 +75,7 @@ WHERE
 enf_ctl_diagnostico.id = $P{diagnostico} and
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
-mnt_empleado.id=$P{codigoEmp}
+mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id)
   group by
 
   ctl_establecimiento.nombre,
