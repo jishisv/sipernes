@@ -1960,6 +1960,40 @@ $(document).ready(function () {
 
                 });
     });
+    
+   /////////////////llenado de combos para micronutrientes////////////////////////////////////////////////////
+   ////////////////////llenado de combos de Tipo de Componente y Componente//////////////////////
+    $.getJSON(Routing.generate('get_all_tipo_componente'),
+            function (data) {
+
+                $.each(data.tipocomponente, function (indice, aux) {
+                    $('#tipo_micro').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
+                });
+            });
+
+    $("#tipo_micro").on('change', function (event) { // aqui el JSON });
+        $('#micro option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#micro').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_componente') + '/' + $('#tipo_micro').val(),
+                function (data) {
+                    $('micro').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.componente, function (indice, aux) {
+                        $('#micro').append('<option value="' + aux.id + '">' + aux.presentacion + '</option>');
+                    });
+
+                });
+    });
+   
 
 ////////////////////llenado de combos de Protocolo y SubProtocolo//////////////////////
     $.getJSON(Routing.generate('get_all_protocolos'),
