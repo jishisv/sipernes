@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EnfCtlTipoComponente
  *
  * @ORM\Table(name="enf_ctl_tipo_componente")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoTipoCompRepository")
  */
 class EnfCtlTipoComponente
 {
