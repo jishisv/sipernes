@@ -136,7 +136,7 @@ group by
 				</textElement>
 				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy h.mm a">
+			<textField pattern="dd/MM/yyyy h:mm a">
 				<reportElement x="11" y="18" width="120" height="20" uuid="c2116dc1-3378-42c6-be2d-7576b71b065b"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
