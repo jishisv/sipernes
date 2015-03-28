@@ -369,4 +369,8 @@ class EnfMtlCapacitacion
     {
         return $this->idEmpCorr;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

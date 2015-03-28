@@ -186,4 +186,8 @@ class EnfBitacoraInventario
     {
         return $this->idInventario;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

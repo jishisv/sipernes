@@ -312,4 +312,8 @@ class EnfMtlActividad
     {
         return $this->idSubactividad;
     }
+    
+    public function __toString() {
+        return 'Actividad';
+    }
 }

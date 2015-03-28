@@ -276,4 +276,8 @@ class EnfBitacoraActividad
     {
         return $this->idRegistroActividad;
     }
+    
+     public function __toString() {
+        return '';
+    }
 }

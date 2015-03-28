@@ -156,4 +156,8 @@ class EnfTrazaCapacitacion
     {
         return $this->idCapacitacion;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

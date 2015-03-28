@@ -156,4 +156,8 @@ class EnfTrazaActividad
     {
         return $this->idRegistroActividad;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

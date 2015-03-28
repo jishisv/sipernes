@@ -156,4 +156,8 @@ class EnfTrazaIntervencion
     {
         return $this->idRegistroIntervencion;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

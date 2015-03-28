@@ -216,4 +216,8 @@ class EnfBitacoraNota
     {
         return $this->idRegistroNota;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

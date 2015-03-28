@@ -27,8 +27,8 @@
                 </div>  
                 <td class=""><strong>Fecha Inicial</strong></td>
                 <td><input id="fecha_inicio" name="fecha_inicio" type="text" class="fecha obligatorio" /></td>
-                <td class=" "><strong>Fecha Final</strong></td>
-                <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>
+                {#<td class=" "><strong>Fecha Final</strong></td>
+                <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>#}
                 </tr>
                 <tr>
                     <td class="" ><strong>Departamento:</strong></td>
@@ -54,9 +54,13 @@
                 </tr>
                 <tr>
                     <td class="" ><strong>Tipo Micronutriente:</strong></td>
-                    <td><input id="tipo_micronutriente" name="tipo_micronutriente" type="text"  /></td>
+                    <td><select id="tipo_micro" name="tipo_vacuna">
+                            <option value="0">Seleccione..</option>
+                        </select></td>
                     <td class="" ><strong>Micronutriente:</strong></td>
-                    <td><input id="micronutriente" name="micronutriente" type="text"  /></td>
+                    <td><select id="presentacion" name="presentacion">
+                            <option value="0">Seleccione..</option>
+                        </select></td>
                 </tr>
                 <tr>
                     <td class="" ><strong>Formato Reporte:</strong></td>

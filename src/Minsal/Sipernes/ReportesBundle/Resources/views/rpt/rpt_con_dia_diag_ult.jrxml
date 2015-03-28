@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="540"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -49,7 +49,8 @@
   mnt_paciente.primer_nombre NombrePaciente,
   mnt_paciente.segundo_nombre,
   enf_mtl_diagnostico.id_emp_corr NumeroEmpleado,
-  enf_ctl_diagnostico.nombre_diagnostico Diagnostico
+  enf_ctl_diagnostico.nombre_diagnostico Diagnostico,
+  enf_mtl_actividad.fecha_modificacion_act
 FROM
   public.mnt_expediente_establecimiento,
   public.mnt_expediente,
@@ -57,14 +58,16 @@ FROM
   public.mnt_paciente,
   public.enf_mtl_diagnostico,
   public.ctl_establecimiento,
-  public.enf_ctl_diagnostico
+  public.enf_ctl_diagnostico,
+  public.enf_mtl_actividad
 WHERE
   mnt_expediente.id_establecimiento = mnt_expediente_establecimiento.id_establecimiento AND
   mnt_expediente.id_paciente = mnt_paciente.id AND
   mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
   enf_mtl_diagnostico.id_emp_corr = mnt_empleado.id AND
   ctl_establecimiento.id = mnt_expediente_establecimiento.id_establecimiento AND
-  enf_ctl_diagnostico.id = enf_mtl_diagnostico.id_ctl_diag;]]>
+  enf_ctl_diagnostico.id = enf_mtl_diagnostico.id_ctl_diag AND
+  enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
@@ -77,6 +80,7 @@ WHERE
 	<field name="diagnostico" class="java.lang.String">
 		<fieldDescription><![CDATA[Diagnostico de ingreso del paciente al hospital]]></fieldDescription>
 	</field>
+	<field name="fecha_modificacion_act" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

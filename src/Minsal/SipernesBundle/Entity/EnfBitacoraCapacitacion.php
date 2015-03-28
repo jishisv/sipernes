@@ -336,4 +336,8 @@ class EnfBitacoraCapacitacion
     {
         return $this->idCapacitacion;
     }
+    
+     public function __toString() {
+        return '';
+    }
 }

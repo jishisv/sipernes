@@ -213,4 +213,8 @@ class EnfCtlNota
     {
         return $this->fechaModCtlNota;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

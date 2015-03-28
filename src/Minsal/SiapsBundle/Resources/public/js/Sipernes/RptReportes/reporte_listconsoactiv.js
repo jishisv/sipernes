@@ -1166,7 +1166,7 @@ $(document).ready(function () {
             }
 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_diag_diario') + '/rpt_con_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_diag_diario') + '/rpt_con_dia_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1200,7 +1200,7 @@ $(document).ready(function () {
             }
             var formato = $("input[name='formato_rpt']:checked").val();
 
-            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1233,7 +1233,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_con_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_con_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1656,6 +1656,7 @@ $(document).ready(function () {
 
 
     $("#deptos").on('change', function (event) { // aqui el JSON });
+        
         $('#municipios option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
@@ -1669,6 +1670,7 @@ $(document).ready(function () {
         });
         $.getJSON(Routing.generate('get_all_munic') + '/' + $('#deptos').val(),
                 function (data) {
+                    
                     $('#municipios').append('<option value="0" selected="true">Seleccione...</option>');
 //                    alert("entre a municipios de shcp");
                     $.each(data.municipios, function (indice, aux) {
@@ -1677,7 +1679,33 @@ $(document).ready(function () {
 
                 });
     });
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $("#municipios").on('change', function (event) { // aqui el JSON });
+       alert("entre");
+        $('#establecimientos option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#establecimientos').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
 
+        });
+        $.getJSON(Routing.generate('get_all_establecimientos_by_munic') + '/' + $('#municipios').val(),
+                function (data) {
+                    $('#establecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+                   // alert("entre a municipios de shcp");
+                    $.each(data.establecimientos, function (indice, aux) {
+                        $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    });
+
+                });
+    });
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
     $("#deptos2").on('change', function (event) { // aqui el JSON });
         $('#municipios2 option').each(function (index, val) {
             $(this).remove();
@@ -1732,7 +1760,7 @@ $(document).ready(function () {
 
                 });
     });
-
+    
 
     ////////////////////llenado de combos de actividades//////////////////////
     $.getJSON(Routing.generate('get_all_actividades'),
@@ -1823,7 +1851,7 @@ $(document).ready(function () {
              // $('#tipoestablecimientos').val());
         });
         $('#tipoestablecimientos').append('<option value="0">Seleccione..</option>');
-        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
+        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val() + '/' + $('#municipios').val(),
                function (data) {
                    // $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
                      // alert( $('#tipoestablecimientos').val());
@@ -1960,6 +1988,40 @@ $(document).ready(function () {
 
                 });
     });
+    
+   /////////////////llenado de combos para micronutrientes////////////////////////////////////////////////////
+   ////////////////////llenado de combos de Tipo de Componente y Componente//////////////////////
+    $.getJSON(Routing.generate('get_all_tipo_componente'),
+            function (data) {
+
+                $.each(data.tipocomponente, function (indice, aux) {
+                    $('#tipo_micro').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
+                });
+            });
+
+    $("#tipo_micro").on('change', function (event) { // aqui el JSON });
+        $('#micro option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#micro').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_componente') + '/' + $('#tipo_micro').val(),
+                function (data) {
+                    $('micro').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.componente, function (indice, aux) {
+                        $('#micro').append('<option value="' + aux.id + '">' + aux.presentacion + '</option>');
+                    });
+
+                });
+    });
+   
 
 ////////////////////llenado de combos de Protocolo y SubProtocolo//////////////////////
     $.getJSON(Routing.generate('get_all_protocolos'),
@@ -1992,6 +2054,8 @@ $(document).ready(function () {
 
                 });
     });
+    
+    
 
 ////////////////////llenado de combo de capacitacion//////////////////////
     $.getJSON(Routing.generate('get_all_capacitaciones'),
@@ -2002,14 +2066,15 @@ $(document).ready(function () {
                 });
             });
 
-////////////////////llenado de combo de capacitacion//////////////////////
-    $.getJSON(Routing.generate('get_all_financiamiento'),
+////////////////////llenado de combo de anotaciones//////////////////////
+    $.getJSON(Routing.generate('get_todos_anotaciones'),
             function (data) {
 //               alert("entre a deptos de shcp");
-                $.each(data.financiamiento, function (indice, aux) {
-                    $('#financiamiento').append('<option value="' + aux.id + '">' + aux.nombreFinanciamiento + '</option>');
+                $.each(data.tiponota, function (indice, aux) {
+                    $('#anotacion').append('<option value="' + aux.id + '">' + aux.nombreNota + '</option>');
                 });
             });
+
 
 
 });

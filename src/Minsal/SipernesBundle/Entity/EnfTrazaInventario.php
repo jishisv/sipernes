@@ -156,4 +156,8 @@ class EnfTrazaInventario
     {
         return $this->idInventario;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

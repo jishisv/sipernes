@@ -75,8 +75,8 @@ class ReporteMetodoController extends Controller {
             'fpini' => $fecha_inicio,
             'fpfin' => $fecha_fin,
             'tipoEstable' => $tipoestablecimientos,
-            'codigoExp' => 'vacio',
-            'codigoEmp' => 'vacio',
+//            'codigoExp' => 'vacio',
+//            'codigoEmp' => 'vacio',
             'tipo_diag' => $tipo_diag,
             'diagnostico' => $diagnostico,
             'id_servicio' => 0
@@ -268,14 +268,14 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
-            'deptos' => $deptos,
-            'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipo_produccion' => $tipoproduccion,
-            'produccion' => $produccion,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+//            'deptos' => $deptos,
+//            'municipios' => $municipios,
+//            'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
+//            'tipo_produccion' => $tipoproduccion,
+//            'produccion' => $produccion,
         ));
 
         return $jasperReport->buildReport();
@@ -408,7 +408,7 @@ class ReporteMetodoController extends Controller {
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
 //            'tipovacuna' => $tipovacuna,
-//            'presentacion' => $presentacion,
+            'presentacion' => $presentacion,
             'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
         ));
@@ -417,9 +417,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
+     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio,$deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -427,7 +427,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin' => $fecha_fin,
+            'fpfin' => $fecha_inicio,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
@@ -450,12 +450,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
-            'deptos' => $deptos,
-            'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
+            //'municipios' => $municipios,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'tipomicro' => $tipomicro,
             'micro' => $micro,
         ));
@@ -473,12 +473,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+//            'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'tipovacuna' => $tipovacuna,
             'presentacion' => $presentacion,
         ));
@@ -547,15 +547,15 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_inicio' => $fecha_fin,
-            'deptos' => $deptos,
+            'fpini' => $fecha_inicio,
+            //'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'actividades' => $actividades,
-            'subactividades' => $subactividades,
-            'codigo_enfermera' => $codigo_enfermera,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
+            //'actividades' => $actividades,
+            'subactividad' => $subactividades,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -593,12 +593,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
         ));
 
         return $jasperReport->buildReport();
@@ -614,12 +614,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_inicio' => $fecha_fin,
-            'deptos' => $deptos,
-            'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
+            //'municipios' => $municipios,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'deptos2' => $deptos2,
             'municipios2' => $municipios2,
             'sector' => $sector,
@@ -671,7 +671,7 @@ class ReporteMetodoController extends Controller {
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
 //            'tipovac' => $tipovac,
-//            'presentacion' => $presentacion,
+            'presentacion' => $presentacion,
             'id:__servicio' => 0,
         ));
 
@@ -688,7 +688,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
+            'fpini' => $fecha_inicio,
             'fecha_fin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
@@ -696,7 +696,7 @@ class ReporteMetodoController extends Controller {
             'tipoestablecimientos' => $tipoestablecimientos,
             'tipoprotocolo' => $tipoprotocolo,
             'protocolo' => $protocolo,
-            'codigo_enfermera' => $codigo_enfermera,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -793,24 +793,25 @@ class ReporteMetodoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o";
+                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o ";
         //WHERE o.idEstablecimientoPadre is null";
-        $establecimientos['establecimientos'] = $em->createQuery($dql)
-                ->getArrayResult();
+        $establecimientos['establecimientos'] = $em->createQuery($dql)->getArrayResult();
+                
 
         return new Response(json_encode($establecimientos));
     }
 
     /**
-     * @Route("/all/obtener/establecimientos/todos/{id}", name="get_all_sub_establecimientos", options={"expose"=true})
+     * @Route("/all/obtener/establecimientos/todos/{id}/{munic}", name="get_all_sub_establecimientos", options={"expose"=true})
      */
-    public function getTipoEstablecimientos($id) {
+    public function getTipoEstablecimientos($id,$munic) {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idTipoEstablecimiento= :id ORDER BY o.id ASC";
-        $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                WHERE o.idTipoEstablecimiento= :id and o.idMunicipio = :munic ORDER BY o.id ASC";
+        $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->setParameter('munic', $munic)->getArrayResult();
+       
 
 
         return new Response(json_encode($subestablecimientos));
@@ -1017,7 +1018,7 @@ class ReporteMetodoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:EnfCtlTipoComponente o";
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o WHERE o.id=1";
         $tipocomponente['tipocomponente'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -1038,7 +1039,52 @@ class ReporteMetodoController extends Controller {
 
         return new Response(json_encode($componente));
     }
+ /**
+     * @Route("tipos/anotaciones/todos/lista/completa", name="get_todos_anotaciones", options={"expose"=true})
+     */
+    public function getAnotacionAction() {
+        $em = $this->getDoctrine()->getManager();
 
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlNota o";
+        $tiponota['tiponota'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tiponota));
+    }
+    /**
+     * @Route("/all/obtener/establecimientos/por/municipio/{munic}", name="get_all_establecimientos_by_munic", options={"expose"=true})
+     */
+    public function getEstablecimientobyMunicAction($munic) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o WHERE o.id in (SELECT distinct est.idTipoEstablecimiento FROM 
+MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
+       
+        $establecimientos['establecimientos'] = $em->createQuery($dql)->setParameter('munic', $munic)->getArrayResult();
+                
+
+        return new Response(json_encode($establecimientos));
+    }
+    
+    /**
+     * @Route("tipos/componente/micro/todos", name="get_all_micronutrientes", options={"expose"=true})
+     */
+    public function getTipoComponenteMicroAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o WHERE o.id = 2";
+        $tipocomponente['tipocomponente'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipocomponente));
+    }
+    
+    
+    
+    
 }
 
 ?>

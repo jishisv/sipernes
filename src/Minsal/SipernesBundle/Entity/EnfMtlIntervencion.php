@@ -312,4 +312,8 @@ class EnfMtlIntervencion
     {
         return $this->idExpediente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

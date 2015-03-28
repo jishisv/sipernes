@@ -282,4 +282,8 @@ class EnfMtlNota
     {
         return $this->idExpediente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

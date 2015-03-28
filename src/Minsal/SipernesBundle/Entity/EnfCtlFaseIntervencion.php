@@ -216,4 +216,8 @@ class EnfCtlFaseIntervencion
     {
         return $this->idIntervencion;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

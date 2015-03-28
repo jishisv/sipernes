@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="234"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -26,7 +26,7 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="codigoExp" class="java.lang.String">
@@ -69,6 +69,8 @@ WHERE
   enf_ctl_intervencion.id = enf_ctl_fase_intervencion.id_intervencion AND
   enf_mtl_intervencion.id_expediente = mnt_expediente.id AND
   enf_mtl_intervencion.id_emp_corr = mnt_empleado.id AND
+  mnt_empleado.id=$P{codigoEmp} AND
+  enf_mtl_intervencion.fecha_ingreso_interv= to_date($P{fpini}, 'dd/MM/YYYY')AND
   enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id;]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
