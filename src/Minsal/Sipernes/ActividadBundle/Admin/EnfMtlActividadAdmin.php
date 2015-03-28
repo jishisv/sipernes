@@ -60,7 +60,13 @@ class EnfMtlActividadAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 //->add('id')
-                ->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad','required' => true))
+                //->add('fechaModificacionAct', null, array('label' => 'Fecha de actividad','required' => true))
+                ->add('fechaModificacionAct', 'date',
+                  array('label'  => 'Fecha',
+                        'widget' => 'single_text',
+                        'label' => 'Fecha de actividad',
+                        'attr'   => array('class' => 'fechacal obligatorio'),
+                       ))
                 ->add('idEmpCorr', null, array('label' => 'Numero de empleado', 'required' => true))
                 ->add('idExpediente', null, array('label' => 'Expediente', 'required' => true))
                 ->add('idSubactividad', null, array('label' => 'Actividad', 'required' => true))

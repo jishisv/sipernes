@@ -136,6 +136,7 @@ class ShcpParAdmisionAdmin extends Admin
             ->add('admFechaIngreso', 'date',
                   array('label'  => 'Fecha',
                         'widget' => 'single_text',
+                        'format' => 'dd-MM-yyyy',
                         'label' => 'Fecha de ingreso',
                         'attr'   => array('class' => 'fechacal obligatorio'),
                        ))

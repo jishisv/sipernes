@@ -103,7 +103,7 @@ input[id$="_fechaNacimiento"]{
     display: inline-block;
 }
 
-#form_paciente .ui-datepicker-trigger{ 
+#form_paciente .ui-datepicker-trigger{
     display: inline; 
 }
 select[id$="_hour"]{

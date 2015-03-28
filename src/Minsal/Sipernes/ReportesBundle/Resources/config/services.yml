@@ -173,5 +173,8 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de actividades realizadas por el personal de enfermería}
 
-
-
+    minsal_sipernes_reportes.admin.enf_tiene:
+        class: Minsal\Sipernes\ReportesBundle\Admin\EnfTieneAdmin
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfTiene, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de micronutrienes aplicados versus planificados}

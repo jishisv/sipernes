@@ -67,13 +67,13 @@ FROM
 WHERE
   mnt_expediente.id_paciente = mnt_paciente.id AND
   mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
-  ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
+  ctl_establecimiento.id = $P{tipoEstable} AND
   enf_mtl_diagnostico.id_emp_corr = mnt_empleado.id AND
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
 enf_ctl_diagnostico.id = $P{diagnostico} and
-enf_mtl_diagnostico.fecha_ingreso_diag = coalesce(to_date($P{fpini},'DD-MM-YYYY'),  enf_mtl_diagnostico.fecha_ingreso_diag) and
+enf_mtl_diagnostico.fecha_ingreso_diag::date = coalesce(to_date($P{fpini},'DD-MM-YYYY'),  enf_mtl_diagnostico.fecha_ingreso_diag) and
 mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id)
   group by
 

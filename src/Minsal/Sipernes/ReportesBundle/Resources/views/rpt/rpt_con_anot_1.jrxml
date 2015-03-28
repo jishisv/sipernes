@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="49"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -58,8 +58,9 @@ WHERE
   mnt_expediente.id_establecimiento = ctl_establecimiento.id and
 mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) and
 mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
-enf_anotacion.fecha_ingreso_anota >=to_date('dd-MM-YYYY',$P{fpini})
-
+enf_anotacion.fecha_ingreso_anota >=to_date($P{fpini},'dd-MM-YYYY') and
+enf_anotacion.fecha_ingreso_anota <=to_date($P{fpfin},'dd-MM-YYYY')and
+ mnt_expediente.id_establecimiento =$P{tipoEstable}
  group by
   ctl_establecimiento.nombre,
   enf_anotacion.observacion_anot;]]>

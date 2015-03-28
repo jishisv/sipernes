@@ -25,7 +25,7 @@
                 <div id="divdomreg">
 
                 </div>  
-                <td class=""><strong>Fecha Inicial</strong></td>
+                 <td class=""><strong>Fecha Inicial</strong></td>
                 <td><input id="fecha_inicio" name="fecha_inicio" type="text" class="fecha obligatorio" /></td>
                 <td class=" "><strong>Fecha Final</strong></td>
                 <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>
@@ -46,20 +46,24 @@
                 <tr>
                     <td class="" ><strong>Tipo establecimiento:</strong></td>
                     <td><select id="establecimientos" name="establecimientos">
-                            <option selected="true">Seleccione..</option>
+                            <option selected="true" value="0">Seleccione..</option>
                         </select></td>
 
                     <td class="" ><strong>Establecimiento:</strong></td>
                     <td><select id="tipoestablecimientos" name="tipoestablecimientos">
-                            <option></option>
+                            <option value="0">Seleccione..</option>
                         </select></td>
                 </tr>
 
                 <tr>
                     <td class="" ><strong>Tipo Micronutriente:</strong></td>
-                    <td><input id="tipo_micronutriente" name="tipo_micronutriente" type="text"  /></td>
-                    <td class="" ><strong>Micronutriente:</strong></td>
-                    <td><input id="micronutriente" name="micronutriente" type="text"  /></td>
+                    <td><select id="tipo_micro" name="tipo_vacuna">
+                            <option value="0">Seleccione..</option>
+                        </select></td>
+                    <td class="" ><strong>Presentación:</strong></td>
+                    <td><select id="presentacion" name="presentacion">
+                            <option value="0">Seleccione..</option>
+                        </select></td>
 
                 </tr>
 
@@ -70,7 +74,6 @@
                         <input id="formato_rpt_xls" name="formato_rpt" value="XLS" type="radio"  /> Hoja de Calculo
                     </td>
                 </tr>
-
                 </tbody>
             </table>
             <div class="well form-actions">

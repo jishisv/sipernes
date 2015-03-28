@@ -8,9 +8,66 @@
 {% block javascripts %}
     {{parent()}}
     {# 69 #}
-    <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
+   
     <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_listconsoactiv.js') }}" type="text/javascript"></script>
+    <script>
+        
+        
+        jQuery(function($) {
+    $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '&#x3c;Ant',
+        nextText: 'Sig&#x3e;',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+            'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié;', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        showOn: "both",
+        buttonText: "Seleccione..",
+        buttonImage: "/bundles/minsalsiaps/js/datepicker/calendario.png",
+        //para que se muestre sólo la imagen
+        buttonImageOnly: true,
+        
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "c-100:c+10"
+    };
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+});
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $(function () {
+            $("#fecha_inicio").on("change", function () {
+                fechaInicioArray = $(this).val().split("-");alert(fechaInicioArray[2]+ fechaInicioArray[1]+ parseInt(fechaInicioArray[0])+7)
+                fechaFin = new Date(fechaInicioArray[2], fechaInicioArray[1], parseInt(fechaInicioArray[0])+7);alert(fechaFin)
+                $("#fecha_fin").datepicker({minDate: 0, maxDate: fechaFin});
+            })
+
+        });
+    </script>
 {% endblock %}
 {% block sonata_admin_content %}
     <h4><img class="icono" src={{ asset('bundles/minsalsiaps/imagenes/listar.png') }} />Reporte de registros semanales de dosis de vacunas aplicadas</h4>
@@ -28,7 +85,7 @@
                 <td class=""><strong>Semana Inicial</strong></td>
                 <td><input id="fecha_inicio" name="fecha_inicio" type="text" class="fecha obligatorio" /></td>
                 <td class=" "><strong>Semana Final</strong></td>
-                <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>
+                <td><input id="fecha_fin" name="fecha_fin" type="text" class=" obligatorio" /></td>
                 </tr>
                 <tr>
                     <td class="" ><strong>Departamento:</strong></td>
