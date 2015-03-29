@@ -1732,7 +1732,7 @@ $(document).ready(function () {
 
                 });
     });
-
+    
 
     ////////////////////llenado de combos de actividades//////////////////////
     $.getJSON(Routing.generate('get_all_actividades'),
@@ -2026,6 +2026,8 @@ $(document).ready(function () {
 
                 });
     });
+    
+    
 
 ////////////////////llenado de combo de capacitacion//////////////////////
     $.getJSON(Routing.generate('get_all_capacitaciones'),
@@ -2036,14 +2038,15 @@ $(document).ready(function () {
                 });
             });
 
-////////////////////llenado de combo de capacitacion//////////////////////
-    $.getJSON(Routing.generate('get_all_financiamiento'),
+////////////////////llenado de combo de anotaciones//////////////////////
+    $.getJSON(Routing.generate('get_todos_anotaciones'),
             function (data) {
 //               alert("entre a deptos de shcp");
-                $.each(data.financiamiento, function (indice, aux) {
-                    $('#financiamiento').append('<option value="' + aux.id + '">' + aux.nombreFinanciamiento + '</option>');
+                $.each(data.tiponota, function (indice, aux) {
+                    $('#anotacion').append('<option value="' + aux.id + '">' + aux.nombreNota + '</option>');
                 });
             });
+
 
 
 });

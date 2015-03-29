@@ -1038,7 +1038,21 @@ class ReporteMetodoController extends Controller {
 
         return new Response(json_encode($componente));
     }
+ /**
+     * @Route("tipos/anotaciones/todos/lista/completa", name="get_todos_anotaciones", options={"expose"=true})
+     */
+    public function getAnotacionAction() {
+        $em = $this->getDoctrine()->getManager();
 
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlNota o";
+        $tiponota['tiponota'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tiponota));
+    }
+    
+    
 }
 
 ?>
