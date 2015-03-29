@@ -54,6 +54,7 @@ FROM
   public.enf_dosis_esquema_vac
 WHERE
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
+  enf_componente.id_tipo_componente = 2 AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr
 group by
@@ -123,16 +124,16 @@ group by
 				<text><![CDATA[Consolidado de Micronutrientes Aplicados en los Ultimos Siete Días]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="49" width="84" height="31" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" x="11" y="49" width="84" height="31" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="484" y="49" width="78" height="31" backcolor="#CCCCCC" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
+				<reportElement style="table_TH" x="484" y="49" width="78" height="31" backcolor="#999999" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
@@ -142,16 +143,16 @@ group by
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="306" y="49" width="178" height="31" backcolor="#CCCCCC" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<reportElement style="table_TH" x="306" y="49" width="178" height="31" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Micronutriente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="95" y="49" width="211" height="31" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" x="95" y="49" width="211" height="31" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
@@ -176,22 +177,30 @@ group by
 		<band height="35" splitType="Stretch">
 			<textField>
 				<reportElement style="table" x="11" y="0" width="84" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="95" y="0" width="211" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="484" y="0" width="78" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="306" y="0" width="178" height="35" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -204,14 +213,14 @@ group by
 			<staticText>
 				<reportElement style="table" x="11" y="0" width="473" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
 				<reportElement style="table" x="484" y="0" width="78" height="33" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalApl}]]></textFieldExpression>
 			</textField>

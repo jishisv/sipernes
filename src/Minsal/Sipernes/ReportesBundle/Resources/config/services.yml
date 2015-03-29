@@ -1,13 +1,13 @@
 services:
     minsal_sipernes_reportes.admin.enf_bitacora_capacitacion:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraCapacitacionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraCapacitacion, MinsalSipernesReportesBundle:ReportePrueba1]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraCapacitacion, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de pacientes atendidos versus diagnosticos de enfermeria}
 
     minsal_sipernes_reportes.admin.enf_bitacora_actividad:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraActividadAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraActividad, MinsalSipernesReportesBundle:ReportePrueba2]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraActividad, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de Actividades Realizadas}
 
@@ -69,7 +69,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDosisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDosis, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de micronutrientes aplicados}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de micronutrientes aplicados}
 
     minsal_sipernes_reportes.admin.enf_traza_nota:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaNotaAdmin
@@ -172,3 +172,6 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\CtlTipoEstablecimiento, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de actividades realizadas por el personal de enfermería}
+
+
+
