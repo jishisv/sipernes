@@ -44,9 +44,9 @@
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
-  mnt_expediente.id Expediente,
+  mnt_expediente.numero Expediente,
   mnt_paciente.primer_nombre NombrePaciente,
-  mnt_empleado.id CodigoEnfermera,
+  mnt_empleado.idempleado CodigoEnfermera,
   mnt_empleado.nombreempleado NombreEnfermera,
   enf_anotacion.observacion_anot Anotaciones
 
@@ -66,9 +66,9 @@ mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id)]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="expediente" class="java.lang.Long"/>
+	<field name="expediente" class="java.lang.String"/>
 	<field name="nombrepaciente" class="java.lang.String"/>
-	<field name="codigoenfermera" class="java.lang.Integer"/>
+	<field name="codigoenfermera" class="java.lang.String"/>
 	<field name="nombreenfermera" class="java.lang.String"/>
 	<field name="anotaciones" class="java.lang.String"/>
 	<background>
