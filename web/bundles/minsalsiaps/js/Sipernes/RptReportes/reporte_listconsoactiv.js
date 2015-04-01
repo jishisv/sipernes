@@ -1825,9 +1825,7 @@ $(document).ready(function () {
         $('#tipoestablecimientos').append('<option value="0">Seleccione..</option>');
         $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val()+ '/' + $('#municipios').val(),
                function (data) {
-                   // $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
-                     // alert( $('#tipoestablecimientos').val());
-                   //alert("entre a municipios de shcp");
+                  
                     $.each(data.subestablecimientos, function (indice, aux) {
                         $('#tipoestablecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
                         
@@ -2021,7 +2019,7 @@ $(document).ready(function () {
             });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $("#municipios").on('change', function (event) { // aqui el JSON });
-       alert("entre");
+       //alert("entre");
         $('#establecimientos option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
