@@ -793,10 +793,10 @@ class ReporteMetodoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o";
+                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o ";
         //WHERE o.idEstablecimientoPadre is null";
-        $establecimientos['establecimientos'] = $em->createQuery($dql)
-                ->getArrayResult();
+        $establecimientos['establecimientos'] = $em->createQuery($dql)->getArrayResult();
+                
 
         return new Response(json_encode($establecimientos));
     }
@@ -1051,6 +1051,21 @@ class ReporteMetodoController extends Controller {
 
         return new Response(json_encode($tiponota));
     }
+    /**
+     * @Route("/all/obtener/establecimientos/por/municipio/{munic}", name="get_all_establecimientos_by_munic", options={"expose"=true})
+     */
+    public function getEstablecimientobyMunicAction($munic) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:CtlEstablecimiento o WHERE o.idMunicipio = :munic";
+        //WHERE o.idEstablecimientoPadre is null";
+        $establecimientos['establecimientos'] = $em->createQuery($dql)->setParameter('munic', $munic)->getArrayResult();
+                
+
+        return new Response(json_encode($establecimientos));
+    }
+    
     
     
 }
