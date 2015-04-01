@@ -145,7 +145,31 @@ $(document).ready(function () {
 
                 });
     });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $("#municipios").on('change', function (event) { // aqui el JSON });
+       alert("entre");
+        $('#establecimientos option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#establecimientos').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
 
+        });
+        $.getJSON(Routing.generate('get_all_establecimientos_by_munic') + '/' + $('#municipios').val(),
+                function (data) {
+                    $('#establecimientos').append('<option value="0" selected="true">Seleccione...</option>');
+                   // alert("entre a municipios de shcp");
+                    $.each(data.establecimientos, function (indice, aux) {
+                        $('#establecimientos').append('<option value="' + aux.id + '">' + aux.nombre + '</option>');
+                    });
+
+                });
+    });
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 });

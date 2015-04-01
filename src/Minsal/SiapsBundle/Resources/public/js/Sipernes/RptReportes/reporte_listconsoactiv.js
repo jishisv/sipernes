@@ -1851,7 +1851,7 @@ $(document).ready(function () {
              // $('#tipoestablecimientos').val());
         });
         $('#tipoestablecimientos').append('<option value="0">Seleccione..</option>');
-        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val(),
+        $.getJSON(Routing.generate('get_all_sub_establecimientos') + '/' + $('#establecimientos').val() + '/' + $('#municipios').val(),
                function (data) {
                    // $('subestablecimientos').append('<option value="0" selected="true">Seleccione...</option>');
                      // alert( $('#tipoestablecimientos').val());

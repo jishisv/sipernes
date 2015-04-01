@@ -802,15 +802,16 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/all/obtener/establecimientos/todos/{id}", name="get_all_sub_establecimientos", options={"expose"=true})
+     * @Route("/all/obtener/establecimientos/todos/{id}/{munic}", name="get_all_sub_establecimientos", options={"expose"=true})
      */
-    public function getTipoEstablecimientos($id) {
+    public function getTipoEstablecimientos($id,$munic) {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:CtlEstablecimiento o
-                WHERE o.idTipoEstablecimiento= :id ORDER BY o.id ASC";
-        $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                WHERE o.idTipoEstablecimiento= :id and o.idMunicipio = :munic ORDER BY o.id ASC";
+        $subestablecimientos['subestablecimientos'] = $em->createQuery($dql)->setParameter('id', $id)->setParameter('munic', $munic)->getArrayResult();
+       
 
 
         return new Response(json_encode($subestablecimientos));
@@ -1058,8 +1059,9 @@ class ReporteMetodoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:CtlEstablecimiento o WHERE o.idMunicipio = :munic";
-        //WHERE o.idEstablecimientoPadre is null";
+                FROM MinsalSipernesBundle:CtlTipoEstablecimiento o WHERE o.id in (SELECT distinct est.idTipoEstablecimiento FROM 
+MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
+       
         $establecimientos['establecimientos'] = $em->createQuery($dql)->setParameter('munic', $munic)->getArrayResult();
                 
 
