@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="2"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -48,10 +48,10 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT row_number() over (order by mnt_paciente.id) n,
+		<![CDATA[SELECT row_number() over (order by enf_ctl_diagnostico.id) n,
   ctl_establecimiento.nombre,
   enf_ctl_diagnostico.nombre_diagnostico,
-  count(mnt_paciente.id)
+  count(enf_ctl_diagnostico.id)
 FROM
   public.enf_ctl_diagnostico,
   public.ctl_establecimiento,
@@ -67,7 +67,7 @@ WHERE
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
-group by mnt_paciente.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimiento.nombre;]]>
+group by enf_ctl_diagnostico.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimiento.nombre;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="nombre" class="java.lang.String">
