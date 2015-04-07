@@ -1936,7 +1936,37 @@ $(document).ready(function () {
                     $('#tipo_vacuna').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
                 });
             });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$.getJSON(Routing.generate('get_all_micronutrientes'),
+            function (data) {
 
+                $.each(data.tipocomponente, function (indice, aux) {
+                    $('#tipo_micro').append('<option value="' + aux.id + '">' + aux.nombreComponente1 + '</option>');
+                });
+            });
+ $("#tipo_micro").on('change', function (event) { // aqui el JSON });
+        $('#presentacion option').each(function (index, val) {
+            $(this).remove();
+            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+            $('#presentacion').select2({
+                selected: 'true',
+                width: '100%',
+                placeholder: 'Seleccione...'
+//                allowClear: true
+            });
+
+        });
+        $.getJSON(Routing.generate('get_componente') + '/' + $('#tipo_micro').val(),
+                function (data) {
+                    $('presentacion').append('<option value="0" selected="true">Seleccione...</option>');
+//                    alert("entre a municipios de shcp");
+                    $.each(data.componente, function (indice, aux) {
+                        $('#presentacion').append('<option value="' + aux.id + '">' + aux.presentacion + '</option>');
+                    });
+
+                });
+    });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $("#tipo_vacuna").on('change', function (event) { // aqui el JSON });
         $('#presentacion option').each(function (index, val) {
             $(this).remove();

@@ -1018,7 +1018,7 @@ class ReporteMetodoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:EnfCtlTipoComponente o";
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o WHERE o.id=1";
         $tipocomponente['tipocomponente'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -1067,6 +1067,21 @@ MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
 
         return new Response(json_encode($establecimientos));
     }
+    
+    /**
+     * @Route("tipos/componente/micro/todos", name="get_all_micronutrientes", options={"expose"=true})
+     */
+    public function getTipoComponenteMicroAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o WHERE o.id = 2";
+        $tipocomponente['tipocomponente'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipocomponente));
+    }
+    
     
     
     
