@@ -68,8 +68,9 @@ WHERE
   mnt_expediente.id_paciente = mnt_paciente.id AND
   enf_componente.id_tipo_componente = 2 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
-  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id and
-  mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
+  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
+  enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini},'DD-MM-YYYY') AND
+  mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
   mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) AND
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
 group by
@@ -83,6 +84,10 @@ group by
 	<field name="nombrecompleto" class="java.lang.String"/>
 	<field name="componente" class="java.lang.String"/>
 	<field name="modalidad" class="java.lang.String"/>
+	<variable name="TotalMicro" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{n}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{n}]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -132,14 +137,14 @@ group by
 				<text><![CDATA[Consolidado Diario de Aplicación de Micronutrientes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="69" width="55" height="31" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" x="11" y="69" width="65" height="31" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="66" y="69" width="140" height="31" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" x="76" y="69" width="130" height="31" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true" isItalic="false"/>
 				</textElement>
@@ -226,14 +231,14 @@ group by
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="11" y="0" width="55" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" x="11" y="0" width="65" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="66" y="0" width="140" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" x="76" y="0" width="130" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
@@ -291,7 +296,22 @@ group by
 		<band height="20" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="50"/>
+		<band height="50">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" mode="Opaque" x="639" y="0" width="103" height="31" uuid="3d49dbf7-bf14-46b6-9119-66c3e709bb65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalMicro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="0" width="628" height="31" uuid="dcc00a26-f569-4daa-8002-637d688045ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
 	</summary>
 	<noData>
 		<band height="50">

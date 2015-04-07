@@ -1200,7 +1200,7 @@ $(document).ready(function () {
             }
             var formato = $("input[name='formato_rpt']:checked").val();
 
-            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_micro_diario') + '/rpt_con_micro/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1217,23 +1217,24 @@ $(document).ready(function () {
             if (resp == false) {
                 
                 return false;
-            }else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "La fecha de inicio debe de ser menor que la fecha fin."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoDiarioAnotac"));
-                $("#error").dialog({
-                    close: function () {
-                        $("#fecha_inicio").val('');
-                        $("#fecha_fin").val('');
-                        $("#fecha_inicio").focus();
-                    }
-                });
-                return false;
             }
+//            else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+//                ($('#error')) ? $('#error').remove() : '';
+//                var elem = $("<div id='error' title='Error de llenado'><center>" +
+//                        "La fecha de inicio debe de ser menor que la fecha fin."
+//                        + "</center></div>");
+//                elem.insertAfter($("#consolidadoDiarioAnotac"));
+//                $("#error").dialog({
+//                    close: function () {
+//                        $("#fecha_inicio").val('');
+////                        $("#fecha_fin").val('');
+//                        $("#fecha_inicio").focus();
+//                    }
+//                });
+//                return false;
+//            }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_con_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_vac_diario') + '/rpt_con_vac/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
