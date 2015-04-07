@@ -75,8 +75,8 @@ class ReporteMetodoController extends Controller {
             'fpini' => $fecha_inicio,
             'fpfin' => $fecha_fin,
             'tipoEstable' => $tipoestablecimientos,
-            'codigoExp' => 'vacio',
-            'codigoEmp' => 'vacio',
+//            'codigoExp' => 'vacio',
+//            'codigoEmp' => 'vacio',
             'tipo_diag' => $tipo_diag,
             'diagnostico' => $diagnostico,
             'id_servicio' => 0
@@ -417,9 +417,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
+     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio,$deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -427,7 +427,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin' => $fecha_fin,
+            'fpfin' => $fecha_inicio,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
