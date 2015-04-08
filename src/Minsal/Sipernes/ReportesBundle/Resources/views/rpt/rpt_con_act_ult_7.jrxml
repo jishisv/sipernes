@@ -61,8 +61,7 @@ WHERE
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
   ctl_establecimiento.id = mnt_expediente.id_establecimiento and
 mnt_empleado.id = $P{codigoEmp} and
-enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day and
-enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpini}, 'dd/MM/YYYY') and
+enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day  and
 enf_ctl_subactividad.id=$P{subactividad}
  and
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio)
@@ -128,7 +127,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 	<columnHeader>
 		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="255" y="6" width="257" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="209" y="0" width="363" height="40" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
