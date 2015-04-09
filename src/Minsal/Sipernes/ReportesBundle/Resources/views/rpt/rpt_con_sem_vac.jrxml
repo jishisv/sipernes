@@ -41,6 +41,9 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="presentacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
@@ -59,7 +62,8 @@ FROM
 WHERE
   enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
-  enf_componente.id_tipo_componente = 1 AND
+
+   enf_componente.id=$P{presentacion} AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq

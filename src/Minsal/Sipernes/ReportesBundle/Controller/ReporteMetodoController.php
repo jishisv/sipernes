@@ -408,7 +408,7 @@ class ReporteMetodoController extends Controller {
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
 //            'tipovacuna' => $tipovacuna,
-//            'presentacion' => $presentacion,
+            'presentacion' => $presentacion,
             'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
         ));
