@@ -1735,38 +1735,6 @@ $(document).ready(function () {
     });
 
 
-    ////////////////////llenado de combos de actividades//////////////////////
-    $.getJSON(Routing.generate('get_all_actividades'),
-            function (data) {
-//               alert("entre a deptos de shcp");
-                $.each(data.actividades, function (indice, aux) {
-                    $('#actividades').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
-                });
-            });
-
-    $("#actividades").on('change', function (event) { // aqui el JSON });
-        $('#subactividades option').each(function (index, val) {
-            $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
-            $('#subactividades').select2({
-                selected: 'true',
-                width: '100%',
-                placeholder: 'Seleccione...'
-//                allowClear: true
-            });
-
-        });
-        $.getJSON(Routing.generate('get_all_sub_actividades') + '/' + $('#actividades').val(),
-                function (data) {
-                    $('#subactividades').append('<option value="0" selected="true">Seleccione...</option>');
-//                    alert("entre a municipios de shcp");
-                    $.each(data.subactividades, function (indice, aux) {
-                        $('#subactividades').append('<option value="' + aux.id + '">' + aux.nombreSubactividad + '</option>');
-                    });
-
-                });
-    });
-
 ////////////////////llenado de combos de Diagnostico//////////////////////
     $.getJSON(Routing.generate('get_tipos_diagnos'),
             function (data) {
