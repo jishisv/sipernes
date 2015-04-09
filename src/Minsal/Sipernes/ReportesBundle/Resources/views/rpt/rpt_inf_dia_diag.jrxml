@@ -72,8 +72,7 @@ WHERE
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
-enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
-enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
+enf_mtl_diagnostico.fecha_ingreso_diag = coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
 enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp} and
 enf_mtl_diagnostico.id_expediente = $P{codigoExp} and
 enf_clase.id = $P{tipo_diag} and
