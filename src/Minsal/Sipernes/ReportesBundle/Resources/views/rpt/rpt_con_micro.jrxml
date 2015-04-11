@@ -41,6 +41,12 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="tipomicro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="micro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT row_number() over (order by ctl_departamento.nombre) n,
   ctl_departamento.nombre departamento,
@@ -71,7 +77,10 @@ WHERE
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
   enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini},'DD-MM-YYYY') AND
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
-  mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) AND
+  enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
+AND
+ enf_dosis_esquema_vac.id_componente = coalesce($P{micro}, enf_dosis_esquema_vac.id_componente) AND
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
 group by
   departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>

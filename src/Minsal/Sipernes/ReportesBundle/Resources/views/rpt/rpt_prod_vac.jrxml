@@ -60,7 +60,10 @@ WHERE
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
-  enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq
+  enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq AND
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
+  enf_dosis_esquema_vac.fecha_dosis_esq::date >= to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq::date <= to_date($P{fpfin},'DD-MM-YYYY')
 group by
   enf_esquema_vac.id, Establecimiento, Nombreesquema,Nombrevacuna, Dosis
 order by

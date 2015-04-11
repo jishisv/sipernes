@@ -268,14 +268,14 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
-            'deptos' => $deptos,
-            'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipo_produccion' => $tipoproduccion,
-            'produccion' => $produccion,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+//            'deptos' => $deptos,
+//            'municipios' => $municipios,
+//            'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
+//            'tipo_produccion' => $tipoproduccion,
+//            'produccion' => $produccion,
         ));
 
         return $jasperReport->buildReport();
@@ -614,12 +614,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_inicio' => $fecha_fin,
-            'deptos' => $deptos,
-            'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
+            //'municipios' => $municipios,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'deptos2' => $deptos2,
             'municipios2' => $municipios2,
             'sector' => $sector,
@@ -671,7 +671,7 @@ class ReporteMetodoController extends Controller {
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
 //            'tipovac' => $tipovac,
-//            'presentacion' => $presentacion,
+            'presentacion' => $presentacion,
             'id:__servicio' => 0,
         ));
 
