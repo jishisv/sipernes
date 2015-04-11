@@ -470,6 +470,23 @@ var Alerta = function (text, funcAfter) {
         }
     });
 };
+
+var ValidDescargo = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() == '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ) {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+}; 
 $(document).ready(function () {
     $('#actividades').select2({
         width: '100%',
@@ -1385,21 +1402,10 @@ $(document).ready(function () {
     //77. Reporte de control de existencias y descargo de vacunas por día
     $("#id_reporte_control_vac").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#consolidadoControlVacun"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+           var resp = ValidDescargo();
+            if (resp == false) {
                 return false;
+            
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
