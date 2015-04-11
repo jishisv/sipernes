@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -26,10 +26,10 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.String">
+	<parameter name="codigoExp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
@@ -61,8 +61,11 @@ WHERE
   enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_mov_inventario.id_emp_corr AND
+  enf_componente.id_tipo_componente = 1 AND
   enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
-  enf_mov_inventario.id_inventario = enf_inventario.id
+  enf_mov_inventario.id_inventario = enf_inventario.id AND
+  enf_mov_inventario.fecha_ingreso_mov::date = to_date($P{fpini},'DD-MM-YYYY')  AND
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreempleadorecibio;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
@@ -158,7 +161,8 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 				<text><![CDATA[Total de Vacunas]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="469" y="18" width="100" height="20" uuid="b31e41c9-522c-4ecf-b7ce-00479a90af94"/>
+				<reportElement x="9" y="18" width="120" height="20" uuid="b31e41c9-522c-4ecf-b7ce-00479a90af94"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -168,6 +172,21 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 				</textElement>
 				<text><![CDATA[Área que recibe]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="479" y="18" width="44" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="523" y="18" width="20" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="543" y="18" width="20" height="20" uuid="0cf9b35d-2ee8-4c39-b684-21abe90cb240"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -188,7 +207,7 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="268" y="0" width="125" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+				<reportElement style="table" x="268" y="0" width="124" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombreempleadoenvio}]]></textFieldExpression>
 			</textField>
@@ -205,18 +224,7 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="549" y="0" width="20" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="517" y="0" width="32" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Página]]></text>
-			</staticText>
-		</band>
+		<band height="20" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="50">

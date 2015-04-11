@@ -547,15 +547,15 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_inicio' => $fecha_fin,
-            'deptos' => $deptos,
+            'fpini' => $fecha_inicio,
+            //'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'actividades' => $actividades,
-            'subactividades' => $subactividades,
-            'codigo_enfermera' => $codigo_enfermera,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
+            //'actividades' => $actividades,
+            'subactividad' => $subactividades,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -593,12 +593,12 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
         ));
 
         return $jasperReport->buildReport();
