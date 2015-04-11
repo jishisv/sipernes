@@ -72,7 +72,7 @@ class MntExpedienteEstablecimientoAdmin extends Admin
      public function getTemplate($name) {
         switch ($name) {
             case 'list':
-                return 'MinsalSipernesReportesBundle:Reportes:reporte_micro_plani.html.twig';
+                return 'MinsalSipernesReportesBundle:Reportes:reporte_control_vac.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);
