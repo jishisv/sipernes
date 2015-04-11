@@ -123,7 +123,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de vacunación versus planificadas 2}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de actividades realizadas por el personal de enfermería}
 
     minsal_sipernes_reportes.admin.mnt_paciente:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntPacienteAdmin
@@ -165,7 +165,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntExpedienteEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de capacitaciones realizadas por enfermera 2}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte de control de existencias y descargo de vacunas por día}
 
     minsal_sipernes_reportes.admin.ctl_tipo_establecimiento:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlTipoEstablecimientoAdmin
