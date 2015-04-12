@@ -110,4 +110,8 @@ class EnfTiene
     {
         return $this->idRegistroNota;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

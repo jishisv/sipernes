@@ -217,7 +217,7 @@ class EnfCtlIntervencion
         return $this->idSubprotocolo;
     }
         
-         public function __toString() {
-    return $this->descripcionInterven ? $this->descripcionInterven : '';
+    public function __toString() {
+        return $this->descripcionInterven ? $this->descripcionInterven : '';
     }
 }

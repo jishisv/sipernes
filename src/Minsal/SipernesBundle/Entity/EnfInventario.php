@@ -216,4 +216,8 @@ class EnfInventario
     {
         return $this->idComponente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

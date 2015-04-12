@@ -99,4 +99,8 @@ class EnfCompTipoEsquema
     {
         return $this->idTipoEsquema;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

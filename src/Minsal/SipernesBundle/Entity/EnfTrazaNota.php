@@ -156,4 +156,8 @@ class EnfTrazaNota
     {
         return $this->idRegistroNota;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

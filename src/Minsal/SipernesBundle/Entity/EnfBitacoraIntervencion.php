@@ -246,4 +246,8 @@ class EnfBitacoraIntervencion
     {
         return $this->idRegistroIntervencion;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

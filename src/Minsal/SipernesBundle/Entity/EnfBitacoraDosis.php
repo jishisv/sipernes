@@ -276,4 +276,8 @@ class EnfBitacoraDosis
     {
         return $this->idDosisEsq;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

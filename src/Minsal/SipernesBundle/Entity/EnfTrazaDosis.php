@@ -156,4 +156,8 @@ class EnfTrazaDosis
     {
         return $this->idDosisEsq;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

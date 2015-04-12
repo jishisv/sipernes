@@ -245,6 +245,6 @@ class EnfEsquemaVac
     }
     
     public function __toString() {
-    return $this->nombreEsquemaVac ? $this->nombreEsquemaVac : '';
+        return $this->nombreEsquemaVac ? $this->nombreEsquemaVac : '';
     }
 }

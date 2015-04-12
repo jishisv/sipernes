@@ -375,4 +375,8 @@ class EnfMovInventario
     {
         return $this->idTipoInventario;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }
