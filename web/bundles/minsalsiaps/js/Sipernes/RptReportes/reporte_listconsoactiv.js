@@ -1757,7 +1757,7 @@ $(document).ready(function () {
     $("#tipo_diag").on('change', function (event) { // aqui el JSON });
         $('#diagnostico option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+          $('#diagnostico').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#diagnostico').select2({
                 selected: 'true',
                 width: '100%',
@@ -1925,7 +1925,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
  $("#tipo_micro").on('change', function (event) { // aqui el JSON });
         $('#presentacion option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#presentacion').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#presentacion').select2({
                 selected: 'true',
                 width: '100%',
@@ -1948,7 +1948,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#tipo_vacuna").on('change', function (event) { // aqui el JSON });
         $('#presentacion option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#presentacion').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#presentacion').select2({
                 selected: 'true',
                 width: '100%',
@@ -1980,7 +1980,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#protocolo").on('change', function (event) { // aqui el JSON });
         $('#subprotocolo option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#subprotocolo').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#subprotocolo').select2({
                 selected: 'true',
                 width: '60%',
