@@ -10,6 +10,7 @@ var FuncAfterClose2 = function () {
         $("#fecha_fin").focus();
 };
 var ValidPacientesAtendVSDiagnosticoEnferme = function () {
+    
     var flag = true;
     //alert("entre");
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
@@ -160,11 +161,12 @@ var ValidConsoDiarioVac = function () {
     var flag = true;
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
+            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() === "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -311,7 +313,8 @@ var ValidRegVacEntyRec = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ) {
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" || 
+            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -632,22 +635,22 @@ $(document).ready(function () {
                 });
                 return false;
             }
-            if ($('#tipo_diagnostico').val() === '' || $('#diagnostico').val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe llenar ambos datos para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#pacientesDiagnosticos"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#tipo_diagnostico").val() === '')
-                            $("#tipo_diagnostico").focus();
-                        else
-                            $("#diagnostico").focus();
-                    }
-                });
-                return false;
-            }
+//            if ($('#tipo_diagnostico').val() === '' || $('#diagnostico').val() === '') {
+//                ($('#error')) ? $('#error').remove() : '';
+//                var elem = $("<div id='error' title='Error de llenado'><center>" +
+//                        "Debe llenar ambos datos para generar el reporte."
+//                        + "</center></div>");
+//                elem.insertAfter($("#pacientesDiagnosticos"));
+//                $("#error").dialog({
+//                    close: function () {
+//                        if ($("#tipo_diagnostico").val() === '')
+//                            $("#tipo_diagnostico").focus();
+//                        else
+//                            $("#diagnostico").focus();
+//                    }
+//                });
+//                return false;
+//            }
 //alert('jpuerga');
             var formato = $("input[name='formato_rpt']:checked").val();
             var url = Routing.generate('rpt_pac_dig') + '/rpt_com_pa_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + "Reporte_Nuevo";
