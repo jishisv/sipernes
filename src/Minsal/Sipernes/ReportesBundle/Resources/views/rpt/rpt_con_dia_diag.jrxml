@@ -67,7 +67,7 @@ FROM
 WHERE
   mnt_expediente.id_paciente = mnt_paciente.id AND
   mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
-  ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
+  ctl_establecimiento.id = $P{tipoEstable} AND
   enf_mtl_diagnostico.id_emp_corr = mnt_empleado.id AND
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND

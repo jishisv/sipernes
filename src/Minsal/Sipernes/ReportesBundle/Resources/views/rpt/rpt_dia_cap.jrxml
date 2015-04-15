@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="383"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="755"/>
+	<property name="ireport.y" value="124"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -65,6 +65,7 @@ WHERE
   enf_mtl_capacitacion.id_financiamiento = enf_ctl_financiamiento.id AND
 enf_mtl_capacitacion.id_emp_corr = mnt_empleado.id and
 ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id) and
+enf_mtl_capacitacion.fecha_capacitacion = to_date($P{fpini},'DD-MM-YYYY') AND
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
 enf_ctl_financiamiento.id = coalesce($P{financiado},enf_ctl_financiamiento.id) and
    mnt_empleado.id  = coalesce($P{codigoEmp},mnt_empleado.id)]]>
@@ -248,7 +249,7 @@ enf_ctl_financiamiento.id = coalesce($P{financiado},enf_ctl_financiamiento.id) a
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="20" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="33">
@@ -260,7 +261,7 @@ enf_ctl_financiamiento.id = coalesce($P{financiado},enf_ctl_financiamiento.id) a
 				<textFieldExpression><![CDATA[$V{totalmonto}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" x="0" y="0" width="485" height="33" uuid="4bcbdc99-f383-4fce-8d03-ff7cbfc4daf8"/>
+				<reportElement style="table" x="1" y="0" width="484" height="33" uuid="4bcbdc99-f383-4fce-8d03-ff7cbfc4daf8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>

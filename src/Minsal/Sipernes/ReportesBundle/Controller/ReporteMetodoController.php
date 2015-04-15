@@ -487,9 +487,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_anot_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipoanotacion}/{anotacion}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_anot_diario", options={"expose"=true})
+     * @Route("/rpt_con_anot_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{anotacion}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_anot_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioAnotacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipoanotacion, $anotacion, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioAnotacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $anotacion, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -505,8 +505,8 @@ class ReporteMetodoController extends Controller {
 //            'tipoanotacion' => $tipoanotacion,
 //            'anotacion' => $anotacion,
             'codigoExp' => $codigo_expediente,
-            'codigoEmp' => $codigo_enfermera,
-            'id_servicio' => 0,
+            'codigoEmp' => $codigo_enfermera
+           
         ));
 
         return $jasperReport->buildReport();
