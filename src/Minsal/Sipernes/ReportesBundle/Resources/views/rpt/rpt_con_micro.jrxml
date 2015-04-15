@@ -75,7 +75,7 @@ WHERE
   enf_componente.id_tipo_componente = 2 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
