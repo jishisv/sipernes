@@ -41,6 +41,9 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="presentacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT row_number() over (order by ctl_departamento.nombre) n,
   ctl_departamento.nombre departamento,
@@ -69,11 +72,14 @@ WHERE
   enf_componente.id_tipo_componente = 1 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
-  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
-  enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
+ AND
+  enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id AND
+  enf_componente.id=$P{presentacion}
+
 group by
   departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>
 	</queryString>
