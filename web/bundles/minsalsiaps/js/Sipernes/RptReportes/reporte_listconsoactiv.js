@@ -1754,19 +1754,20 @@ $(document).ready(function () {
                     $('#tipo_diag').append('<option value="' + aux.id + '">' + aux.nombreClase + '</option>');
                 });
             });
-
+    $('#diagnostico').append('<option value="0" selected="true">Seleccione...</option>'); 
     $("#tipo_diag").on('change', function (event) { // aqui el JSON });
         $('#diagnostico option').each(function (index, val) {
             $(this).remove();
-          $('#diagnostico').append('<option value="0" selected="true">Seleccione...</option>'); 
+          
             $('#diagnostico').select2({
                 selected: 'true',
                 width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
-
+        
         });
+        $('#diagnostico').append('<option value="0" selected="true">Seleccione...</option>'); 
         $.getJSON(Routing.generate('get_diag') + '/' + $('#tipo_diag').val(),
                 function (data) {
                     $('diagnosticos').append('<option value="0" selected="true">Seleccione...</option>');
@@ -1777,7 +1778,7 @@ $(document).ready(function () {
 
                 });
     });
-
+    
 
 ////////////////////llenado de combos de Establecimiento//////////////////////
     $.getJSON(Routing.generate('get_all_establecimientos'),
@@ -1981,7 +1982,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#protocolo").on('change', function (event) { // aqui el JSON });
         $('#subprotocolo option').each(function (index, val) {
             $(this).remove();
-             $('#subprotocolo').append('<option value="0" selected="true">Seleccione...</option>'); 
+             
             $('#subprotocolo').select2({
                 selected: 'true',
                 width: '60%',
@@ -1990,6 +1991,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
             });
 
         });
+        $('#subprotocolo').append('<option value="0" selected="true">Seleccione...</option>'); 
         $.getJSON(Routing.generate('get_sub_protocolos') + '/' + $('#protocolo').val(),
                 function (data) {
                     $('subprotocolos').append('<option value="0" selected="true">Seleccione...</option>');
