@@ -327,9 +327,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
+     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $fecha_inicio, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -338,11 +338,11 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportParams(array(
             'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipomicro' => $tipomicro,
-            'micro' => $micro,
-            'codigo_enfermera' => $codigo_enfermera,
+            'fpini' => $fecha_inicio,
+            'tipoEstable' => $tipoestablecimientos,
+           // 'tipo_micro' => $tipomicro,
+           // 'presentacion' => $micro,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
