@@ -17,6 +17,7 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $datagridMapper
            // ->add('id')
+           ->add('idTipoAplicacion', null, array('label' => 'Tipo de aplicación')) 
             ->add('anioEsquemaVac', null, array('label' => 'Año'))
             //->add('nombreEsquemaVac')
             //->add('edadMinima', null, array('label' => 'Mes Mínimo'))
@@ -34,6 +35,7 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $listMapper
             //->add('id')
+            ->add('idTipoAplicacion', null, array('label' => 'Tipo de aplicación'))
             ->add('anioEsquemaVac', null, array('label' => 'Año'))
             ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
             //->add('edadMinima', null, array('label' => 'Edad Mínima'))
@@ -58,6 +60,7 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $formMapper
            // ->add('id')
+            ->add('idTipoAplicacion', null, array('label' => 'Seleccione tipo de aplicación')) 
             ->add('anioEsquemaVac', null, array('label' => 'Digite el Año de la fase','max_length' => 4,'required' => true))
             ->add('nombreEsquemaVac', 'text', array('label' => 'Digite el nombre de la fase ','max_length' => 150,'required' => true))
             //->add('edadMinima', null, array('label' => 'Digite el meses mínimo de la fase','max_length' => 4,'required' => true))
@@ -75,6 +78,7 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $showMapper
             //->add('id')
+            ->add('idTipoAplicacion', null, array('label' => 'Tipo de aplicación'))
             ->add('anioEsquemaVac', null, array('label' => 'Año'))
             ->add('nombreEsquemaVac', null, array('label' => 'Fase'))
             //->add('edadMinima', null, array('label' => 'Edad Mínima'))

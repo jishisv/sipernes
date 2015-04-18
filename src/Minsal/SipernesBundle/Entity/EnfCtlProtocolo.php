@@ -184,7 +184,7 @@ class EnfCtlProtocolo
         return $this->estadoProt;
     }
     
-     public function __toString() {
-    return $this->nombreProtocolo ? $this->nombreProtocolo : '';
+    public function __toString() {
+        return $this->nombreProtocolo ? $this->nombreProtocolo : '';
     }
 }

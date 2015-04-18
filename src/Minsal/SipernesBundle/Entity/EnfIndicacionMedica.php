@@ -339,4 +339,8 @@ class EnfIndicacionMedica
     {
         return $this->idExpediente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

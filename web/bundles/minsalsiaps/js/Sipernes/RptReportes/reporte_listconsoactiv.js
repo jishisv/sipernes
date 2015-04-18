@@ -10,6 +10,7 @@ var FuncAfterClose2 = function () {
         $("#fecha_fin").focus();
 };
 var ValidPacientesAtendVSDiagnosticoEnferme = function () {
+    
     var flag = true;
     //alert("entre");
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
@@ -160,11 +161,12 @@ var ValidConsoDiarioVac = function () {
     var flag = true;
     if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
         ($('#error')) ? $('#error').remove() : '';
-        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
+            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() === "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -311,7 +313,8 @@ var ValidRegVacEntyRec = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ) {
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" || 
+            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -366,7 +369,8 @@ var ValidRegDiariosProdVacunas = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ) {
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ||
+             $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -632,22 +636,22 @@ $(document).ready(function () {
                 });
                 return false;
             }
-            if ($('#tipo_diagnostico').val() === '' || $('#diagnostico').val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe llenar ambos datos para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#pacientesDiagnosticos"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#tipo_diagnostico").val() === '')
-                            $("#tipo_diagnostico").focus();
-                        else
-                            $("#diagnostico").focus();
-                    }
-                });
-                return false;
-            }
+//            if ($('#tipo_diagnostico').val() === '' || $('#diagnostico').val() === '') {
+//                ($('#error')) ? $('#error').remove() : '';
+//                var elem = $("<div id='error' title='Error de llenado'><center>" +
+//                        "Debe llenar ambos datos para generar el reporte."
+//                        + "</center></div>");
+//                elem.insertAfter($("#pacientesDiagnosticos"));
+//                $("#error").dialog({
+//                    close: function () {
+//                        if ($("#tipo_diagnostico").val() === '')
+//                            $("#tipo_diagnostico").focus();
+//                        else
+//                            $("#diagnostico").focus();
+//                    }
+//                });
+//                return false;
+//            }
 //alert('jpuerga');
             var formato = $("input[name='formato_rpt']:checked").val();
             var url = Routing.generate('rpt_pac_dig') + '/rpt_com_pa_diag/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_diag').val() + '/' + $('#diagnostico').val() + '/' + "Reporte_Nuevo";
@@ -1082,7 +1086,7 @@ $(document).ready(function () {
             if (resp == false) {
                 return false;
             } 
-            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#micro').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/'+ $('#fecha_inicio') + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1284,7 +1288,7 @@ $(document).ready(function () {
                 return false;
             }
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_anot_diario/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_anotacion').val() + '/' + $('#anotacion').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_anot_diario') + '/rpt_anot_diario/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#anotacion').val() + '/' + $('#cod_exp').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1754,7 +1758,7 @@ $(document).ready(function () {
     $("#tipo_diag").on('change', function (event) { // aqui el JSON });
         $('#diagnostico option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+          $('#diagnostico').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#diagnostico').select2({
                 selected: 'true',
                 width: '100%',
@@ -1922,7 +1926,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
  $("#tipo_micro").on('change', function (event) { // aqui el JSON });
         $('#presentacion option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#presentacion').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#presentacion').select2({
                 selected: 'true',
                 width: '100%',
@@ -1945,7 +1949,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#tipo_vacuna").on('change', function (event) { // aqui el JSON });
         $('#presentacion option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#presentacion').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#presentacion').select2({
                 selected: 'true',
                 width: '100%',
@@ -1977,7 +1981,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#protocolo").on('change', function (event) { // aqui el JSON });
         $('#subprotocolo option').each(function (index, val) {
             $(this).remove();
-            /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 
+             $('#subprotocolo').append('<option value="0" selected="true">Seleccione...</option>'); 
             $('#subprotocolo').select2({
                 selected: 'true',
                 width: '60%',

@@ -13,42 +13,58 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 class EnfDosisEsquemaVacController extends Controller
 {
-   
-   /**
-     *@Route("/recibir/vacunas/{id}", name="get_Vac", options={"expose"=true})
+  
+    /**
+     *@Route("/recibir/tipoaplicaciones/todos/", name="get_TipoAplicacion", options={"expose"=true})
      */
-    public function getVacunasAction($id) {
+    public function getTipoaplicacionAction() {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
-                FROM MinsalSipernesBundle:EnfTipoEsquemaVac o
-                 WHERE o.idEsquemaVac = :id AND o.estadoTipoVac = true";
-        $vacuna['vacuna'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
-               
-         
-        return new Response(json_encode($vacuna));
-        
-        
+                FROM MinsalSipernesBundle:EnfCtlTipoComponente o
+                WHERE o.estadoTclTComp = true
+                ";
+        $tipoaplicacion['tipoaplicacion'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($tipoaplicacion));
     }
     
    
    /**
-     *@Route("/recibir/tipovacunas/todos/", name="get_TipoVac", options={"expose"=true})
+     *@Route("/recibir/fasess/{id}", name="get_Aplicacion", options={"expose"=true})
      */
-    public function getTipovacunasAction() {
+    public function getAplicacionesAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $dql = "SELECT o
                 FROM MinsalSipernesBundle:EnfEsquemaVac o
-                WHERE o.estadoVac = true
-                ";
-        $tipovacuna['tipovacuna'] = $em->createQuery($dql)
-                ->getArrayResult();
-
-        return new Response(json_encode($tipovacuna));
+                 WHERE o.idTipoAplicacion = :id AND o.estadoVac = true";
+        $fases['fases'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+               
+         
+        return new Response(json_encode($fases));
+        
+        
     }
     
+  
+      
+    /**
+     *@Route("/recibir/tipocomponentes/{id}", name="get_TipoComponente", options={"expose"=true})
+     */
+    public function getTipocomponentesAction($id) {
+        $em = $this->getDoctrine()->getManager();
 
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfTipoEsquemaVac o
+                WHERE o.idEsquemaVac= :id AND o.estadoTipoVac = true
+                ";
+         $tipocomponente['tipocomponente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+                
+
+        return new Response(json_encode($tipocomponente));
+    }
 
     
 }

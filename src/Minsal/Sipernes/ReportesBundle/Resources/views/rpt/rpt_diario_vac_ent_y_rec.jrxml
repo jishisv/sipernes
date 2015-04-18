@@ -64,7 +64,7 @@ WHERE
   enf_componente.id_tipo_componente = 1 AND
   enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
   enf_mov_inventario.id_inventario = enf_inventario.id AND
-  enf_mov_inventario.fecha_ingreso_mov::date = to_date($P{fpini},'DD-MM-YYYY')  AND
+  enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpini},'DD-MM-YYYY')  AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreempleadorecibio;]]>
 	</queryString>

@@ -153,4 +153,8 @@ class EnfCtlMovInventario
     {
         return $this->fechaIngresoMov;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

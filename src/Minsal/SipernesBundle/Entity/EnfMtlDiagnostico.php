@@ -282,4 +282,8 @@ class EnfMtlDiagnostico
     {
         return $this->idExpediente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

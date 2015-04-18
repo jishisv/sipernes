@@ -246,4 +246,8 @@ class EnfComponente
     {
         return $this->idTipoComponente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

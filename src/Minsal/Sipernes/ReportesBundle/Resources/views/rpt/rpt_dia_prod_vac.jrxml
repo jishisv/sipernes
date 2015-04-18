@@ -38,9 +38,6 @@
 	<parameter name="fpini" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="fpfin" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<parameter name="tipo" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -68,9 +65,8 @@ WHERE
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq AND
-  enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini},'DD-MM-YYYY') AND
-  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
- enf_dosis_esquema_vac.id_componente = coalesce($P{presentacion}, enf_dosis_esquema_vac.id_componente)
+  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 group by
   enf_esquema_vac.id, Establecimiento, Nombreesquema,Nombrevacuna, Dosis
 order by

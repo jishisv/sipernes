@@ -408,4 +408,8 @@ class EnfDosisEsquemaVac
     {
         return $this->idExpediente;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }

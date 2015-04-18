@@ -56,7 +56,7 @@
                         <div class="{{ form_group.class|default('col-md-12') }}">
                             <div class="box box-success">
                                 <div class="box-header">
-                                    <h4 class="box-title">Registrar vacuna aplicada
+                                    <h4 class="box-title">Registrar aplicacion
                                         {# admin.trans(name, {}, form_group.translation_domain) #}
                                     </h4>
                                 </div>
@@ -92,23 +92,61 @@
                                                         {% endif %}						      
                                                     </td>
                                                 </tr>
+                            
 
                                                 <tr class="dat_paciente_sec">
                                                     <td colspan="4">B.Datos de vacuna</td>
                                                 </tr>
+                                                
+                                                 <tr>
+                                                    <td>{{form_row(form[form_group.fields.idModalidad])}}
+                                                        {% if form_errors(form[form_group.fields.idModalidad])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.idModalidad])}}
+                                                            </div>
+                                                        {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>{{form_row(form[form_group.fields.centroEducativo])}}
+                                                        {% if form_errors(form[form_group.fields.centroEducativo])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.centroEducativo])}}
+                                                            </div>
+                                                        {% endif %}						      
+                                                    </td>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <td class="" >
-                                                        <div id="sonata-ba-field-container-s54b31e919fc05_idSubactividad" class="form-group">
-                                                            <label class="control-label required" for="s54b31e919fc05_idSubactividad">
-                                                                Fase:
+                                                        <div id="sonata-ba-field-container-s54b31e919fc05_idtipoaplicacion" class="form-group">
+                                                            <label class="control-label required" for="s54b31e919fc05_idtipoaplicacion">
+                                                                Tipo de aplicación:
                                                             </label>
                                                             <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="tipovacuna" name="tipovacuna">
+                                                                <select id="tipoaplicacion" name="tipoaplicacion" onclick="tipoesquema.disabled=false" >
                                                                     <option></option>
                                                                 </select>
                                                             </div>
                                                         </div>                                                  <td></td>                   
                                                 </tr>
+                                                
+                                                <tr>
+                                                    <td class="" >
+                                                        <div id="sonata-ba-field-container-s54b31e919fc05_idtipoesquema" class="form-group">
+                                                            <label class="control-label required" for="s54b31e919fc05_idtipoesquema">
+                                                                Fase:
+                                                            </label>
+                                                            <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
+                                                                <select id="tipoesquema" name="tipoesquema" disabled >
+                                                                    <option></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                                  <td></td>                   
+                                                </tr>
+                                       
+                                            
                                                 <tr>
                                                     <td>{{form_row(form[form_group.fields.idTipoEsq])}}
                                                         {% if form_errors(form[form_group.fields.idTipoEsq])|length > 0 %}

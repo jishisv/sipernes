@@ -198,8 +198,8 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
@@ -291,14 +291,14 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
             'tipoestablecimientos' => $tipoestablecimientos,
-            'codigo_expediente' => $codigo_expediente,
-            'codigo_enfermera' => $codigo_enfermera,
+            'codigoEmp' => $codigo_expediente,
+            'codigoExp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -327,9 +327,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
+     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $fecha_inicio, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -338,11 +338,11 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportParams(array(
             'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipomicro' => $tipomicro,
-            'micro' => $micro,
-            'codigo_enfermera' => $codigo_enfermera,
+            'fpini' => $fecha_inicio,
+            'tipoEstable' => $tipoestablecimientos,
+           // 'tipo_micro' => $tipomicro,
+           // 'presentacion' => $micro,
+            'codigoEmp' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -487,9 +487,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_anot_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipoanotacion}/{anotacion}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_anot_diario", options={"expose"=true})
+     * @Route("/rpt_con_anot_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{anotacion}/{codigo_expediente}/{codigo_enfermera}/{id_servicio}", name="rpt_con_anot_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioAnotacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipoanotacion, $anotacion, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioAnotacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $anotacion, $codigo_expediente, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -505,8 +505,8 @@ class ReporteMetodoController extends Controller {
 //            'tipoanotacion' => $tipoanotacion,
 //            'anotacion' => $anotacion,
             'codigoExp' => $codigo_expediente,
-            'codigoEmp' => $codigo_enfermera,
-            'id_servicio' => 0,
+            'codigoEmp' => $codigo_enfermera
+           
         ));
 
         return $jasperReport->buildReport();

@@ -279,4 +279,8 @@ class EnfAnotacion
     {
         return $this->idExpediente;
     }
+    
+     public function __toString() {
+        return '';
+    }
 }

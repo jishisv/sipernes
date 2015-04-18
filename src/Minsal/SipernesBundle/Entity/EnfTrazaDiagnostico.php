@@ -156,4 +156,8 @@ class EnfTrazaDiagnostico
     {
         return $this->idRegistroDiag;
     }
+    
+    public function __toString() {
+        return '';
+    }
 }
