@@ -629,26 +629,26 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_interv_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipoprotocolo}/{protocolo}/{tipointervencion}/{intervencion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_interv_diario", options={"expose"=true})
+     * @Route("/rpt_con_interv_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipoprotocolo}/{protocolo}/{tipointervencion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_interv_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoIntervAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipoprotocolo, $protocolo, $tipointervencion, $intervencion, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoIntervAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipoprotocolo, $protocolo, $tipointervencion,$codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
-            'deptos' => $deptos,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
+            //'deptos' => $deptos,
             'municipios' => $municipios,
-            'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipoprotocolo' => $tipoprotocolo,
-            'protocolo' => $protocolo,
+            //'establecimientos' => $establecimientos,
+            'tipoEstable' => $tipoestablecimientos,
+            'protocolo' => $tipoprotocolo,
+            'subprotocolo' => $protocolo,
             'tipointervencion' => $tipointervencion,
             'intervencion' => $intervencion,
-            'codigo_enfermera' => $codigo_enfermera,
+            'codigoEnf' => $codigo_enfermera,
         ));
 
         return $jasperReport->buildReport();
@@ -1081,8 +1081,22 @@ MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
 
         return new Response(json_encode($tipocomponente));
     }
+    /**
+     * @Route("tipos/por/diag/all/diagnosticos/{dominio}", name="get_tipos_diagnos_by_dom", options={"expose"=true})
+     */
+    public function getTiposDiagnosticosbyDominioAction($dominio) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:EnfClase o
+                WHERE o.idDominio = :dominio AND o.estadoClase = true";
+        $tipodiag['tipodiag'] = $em->createQuery($dql)->setParameter('dominio', $dominio)->getArrayResult();
+                
+
+        return new Response(json_encode($tipodiag));
+    }
     
-    
+     
     
     
 }
