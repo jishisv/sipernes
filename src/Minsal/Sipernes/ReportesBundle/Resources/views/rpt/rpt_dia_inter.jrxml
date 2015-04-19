@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="71"/>
+	<property name="ireport.y" value="80"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -29,16 +29,13 @@
 	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoExp" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<parameter name="tipoEstable" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="fpini" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="fpfin" class="java.lang.String">
+	<parameter name="tipointervencion" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -68,9 +65,12 @@ WHERE
   enf_ctl_protocolo.id = enf_ctl_subprotocolo.id_protocolo AND
   enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
   enf_ctl_intervencion.id = enf_ctl_fase_intervencion.id_intervencion AND
-  enf_mtl_intervencion.id_expediente = $P{codigoExp}/*mnt_expediente.id*/ AND
+
   enf_mtl_intervencion.id_emp_corr =  $P{codigoEmp}/*mnt_empleado.id*/ AND
-  enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id;]]>
+  enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id AND
+  enf_ctl_intervencion.id =  $P{tipointervencion} AND
+  ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id) AND
+  enf_mtl_intervencion.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY'); ]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
