@@ -69,7 +69,13 @@ class EnfMtlCapacitacionAdmin extends Admin
         $formMapper
             //->add('id')   
             //->add('fechaIngresoCap')
-            ->add('fechaCapacitacion', null, array('label' => 'Fecha de capacitación','required' => true))
+            //->add('fechaCapacitacion', null, array('label' => 'Fecha de capacitación','required' => true))
+            ->add('fechaCapacitacion', 'date',
+                  array('label'  => 'Fecha',
+                        'widget' => 'single_text',
+                        'label' => 'Fecha de capacitación',
+                        'attr'   => array('class' => 'fechacal obligatorio'),
+                       ))
             ->add('idEmpCorr', null, array('label' => 'Numero empleado','required' => true))
            // ->add('usuarioCapacitacion')
             ->add('temaCapacitacion', null, array('label' => 'Tema a impartir','required' => true))
