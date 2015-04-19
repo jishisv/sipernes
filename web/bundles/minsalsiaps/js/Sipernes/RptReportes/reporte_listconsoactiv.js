@@ -2089,7 +2089,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     $("#subprotocolo").on('change', function (event) { // aqui el JSON });
         $('#tipointervencion option').each(function (index, val) {
             $(this).remove();
-             rd
+             
             $('#tipointervencion').select2({
                 selected: 'true',
                 width: '60%',
