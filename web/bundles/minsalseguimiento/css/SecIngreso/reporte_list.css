@@ -4,7 +4,7 @@
  */
 .sonata-bc .table {
     margin-bottom: 20px;
-    width: 50%;
+    width: 100%;
     border-top: 2px solid #E5EDF5 !important;
 }
 .sonata-bc .sonata-ba-list-field-header {
@@ -24,6 +24,8 @@
 .sonata-bc .table td{
     padding:3px;
     height:15px;
+    min-width:300px;
+    max-width:300px;
     text-align:left; 
     line-height: 20px;
     vertical-align: middle;

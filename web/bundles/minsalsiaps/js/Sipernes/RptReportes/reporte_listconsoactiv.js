@@ -585,6 +585,12 @@ $(document).ready(function () {
         placeholder: 'Seleccione...',
         allowClear: true
     });
+    $('#tipointervencion').select2({
+         selected: 'true',
+         width: '100%',
+         placeholder: 'Seleccione...',
+         allowClear: true
+     });
 
     $("#fecha_inicio").datepicker().mask("99-99-9999");
     $("#fecha_fin").datepicker().mask("99-99-9999");
@@ -1985,7 +1991,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
              
             $('#subprotocolo').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });
@@ -2083,7 +2089,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
     });
     
    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   ////////////////////llenado de combos de Protocolo y SubProtocolo//////////////////////
+   ////////////////////llenado de combos de Protocolo y TipoIntervencion//////////////////////
  
 
     $("#subprotocolo").on('change', function (event) { // aqui el JSON });
@@ -2092,7 +2098,7 @@ $.getJSON(Routing.generate('get_all_micronutrientes'),
              
             $('#tipointervencion').select2({
                 selected: 'true',
-                width: '60%',
+                width: '100%',
                 placeholder: 'Seleccione...'
 //                allowClear: true
             });

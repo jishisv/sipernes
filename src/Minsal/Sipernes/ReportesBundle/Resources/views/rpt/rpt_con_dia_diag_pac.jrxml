@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports_siaps_seguimiento/siaps/seguimiento/rpt_con_dia_diag_pac"/>
@@ -82,7 +82,7 @@ enf_ctl_subprotocolo.id_protocolo = enf_ctl_protocolo.id AND
 mnt_empleado.id = coalesce($P{codigoEmp},mnt_empleado.id) and
 mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
-enf_mtl_diagnostico.fecha_ingreso_diag < coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
+enf_mtl_diagnostico.fecha_ingreso_diag <= coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
 ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
 
@@ -156,7 +156,7 @@ order by Diagnostico]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado diario de diagnósticos realizados por el personal de enfermería a pacientes hospitalarios]]></text>
+				<text><![CDATA[Consolidado de diagnósticos realizados por el personal de enfermería a pacientes hospitalarios]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="8" y="46" width="36" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
