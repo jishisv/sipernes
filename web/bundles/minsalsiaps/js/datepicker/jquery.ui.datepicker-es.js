@@ -23,7 +23,7 @@ jQuery(function($) {
         yearSuffix: '',
         showOn: "both",
         buttonText: "Seleccione..",
-        buttonImage: "/bundles/minsalsiaps/js/datepicker/calendario.png",
+        buttonImage: '/bundles/minsalsiaps/js/datepicker/calendario.png',
         //para que se muestre sólo la imagen
         buttonImageOnly: true,
         minDate: "-100y",
