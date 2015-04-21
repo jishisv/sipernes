@@ -351,7 +351,7 @@ var ValidIntervEfecEnf = function () {
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
             || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
-          //  || $("#tipointervencion option:selected").val() == "0" || $("#intervencion option:selected").val() == "0"
+            || $("#tipointervencion option:selected").val() == "0" 
             || $("#cod_enf option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -1575,7 +1575,7 @@ $(document).ready(function () {
     $("#id_reporte_diario_disc_vac").click(function () {
         if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
               var resp = ValidRegVacEntyRec();
-            if (resp == false) {
+           if (resp == false) {
                 return false;
             } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
