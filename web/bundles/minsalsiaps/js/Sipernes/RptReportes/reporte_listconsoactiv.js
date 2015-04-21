@@ -422,7 +422,25 @@ var ValidComVacVersusPlanif = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ) {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
+            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
+        flag = false;
+      
+    }
+    return flag;
+};
+var ValidComMicVersusPlanif = function () {
+    var flag = true;
+    if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
+        ($('#error')) ? $('#error').remove() : '';
+        Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
+        flag = false;
+    } else if (
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
+            $("#tipo_micro option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -672,28 +690,17 @@ $(document).ready(function () {
 
     // 55. micronutrientes aplicados vs planificados
     $("#id_reporte_micronutrientes_planificados").click(function () {
-        if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
-            if ($("#fecha_inicio").val() === '' || $("#fecha_fin").val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe de seleccionar ambas fechas para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#micronutrientesPlanficiados"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#fecha_inicio").val() === '')
-                            $("#fecha_inicio").focus();
-                        else
-                            $("#fecha_fin").focus();
-                    }
-                });
+      if ($('.ui-paging-info').text() !== 'Sin registros que mostrar') {
+            var resp = ValidComMicVersusPlanif();
+            if (resp == false) {
                 return false;
-            } else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
+            }
+            else if ($("#fecha_inicio").datepicker("getDate") > $("#fecha_fin").datepicker("getDate")) {
                 ($('#error')) ? $('#error').remove() : '';
                 var elem = $("<div id='error' title='Error de llenado'><center>" +
                         "La fecha de inicio debe de ser menor que la fecha fin."
                         + "</center></div>");
-                elem.insertAfter($("#micronutrientesPlanficiados"));
+                elem.insertAfter($("#consolidadoDiagnosticos"));
                 $("#error").dialog({
                     close: function () {
                         $("#fecha_inicio").val('');
@@ -703,22 +710,7 @@ $(document).ready(function () {
                 });
                 return false;
             }
-            if ($('#tipo_micronutriente').val() === '' || $('#micronutriente').val() === '') {
-                ($('#error')) ? $('#error').remove() : '';
-                var elem = $("<div id='error' title='Error de llenado'><center>" +
-                        "Debe llenar ambos datos para generar el reporte."
-                        + "</center></div>");
-                elem.insertAfter($("#micronutrientesPlanficiados"));
-                $("#error").dialog({
-                    close: function () {
-                        if ($("#tipo_micronutriente").val() === '')
-                            $("#tipo_micronutriente").focus();
-                        else
-                            $("#tipo_micronutriente").focus();
-                    }
-                });
-                return false;
-            }
+//          
             var formato = $("input[name='formato_rpt']:checked").val();
             var url = Routing.generate('rpt_micr_plan') + '/rpt_com_mic_pla/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micronutriente').val() + '/' + $('#micronutriente').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
