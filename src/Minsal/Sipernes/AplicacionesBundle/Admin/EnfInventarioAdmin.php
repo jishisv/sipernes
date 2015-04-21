@@ -16,7 +16,7 @@ class EnfInventarioAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            //->add('id')
             ->add('existencia')
             ->add('fechaIngresoInventario')
             ->add('usuarioInventario')
@@ -31,7 +31,7 @@ class EnfInventarioAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            //->add('id')
             ->add('existencia')
             ->add('fechaIngresoInventario')
             ->add('usuarioInventario')
@@ -54,11 +54,12 @@ class EnfInventarioAdmin extends Admin
     {
         $formMapper
 //            ->add('id')
-            ->add('existencia')
+            ->add('existencia',null, array('label' => 'Existencia','required' => True))
+            ->add('caducidadInventario',null, array('label' => 'Caducidad','required' => True))
 //            ->add('fechaIngresoInventario')
 //            ->add('usuarioInventario')
-            ->add('estadoInventario')
-            ->add('caducidadInventario')
+            ->add('estadoInventario',null, array('label' => 'Activo'))
+            
         ;
     }
 
@@ -68,7 +69,7 @@ class EnfInventarioAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+           // ->add('id')
             ->add('existencia')
             ->add('fechaIngresoInventario')
             ->add('usuarioInventario')
