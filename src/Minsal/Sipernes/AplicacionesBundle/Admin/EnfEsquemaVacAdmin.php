@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Minsal\SipernesBundle\Entity\EnfCtlTipoComponente;
+use Doctrine\ORM\EntityRepository;
 
 class EnfEsquemaVacAdmin extends Admin
 {
@@ -60,7 +62,11 @@ class EnfEsquemaVacAdmin extends Admin
     {
         $formMapper
            // ->add('id')
-            ->add('idTipoAplicacion', null, array('label' => 'Seleccione tipo de aplicación')) 
+            ->add('idTipoAplicacion', null, array('label' => 'Seleccione tipo de componente','required' => true,
+            'class' => 'MinsalSipernesBundle:EnfCtlTipoComponente',
+            'query_builder' => function(EntityRepository $repository) {
+                return $repository->obtenerTipoCompActivo();
+            })) 
             ->add('anioEsquemaVac', null, array('label' => 'Digite el Año de la fase','max_length' => 4,'required' => true))
             ->add('nombreEsquemaVac', 'text', array('label' => 'Digite el nombre de la fase ','max_length' => 150,'required' => true))
             //->add('edadMinima', null, array('label' => 'Digite el meses mínimo de la fase','max_length' => 4,'required' => true))

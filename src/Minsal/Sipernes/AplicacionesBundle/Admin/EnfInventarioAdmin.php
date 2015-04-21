@@ -17,11 +17,12 @@ class EnfInventarioAdmin extends Admin
     {
         $datagridMapper
             //->add('id')
-            ->add('existencia')
-            ->add('fechaIngresoInventario')
-            ->add('usuarioInventario')
-            ->add('estadoInventario')
-            ->add('caducidadInventario')
+            ->add('idComponente', null, array('label' => 'Componente'))
+            //->add('existencia')
+            ->add('estadoInventario', null, array('label' => 'Activo'))
+            ->add('fechaIngresoInventario', null, array('label' => 'Creado el'))
+            //->add('usuarioInventario')
+            ->add('caducidadInventario', null, array('label' => 'Caducidad'))
         ;
     }
 
@@ -32,11 +33,12 @@ class EnfInventarioAdmin extends Admin
     {
         $listMapper
             //->add('id')
-            ->add('existencia')
-            ->add('fechaIngresoInventario')
-            ->add('usuarioInventario')
-            ->add('estadoInventario')
-            ->add('caducidadInventario')
+            ->add('idComponente', null, array('label' => 'Componente'))
+            ->add('existencia', null, array('label' => 'Existencia'))
+            ->add('estadoInventario', null, array('label' => 'Activo'))
+            ->add('caducidadInventario', null, array('label' => 'Caducidad'))
+            ->add('fechaIngresoInventario', null, array('label' => 'Creado el'))
+            ->add('usuarioInventario', null, array('label' => 'Creado por'))           
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -54,11 +56,12 @@ class EnfInventarioAdmin extends Admin
     {
         $formMapper
 //            ->add('id')
-            ->add('existencia',null, array('label' => 'Existencia','required' => True))
-            ->add('caducidadInventario',null, array('label' => 'Caducidad','required' => True))
-//            ->add('fechaIngresoInventario')
-//            ->add('usuarioInventario')
-            ->add('estadoInventario',null, array('label' => 'Activo'))
+            ->add('idComponente', null, array('label' => 'Seleccione componente','required' => true))   
+            ->add('existencia', null, array('label' => 'Existencia','required' => true))
+            ->add('caducidadInventario', null, array('label' => 'Caducidad','required' => true))
+           //->add('fechaIngresoInventario')
+           //->add('usuarioInventario')
+            ->add('estadoInventario', null, array('label' => 'Activo'))
             
         ;
     }
@@ -69,12 +72,36 @@ class EnfInventarioAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-           // ->add('id')
-            ->add('existencia')
-            ->add('fechaIngresoInventario')
-            ->add('usuarioInventario')
-            ->add('estadoInventario')
-            ->add('caducidadInventario')
+            //->add('id')
+            ->add('idComponente', null, array('label' => 'Componente'))
+            ->add('existencia', null, array('label' => 'Existencia'))
+            ->add('fechaIngresoInventario', null, array('label' => 'Creado el'))
+            ->add('usuarioInventario', null, array('label' => 'Creado por'))
+            ->add('estadoInventario', null, array('label' => 'Activo'))
+            ->add('caducidadInventario', null, array('label' => 'Caducidad'))
         ;
+    }
+    
+    
+      public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesAplicacionesBundle:Componente:ctlcomponente.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    public function prePersist($EnfInventario) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfInventario->setusuarioInventario($user);
+        $EnfInventario->setfechaIngresoInventario(new \DateTime());
+       
     }
 }

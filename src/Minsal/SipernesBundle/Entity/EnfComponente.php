@@ -248,6 +248,6 @@ class EnfComponente
     }
     
     public function __toString() {
-        return '';
+    return $this->nombreComponente ? $this->nombreComponente : '';
     }
 }
