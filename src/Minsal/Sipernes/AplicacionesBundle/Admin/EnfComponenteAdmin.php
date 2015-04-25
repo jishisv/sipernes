@@ -92,4 +92,10 @@ class EnfComponenteAdmin extends Admin
             ->add('estadoComponente', null, array('label' => 'Activo'))
         ;
     }
+    
+    public function prePersist($EnfComponente) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfComponente->setusuarioComponente($user);
+        $EnfComponente->setfechaIngresoComponente(new \DateTime());
+    }
 }

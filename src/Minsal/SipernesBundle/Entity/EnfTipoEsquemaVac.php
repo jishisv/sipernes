@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EnfTipoEsquemaVac
  *
- * @ORM\Table(name="enf_tipo_esquema_vac", indexes={@ORM\Index(name="IDX_BEFC5447EEF970B1", columns={"id_esquema_vac"})})
+ * @ORM\Table(name="enf_tipo_esquema_vac", indexes={@ORM\Index(name="IDX_BEFC5447EEF970B1", columns={"id_esquema_vac"}), @ORM\Index(name="IDX_BEFC5447BF16C07B", columns={"id_componente"})})
  * @ORM\Entity
  */
 class EnfTipoEsquemaVac
@@ -66,6 +66,16 @@ class EnfTipoEsquemaVac
      * })
      */
     private $idEsquemaVac;
+
+    /**
+     * @var \EnfComponente
+     *
+     * @ORM\ManyToOne(targetEntity="EnfComponente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_componente", referencedColumnName="id")
+     * })
+     */
+    private $idComponente;
 
 
 
@@ -216,8 +226,31 @@ class EnfTipoEsquemaVac
     {
         return $this->idEsquemaVac;
     }
+
+    /**
+     * Set idComponente
+     *
+     * @param \Minsal\SipernesBundle\Entity\EnfComponente $idComponente
+     * @return EnfTipoEsquemaVac
+     */
+    public function setIdComponente(\Minsal\SipernesBundle\Entity\EnfComponente $idComponente = null)
+    {
+        $this->idComponente = $idComponente;
+
+        return $this;
+    }
+
+    /**
+     * Get idComponente
+     *
+     * @return \Minsal\SipernesBundle\Entity\EnfComponente 
+     */
+    public function getIdComponente()
+    {
+        return $this->idComponente;
+    }
     
-     public function __toString() {
+    public function __toString() {
     return $this->nombreTipoEsq ? $this->nombreTipoEsq : '';
     }
 }
