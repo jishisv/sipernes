@@ -46,21 +46,3 @@ services:
         arguments: [~, Minsal\SipernesBundle\Entity\EnfMovInventario, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Movimiento de inventario}
-
-    minsal_sipernes_aplicaciones.admin.enf_esquema_mic:
-        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfEsquemaMicAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfEsquemaMic, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo fase de micronutriente}
-
-    minsal_sipernes_aplicaciones.admin.enf_tipo_esquema_mic:
-        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfTipoEsquemaMicAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfTipoEsquemaMic, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Catálogo de micronutrientes}
-
-    minsal_sipernes_aplicaciones.admin.enf_dosis_esquema_mic:
-        class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaMicAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaMic, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación de micronutriente}

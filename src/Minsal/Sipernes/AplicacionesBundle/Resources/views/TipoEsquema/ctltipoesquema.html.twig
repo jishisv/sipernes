@@ -99,6 +99,16 @@
                                                 </tr>
                                                 
                                                 <tr>
+                                                    <td>{{form_row(form[form_group.fields.idComponente])}}
+                                                        {% if form_errors(form[form_group.fields.idComponente])|length > 0 %}
+                                                            <div class="sonata-ba-form-error">
+                                                                {{form_errors(form[form_group.fields.idComponente])}}
+                                                            </div>
+                                                        {% endif %}						      
+                                                    </td>
+                                                </tr> 
+                                                
+                                                <tr>
                                                     <td>{{form_row(form[form_group.fields.nombreTipoEsq])}}
                                                         {% if form_errors(form[form_group.fields.nombreTipoEsq])|length > 0 %}
                                                             <div class="sonata-ba-form-error">

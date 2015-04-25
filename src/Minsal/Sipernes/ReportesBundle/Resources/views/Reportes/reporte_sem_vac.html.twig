@@ -60,11 +60,12 @@
         
         
         $(function () {
+            {#
             $("#fecha_inicio").on("change", function () {
                 fechaInicioArray = $(this).val().split("-");alert(fechaInicioArray[2]+ fechaInicioArray[1]+ parseInt(fechaInicioArray[0])+7)
                 fechaFin = new Date(fechaInicioArray[2], fechaInicioArray[1], parseInt(fechaInicioArray[0])+7);alert(fechaFin)
                 $("#fecha_fin").datepicker({minDate: 0, maxDate: fechaFin});
-            })
+            })#}
 
         });
     </script>

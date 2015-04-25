@@ -62,7 +62,8 @@ class EnfTipoEsquemaVacAdmin extends Admin
                 'class' => 'MinsalSipernesBundle:EnfEsquemaVac',
             'query_builder' => function(EntityRepository $repository) {
                 return $repository->obtenerEsqVacActivo();
-            }))    
+            })) 
+            ->add('idComponente', null, array('label' => 'Seleccione Componente','required' => true))
             ->add('nombreTipoEsq', 'text', array('label' => 'Digite el nombre de aplicación','max_length' => 150,'required' => true))
             //->add('dosisMaxima', null, array('label' => 'Dosis Máxima','max_length' => 150,'required' => true))
             ->add('estadoTipoVac', null, array('label' => 'Activo'))
@@ -108,7 +109,17 @@ class EnfTipoEsquemaVacAdmin extends Admin
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfTipoEsquemaVac->setusuarioIngresoTipoVac($user);
         $EnfTipoEsquemaVac->setfechaIngresoTipoVac(new \DateTime());
-       
+        
+        //$query = $this->modelManager->getEntityManager($EnfTipoEsquemaVac)->createQuery('select e.id from Minsal\SipernesBundle\Entity\EnfComponente e where e.id=5')->execute();
+        //$EnfTipoEsquemaVac->setidComponente($query[0]);
+        $query = $this->modelManager->getEntityManager($EnfTipoEsquemaVac)->createQuery('select e.id from Minsal\SipernesBundle\Entity\EnfComponente e where e.id=5')->getScalarResult();
+        
+        $ids = array_map('current', $query);
+        $ids = array();
+        foreach($query as $item) {
+            $ids[] = $item['id'];
+        }        
+        
     }
     
     

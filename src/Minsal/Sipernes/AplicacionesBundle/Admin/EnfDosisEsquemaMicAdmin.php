@@ -10,6 +10,20 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class EnfDosisEsquemaMicAdmin extends Admin
 {
+    public function createQuery($context = 'list') 
+    {         
+        $query = parent::createQuery($context); 
+        
+        $query
+                ->select('a')
+                ->from('Minsal\SipernesBundle\Entity\EnfDosisEsquemaMic', 'a')
+                ->innerJoin('a.idComponente', 'c','WITH','a.idComponente=c.id')
+                ->andWhere($query->expr()->eq('c.idTipoComponente', '2'))
+                ;
+            
+        return $query; 
+    } 
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
