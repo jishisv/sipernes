@@ -64,7 +64,8 @@ WHERE
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
   enf_dosis_esquema_vac.fecha_ingreso_dosis_esq>= to_date($P{fpini}, 'dd/MM/YYYY') and
   enf_dosis_esquema_vac.fecha_ingreso_dosis_esq<= to_date($P{fpfin}, 'dd/MM/YYYY') and
-  enf_componente.id=$P{presentacion} AND
+  CASE WHEN $P{presentacion} = 0 THEN ( enf_componente.id =   enf_componente.id ) ELSE   enf_componente.id =$P{presentacion} END AND
+
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq AND

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="65"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="9"/>
+	<property name="ireport.y" value="67"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -64,7 +64,7 @@ mnt_empleado.id = $P{codigoEmp} and
 enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day  and
 enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpini}, 'dd/MM/YYYY') and
 
-enf_ctl_subactividad.id=$P{subactividad}
+CASE WHEN $P{subactividad} = 0 THEN (enf_ctl_subactividad.id = enf_ctl_subactividad.id) ELSE enf_ctl_subactividad.id=$P{subactividad} END
  and
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio)
 

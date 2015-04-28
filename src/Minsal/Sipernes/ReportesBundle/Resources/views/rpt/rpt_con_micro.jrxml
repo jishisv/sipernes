@@ -49,6 +49,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT row_number() over (order by ctl_departamento.nombre) n,
+  enf_dosis_esquema_vac.id aplicacion,
   ctl_departamento.nombre departamento,
   ctl_municipio.nombre municipio,
   ctl_establecimiento.nombre establecimiento,
@@ -80,12 +81,14 @@ WHERE
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 AND
- enf_dosis_esquema_vac.id_componente = coalesce($P{micro}, enf_dosis_esquema_vac.id_componente) AND
+CASE WHEN $P{micro} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{micro} END
+ AND
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
 group by
-  departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>
+  aplicacion, departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
+	<field name="aplicacion" class="java.lang.Integer"/>
 	<field name="departamento" class="java.lang.String"/>
 	<field name="municipio" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>

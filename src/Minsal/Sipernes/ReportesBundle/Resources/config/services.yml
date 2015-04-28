@@ -63,7 +63,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaActividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte de registros mensuales de producción}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte de registros mensuales de producción de vacunas}
 
     minsal_sipernes_reportes.admin.enf_traza_dosis:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDosisAdmin
