@@ -25,7 +25,7 @@ class EnfDosisEsquemaVacAdmin extends Admin
                 ->select('a')
                 ->from('Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac', 'a')
                 ->innerJoin('a.idComponente', 'c','WITH','a.idComponente=c.id')
-                ->andWhere($query->expr()->eq('c.idTipoComponente', '1'))
+                //->andWhere($query->expr()->eq('c.idTipoComponente', '1'))
                 ;
             
         return $query; 
@@ -161,9 +161,9 @@ class EnfDosisEsquemaVacAdmin extends Admin
         $EnfDosisEsquemaVac->setfechaIngresoDosisEsq(new \DateTime());
         $EnfDosisEsquemaVac->setdosis(1);
         $EnfDosisEsquemaVac->setestadoDosisEsq(true);        
-            
-        $queryString='select IDENTITY(e.idComponente) id from Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac e where e.id='.$EnfDosisEsquemaVac->getIdTipoEsq()->getId();
-                
+        
+        //obtener el id de la tabla enf_conponente para poder insertar el registro de la dosis
+        $queryString='select IDENTITY(e.idComponente) id from Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac e where e.id='.$EnfDosisEsquemaVac->getIdTipoEsq()->getId();                
         //$query = $this->modelManager->getEntityManager($EnfDosisEsquemaVac)->createQuery('select e.id from Minsal\SipernesBundle\Entity\EnfComponente e where e.id=1')->getArrayResult();
         //$query = $this->modelManager->getEntityManager($EnfDosisEsquemaVac)->createQuery('select IDENTITY(e.idComponente) id from Minsal\SipernesBundle\Entity\EnfTipoEsquemaVac e where e.id=1')->getArrayResult();
         $query = $this->modelManager->getEntityManager($EnfDosisEsquemaVac)->createQuery($queryString)->getArrayResult();

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Minsal\SipernesBundle\Entity\EnfCtlTipoComponente;
 use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 class EnfComponenteAdmin extends Admin
 {
@@ -96,6 +97,15 @@ class EnfComponenteAdmin extends Admin
     public function prePersist($EnfComponente) {
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfComponente->setusuarioComponente($user);
-        $EnfComponente->setfechaIngresoComponente(new \DateTime());
+        $EnfComponente->setfechaIngresoComponente(new \DateTime());                
+    }
+    
+    public function validate(ErrorElement $errorElement, $pais) {
+         
+        if (5 == 5) {
+            $errorElement->with('nombrecomponente')
+                    ->addViolation('El número es 5')
+                    ->end();
+        }
     }
 }
