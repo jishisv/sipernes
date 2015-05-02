@@ -17,7 +17,7 @@ var ValidPacientesAtendVSDiagnosticoEnferme = function () {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#tipo_diag option:selected").val() == "0" || $("#diagnostico option:selected").val() == "0" ||
+    } else if (//$("#tipo_diag option:selected").val() == "0" || $("#diagnostico option:selected").val() == "0" ||
             $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -32,7 +32,7 @@ var ValidGrafPacientesAtendVSDiagnosticoEnferme = function () {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#tipo_diag option:selected").val() == "0" || 
+    } else if (//$("#tipo_diag option:selected").val() == "0" || 
             $("#deptos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -48,7 +48,7 @@ var ValidConsoActivRea = function () {
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
-            $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || 
+           // $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || 
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
@@ -64,7 +64,8 @@ var ValidCapEnf = function () {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#financiamiento option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+    } else if (//$("#financiamiento option:selected").val() == "0" || 
+            $("#cod_enf option:selected").val() == "0" ||
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
@@ -112,7 +113,8 @@ var ValidDiagDiaEnf = function () {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
-    } else if ($("#tipo_diag option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
+    } else if (//$("#tipo_diag option:selected").val() == "0" || 
+            $("#cod_enf option:selected").val() == "0" ||
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
@@ -129,7 +131,7 @@ var ValidDiagDiaInfEnf = function () {
         Alerta("Debe de seleccionar la fecha de inicio para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if ($("#cod_exp option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" ||
-            $("#tipo_diag option:selected").val() == "0" || 
+            //$("#tipo_diag option:selected").val() == "0" || 
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
@@ -148,7 +150,8 @@ var ValidConsoDiarioMicro = function () {
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
-            || $("#tipo_micro option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") { 
+            //|| $("#tipo_micro option:selected").val() == "0" || $("#presentacion option:selected").val() == "0"
+            ) { 
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -165,8 +168,9 @@ var ValidConsoDiarioVac = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
-            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() === "0") {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" //||
+           // $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() === "0"
+            ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -248,7 +252,9 @@ var ValidConDiarioEnfPacUlt7Dias = function () {
     if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" 
-            || $("#cod_exp option:selected").val() == "0" || $("#tipo_diag option:selected").val() == "0"|| $("#diagnostico option:selected").val() == "0") {
+            || $("#cod_exp option:selected").val() == "0" 
+            //|| $("#tipo_diag option:selected").val() == "0"|| $("#diagnostico option:selected").val() == "0"
+            ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -313,8 +319,9 @@ var ValidRegVacEntyRec = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" || 
-            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0" ) {
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" //|| 
+           // $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0"
+            ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -350,8 +357,8 @@ var ValidIntervEfecEnf = function () {
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
-            || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
-            || $("#tipointervencion option:selected").val() == "0" 
+           // || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
+         //   || $("#tipointervencion option:selected").val() == "0" 
             || $("#cod_enf option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -369,8 +376,9 @@ var ValidRegDiariosProdVacunas = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" ||
-             $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
+            $("#establecimientos option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" //||
+            // $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0"
+             ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -387,7 +395,7 @@ var ValidReportDiarioProtocolos = function () {
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
-            || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
+           // || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
             || $("#cod_enf option:selected").val() == "0" ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -422,8 +430,9 @@ var ValidComVacVersusPlanif = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
-            $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" //||
+           // $("#tipo_vacuna option:selected").val() == "0" || $("#presentacion option:selected").val() == "0"
+                    ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -439,8 +448,9 @@ var ValidComMicVersusPlanif = function () {
         flag = false;
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
-            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" ||
-            $("#tipo_micro option:selected").val() == "0" || $("#presentacion option:selected").val() == "0") {
+            $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" //||
+            //$("#tipo_micro option:selected").val() == "0" || $("#presentacion option:selected").val() == "0"
+            ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;
@@ -474,7 +484,8 @@ var ValidDiarioActivEnf = function () {
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
-            || $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0") {
+            //|| $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" 
+            || $("#cod_enf option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;

@@ -452,7 +452,8 @@ var ValidDiarioActivEnf = function () {
     } else if (
             $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" ||
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
-            || $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0") {
+            //|| $("#actividades option:selected").val() == "0" || $("#subactividades option:selected").val() == "0"
+            || $("#cod_enf option:selected").val() == "0") {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;

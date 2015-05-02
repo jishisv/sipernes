@@ -63,7 +63,9 @@ WHERE
   enf_mtl_diagnostico.id_expediente = mnt_expediente.id AND
   mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
   mnt_expediente.id_paciente = mnt_paciente.id and
-  enf_ctl_diagnostico.id = coalesce($P{diagnostico},enf_ctl_diagnostico.id) and
+
+CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END and
+
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag <= coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
