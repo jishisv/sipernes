@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -43,31 +43,38 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-  mnt_empleado.nombre Enfermera,
-  ctl_establecimiento.nombre establecimiento,
-  enf_anotacion.observacion_anot Anotacion,
-  mnt_paciente.primer_nombre Paciente
+  ctl_establecimiento.nombre Establecimiento,
+  mnt_expediente.numero Expediente,
+  mnt_paciente.primer_nombre NombrePaciente,
+  mnt_empleado.idempleado CodigoEnfermera,
+  mnt_empleado.nombreempleado NombreEnfermera,
+  enf_anotacion.observacion_anot Anotaciones
 
 FROM
-  public.ctl_establecimiento,
-  public.mnt_expediente_establecimiento,
-  public.mnt_expediente,
-  public.enf_anotacion,
   public.mnt_empleado,
+  public.ctl_establecimiento,
+  public.enf_anotacion,
+  public.mnt_expediente,
   public.mnt_paciente
 WHERE
-  ctl_establecimiento.id = mnt_expediente_establecimiento.id AND
-  mnt_expediente.id_establecimiento = mnt_expediente_establecimiento.id_establecimiento AND
-  mnt_expediente.id = enf_anotacion.id_expediente AND
-  mnt_expediente.id_paciente = mnt_paciente.id AND
-  enf_anotacion.id_emp_corr = mnt_empleado.id AND
-  enf_anotacion.fecha_ingreso_anota >= to_date($P{fpini},'DD-MM-YYYY') AND
-  enf_anotacion.fecha_ingreso_anota <= to_date($P{fpfin},'DD-MM-YYYY')  ]]>
+  mnt_empleado.id = enf_anotacion.id_emp_corr AND
+  ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
+  enf_anotacion.id_expediente = mnt_expediente.id AND
+  mnt_expediente.id_paciente = mnt_paciente.id and
+
+CASE WHEN $P{codigoEmp} = 0 THEN (mnt_empleado.id = mnt_empleado.id) ELSE mnt_empleado.id=$P{codigoEmp} END and
+ enf_anotacion.fecha_ingreso_anota >= to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_anotacion.fecha_ingreso_anota <= to_date($P{fpfin},'DD-MM-YYYY') AND
+
+CASE WHEN $P{codigoExp} = 0 THEN (mnt_expediente.id = mnt_expediente.id) ELSE mnt_expediente.id= $P{codigoExp} END and
+ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id)]]>
 	</queryString>
-	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="anotacion" class="java.lang.String"/>
-	<field name="paciente" class="java.lang.String"/>
+	<field name="expediente" class="java.lang.String"/>
+	<field name="nombrepaciente" class="java.lang.String"/>
+	<field name="codigoenfermera" class="java.lang.String"/>
+	<field name="nombreenfermera" class="java.lang.String"/>
+	<field name="anotaciones" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -108,7 +115,7 @@ WHERE
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="80" splitType="Stretch">
+		<band height="126" splitType="Stretch">
 			<staticText>
 				<reportElement x="134" y="8" width="297" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -117,28 +124,28 @@ WHERE
 				<text><![CDATA[Consolidado Semanal de Anotaciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="0" y="46" width="104" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="63" y="92" width="71" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Enfermera]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="104" y="46" width="177" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="134" y="92" width="170" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="281" y="46" width="181" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="304" y="92" width="181" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Anotación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="462" y="46" width="107" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
+				<reportElement style="table_CH" x="485" y="92" width="84" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -164,44 +171,73 @@ WHERE
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_TH" x="0" y="92" width="63" height="34" backcolor="#999999" uuid="515b6993-d6ba-4247-9fc9-166372b2083e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correlativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="54" width="100" height="20" uuid="816fd930-2250-4c0b-81d5-216117c009f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de consulta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="284" y="54" width="100" height="20" uuid="c354ea9c-de7a-40ce-9446-a8b889b2d15e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement style="table" x="0" y="0" width="104" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" x="63" y="0" width="71" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{enfermera}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigoenfermera}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="104" y="0" width="177" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement style="table" x="134" y="0" width="170" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="281" y="0" width="181" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{anotacion}]]></textFieldExpression>
+				<reportElement style="table" x="304" y="0" width="181" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{anotaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="462" y="0" width="107" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
+				<reportElement style="table" x="485" y="0" width="84" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{paciente}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{expediente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="0" y="0" width="63" height="35" uuid="a1aa9915-fda7-445f-a684-a7c45593d8d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="20" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" x="0" y="0" width="408" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" x="0" y="0" width="485" height="32" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table" mode="Opaque" x="485" y="0" width="84" height="32" uuid="a66a145a-2832-442d-a0ed-49297f8a16a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 	<noData>

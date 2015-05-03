@@ -220,7 +220,9 @@ var ValidConSemAnotEnfPac = function () {
         Alerta("Debe de seleccionar ambas fechas para generar el reporte.", FuncAfterClose2);
         flag = false;
     } else if (
-            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" || $("#cod_enf option:selected").val() == "0" || $("#cod_exp option:selected").val() == "0") {
+            $("#deptos option:selected").val() == "0" || $("#municipios option:selected").val() == "0" || $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0" 
+            //|| $("#cod_enf option:selected").val() == "0" || $("#cod_exp option:selected").val() == "0"
+            ) {
             
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
@@ -723,7 +725,7 @@ $(document).ready(function () {
             }
 
             var formato = $("input[name='formato_rpt']:checked").val();
-            var url = Routing.generate('rpt_micr_plan') + '/rpt_com_mic_pla/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_micr_plan') + '/rpt_con_mic_apl/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#fecha_fin').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1095,7 +1097,7 @@ $(document).ready(function () {
             if (resp == false) {
                 return false;
             } 
-            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/'+ $('#fecha_inicio') + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/'+ $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
@@ -1113,7 +1115,7 @@ $(document).ready(function () {
             if (resp == false) {
                 return false;
             } 
-            var url = Routing.generate('rpt_con_vac_siete') + '/rpt_con_vac_apl_ult/' + formato + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_vac_siete') + '/rpt_con_vac_apl_ult/' + formato + '/' + $('#fecha_inicio').val() + '/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_vacuna').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;

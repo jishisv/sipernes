@@ -38,6 +38,9 @@
 	<parameter name="fpini" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="micro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
@@ -55,8 +58,10 @@ WHERE
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
-  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' AND
+  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7'day AND
   enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpini}, 'dd/MM/YYYY')
+AND
+CASE WHEN $P{micro} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{micro} END
 group by
    Establecimiento, Nombrevacuna,Dosis;]]>
 	</queryString>

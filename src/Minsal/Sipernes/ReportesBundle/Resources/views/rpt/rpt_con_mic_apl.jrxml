@@ -44,7 +44,7 @@
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
-  enf_componente.nombre_componente Nombrevacuna,
+  enf_componente.nombre_componente Nombremicro,
   count(enf_dosis_esquema_vac.id) Dosis
 
 FROM
@@ -58,13 +58,14 @@ WHERE
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
-  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'DD/MM/YYYY') AND
-  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin}, 'DD/MM/YYYY')
+  enf_dosis_esquema_vac.fecha_dosis_esq::date>= to_date($P{fpini}, 'DD/MM/YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq::date<= to_date($P{fpfin}, 'DD/MM/YYYY')
+
 group by
-   Establecimiento, Nombrevacuna,Dosis;]]>
+   Establecimiento, Nombremicro,Dosis;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
-	<field name="nombrevacuna" class="java.lang.String"/>
+	<field name="nombremicro" class="java.lang.String"/>
 	<field name="dosis" class="java.lang.Long"/>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
@@ -204,7 +205,7 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombremicro}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
