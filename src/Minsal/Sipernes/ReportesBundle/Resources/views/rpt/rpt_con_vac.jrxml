@@ -79,9 +79,7 @@ WHERE
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
  AND
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id AND
-
 CASE WHEN $P{presentacion} = 0 THEN ( enf_componente.id =   enf_componente.id ) ELSE   enf_componente.id =$P{presentacion} END
-
 
 group by
   aplicacion, departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>

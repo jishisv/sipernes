@@ -81,8 +81,16 @@ WHERE
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 AND
+<<<<<<< HEAD
+CASE WHEN $P{micro} = 0
+THEN enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente
+ELSE enf_dosis_esquema_vac.id_componente = $P{micro}
+END
+AND
+=======
 CASE WHEN $P{micro} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{micro} END
  AND
+>>>>>>> c7d939c5fef8980aa7bc5ee6f82e39d50eabf751
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
 group by
   aplicacion, departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>

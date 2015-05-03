@@ -76,8 +76,8 @@ class EnfCtlMovInventarioAdmin extends Admin
     
      public function prePersist($EnfCtlMovInventario) {
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-        $$EnfCtlMovInventario->setusuarioIngresoMov($user);
-        $$EnfCtlMovInventario->setfechaIngresoMov(new \DateTime());
+        $EnfCtlMovInventario->setusuarioIngresoMov($user);
+        $EnfCtlMovInventario->setfechaIngresoMov(new \DateTime());
     }
     
 }
