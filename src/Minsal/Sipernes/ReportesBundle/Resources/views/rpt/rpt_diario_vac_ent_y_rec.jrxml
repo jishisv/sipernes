@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -41,13 +41,16 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="presentacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
-  enf_ctl_tipo_componente.nombre_componente1 Nombrevacuna,
+  enf_componente.presentacion Nombrevacuna,
   enf_mov_inventario.cantidad_mov Cantidad,
-  enf_mov_inventario.empleado_envio NombreEmpleadoenvio,
-  enf_mov_inventario.empleado_recivio NombreEmpleadorecibio
+(select nombreempleado from mnt_empleado where mnt_empleado.id = enf_mov_inventario.empleado_envio::Integer) as NombreEmpleadoenvio,
+(select nombreempleado from mnt_empleado where mnt_empleado.id = enf_mov_inventario.empleado_recivio::Integer) as NombreEmpleadorecibio
   FROM
   public.enf_componente,
   public.enf_ctl_tipo_componente,
@@ -65,6 +68,8 @@ WHERE
   enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
   enf_mov_inventario.id_inventario = enf_inventario.id AND
   enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpini},'DD-MM-YYYY')  AND
+   CASE WHEN $P{presentacion} = 0 THEN ( enf_componente.id =   enf_componente.id ) ELSE   enf_componente.id =$P{presentacion} END AND
+
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreempleadorecibio;]]>
 	</queryString>
@@ -151,7 +156,7 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Área que entrega]]></text>
+				<text><![CDATA[Empleado que entrega]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="491" y="49" width="73" height="31" backcolor="#CCCCCC" uuid="57b9c614-2781-41ed-b259-fb43c9882a58"/>
@@ -170,7 +175,7 @@ group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreemplead
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Área que recibe]]></text>
+				<text><![CDATA[Empleado que recibe]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="479" y="18" width="44" height="20" uuid="a772e132-5238-4c30-bf84-19e9e22d4efc"/>
