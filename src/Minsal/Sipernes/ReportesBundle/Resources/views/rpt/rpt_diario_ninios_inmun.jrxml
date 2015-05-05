@@ -49,6 +49,7 @@
   enf_dosis_esquema_vac.id_expediente expediente,
   mnt_paciente.primer_nombre || ' ' || mnt_paciente.primer_apellido nombrecompleto,
   enf_componente.nombre_componente componente
+
 FROM
   public.ctl_establecimiento,
   public.ctl_departamento,
@@ -69,9 +70,10 @@ WHERE
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id and
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
   mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) AND
-  enf_dosis_esquema_vac.fecha_dosis_esq::date = to_date($P{fpini}, 'DD/MM/YYYY') AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
-
+  and  date_part('year',age( mnt_paciente.fecha_nacimiento ))>12
+  AND
+  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY')
 group by
   departamento, municipio, establecimiento, expediente, nombrecompleto, componente;]]>
 	</queryString>

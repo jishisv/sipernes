@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="71"/>
-	<property name="ireport.y" value="80"/>
+	<property name="ireport.x" value="54"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -39,38 +39,38 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT
-  mnt_empleado.nombreempleado Enfermera,
-  ctl_establecimiento.nombre Establecimiento,
-  mnt_paciente.primer_nombre nombrepaciente,
-  mnt_paciente.primer_apellido apellidopaciente,
-  enf_ctl_protocolo.nombre_protocolo nombreprotocolo,
-  enf_ctl_subprotocolo.nombre_subprotocolo nombresubprotocolo,
-  enf_ctl_fase_intervencion.nombre_fase fase,
-  enf_ctl_intervencion.descripcion_interven nombreintervencion,
-  enf_mtl_intervencion.observacion_interv observacionintervencion
-FROM
-  public.mnt_expediente,
-  public.mnt_empleado,
-  public.mnt_paciente,
-  public.ctl_establecimiento,
-  public.enf_ctl_protocolo,
-  public.enf_ctl_subprotocolo,
-  public.enf_ctl_intervencion,
-  public.enf_ctl_fase_intervencion,
-  public.enf_mtl_intervencion
-WHERE
-  mnt_expediente.id_paciente = mnt_paciente.id AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  enf_ctl_protocolo.id = enf_ctl_subprotocolo.id_protocolo AND
-  enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
-  enf_ctl_intervencion.id = enf_ctl_fase_intervencion.id_intervencion AND
+		<![CDATA[select
+  emp.nombreempleado Enfermera,
+  est.nombre Establecimiento,
+  pac.primer_nombre nombrepaciente,
+  pac.primer_apellido apellidopaciente,
+  prt1.nombre_protocolo nombreprotocolo,
+  subp1.nombre_subprotocolo nombresubprotocolo,
+  int2.descripcion_interven nombreintervencion,
+  int1.observacion_interv observacionintervencion
 
-  enf_mtl_intervencion.id_emp_corr =  $P{codigoEmp}/*mnt_empleado.id*/ AND
-  enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id AND
-  enf_ctl_intervencion.id =  $P{tipointervencion} AND
-  ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id) AND
-  enf_mtl_intervencion.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY'); ]]>
+from enf_mtl_intervencion int1
+inner join enf_ctl_intervencion int2
+on (int1.id_intervencion = int2.id)
+inner join enf_ctl_subprotocolo subp1
+on (int2.id_subprotocolo = subp1.id)
+inner join enf_ctl_protocolo prt1
+on (subp1.id_protocolo = prt1.id)
+inner join mnt_empleado emp
+on (int1.id_emp_corr = emp.id)
+inner join mnt_expediente exp
+on (int1.id_expediente = exp.id)
+inner join mnt_paciente pac
+on (exp.id_paciente = pac.id)
+inner join ctl_establecimiento est
+on (emp.id_establecimiento = est.id)
+
+where
+est.id=coalesce(25,est.id) and
+CASE WHEN $P{tipointervencion}  = 0 THEN (int2.id =int2.id) ELSE int2.id=$P{tipointervencion} END AND
+
+  CASE WHEN $P{codigoEmp}  = 0 THEN (int1.id_emp_corr=int1.id_emp_corr)    ELSE int1.id_emp_corr=$P{codigoEmp} END and
+int1.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY');]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
@@ -78,7 +78,6 @@ WHERE
 	<field name="apellidopaciente" class="java.lang.String"/>
 	<field name="nombreprotocolo" class="java.lang.String"/>
 	<field name="nombresubprotocolo" class="java.lang.String"/>
-	<field name="fase" class="java.lang.String"/>
 	<field name="nombreintervencion" class="java.lang.String"/>
 	<field name="observacionintervencion" class="java.lang.String"/>
 	<background>
@@ -172,14 +171,7 @@ WHERE
 				<text><![CDATA[Subprotocolo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="730" y="46" width="102" height="34" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fase]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="table_TH" x="832" y="46" width="126" height="34" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<reportElement style="table_TH" x="731" y="46" width="126" height="34" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -224,12 +216,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{nombresubprotocolo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" x="730" y="0" width="102" height="35" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{fase}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="table" x="832" y="0" width="126" height="35" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<reportElement style="table" x="731" y="0" width="126" height="35" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombreintervencion}]]></textFieldExpression>
 			</textField>
