@@ -361,7 +361,8 @@ var ValidIntervEfecEnf = function () {
             $("#tipoestablecimientos option:selected").val() == "0" || $("#establecimientos option:selected").val() == "0"
            // || $("#tipoprotocolo option:selected").val() == "0" || $("#protocolo option:selected").val() == "0"
          //   || $("#tipointervencion option:selected").val() == "0" 
-            || $("#cod_enf option:selected").val() == "0" ) {
+           // || $("#cod_enf option:selected").val() == "0" 
+            ) {
         ($('#error')) ? $('#error').remove() : '';
         Alerta("Debe de seleccionar todas las listas desplegables para continuar.", FuncAfterClose2);
         flag = false;

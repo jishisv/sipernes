@@ -714,15 +714,15 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_inicio' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
-            'tipovac' => $tipovac,
+            'tipoEstable' => $tipoestablecimientos,
+            //'tipovac' => $tipovac,
             'presentacion' => $presentacion,
-            'disciplina' => $disciplina,
+            //'disciplina' => $disciplina,
         ));
 
         return $jasperReport->buildReport();
@@ -980,38 +980,6 @@ class ReporteMetodoController extends Controller {
         return new Response(json_encode($datosempleado));
     }
 
-    /**
-     * @Route("obtener/nombrepaciente/por/expediente/{id}", name="get_nombre_paciente", options={"expose"=true})
-     */
-    public function getNombrePacientebIdAction($id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $dql = "SELECT o,pac
-                FROM MinsalSipernesBundle:MntExpediente o inner join o.idPaciente pac
-               
-                WHERE o.id = :id";
-        $datospaciente['datospaciente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
-
-//        $conexion = $em->getRepository('MinsalSiapsBundle:MntConexion');
-//        $conn = $em->getRepository('MinsalSiapsBundle:MntConexion')->getConexionGenerica($conexion);
-//        
-//        $sql = "select * from mnt_expediente exp inner join mnt_paciente pac
-//        on(exp.id = pac.id) where exp.id = :id";
-//        $datospaciente['datospaciente'] = $conn->query($sql)->setParameter('id', $id)->getArrayResult();
-//$em = $this->getDoctrine()->getManager();
-//
-//$sql = "select * from mnt_expediente exp inner join mnt_paciente pac
-//on exp.id_paciente=pac.id where exp.id=?";
-//        
-//
-//$query = $this->getDoctrine()->getEntityManager();
-//        
-//$datospaciente = $query->createNativeQuery($sql)
-//                  ->setParameter(1, $id->getId()->getId())
-//                 
-//                  ->getResult();
-        return new Response(json_encode($datospaciente));
-    }
 
     /**
      * @Route("tipos/componente/todos", name="get_all_tipo_componente", options={"expose"=true})
@@ -1098,7 +1066,38 @@ MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
         return new Response(json_encode($tipodiag));
     }
     
-     
+ /**
+     * @Route("obtener/nombrepaciente/por/expediente/{id}", name="get_nombre_paciente", options={"expose"=true})
+     */
+    public function getNombrePacientebIdAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o,pac
+                FROM MinsalSipernesBundle:MntExpediente o inner join o.idPaciente pac
+               
+                WHERE o.id = :id";
+        $datospaciente['datospaciente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
+
+//        $conexion = $em->getRepository('MinsalSiapsBundle:MntConexion');
+//        $conn = $em->getRepository('MinsalSiapsBundle:MntConexion')->getConexionGenerica($conexion);
+//        
+//        $sql = "select * from mnt_expediente exp inner join mnt_paciente pac
+//        on(exp.id = pac.id) where exp.id = :id";
+//        $datospaciente['datospaciente'] = $conn->query($sql)->setParameter('id', $id)->getArrayResult();
+//$em = $this->getDoctrine()->getManager();
+//
+//$sql = "select * from mnt_expediente exp inner join mnt_paciente pac
+//on exp.id_paciente=pac.id where exp.id=?";
+//        
+//
+//$query = $this->getDoctrine()->getEntityManager();
+//        
+//$datospaciente = $query->createNativeQuery($sql)
+//                  ->setParameter(1, $id->getId()->getId())
+//                 
+//                  ->getResult();
+        return new Response(json_encode($datospaciente));
+    }    
     
     
 }

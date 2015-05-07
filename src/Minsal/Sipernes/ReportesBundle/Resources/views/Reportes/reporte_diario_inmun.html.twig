@@ -31,10 +31,25 @@
                 <td><input id="fecha_fin" name="fecha_fin" type="text" class="fecha obligatorio" /></td>#}
                 </tr>
                 <tr>
+                   {# <td class="" ><strong>Departamento:</strong></td>
+                  <td>
+                        <select id="deptos" name="deptos">
+                            <option value="0">Seleccione..</option>
+                        </select></td>#}
+                 {#   <td class="" ><strong>Municipio:</strong></td>
+                    <td><select id="municipios" name="municipios">
+                            <option value="0" selected="true">Seleccione..</option>
+                        </select>
+                    </td>#}
+                </tr>
+                <tr>
+                    <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Seleccione área geográfica</strong></td>
+                </tr>
+                <tr>
                     <td class="" ><strong>Departamento:</strong></td>
                     <td>
                         <select id="deptos" name="deptos">
-                            <option value="0">Seleccione..</option>
+                            <option value="0" selected="true">Seleccione..</option>
                         </select></td>
                     <td class="" ><strong>Municipio:</strong></td>
                     <td><select id="municipios" name="municipios">
@@ -52,28 +67,14 @@
                             <option value="0">Seleccione..</option>
                         </select></td>
                 </tr>
-                <tr>
-                    <td colspan="4" id="titulo_parametro" class="sonata-ba-list-field-header"><strong>Seleccione área geográfica</strong></td>
-                </tr>
-                <tr>
-                    <td class="" ><strong>Departamento:</strong></td>
-                    <td>
-                        <select id="deptos2" name="deptos2">
-                            <option value="0" selected="true">Seleccione..</option>
-                        </select></td>
-                    <td class="" ><strong>Municipio:</strong></td>
-                    <td><select id="municipios2" name="municipios2">
-                            <option value="0" selected="true">Seleccione..</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
+                
+               {# <tr>
                     <td class="" ><strong>Sector:</strong></td>
                     <td>
                         <select id="sector" name="sector">
                             <option value="0" selected="true">Seleccione..</option>
                         </select></td>
-                </tr>
+                </tr>#}
                 <tr>
                     <td class="" ><strong>Formato Reporte:</strong></td>
                     <td colspan="3">
