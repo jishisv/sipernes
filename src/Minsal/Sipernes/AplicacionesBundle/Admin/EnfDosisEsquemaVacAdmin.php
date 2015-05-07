@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 class EnfDosisEsquemaVacAdmin extends Admin
 {
@@ -174,4 +175,21 @@ class EnfDosisEsquemaVacAdmin extends Admin
         
        
     }
+    
+       public function validate(ErrorElement $errorElement, $EnfDosisEsquemaVac) {         
+        //validar que el componente tenga existencias        
+        $queryString='select e from Minsal\SipernesBundle\Entity\EnfInventario e WHERE e.idComponente=3';        
+        $query = $this->modelManager->getEntityManager($EnfDosisEsquemaVac)->createQuery($queryString)->getArrayResult();
+        
+        foreach($query as $item) {
+            //$EnfDosisEsquemaVac->setidComponente($this->getConfigurationPool()->getContainer()->get('Doctrine')->getRepository('Minsal\SipernesBundle\Entity\EnfComponente')->find($item['id']));
+            $numero1 = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getRepository('Minsal\SipernesBundle\Entity\EnfInventario')->find($item['existencia']);
+        }
+        
+        if (intval($numero1,10) > 0) {
+            $errorElement->with('idTipoEsq')
+                    ->addViolation('No hay existencias de la vacuna o micronutriente')
+                    ->end();
+        }
+       }
 }

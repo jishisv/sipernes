@@ -16,14 +16,19 @@ class EnfMovInventarioAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('usuarioMov')
-            ->add('fechaIngresoMov')
-            ->add('fechaModificacionMov')
-            ->add('cantidadMov')
-            ->add('estadoMov')
-            ->add('empleadoEnvio')
-            ->add('empleadoRecivio')
+           // ->add('id')
+            ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
+            ->add('idInventario', null, array('label' => 'Componente'))
+            //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
+//            ->add('usuarioMov')
+//            ->add('fechaIngresoMov')
+//            ->add('fechaModificacionMov')
+            //->add('cantidadMov', null, array('label' => 'Cantidad'))
+            //->add('estadoMov', null, array('label' => 'Activo'))
+            ->add('idEmpCorr', null, array('label' => 'Codigo empleado'))
+            ->add('empleadoEnvio', null, array('label' => 'Entregado por '))
+            ->add('empleadoRecivio', null, array('label' => 'Recibido por '))
+            
         ;
     }
 
@@ -33,14 +38,18 @@ class EnfMovInventarioAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('usuarioMov')
-            ->add('fechaIngresoMov')
-            ->add('fechaModificacionMov')
-            ->add('cantidadMov')
-            ->add('estadoMov')
-            ->add('empleadoEnvio')
-            ->add('empleadoRecivio')
+            //->add('id')
+            ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
+            ->add('idInventario', null, array('label' => 'Componente'))
+            //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))           
+//            ->add('fechaModificacionMov')
+            ->add('cantidadMov', null, array('label' => 'Cantidad'))
+            //->add('estadoMov', null, array('label' => 'Activo'))
+            ->add('idEmpCorr', null, array('label' => 'Codigo empleado'))
+            ->add('empleadoEnvio', null, array('label' => 'Entregado por '))
+            ->add('empleadoRecivio', null, array('label' => 'Recibido por ')) 
+            ->add('usuarioMov', null, array('label' => 'Creado por'))
+           ->add('fechaIngresoMov', null, array('label' => 'Creado el'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -57,18 +66,17 @@ class EnfMovInventarioAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-//            ->add('id')
-            ->add('idInventario', null, array('label' => 'Codigo de Inventario'))
-            ->add('idDosisEsq', null, array('label' => 'Tipo de Dosis Esquema'))
-//            ->add('idTipoInventario', null, array('label' => 'Tipo de Inventario'))
-            ->add('idEmpCorr', 'text', array('label' => 'Codigo Empleado'))
+            ->add('idTipoInventario', null, array('label' => 'Tipo de inventario', 'required' => true))
+            ->add('idInventario', null, array('label' => 'Componente'))
+            //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')
 //            ->add('fechaModificacionMov')
-            ->add('cantidadMov')
-            ->add('estadoMov')
-            ->add('empleadoEnvio')
-            ->add('empleadoRecivio')
+            ->add('cantidadMov', null, array('label' => 'Cantidad', 'required' => true))
+            //->add('estadoMov', null, array('label' => 'Activo'))
+            ->add('idEmpCorr', null, array('label' => 'Codigo empleado', 'required' => true))
+            ->add('empleadoEnvio', null, array('label' => 'Entregado por ', 'required' => true))
+            ->add('empleadoRecivio', null, array('label' => 'Recibido por ', 'required' => true))
             
         ;
     }
@@ -79,14 +87,45 @@ class EnfMovInventarioAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
-            ->add('usuarioMov')
-            ->add('fechaIngresoMov')
-            ->add('fechaModificacionMov')
-            ->add('cantidadMov')
-            ->add('estadoMov')
-            ->add('empleadoEnvio')
-            ->add('empleadoRecivio')
+            //->add('id')
+            ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
+            ->add('idInventario', null, array('label' => 'Componente'))
+            //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
+//            ->add('usuarioMov')
+//            ->add('fechaIngresoMov')
+//            ->add('fechaModificacionMov')
+            ->add('cantidadMov', null, array('label' => 'Cantidad'))
+            //->add('estadoMov', null, array('label' => 'Activo'))
+            ->add('idEmpCorr', null, array('label' => 'Codigo empleado'))
+            ->add('empleadoEnvio', null, array('label' => 'Entregado por '))
+            ->add('empleadoRecivio', null, array('label' => 'Recibido por '))
+            
         ;
     }
+    
+    
+     public function getTemplate($name) {
+        switch ($name) {
+            case 'edit':
+                return 'MinsalSipernesAplicacionesBundle:MovInventario:movinventario.html.twig';
+                break;
+            //case 'create':
+            //return 'MinsalSipernesActividadBundle:ActividadRegistro:reporte_prueba1.html.twig';
+            //break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+    
+    public function prePersist($EnfMovInventario) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $EnfMovInventario->setusuarioMov($user);
+        $EnfMovInventario->setfechaIngresoMov(new \DateTime());
+        $EnfMovInventario->setestadoMov(true);
+   
+       
+    }
+    
 }

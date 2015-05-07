@@ -155,6 +155,6 @@ class EnfCtlMovInventario
     }
     
     public function __toString() {
-        return '';
+    return $this->nombreTipoInventatrio ? $this->nombreTipoInventatrio : '';
     }
 }
