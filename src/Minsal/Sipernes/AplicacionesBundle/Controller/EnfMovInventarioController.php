@@ -30,6 +30,20 @@ class EnfMovInventarioController extends Controller
         return new Response(json_encode($datoscomponente));
     }
     
+    /**
+     * @Route("Num/Empleado/all/Empleados/envio/recibido", name="get_empleados_env_rec", options={"expose"=true})
+     */
+    public function getNumEmpleadoEnfermeraAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:MntEmpleado o";
+
+        $empleados['empleados'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($empleados));
+    }
 
 
     

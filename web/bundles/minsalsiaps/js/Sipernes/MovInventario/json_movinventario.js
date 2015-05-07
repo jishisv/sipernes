@@ -8,6 +8,13 @@ $(document).ready(function() {
         width: '100%'
     });
 
+
+    
+    $('select[id$="_empleadoEnvio"]').select2({
+        placeholder: 'Seleccione Empleado... ',
+        allowClear: true,
+        width: '100%'
+    });
     
    
    
@@ -18,6 +25,14 @@ $(document).ready(function() {
                 });
             });
 
+      ///////////////////llenado de combos de Empleado//////////////////////
+    $.getJSON(Routing.generate('get_empleados_env_rec'),
+            function (data) {
+//              alert("entre a deptos de shcp");
+                $.each(data.empleados, function (indice, aux) {
+                    $('select[id$="_empleadoEnvio"]').append('<option value="' + aux.id + '">' + aux.idempleado + '</option>');
+                });
+            });
 
       
 
