@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="201"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="25"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -44,20 +44,13 @@
 	<parameter name="presentacion" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="nombreempleadoenvio" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="nombreempleadorecivio" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
   enf_componente.presentacion Nombrevacuna,
   enf_mov_inventario.cantidad_mov Cantidad,
-  enf_mov_inventario.empleado_envio EmpleadoEnvio,
-  enf_mov_inventario.empleado_recivio EmpleadoRecivio
-
+(select nombreempleado from mnt_empleado where mnt_empleado.id = enf_mov_inventario.empleado_envio::Integer) as NombreEmpleadoenvio,
+(select nombreempleado from mnt_empleado where mnt_empleado.id = enf_mov_inventario.empleado_recivio::Integer) as NombreEmpleadorecibio
   FROM
   public.enf_componente,
   public.enf_ctl_tipo_componente,
@@ -78,13 +71,13 @@ WHERE
    CASE WHEN $P{presentacion} = 0 THEN ( enf_componente.id =   enf_componente.id ) ELSE   enf_componente.id =$P{presentacion} END AND
 
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
-group by establecimiento,nombrevacuna,cantidad,EmpleadoEnvio, EmpleadoRecivio;]]>
+group by establecimiento,nombrevacuna,cantidad,nombreempleadoenvio,nombreempleadorecibio;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="nombrevacuna" class="java.lang.String"/>
 	<field name="cantidad" class="java.math.BigDecimal"/>
-	<field name="empleadoenvio" class="java.lang.String"/>
-	<field name="empleadorecivio" class="java.lang.String"/>
+	<field name="nombreempleadoenvio" class="java.lang.String"/>
+	<field name="nombreempleadorecibio" class="java.lang.String"/>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>
@@ -219,6 +212,11 @@ group by establecimiento,nombrevacuna,cantidad,EmpleadoEnvio, EmpleadoRecivio;]]
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
 			</textField>
 			<textField>
+				<reportElement style="table" x="268" y="0" width="124" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombreempleadoenvio}]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement style="table" x="491" y="0" width="73" height="35" uuid="9b34ea23-ee93-49cc-9fe2-adb2ba77e2a1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
@@ -226,15 +224,8 @@ group by establecimiento,nombrevacuna,cantidad,EmpleadoEnvio, EmpleadoRecivio;]]
 			<textField>
 				<reportElement style="table" x="392" y="0" width="99" height="35" uuid="1ff566a7-4e5d-4bf4-b4a6-2687baf2b329"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{empleadorecivio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombreempleadorecibio}]]></textFieldExpression>
 			</textField>
-			<elementGroup>
-				<textField>
-					<reportElement style="table" x="268" y="0" width="124" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{empleadoenvio}]]></textFieldExpression>
-				</textField>
-			</elementGroup>
 		</band>
 	</detail>
 	<pageFooter>
