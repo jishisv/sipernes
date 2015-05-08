@@ -67,7 +67,7 @@ class EnfMovInventarioAdmin extends Admin
     {
         $formMapper
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario', 'required' => true))
-            ->add('idInventario', null, array('label' => 'Componente'))
+            ->add('idInventario', null, array('label' => 'Componente', 'required' => true))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')
@@ -76,7 +76,7 @@ class EnfMovInventarioAdmin extends Admin
             //->add('estadoMov', null, array('label' => 'Activo'))
             ->add('idEmpCorr', null, array('label' => 'Codigo empleado', 'required' => true))
             ->add('empleadoEnvio', null, array('label' => 'Entregado por ', 'required' => true))
-            ->add('empleadoRecivio', null, array('label' => 'Recibido por ', 'required' => true))
+            ->add('empleadoRecivio',null, array('label' => 'Recibido por ', 'required' => true))
             
         ;
     }
@@ -127,5 +127,9 @@ class EnfMovInventarioAdmin extends Admin
    
        
     }
-    
+    //funcion para llenar combos de empleado
+    public function llenarcombosemdo(){
+         $queryString='select e from Minsal\SipernesBundle\Entity\EnfInventario e';        
+        $query = $this->modelManager->getEntityManager($EnfDosisEsquemaVac)->createQuery($queryString)->getArrayResult();
+    }
 }
