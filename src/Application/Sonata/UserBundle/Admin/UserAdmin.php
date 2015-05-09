@@ -177,6 +177,6 @@ class UserAdmin extends BaseUserAdmin {
             $this->getModelManager()->create($empleado);
             $usuario->setIdEmpleado($empleado);
         }
-    }
+    }    
 
 }

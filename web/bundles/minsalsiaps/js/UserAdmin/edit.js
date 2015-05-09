@@ -3,7 +3,7 @@ $(document).ready(function() {
         if (!$('input:checkbox[name*="groups"]').is(':checked')) {
             $("body").append('<div id="dialog-message"></div>');
             $("#dialog-message").empty();
-            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> Debe de seleccinoar un rol para el usuario</p>');
+            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> Debe de seleccionar un rol para el usuario</p>');
             $("#dialog-message").dialog({
                 dialogClass: "dialog-error",
                 modal: true,
