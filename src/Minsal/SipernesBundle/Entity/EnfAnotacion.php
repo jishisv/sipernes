@@ -3,6 +3,7 @@
 namespace Minsal\SipernesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * EnfAnotacion
@@ -26,6 +27,7 @@ class EnfAnotacion
      * @var string
      *
      * @ORM\Column(name="edad_anotacion", type="string", length=1024, nullable=true)
+     * @Assert\Type(type="digit" , message="La edad debe ser un número")
      */
     private $edadAnotacion;
 
