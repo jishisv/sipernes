@@ -61,7 +61,7 @@ WHERE
   mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
-  enf_dosis_esquema_vac.id_movimiento = enf_mov_inventario.id) t group by t.nombre,t.nombre_componente1;]]>
+  enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="establecimiento" class="java.lang.String"/>

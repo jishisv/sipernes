@@ -30,9 +30,9 @@ class EnfTrazaIntervencion
     private $usuarioTraInterven;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="cambio_tra_interven", type="boolean", nullable=true)
+     * @ORM\Column(name="cambio_tra_interven", type="string", length=200, nullable=true)
      */
     private $cambioTraInterven;
 
