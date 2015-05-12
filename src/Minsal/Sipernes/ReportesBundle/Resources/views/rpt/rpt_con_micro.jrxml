@@ -81,16 +81,8 @@ WHERE
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 AND
-<<<<<<< HEAD
-CASE WHEN $P{micro} = 0
-THEN enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente
-ELSE enf_dosis_esquema_vac.id_componente = $P{micro}
-END
-AND
-=======
 CASE WHEN $P{micro} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{micro} END
  AND
->>>>>>> c7d939c5fef8980aa7bc5ee6f82e39d50eabf751
   enf_dosis_esquema_vac.id_modalidad = enf_modalidad.id
 group by
   aplicacion, departamento, municipio, establecimiento, expediente, nombrecompleto, componente, modalidad;]]>
@@ -157,30 +149,30 @@ group by
 				<text><![CDATA[Consolidado Diario de Aplicación de Micronutrientes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="69" width="65" height="31" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="75" width="65" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="76" y="69" width="130" height="31" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="76" y="75" width="130" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="206" y="69" width="99" height="31" backcolor="#999999" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="206" y="75" width="99" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Departamento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="305" y="69" width="88" height="31" backcolor="#999999" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="305" y="75" width="88" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Municipio]]></text>
 			</staticText>
@@ -205,107 +197,107 @@ group by
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" mode="Opaque" x="393" y="69" width="65" height="31" forecolor="#000000" backcolor="#999999" uuid="07540817-300c-4b64-98ad-92fa234ed959"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="393" y="75" width="65" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#999999" uuid="07540817-300c-4b64-98ad-92fa234ed959"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Expediente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" mode="Opaque" x="458" y="69" width="106" height="31" forecolor="#000000" backcolor="#999999" uuid="5ab5792b-288b-42fd-9c4a-42277ab9298a"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="458" y="75" width="106" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#999999" uuid="5ab5792b-288b-42fd-9c4a-42277ab9298a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Nombre paciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="38" width="100" height="20" uuid="4ca0557b-bfb2-46ca-8687-d5a267de96aa"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Fecha de consulta:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="382" y="38" width="100" height="20" uuid="468d989e-6a2f-4661-bebe-d292ca2f81b8"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="table_TH" mode="Opaque" x="564" y="69" width="75" height="31" forecolor="#000000" backcolor="#999999" uuid="7282a3e9-638a-4d26-beaf-6f4e56dc30b1"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="564" y="75" width="75" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#999999" uuid="7282a3e9-638a-4d26-beaf-6f4e56dc30b1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Micronutriente aplicado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" mode="Opaque" x="639" y="69" width="103" height="31" forecolor="#000000" backcolor="#999999" uuid="05f13499-defb-453e-ba8f-9acf1f80a791"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="639" y="75" width="103" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#999999" uuid="05f13499-defb-453e-ba8f-9acf1f80a791"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Modalidad]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="411" y="41" width="100" height="20" uuid="8fb21e82-f612-4521-a7a7-bae539bb04c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="41" width="151" height="20" uuid="1d971f11-4c06-4471-8e58-6314fc7712be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de datos consultados:]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement style="table" x="11" y="0" width="65" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+		<band height="25" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="65" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="76" y="0" width="130" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="76" y="0" width="130" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="206" y="0" width="99" height="35" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="206" y="0" width="99" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="305" y="0" width="88" height="35" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="305" y="0" width="88" height="25" isPrintWhenDetailOverflows="true" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement style="table" mode="Transparent" x="393" y="0" width="65" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="69ee3273-07b4-4ca2-b32f-faa1aa8dd346"/>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="393" y="0" width="65" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="69ee3273-07b4-4ca2-b32f-faa1aa8dd346"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{expediente}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement style="table" mode="Transparent" x="458" y="0" width="106" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="e3f5deb5-999f-4a25-a2e0-cb7b112779a3"/>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="458" y="0" width="106" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="e3f5deb5-999f-4a25-a2e0-cb7b112779a3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrecompleto}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement style="table" mode="Transparent" x="564" y="0" width="75" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="44197a83-de9f-4ca4-8e14-e41d161eb03c"/>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="564" y="0" width="75" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="44197a83-de9f-4ca4-8e14-e41d161eb03c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{componente}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement style="table" mode="Transparent" x="639" y="0" width="103" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="4b4a3867-736a-4c7b-ba1f-16d3052d501b"/>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="639" y="0" width="103" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="4b4a3867-736a-4c7b-ba1f-16d3052d501b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{modalidad}]]></textFieldExpression>
@@ -318,16 +310,16 @@ group by
 	<summary>
 		<band height="50">
 			<textField isBlankWhenNull="true">
-				<reportElement style="table" mode="Opaque" x="639" y="0" width="103" height="31" uuid="3d49dbf7-bf14-46b6-9119-66c3e709bb65"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="639" y="0" width="103" height="25" isPrintWhenDetailOverflows="true" uuid="3d49dbf7-bf14-46b6-9119-66c3e709bb65"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalMicro}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" mode="Opaque" x="11" y="0" width="628" height="31" uuid="dcc00a26-f569-4daa-8002-637d688045ad"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="11" y="0" width="628" height="25" isPrintWhenDetailOverflows="true" uuid="dcc00a26-f569-4daa-8002-637d688045ad"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>

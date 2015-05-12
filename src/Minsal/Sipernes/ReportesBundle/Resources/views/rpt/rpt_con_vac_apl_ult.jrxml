@@ -124,7 +124,7 @@ group by
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="80" splitType="Stretch">
+		<band height="90" splitType="Stretch">
 			<staticText>
 				<reportElement x="134" y="8" width="297" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -133,16 +133,16 @@ group by
 				<text><![CDATA[Consolidado de Vacunas Aplicadas en los Ultimos Siete Días]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="49" width="84" height="31" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="84" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="484" y="49" width="78" height="31" backcolor="#999999" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="484" y="65" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Dosis Aplicadas]]></text>
 			</staticText>
@@ -152,16 +152,16 @@ group by
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="306" y="49" width="178" height="31" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="306" y="65" width="178" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Vacuna]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="95" y="49" width="211" height="31" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="95" y="65" width="211" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true" isItalic="false"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
@@ -180,35 +180,45 @@ group by
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="169" y="41" width="151" height="20" uuid="9ffc827c-8105-49ed-9111-2c14c6512b0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de datos consultados:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="41" width="100" height="20" uuid="01206d4c-c378-4ac9-a46d-abb3a55aa2e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement style="table" x="11" y="0" width="84" height="35" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+		<band height="25" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="95" y="0" width="211" height="35" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="95" y="0" width="211" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="484" y="0" width="78" height="35" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="306" y="0" width="178" height="35" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="306" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
 			</textField>
@@ -220,14 +230,14 @@ group by
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" x="11" y="0" width="473" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="473" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="table" x="484" y="0" width="78" height="33" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>

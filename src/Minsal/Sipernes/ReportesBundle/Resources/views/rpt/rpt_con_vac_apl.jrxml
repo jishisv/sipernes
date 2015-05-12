@@ -200,17 +200,17 @@ group by
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="102" y="35" width="165" height="15" uuid="2f918b9c-7b00-4096-935e-2dc41b9ee6ad"/>
+				<reportElement x="87" y="35" width="165" height="15" uuid="2f918b9c-7b00-4096-935e-2dc41b9ee6ad"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Fecha de datos consultados: Desde ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="267" y="35" width="100" height="15" uuid="1acf8251-ba5d-4ae4-8821-467afe0396f7"/>
+				<reportElement x="252" y="35" width="100" height="15" uuid="1acf8251-ba5d-4ae4-8821-467afe0396f7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Desde "+ $P{fpini}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="367" y="35" width="100" height="15" uuid="2d4e87a8-dfeb-4551-b321-010e9f53733a"/>
+				<reportElement x="352" y="35" width="100" height="15" uuid="2d4e87a8-dfeb-4551-b321-010e9f53733a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
@@ -219,7 +219,7 @@ group by
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" x="11" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -232,7 +232,7 @@ group by
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" x="95" y="0" width="211" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="95" y="0" width="211" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -245,7 +245,7 @@ group by
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -258,7 +258,7 @@ group by
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" x="306" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="306" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
