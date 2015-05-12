@@ -130,30 +130,30 @@ group by enf_ctl_diagnostico.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_estab
 				<text><![CDATA[Comparativo Pacientes vrs Diagnósticos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="1" y="73" width="63" height="34" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="1" y="82" width="63" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="64" y="73" width="200" height="34" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="64" y="82" width="200" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="264" y="73" width="245" height="34" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="264" y="82" width="245" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diagnostico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="509" y="73" width="63" height="34" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
+				<reportElement style="table_CH" x="509" y="82" width="63" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
@@ -178,43 +178,50 @@ group by enf_ctl_diagnostico.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_estab
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="147" y="45" width="98" height="20" uuid="d9fc0023-9a6c-4e90-aa10-d855919f125d"/>
-				<text><![CDATA[Fecha de consulta:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="325" y="45" width="18" height="20" uuid="d8714b32-1ac9-4434-9fc4-feec0168a416"/>
-				<text><![CDATA[al]]></text>
+				<reportElement x="89" y="48" width="165" height="15" uuid="8fbb6590-2a78-4601-a651-ca7a5f781305"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de datos consultados: Desde ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="245" y="45" width="73" height="20" uuid="48e18b94-8ca6-4cc4-8258-5bb695b12eb2"/>
-				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
+				<reportElement x="254" y="48" width="100" height="15" uuid="2fe6a646-5918-42ff-a93b-4f4c32ce72a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Desde "+ $P{fpini}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="343" y="45" width="73" height="20" uuid="14993929-4a28-413b-8ff6-bfa8588cf3d6"/>
-				<textFieldExpression><![CDATA[$P{fpfin}]]></textFieldExpression>
+				<reportElement x="354" y="48" width="100" height="15" uuid="2c0f442e-f9eb-4f85-8cfe-2b1b5e91a14a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement style="table" x="1" y="0" width="63" height="35" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+		<band height="25" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="1" y="0" width="63" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="64" y="0" width="200" height="35" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="64" y="0" width="200" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="264" y="0" width="245" height="35" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="264" y="0" width="245" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre_diagnostico}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="table" x="509" y="0" width="63" height="35" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="509" y="0" width="63" height="25" isPrintWhenDetailOverflows="true" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -227,14 +234,14 @@ group by enf_ctl_diagnostico.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_estab
 			<textField>
 				<reportElement style="table" x="509" y="0" width="63" height="33" uuid="c463e0fb-ca27-4980-a3d0-9d376a54d65d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="table" x="1" y="0" width="508" height="33" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
