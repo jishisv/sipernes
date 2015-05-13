@@ -97,7 +97,8 @@ class EnfCtlProtocoloAdmin extends Admin
      * con los valores del formulario.
      * 
      */
-    public function preUpdate($EnfDominio) {
+    public function preUpdate($EnfCtlProtocolo) {
+        
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfCtlProtocolo->setusuarioProto($user);
         $EnfCtlProtocolo->setfechaModificacionProto(new \DateTime());

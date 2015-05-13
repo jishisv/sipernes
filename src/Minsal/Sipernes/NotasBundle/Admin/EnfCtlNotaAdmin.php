@@ -102,7 +102,9 @@ class EnfCtlNotaAdmin extends Admin
      * con los valores del formulario.
      * 
      */
-    public function preUpdate($EnfDominio) {
+    public function preUpdate( $EnfCtlNota) {
+        
+        
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $EnfCtlNota->setusuarioCtlNota($user);
         $EnfCtlNota->setfechaModCtlNota(new \DateTime());

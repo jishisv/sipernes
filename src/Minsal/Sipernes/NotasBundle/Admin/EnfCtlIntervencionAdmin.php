@@ -56,12 +56,12 @@ class EnfCtlIntervencionAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idSubprotocolo', null, array('label' => 'Protocolo'))
-            ->add('descripcionInterven', null, array('label' => 'Digite Intervención'))
+            ->add('idSubprotocolo', null, array('label' => 'Protocolo', 'required' => true))
+            ->add('descripcionInterven', null, array('label' => 'Digite Intervención','required' => true))
             //->add('fechaIngresoInterven')
             //->add('usuarioInterven')
             //->add('fechaModificacionInterven')
-            ->add('estadoCltInterv', null, array('label' => 'Activo'))
+            ->add('estadoCltInterv', null, array('label' => 'Activo','required' => true))
         ;
     }
 

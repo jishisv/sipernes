@@ -55,12 +55,12 @@ class EnfCtlFaseIntervencionAdmin extends Admin
     {
         $formMapper
             //->add('id')
-            ->add('idIntervencion')
-            ->add('nombreFase')
+            ->add('idIntervencion',null, array('label' => 'Intervención', 'required' => true))
+            ->add('nombreFase', null, array('label' => 'Nombre de fase', 'required' => true))
             //->add('fechaIngresoFase')
             //->add('fechaModificacionFase')
             //->add('usuarioFase')
-            ->add('estadoFase')
+            ->add('estadoFase', null, array('label' => 'Estado fase'))
         ;
     }
 

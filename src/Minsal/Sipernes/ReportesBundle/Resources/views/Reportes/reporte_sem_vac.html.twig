@@ -8,12 +8,12 @@
 {% block javascripts %}
     {{parent()}}
     {# 69 #}
-   
+     <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/RptReportes/reporte_listconsoactiv.js') }}" type="text/javascript"></script>
     <script>
         
-        
+     {#   
         jQuery(function($) {
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
@@ -45,7 +45,7 @@
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);
 });
-        
+        #}
         
         
         

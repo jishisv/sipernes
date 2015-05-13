@@ -129,6 +129,9 @@ class EnfMtlActividadAdmin extends Admin {
         $EnfMtlActividad->setfechaIngresoAct(new \DateTime());
         $EnfMtlActividad->setestadoMtlAct(true);
         $EnfMtlActividad->setcantidadActEnf(1);
+        if( $EnfMtlActividad->gettiempoActEnf() == '00:00:00'){
+             $EnfMtlActividad->settiempoActEnf('10:20:10');
+        }
     }
 
     /*
