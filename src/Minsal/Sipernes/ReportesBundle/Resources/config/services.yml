@@ -99,7 +99,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlPaisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlPais, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 17. Consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días}
 
     minsal_sipernes_reportes.admin.ctl_departamento:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlDepartamentoAdmin
@@ -165,16 +165,10 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntExpedienteEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte de control de existencias y descargo de vacunas por día}
-
-    minsal_sipernes_reportes.admin.ctl_tipo_establecimiento:
-        class: Minsal\Sipernes\ReportesBundle\Admin\CtlTipoEstablecimientoAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\CtlTipoEstablecimiento, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Reporte diario de actividades realizadas por el personal de enfermería}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 28. Reporte de control de existencias y descargo de vacunas por día}
 
     minsal_sipernes_reportes.admin.enf_tiene:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTieneAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTiene, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: Comparativo de micronutrientes aplicados versus planificados}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 29. Comparativo de micronutrientes aplicados versus planificados}

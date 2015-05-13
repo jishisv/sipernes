@@ -74,7 +74,7 @@ class EnfCtlSubactividadAdmin extends Admin
             //->add('fechaModificacionSubact')
             //->add('usuarioIngresoSubact')          
             ->add('cantidadSubact', null, array('label' => 'Cantidad de actividades esperadas ','max_length' => 10,'required' => true))
-            ->add('tiempoSubact', 'time', array('label' => 'Tiempo en realizar las actividades','required' => true))
+            ->add('tiempoSubact', null, array('label' => 'Tiempo en realizar las actividades','required' => true))
             ->add('estadoSubact', null, array('label' => 'Activo','required' => False))
         ;
     }
