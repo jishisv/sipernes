@@ -7,13 +7,13 @@
 'Action' : 'Acción'
 'Mnt Ambiente Area Establecimiento List': 'Servicios de hospitalización'
 'Mnt Modalidad Establecimiento List': 'Modalidad del Establecimiento - Listado'
-'Ctl Establecimiento List': 'Establecimiento - Listado'
+'Ctl Establecimiento List': 'Reporte diario de actividades realizadas por el personal de enfermería'
 'Mnt Area Mod Estab List': 'Áreas de atención del Establecimiento'
 'Mnt Aten Area Mod Estab List' : 'Servicios Hospitalización'
 'Mnt Aten Area Mod Estab Edit' : 'Editando Servicio'
-'Mnt Paciente List' : 'Buscar Paciente'
+'Mnt Paciente List' : 'Reporte diario del registro de vacunas entregadas y recibidas por el personal de las distintas disciplinas'
 'Mnt Conexion List' : 'Conexion - Listado'
-'Mnt Expediente List': 'Expedientes Creados'
+'Mnt Expediente List': 'Informe diario de diagnósticos de enfermería a paciente hospitalario'
 'Mnt Expediente Listarexpedientes': ''
 
 
@@ -48,12 +48,12 @@
 'Mnt Paciente View' : ''
 change_password.flash.success: 'Cambio Contraseña Con Éxito'
 fos_user.password.mismatch: 'La nueva constraseña no coinciden'
-'Mnt Empleado List' : 'Listado de Empleados'
+'Mnt Empleado List' : 'Reporte diario de niños inmunizados en un área geográfica'
 'Mnt Cie10 List' : 'Diágnosticos CIE10'
 'Mnt Ciq List' : 'Prócedimiento Médicos CIE9'
 'Mnt Paciente Buscaremergencia': 'Buscar Paciente para Emergencia'
 #SEGUIMIENTOBUNDLE
-'Sec Ingreso List' : ''
+'Sec Ingreso List' : 'Reporte de registros diarios de producción de vacunas'
 'Sec Procedencia Ingreso List': 'Listado de Pacientes Ingresado'
 'Sec Emergencia List': 'Listado de Pacientes en Emergencia'
 #CITASBUNDLE
@@ -71,3 +71,33 @@ fos_user.password.mismatch: 'La nueva constraseña no coinciden'
 'Enf Historico Capacitacion List' : 'Comparativo de pacientes'
 
 'EnfMtlActividad' : 'PRUEBA'
+
+#Para reportes que no estan
+'Fos User User List' : 'Reporte diario de intervenciones efectuadas por el personal de enfermería'
+'Fos User Group List' : 'Reporte diario de protocolos efectuados por el personal de enfermería'
+'Mnt Expediente Establecimiento List' : 'Reporte de control de existencias y descargo de vacunas por día'
+'Enf Bitacora Capacitacion List' : 'Comparativo de pacientes atendidos versus diagnosticos de enfermeria'
+'Enf Bitacora Actividad List' : 'Consolidado de Actividades Realizadas'
+'Enf Bitacora Intervencion List' : 'Reporte diario de capacitaciones realizadas por enfermera'
+'Enf Bitacora Diagnostico List' : 'Consolidado de Anotaciones de Enfermería a Pacientes'
+'Enf Bitacora Dosis List' : 'Comparativo de vacunación versus planificadas'
+'Enf Bitacora Nota List' : 'Consolidado de Diagnósticos Efectuados por el Personal de Enfermería a Pacientes Hospitalarios'
+'Enf Bitacora Inventario List' : 'Informe diario de anotaciones de enfermería por paciente'
+'Enf Traza Capacitacion List' : 'Consolidado diario de diagnósticos realizados por el personal de enfermería'
+'Enf Traza Intervencion List' : 'Consolidado diario de aplicación de micronutrientes'
+'Enf Traza Diagnostico List' : 'Consolidado diario de vacunación'
+'Enf Traza Actividad List' : 'Reporte de registros mensuales de producción de vacunas'
+'Enf Traza Dosis List' : 'Consolidado de micronutrientes aplicados'
+'Enf Traza Nota List' : 'Estadistica de pacientes atendidos y diagnosticos de enfermeria'
+'Enf Traza Inventario List' : 'Reporte de registros semanales de dosis de vacunas aplicadas'
+'Ctl Tipo Atencion List' : 'Consolidado semanal de anotaciones de enfermería a pacientes'
+'Ctl Municipio List' : 'Listado de actividades realizadas por el personal de enfermería de los últimos 7 días'
+'Ctl Pais List' : 'Consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días'
+'Ctl Departamento List' : 'Consolidado de micronutrientes aplicados en los últimos 7 días'
+'Ctl Area Atencion List' : 'Consolidado de vacunas aplicadas en los últimos 7 días'
+'Ctl Atencion List' : 'Consolidado de Vacunas Aplicadas'
+
+
+
+
+
