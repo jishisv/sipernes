@@ -75,10 +75,31 @@ $(document).ready(function () {
 //            return false;
 //        }
 
-        if ($('input:text[name*="plainPassword"]').val() === '' || validatePass($('input:password[name*="plainPassword"]').val())) {
+//        if ($('input:text[name*="plainPassword"]').val() === ''){// || validatePass($('input:password[name*="plainPassword"]').length)) {
+//            $("body").append('<div id="dialog-message"></div>');
+//            $("#dialog-message").empty();
+////            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> Ingrese la contraseña, puede tener por lo menos un digito y </br>un alfanumérico, y no  puede contener caracteres espaciales</p>');
+//            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> Ingrese la contraseña, puede tener por lo menos un digito y </br>un alfanumérico</p>');
+//            $("#dialog-message").dialog({
+//                dialogClass: "dialog-error",
+//                modal: true,
+//                title: 'Error',
+//                width: 500,
+//                buttons: {
+//                    Aceptar: function () {
+//                        $(this).dialog("close");
+//                    }
+//                }
+//            });
+//            return false;
+//        }else 
+//alert(($('input:password[name*="plainPassword"]').val()));
+//alert(($('input:password[name*="plainPassword"]').val()).length);
+        if (($('input:password[name*="plainPassword"]').val()).length < 8 || ($('input:password[name*="plainPassword"]').val()).length > 16) {
+//            alert(($('input:password[name*="plainPassword"]').val()).length);
             $("body").append('<div id="dialog-message"></div>');
             $("#dialog-message").empty();
-            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> Ingrese la contraseña, puede tener por lo menos un digito y </br>un alfanumérico, y no  puede contener caracteres espaciales</p>');
+            $("#dialog-message").append('<p><span class="glyphicon glyphicon-exclamation-sign"></span> La contrseña no puede ser menor de 8 caracteres ni mayor de 16 </p>');
             $("#dialog-message").dialog({
                 dialogClass: "dialog-error",
                 modal: true,
@@ -105,6 +126,7 @@ $(document).ready(function () {
         }
         return false
     }
+    ;
 
     //busca espacio en blanco solo en la primera posicion de la cadena
     function vacioP(q) {
@@ -116,14 +138,15 @@ $(document).ready(function () {
 //        }
         return false
     }
+    ;
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
     //funcion para validar el password
     function validatePass(campo) {
-//        alert(campo);
+        alert(campo);
         var RegExPattern = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$/;
         var errorMessage = 'Password Incorrecta.';
 //        if ((campo.value.match(RegExPattern)) && (campo.value != '')) {
-        if ((RegExPattern.test(campo)) && (campo.value != '')) {
+        if ((campo)) {
 //            alert('Password Correcta');
             return false;
         } else {
@@ -131,6 +154,7 @@ $(document).ready(function () {
             return true;
         }
     }
+    ;
 
     $('input[id$="_username"]').focusout(function () {
         $('input[id$="_email"]').val($('input[id$="_username"]').val() + '@salud.gob.sv');
