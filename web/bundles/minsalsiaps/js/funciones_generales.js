@@ -183,6 +183,10 @@ function showDialogMsg(title, msg, dialogClass){
 }
 
 jQuery(document).ready(function($) {
+    /*alert("lol");
+    document.getElementsByClassName("select2-container").style.width = "800px";
+    document.getElementById("_idActividad").style.color = "red";
+    $('input[id$="_idActividad"]').Color(7,7,7);*/
     /***** Mosrtrar Mensajes de Error de Sonata y Esconderlos Automaticamente ******/
 
     $('i[class="ui-icon ui-icon-alert"]').attr("data-placement", "top");
