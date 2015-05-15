@@ -47,6 +47,20 @@ class EnfMtlActividadController extends Controller
 
         return new Response(json_encode($actividad));
     }
+    /**
+     * @Route("nombre/numero/empleado/actividad/", name="get_empleados_enf_act", options={"expose"=true})
+     */
+    public function getNumEmpleadoEnfermeraAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:MntEmpleado o";
+
+        $empleados['empleados'] = $em->createQuery($dql)
+                ->getArrayResult();
+
+        return new Response(json_encode($empleados));
+    }
     
 
 
