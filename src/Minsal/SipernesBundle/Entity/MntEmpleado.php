@@ -737,6 +737,7 @@ class MntEmpleado
     }
     
     public function __toString() {
-        return $this->idempleado?:'';
+        $codigo_nombre = $this->idempleado." - ".$this->nombreempleado;
+        return $codigo_nombre?:'';
     }
 }

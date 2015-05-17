@@ -586,9 +586,9 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_control_vac/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{id_servicio}", name="rpt_con_control_vac", options={"expose"=true})
+     * @Route("/rpt_con_control_vac/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{presentacion}/{id_servicio}", name="rpt_con_control_vac", options={"expose"=true})
      */
-    public function ReporteConsolidadoControlVacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $id_servicio = 0) {
+    public function ReporteConsolidadoControlVacAction($report_name, $report_format, $fecha_inicio, $fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $presentacion, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -601,6 +601,8 @@ class ReporteMetodoController extends Controller {
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
+            'presentacion' => 0,
+            'id_servicio' => 0,
         ));
 
         return $jasperReport->buildReport();

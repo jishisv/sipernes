@@ -127,7 +127,7 @@ group by
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
-				<reportElement x="34" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
+				<reportElement x="41" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
 				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/escudo.png"]]></imageExpression>
 			</image>
 			<image>
@@ -146,7 +146,7 @@ group by
 				<text><![CDATA[Consolidado Diario de Vacunación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="75" width="60" height="25" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" x="30" y="75" width="60" height="25" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -160,7 +160,7 @@ group by
 				<text><![CDATA[Correlativo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="71" y="75" width="135" height="25" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" x="90" y="75" width="135" height="25" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -174,7 +174,7 @@ group by
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="206" y="75" width="99" height="25" backcolor="#999999" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
+				<reportElement style="table_TH" x="225" y="75" width="80" height="25" backcolor="#999999" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -188,7 +188,7 @@ group by
 				<text><![CDATA[Departamento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="305" y="75" width="88" height="25" backcolor="#999999" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
+				<reportElement style="table_TH" x="305" y="75" width="93" height="25" backcolor="#999999" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -202,7 +202,7 @@ group by
 				<text><![CDATA[Municipio]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h:mm a">
-				<reportElement x="11" y="18" width="120" height="20" uuid="b31e41c9-522c-4ecf-b7ce-00479a90af94"/>
+				<reportElement x="30" y="18" width="120" height="20" uuid="b31e41c9-522c-4ecf-b7ce-00479a90af94"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
@@ -222,7 +222,7 @@ group by
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" mode="Opaque" x="393" y="75" width="65" height="25" forecolor="#000000" backcolor="#999999" uuid="07540817-300c-4b64-98ad-92fa234ed959"/>
+				<reportElement style="table_TH" mode="Opaque" x="398" y="75" width="60" height="25" forecolor="#000000" backcolor="#999999" uuid="07540817-300c-4b64-98ad-92fa234ed959"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -296,7 +296,7 @@ group by
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="60" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="30" y="0" width="60" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -310,7 +310,7 @@ group by
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="71" y="0" width="135" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="90" y="0" width="135" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -324,7 +324,7 @@ group by
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="206" y="0" width="99" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="225" y="0" width="80" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -338,7 +338,7 @@ group by
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="305" y="0" width="88" height="25" isPrintWhenDetailOverflows="true" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="305" y="0" width="93" height="25" isPrintWhenDetailOverflows="true" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -352,7 +352,7 @@ group by
 				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="393" y="0" width="65" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="69ee3273-07b4-4ca2-b32f-faa1aa8dd346"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Transparent" x="398" y="0" width="60" height="25" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF" uuid="69ee3273-07b4-4ca2-b32f-faa1aa8dd346"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>
@@ -419,7 +419,7 @@ group by
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" mode="Opaque" x="11" y="0" width="644" height="25" uuid="4dd920f4-98a0-44fe-a592-a38237f9bb12"/>
+				<reportElement style="table" mode="Opaque" x="30" y="0" width="625" height="25" uuid="4dd920f4-98a0-44fe-a592-a38237f9bb12"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.25"/>

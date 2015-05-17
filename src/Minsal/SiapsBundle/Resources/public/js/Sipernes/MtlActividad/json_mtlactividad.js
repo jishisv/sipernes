@@ -16,9 +16,18 @@ $(document).ready(function() {
         allowClear: true,
         width: '100%'
     });
+    $('select[id$="_idEmpCorr"]').select2({
+        placeholder: 'Seleccione Empleado... ',
+        allowClear: true,
+        width: '150%'
+    });
+    $('#empleado').select2({
+        placeholder: 'Seleccione Tipo de Actividad... ',
+        allowClear: true,
+        width: '100%'
+    });
 
- 
-
+  
    //$('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
    
     /*CARGAR PROTOCOLOS*/
@@ -40,6 +49,7 @@ $(document).ready(function() {
             allowClear: true,
             width: '100%'
         });
+       
         
         if ($('#actividad').select2('val') == '') {
             $('select[id$="_idSubactividad"]').attr('enabled', 'enabled');
@@ -75,6 +85,8 @@ $(document).ready(function() {
                 });
 
     }
+    
+   
     
 
   
