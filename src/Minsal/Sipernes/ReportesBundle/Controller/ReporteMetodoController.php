@@ -121,8 +121,8 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportFormat($report_format);
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
@@ -307,7 +307,7 @@ class ReporteMetodoController extends Controller {
     /**
      * @Route("/rpt_con_diag_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{fecha_inicio}/{id_servicio}", name="rpt_con_diag_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteDiagnosticoAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $fecha_inicio, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteDiagnosticoAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $fecha_inicio,$fecha_fin, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -319,6 +319,7 @@ class ReporteMetodoController extends Controller {
 //            'establecimientos' => $establecimientos,
             'tipoEstable' => $tipoestablecimientos,
             'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'codigoEmp' => $codigo_enfermera,
             'id_servicio' => 0,
             'diagnostico' => $diagnostico,
@@ -330,7 +331,7 @@ class ReporteMetodoController extends Controller {
     /**
      * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $fecha_inicio, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $fecha_inicio,$fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -340,6 +341,7 @@ class ReporteMetodoController extends Controller {
             'deptos' => $deptos,
             'municipios' => $municipios,
             'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'tipoEstable' => $tipoestablecimientos,
            // 'tipo_micro' => $tipomicro,
             'micro' => $micro,
@@ -352,7 +354,7 @@ class ReporteMetodoController extends Controller {
     /**
      * @Route("/rpt_con_vac_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipovacuna}/{presentacion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_vac_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteVacunaAction($report_name, $report_format, $fecha_inicio, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipovacuna, $presentacion, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteVacunaAction($report_name, $report_format, $fecha_inicio,$fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipovacuna, $presentacion, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -360,6 +362,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
@@ -375,7 +378,7 @@ class ReporteMetodoController extends Controller {
     /**
      * @Route("/rpt_con_activ_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{fecha_inicio}/{codigo_enfermera}/{subactividades}/{id_servicio}", name="rpt_con_activ_siete", options={"expose"=true})
      */
-    public function ReporteConsolidadoSieteActivAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $fecha_inicio, $codigo_enfermera, $subactividades, $id_servicio = 0) {
+    public function ReporteConsolidadoSieteActivAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $fecha_inicio, $fecha_fin, $codigo_enfermera, $subactividades, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -383,6 +386,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
             'municipio' => $municipios,
             'tipoEstable' => $tipoestablecimientos,
             'codigoEmp' => $codigo_enfermera,
@@ -421,7 +425,7 @@ class ReporteMetodoController extends Controller {
     /**
      * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
      */
-    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio,$deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
+    public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio,$fecha_fin,$deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
 
         $jasperReport = $this->container->get('jasper.build.reports');
         $jasperReport->setReportName($report_name);
@@ -429,7 +433,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpfin' => $fecha_inicio,
+            'fpfin' => $fecha_fin,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
@@ -550,7 +554,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            //'fpfin' => $fecha_fin,
+            'fpfin' => $fecha_fin,
             //'deptos' => $deptos,
             'municipios' => $municipios,
             //'establecimientos' => $establecimientos,
@@ -574,7 +578,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpini' => $fecha_fin,
+            'fpfin' => $fecha_fin,
             'municipios' => $municipios,
             'tipoEstable' => $tipoestablecimientos,
             'financiado' => $financiado,
@@ -643,7 +647,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-          //  'fpfin' => $fecha_fin,
+            'fpfin' => $fecha_fin,
             //'deptos' => $deptos,
         //    'municipios' => $municipios,
             //'establecimientos' => $establecimientos,
@@ -669,7 +673,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-//            'fpfin' => $fecha_fin,
+            'fpfin' => $fecha_fin,
 //            'deptos' => $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
@@ -693,7 +697,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fecha_fin' => $fecha_fin,
+            'fpfin' => $fecha_fin,
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
