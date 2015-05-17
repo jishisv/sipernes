@@ -1204,7 +1204,7 @@ $(document).ready(function () {
                 });
                 return false;
             }
-            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/' + $('#fecha_inicio').val() + '/' +$('#fecha_fin').val()+'/' + $('#deptos').val() + '/' +$('#fecha_fin').val()+ '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
+            var url = Routing.generate('rpt_con_micro_siete') + '/rpt_con_mic_apl_ult/' + formato + '/' + $('#fecha_inicio').val() + '/' +$('#fecha_fin').val()+'/' + $('#deptos').val() + '/' + $('#municipios').val() + '/' + $('#establecimientos').val() + '/' + $('#tipoestablecimientos').val() + '/' + $('#tipo_micro').val() + '/' + $('#presentacion').val() + '/' + $('#cod_enf').val() + '/' + "Reporte_Nuevo";
 //            alert(url);
             window.open(url, '_blank');
             return false;
