@@ -162,5 +162,22 @@ $(document).ready(function () {
     });
 
     $('input[id$="_enabled"]').attr("checked", "checked");
+    
+//    ////validacion de usuario existente
+//     $.getJSON(Routing.generate('get_usuario') + "/" + id, function (data) {
+//            var id = $(this).val();
+//            $(data.datosusuario).each(function () {
+//                alert("entre");
+//                usuario = this.username;
+//                if (usuario != null){
+//                    alert("el usuario ya exise");
+//                    return true;
+//                } 
+//                     return false;
+//                 
+//                
+//            })
+//            
+//        })
 });
 

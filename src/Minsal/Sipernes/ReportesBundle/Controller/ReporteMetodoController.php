@@ -1098,7 +1098,18 @@ MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
 //                  ->getResult();
         return new Response(json_encode($datospaciente));
     }    
-    
+  /**
+     * @Route("verificar/usuario/existente/{username}", name="get_usuario", options={"expose"=true})
+     */
+    public function getVerificarUsuario($username) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql = "SELECT o
+                FROM MinsalSipernesBundle:FosUserUser o
+                WHERE o.username= :username";
+        $datosusuario['datosusuario'] = $em->createQuery($dql)->setParameter('username', $username)->getArrayResult();
+         return new Response(json_encode($datosusuario));
+}  
     
 }
 
