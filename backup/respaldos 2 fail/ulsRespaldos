@@ -1,0 +1,7 @@
+# Archivo /etc/cron.d/backup
+# MINUTO HORA DIA MES dia USUARIO COMANDO
+#  00     21   *   *   1-6 root    /etc/backup/ulsRespaldo.sh 
+#  00     22   *   *   1-6 root    /etc/backup/rsync-backup.sh 
+
+  00     21   *   *   1-6 root    /home/debian/Downloads/respaldos/ulsRespaldo.sh 
+  00     22   *   *   1-6 root    /home/debian/Downloads/respaldos/rsync-backup.sh 
