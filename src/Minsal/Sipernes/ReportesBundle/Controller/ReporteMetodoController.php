@@ -305,7 +305,7 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_diag_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{fecha_inicio}/{id_servicio}", name="rpt_con_diag_siete", options={"expose"=true})
+     * @Route("/rpt_con_diag_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{fecha_inicio}/{fecha_fin}/{id_servicio}", name="rpt_con_diag_siete", options={"expose"=true})
      */
     public function ReporteConsolidadoSieteDiagnosticoAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $fecha_inicio,$fecha_fin, $id_servicio = 0) {
 
@@ -329,7 +329,7 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
+     * @Route("/rpt_con_micro_siete/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipomicro}/{micro}/{codigo_enfermera}/{id_servicio}", name="rpt_con_micro_siete", options={"expose"=true})
      */
     public function ReporteConsolidadoSieteMicronutrienteAction($report_name, $report_format, $fecha_inicio,$fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipomicro, $micro, $codigo_enfermera, $id_servicio = 0) {
 
@@ -352,7 +352,7 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_vac_siete/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipovacuna}/{presentacion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_vac_siete", options={"expose"=true})
+     * @Route("/rpt_con_vac_siete/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipovacuna}/{presentacion}/{codigo_enfermera}/{id_servicio}", name="rpt_con_vac_siete", options={"expose"=true})
      */
     public function ReporteConsolidadoSieteVacunaAction($report_name, $report_format, $fecha_inicio,$fecha_fin, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipovacuna, $presentacion, $codigo_enfermera, $id_servicio = 0) {
 
@@ -376,7 +376,7 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_activ_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{fecha_inicio}/{codigo_enfermera}/{subactividades}/{id_servicio}", name="rpt_con_activ_siete", options={"expose"=true})
+     * @Route("/rpt_con_activ_siete/{report_name}/{report_format}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{fecha_inicio}/{fecha_fin}/{codigo_enfermera}/{subactividades}/{id_servicio}", name="rpt_con_activ_siete", options={"expose"=true})
      */
     public function ReporteConsolidadoSieteActivAction($report_name, $report_format, $deptos, $municipios, $establecimientos, $tipoestablecimientos, $fecha_inicio, $fecha_fin, $codigo_enfermera, $subactividades, $id_servicio = 0) {
 
@@ -423,7 +423,7 @@ class ReporteMetodoController extends Controller {
     }
 
     /**
-     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
+     * @Route("/rpt_con_diag_diario/{report_name}/{report_format}/{fecha_inicio}/{fecha_fin}/{deptos}/{municipios}/{establecimientos}/{tipoestablecimientos}/{tipodiag}/{diagnostico}/{codigo_enfermera}/{id_servicio}", name="rpt_con_diag_diario", options={"expose"=true})
      */
     public function ReporteConsolidadoDiarioDiagnosticoAction($report_name, $report_format, $fecha_inicio,$fecha_fin,$deptos, $municipios, $establecimientos, $tipoestablecimientos, $tipodiag, $diagnostico, $codigo_enfermera, $id_servicio = 0) {
 
