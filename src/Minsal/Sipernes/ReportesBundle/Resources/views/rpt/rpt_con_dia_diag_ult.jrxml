@@ -38,6 +38,9 @@
 	<parameter name="diagnostico" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="fpfin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
 
@@ -51,7 +54,8 @@
  mnt_paciente.primer_apellido apellidopaciente,
  mnt_empleado.idempleado codigoempleado,
  mnt_empleado.nombreempleado enfermera,
- enf_mtl_diagnostico.observacion1 observacion
+ enf_mtl_diagnostico.observacion1 observacion,
+ enf_mtl_diagnostico.fecha_ingreso_diag fecha
 FROM
   public.mnt_expediente,
   public.mnt_empleado,
@@ -83,7 +87,9 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
   enf_dominio.nombre_dominio,
   enf_ctl_diagnostico.nombre_diagnostico,
   mnt_expediente.numero, mnt_paciente.primer_nombre, mnt_empleado.idempleado,
-  mnt_empleado.nombreempleado, mnt_paciente.primer_apellido,  enf_mtl_diagnostico.observacion1]]>
+  mnt_empleado.nombreempleado, mnt_paciente.primer_apellido,  enf_mtl_diagnostico.observacion1,
+  fecha
+order by fecha asc]]>
 	</queryString>
 	<field name="nombre" class="java.lang.String">
 		<fieldDescription><![CDATA[Nombre del área de atención]]></fieldDescription>
@@ -100,6 +106,7 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
 	<field name="observacion" class="java.lang.String">
 		<fieldDescription><![CDATA[Observaciones del expediente del paciente, Fusiones de expedientes, etc]]></fieldDescription>
 	</field>
+	<field name="fecha" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -149,42 +156,42 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
 				<text><![CDATA[Consolidado de Diagnosticos Últimos Siete Dias]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="6" y="65" width="65" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="6" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="71" y="65" width="130" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="41" y="65" width="130" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="201" y="65" width="116" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="171" y="65" width="80" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Expediente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="317" y="65" width="122" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="251" y="65" width="122" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="ba1f3f38-7f70-40bb-aeb3-c74c55513856"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre Paciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="527" y="65" width="125" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="86634ae0-b173-4b72-b4e4-a759db0a4374"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="461" y="65" width="117" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="86634ae0-b173-4b72-b4e4-a759db0a4374"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre enfermera]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="439" y="65" width="88" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="94e67c0b-479e-412c-9bc1-71cdfae5c144"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="373" y="65" width="88" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="94e67c0b-479e-412c-9bc1-71cdfae5c144"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -212,62 +219,74 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="241" y="41" width="151" height="20" uuid="3c2cc875-a804-4765-a14a-88cb37409825"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Fecha de datos consultados:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="392" y="41" width="100" height="20" uuid="46041326-fc01-45e7-9258-a7cda23f7411"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
-			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="722" y="17" width="20" height="20" uuid="02899e36-baad-4e88-a122-8e3bd6bb70cc"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" mode="Opaque" x="578" y="65" width="74" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="6377d122-b0f3-4a49-92d1-8e41aec93850"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="40" width="100" height="15" uuid="327a65a5-2138-49a4-aaa3-690ee8c70821"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="40" width="100" height="15" uuid="c87a17a5-8ef6-41e3-a1b4-af57cfcb91fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Desde "+ $P{fpini}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="178" y="40" width="165" height="15" uuid="a1cacca8-41ca-44c9-bf83-5ca7144e5242"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de datos consultados: Desde ]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="6" y="0" width="65" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="6" y="0" width="35" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="71" y="0" width="130" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="41" y="0" width="130" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="201" y="0" width="116" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="171" y="0" width="80" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{expediente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="317" y="0" width="122" height="25" isPrintWhenDetailOverflows="true" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="251" y="0" width="122" height="25" isPrintWhenDetailOverflows="true" uuid="786cdfb1-edbf-4c59-afb8-5844a5aa59c5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrepaciente} + " " + $F{apellidopaciente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="527" y="0" width="125" height="25" isPrintWhenDetailOverflows="true" uuid="579299c0-b181-4909-98a7-946024f1127f"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="461" y="0" width="117" height="25" isPrintWhenDetailOverflows="true" uuid="579299c0-b181-4909-98a7-946024f1127f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{enfermera}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="439" y="0" width="88" height="25" isPrintWhenDetailOverflows="true" uuid="2a2105dc-a5a3-4db7-9616-7357579f8e3f"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="373" y="0" width="88" height="25" isPrintWhenDetailOverflows="true" uuid="2a2105dc-a5a3-4db7-9616-7357579f8e3f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -279,6 +298,13 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="578" y="0" width="74" height="25" isPrintWhenDetailOverflows="true" uuid="c4474417-8d48-4018-a794-ac75ac88dbe4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

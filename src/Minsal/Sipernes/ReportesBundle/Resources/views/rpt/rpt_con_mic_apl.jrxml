@@ -45,8 +45,8 @@
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
   enf_componente.nombre_componente Nombremicro,
-  count(enf_dosis_esquema_vac.id) Dosis
-
+  count(enf_dosis_esquema_vac.id) Dosis,
+  enf_dosis_esquema_vac.fecha_dosis_esq fecha
 FROM
   public.enf_componente,
   public.mnt_empleado,
@@ -62,11 +62,13 @@ WHERE
   enf_dosis_esquema_vac.fecha_dosis_esq::date<= to_date($P{fpfin}, 'DD/MM/YYYY')
 
 group by
-   Establecimiento, Nombremicro,Dosis;]]>
+   Establecimiento, Nombremicro,fecha, Dosis
+order by Nombremicro, fecha asc;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="nombremicro" class="java.lang.String"/>
 	<field name="dosis" class="java.lang.Long"/>
+	<field name="fecha" class="java.sql.Date"/>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{dosis}]]></initialValueExpression>
@@ -128,14 +130,26 @@ group by
 				<text><![CDATA[Consolidado de Micronutrientes Aplicados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="84" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="50" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="484" y="65" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
@@ -147,14 +161,26 @@ group by
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="306" y="65" width="178" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="239" y="65" width="178" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Micronutriente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="95" y="65" width="211" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="61" y="65" width="178" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
@@ -190,19 +216,44 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="417" y="65" width="67" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="68500d55-5eb7-43ca-b4a5-d0babb5ff998"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="50" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="95" y="0" width="211" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="61" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -210,17 +261,42 @@ group by
 			</textField>
 			<textField>
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="306" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="239" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombremicro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="417" y="0" width="67" height="25" isPrintWhenDetailOverflows="true" uuid="ea52ca18-b724-470d-b2c8-391bc3f15f3d"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -231,6 +307,12 @@ group by
 		<band height="50">
 			<staticText>
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="473" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
@@ -238,6 +320,12 @@ group by
 			</staticText>
 			<textField>
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="6a5ea5a0-b0fa-477a-8f6a-46b6b7a1b615"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
