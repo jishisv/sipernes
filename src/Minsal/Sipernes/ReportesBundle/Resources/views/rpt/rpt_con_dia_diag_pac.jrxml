@@ -56,7 +56,8 @@ mnt_empleado.id::integer codEnf,
   mnt_empleado.idempleado CodigoEnfermera,
   mnt_empleado.nombreempleado NombreEnfermera,
   enf_ctl_diagnostico.nombre_diagnostico Diagnostico,
-  enf_ctl_intervencion.descripcion_interven Intervencion
+  enf_ctl_intervencion.descripcion_interven Intervencion,
+  enf_mtl_diagnostico.fecha_ingreso_diag as fecha
 FROM
   enf_ctl_diagnostico,
   ctl_establecimiento,
@@ -95,9 +96,10 @@ codEnf,
 CodigoEnfermera,
 NombreEnfermera,
 Diagnostico,
-Intervencion
+Intervencion,
+fecha
 
-order by Diagnostico]]>
+order by Diagnostico, fecha asc]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="codexp" class="java.lang.Integer"/>
@@ -110,6 +112,7 @@ order by Diagnostico]]>
 		<fieldDescription><![CDATA[Diagnostico de ingreso del paciente al hospital]]></fieldDescription>
 	</field>
 	<field name="intervencion" class="java.lang.String"/>
+	<field name="fecha" class="java.util.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -160,20 +163,38 @@ order by Diagnostico]]>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" x="34" y="65" width="36" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[N°]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="70" y="65" width="137" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="70" y="65" width="120" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="288" y="65" width="149" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="250" y="65" width="120" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -185,35 +206,65 @@ order by Diagnostico]]>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="437" y="65" width="75" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<reportElement style="table_TH" x="370" y="65" width="75" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código Enfermera]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="207" y="65" width="81" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<reportElement style="table_TH" x="190" y="65" width="60" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Expediente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="512" y="65" width="175" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="0a87d0b3-330b-4a2f-a2c7-abe28a89e2a8"/>
+				<reportElement style="table_CH" x="445" y="65" width="175" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="0a87d0b3-330b-4a2f-a2c7-abe28a89e2a8"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre del personal de enfermería]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="687" y="65" width="135" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9cbf1a1a-98bd-4cbc-954c-6930247da413"/>
+				<reportElement style="table_CH" x="620" y="65" width="135" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9cbf1a1a-98bd-4cbc-954c-6930247da413"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diagnóstico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="822" y="65" width="134" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="7251159d-fbdc-45d3-bb07-a3fa17751c4d"/>
+				<reportElement style="table_CH" x="755" y="65" width="134" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="7251159d-fbdc-45d3-bb07-a3fa17751c4d"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -249,65 +300,139 @@ order by Diagnostico]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="889" y="65" width="67" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="e5dd3a44-2c20-46fe-a279-ea4fcdf65bdb"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="34" y="0" width="36" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="70" y="0" width="137" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="70" y="0" width="120" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="288" y="0" width="149" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="250" y="0" width="120" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paciente}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="437" y="0" width="75" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="370" y="0" width="75" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codigoenfermera}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="207" y="0" width="81" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="190" y="0" width="60" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{expediente}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="512" y="0" width="175" height="25" isPrintWhenDetailOverflows="true" uuid="4565e61c-4542-4acc-a6b3-6b94d1998b96"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="445" y="0" width="175" height="25" isPrintWhenDetailOverflows="true" uuid="4565e61c-4542-4acc-a6b3-6b94d1998b96"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombreenfermera}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="687" y="0" width="135" height="25" isPrintWhenDetailOverflows="true" uuid="b74be94d-270e-4124-b0ae-6341397b67ed"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="620" y="0" width="135" height="25" isPrintWhenDetailOverflows="true" uuid="b74be94d-270e-4124-b0ae-6341397b67ed"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="822" y="0" width="134" height="25" isPrintWhenDetailOverflows="true" uuid="0bee8411-4b82-4ae8-aa77-7614f887b834"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="755" y="0" width="134" height="25" isPrintWhenDetailOverflows="true" uuid="0bee8411-4b82-4ae8-aa77-7614f887b834"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{intervencion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="889" y="0" width="67" height="25" isPrintWhenDetailOverflows="true" uuid="9c7432bb-0d8c-40fd-b231-d3d22df0c227"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -317,14 +442,26 @@ order by Diagnostico]]>
 	<summary>
 		<band height="50">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="822" y="0" width="134" height="25" isPrintWhenDetailOverflows="true" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="889" y="0" width="67" height="25" isPrintWhenDetailOverflows="true" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="34" y="0" width="788" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="34" y="0" width="855" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
