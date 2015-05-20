@@ -14,5 +14,5 @@ USUARIODB="siap"
 #------------NOMBRE DB--------------#
 NOMBREDB="base_siap"
 
-pg_dump -i -h $HOSTNAME -p 5432 -U $USUARIODB -F c -b -v -f "/home/backup/backup_$FECHA.backup" $NOMBREBD
+pg_dump -i -h $HOSTNAME -p 5432 -U $USUARIODB -F c -b -v -f "/home/debian/Desktop/backup/backup_$FECHA.backup" $NOMBREBD
 
