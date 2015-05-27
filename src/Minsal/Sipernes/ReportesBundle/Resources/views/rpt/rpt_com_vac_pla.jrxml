@@ -58,7 +58,7 @@ FROM
   public.enf_mov_inventario
 WHERE
   enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
+  mnt_expediente.id_establecimiento = $P{tipoEstable} AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1;]]>
