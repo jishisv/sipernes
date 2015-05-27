@@ -1,5 +1,4 @@
 
-
 $(document).ready(function() {
     
     $('#actividad').select2({

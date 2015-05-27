@@ -251,7 +251,7 @@ class MntExpediente
     }
     
      public function __toString() {
-         $codigonombrepac = $this->getNumero()." - ".$this->getIdPaciente()->getPrimerNombre()." ".$this->getIdPaciente()->getSegundoApellido();
+         $codigonombrepac = $this->getNumero()." - ".$this->getIdPaciente()->getPrimerNombre()." ".$this->getIdPaciente()->getPrimerApellido();
         return $codigonombrepac?:'';
     }
 }

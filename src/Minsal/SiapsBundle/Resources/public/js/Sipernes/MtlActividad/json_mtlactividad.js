@@ -30,9 +30,19 @@ $(document).ready(function() {
   
    //$('select[id$="_idIntervencion"]').attr('disabled', 'disabled');
    
+    /*CARGAR Actividad*/
+      $.getJSON(Routing.generate('get_actividad_padre') + '/' + $('select[id$="_idSubactividad"]').select2('val'),
+            function (data) {
+               alert("entre");
+                $.each(data.datosactividad, function (indice, aux) {
+                    $('#actividad').append('<option value="' + aux.id + '">' + aux.idActividad.nombreActividad + '</option>');
+                });
+            });
+   
     /*CARGAR PROTOCOLOS*/
       $.getJSON(Routing.generate('get_Act'),
             function (data) {
+              alert("entre");
                 $.each(data.actividad, function (indice, aux) {
                     $('#actividad').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
                 });

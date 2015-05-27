@@ -888,9 +888,12 @@ class ReporteMetodoController extends Controller {
      */
     public function getNumExpedientePacienteAction() {
         $em = $this->getDoctrine()->getManager();
+        
+        $dql = "SELECT o,pac
+                FROM MinsalSipernesBundle:MntExpediente o inner join o.idPaciente pac";
 
-        $dql = "SELECT o
-                FROM MinsalSipernesBundle:MntExpediente o";
+//        $dql = "SELECT o
+//                FROM MinsalSipernesBundle:MntExpediente o";
         $pacientes['pacientes'] = $em->createQuery($dql)
                 ->getArrayResult();
 
@@ -1084,24 +1087,7 @@ MinsalSipernesBundle:CtlEstablecimiento est WHERE est.idMunicipio= :munic)";
                 WHERE o.id = :id";
         $datospaciente['datospaciente'] = $em->createQuery($dql)->setParameter('id', $id)->getArrayResult();
 
-//        $conexion = $em->getRepository('MinsalSiapsBundle:MntConexion');
-//        $conn = $em->getRepository('MinsalSiapsBundle:MntConexion')->getConexionGenerica($conexion);
-//        
-//        $sql = "select * from mnt_expediente exp inner join mnt_paciente pac
-//        on(exp.id = pac.id) where exp.id = :id";
-//        $datospaciente['datospaciente'] = $conn->query($sql)->setParameter('id', $id)->getArrayResult();
-//$em = $this->getDoctrine()->getManager();
-//
-//$sql = "select * from mnt_expediente exp inner join mnt_paciente pac
-//on exp.id_paciente=pac.id where exp.id=?";
-//        
-//
-//$query = $this->getDoctrine()->getEntityManager();
-//        
-//$datospaciente = $query->createNativeQuery($sql)
-//                  ->setParameter(1, $id->getId()->getId())
-//                 
-//                  ->getResult();
+
         return new Response(json_encode($datospaciente));
     }    
   /**

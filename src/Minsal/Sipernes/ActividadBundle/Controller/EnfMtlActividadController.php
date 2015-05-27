@@ -30,7 +30,24 @@ class EnfMtlActividadController extends Controller
         
         
     }
-    
+    /**
+     *@Route("/recibir/actividad/padre/{id}", name="get_actividad_padre", options={"expose"=true})
+     */
+     public function getActividadPadreAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $limit = 1;
+
+        $dql = "SELECT o,subact,act
+                FROM MinsalSipernesBundle:EnfMtlActividad o inner join o.idSubactividad subact 
+                inner join subact.idActividad act
+                WHERE o.id = :id
+                ";
+               
+               // WHERE o.id = :id";
+        $datosactividad['datosactividad'] = $em->createQuery($dql)->setMaxResults($limit)->setParameter('id', $id)->getArrayResult();
+         return new Response(json_encode( $datosactividad));
+     }
+  
    
    /**
      *@Route("/recibir/actividades/todos/", name="get_Act", options={"expose"=true})
