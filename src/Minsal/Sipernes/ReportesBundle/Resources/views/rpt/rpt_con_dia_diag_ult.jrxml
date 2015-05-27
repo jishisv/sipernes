@@ -153,24 +153,24 @@ order by fecha asc]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Diagnosticos Últimos Siete Dias]]></text>
+				<text><![CDATA[Consolidado de Diagnosticos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="6" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="26" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="41" y="65" width="130" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="61" y="65" width="130" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="171" y="65" width="80" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="191" y="65" width="60" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -205,7 +205,7 @@ order by fecha asc]]>
 				<text><![CDATA[Diagnostico]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="6" y="17" width="120" height="20" uuid="6918dc36-cd7e-4c37-90b8-74e0fdbce958"/>
+				<reportElement x="26" y="17" width="120" height="20" uuid="6918dc36-cd7e-4c37-90b8-74e0fdbce958"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
@@ -251,21 +251,21 @@ order by fecha asc]]>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="6" y="0" width="35" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="26" y="0" width="35" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="41" y="0" width="130" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="61" y="0" width="130" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="171" y="0" width="80" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="191" y="0" width="60" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -314,7 +314,7 @@ order by fecha asc]]>
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="6" y="0" width="646" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="26" y="0" width="626" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>

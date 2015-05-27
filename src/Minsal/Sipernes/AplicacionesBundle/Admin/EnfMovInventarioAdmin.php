@@ -18,7 +18,7 @@ class EnfMovInventarioAdmin extends Admin
         $datagridMapper
            // ->add('id')
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
-            ->add('idInventario', null, array('label' => 'Componente'))
+             //->add('idInventario', null, array('label' => 'Componente'))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')
@@ -40,7 +40,7 @@ class EnfMovInventarioAdmin extends Admin
         $listMapper
             //->add('id')
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
-            ->add('idInventario', null, array('label' => 'Componente'))
+             //->add('idInventario', null, array('label' => 'Componente'))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))           
 //            ->add('fechaModificacionMov')
             ->add('cantidadMov', null, array('label' => 'Cantidad'))
@@ -89,7 +89,7 @@ class EnfMovInventarioAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario'))
-            ->add('idInventario', null, array('label' => 'Componente'))
+             //->add('idInventario', null, array('label' => 'Componente'))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')

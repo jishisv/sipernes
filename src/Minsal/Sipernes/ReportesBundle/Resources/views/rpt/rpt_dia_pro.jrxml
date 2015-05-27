@@ -113,7 +113,7 @@ WHERE
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
-				<reportElement x="44" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
+				<reportElement x="48" y="1" width="99" height="82" uuid="957a7dec-386f-4f26-815f-8cab05738c9a"/>
 				<imageExpression><![CDATA["/var/www/sipernes/src/Minsal/Sipernes/ReportesBundle/Resources/views/rpt/imagenes/escudo.png"]]></imageExpression>
 			</image>
 			<image>
@@ -132,7 +132,7 @@ WHERE
 				<text><![CDATA[Reporte Diario de Protocolo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="34" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="38" y="65" width="31" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -210,7 +210,7 @@ WHERE
 				<text><![CDATA[Observación]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h:mm a">
-				<reportElement x="34" y="16" width="120" height="20" uuid="b9cba9ef-bfff-4289-b8ce-92e634f9b36e"/>
+				<reportElement x="38" y="16" width="120" height="20" uuid="b9cba9ef-bfff-4289-b8ce-92e634f9b36e"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
@@ -288,7 +288,7 @@ WHERE
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="34" y="0" width="35" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="38" y="0" width="31" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
