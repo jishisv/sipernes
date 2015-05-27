@@ -888,9 +888,12 @@ class ReporteMetodoController extends Controller {
      */
     public function getNumExpedientePacienteAction() {
         $em = $this->getDoctrine()->getManager();
+        
+        $dql = "SELECT o,pac
+                FROM MinsalSipernesBundle:MntExpediente o inner join o.idPaciente pac";
 
-        $dql = "SELECT o
-                FROM MinsalSipernesBundle:MntExpediente o";
+//        $dql = "SELECT o
+//                FROM MinsalSipernesBundle:MntExpediente o";
         $pacientes['pacientes'] = $em->createQuery($dql)
                 ->getArrayResult();
 
