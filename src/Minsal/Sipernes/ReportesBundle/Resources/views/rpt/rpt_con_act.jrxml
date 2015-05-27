@@ -52,7 +52,8 @@
   ctl_establecimiento.nombre as establecimiento,
   enf_ctl_subactividad.nombre_subactividad as actividad,
   SUM(enf_mtl_actividad.cantidad_act_enf)as cantidad,
-  SUM(enf_mtl_actividad.tiempo_act_enf) as tiempo
+  SUM(enf_mtl_actividad.tiempo_act_enf) as tiempo,
+  enf_mtl_actividad.fecha_modificacion_act as fecha
 FROM
   public.mnt_empleado,
   public.enf_mtl_actividad,
@@ -86,6 +87,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 	<field name="actividad" class="java.lang.String"/>
 	<field name="cantidad" class="java.math.BigDecimal"/>
 	<field name="tiempo" class="org.postgresql.util.PGInterval"/>
+	<field name="fecha" class="java.sql.Date"/>
 	<variable name="TotalCan" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>
@@ -143,21 +145,39 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<text><![CDATA[Consolidado de Actividades Realizadas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="34" y="77" width="56" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<reportElement style="table_CH" x="34" y="77" width="50" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="90" y="77" width="182" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<reportElement style="table_CH" x="84" y="77" width="150" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="dca1bc49-12d1-465c-87d6-e2e7a9b278c8"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" x="510" y="77" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" x="528" y="77" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -169,21 +189,39 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="588" y="77" width="72" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<reportElement style="table_TH" x="606" y="77" width="72" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tiempo (min)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="272" y="77" width="238" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<reportElement style="table_TH" x="234" y="77" width="238" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="660" y="77" width="89" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
+				<reportElement style="table_TH" x="678" y="77" width="71" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -219,51 +257,113 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="472" y="77" width="56" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="b507efb5-cb44-43e1-af4e-b51ed986efb3"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="34" y="0" width="56" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="34" y="0" width="50" height="25" isPrintWhenDetailOverflows="true" uuid="be8ecd52-ab34-4c89-89a6-d09e6164aa4b"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="90" y="0" width="182" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="84" y="0" width="150" height="25" isPrintWhenDetailOverflows="true" uuid="90cf89bd-a5ec-4d7b-8825-2cee4422d0b0"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="510" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="528" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="588" y="0" width="72" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="606" y="0" width="72" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tiempo}.getMinutes()]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="272" y="0" width="238" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="234" y="0" width="238" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{actividad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="660" y="0" width="89" height="25" isPrintWhenDetailOverflows="true" uuid="a9c48678-500c-42a7-aac5-de09fe045cc2"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="678" y="0" width="71" height="25" isPrintWhenDetailOverflows="true" uuid="a9c48678-500c-42a7-aac5-de09fe045cc2"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="472" y="0" width="56" height="25" isPrintWhenDetailOverflows="true" uuid="468f4c3d-fe3b-4173-bdbb-6a8fdc4ee326"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -273,28 +373,52 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 	<summary>
 		<band height="50">
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="510" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="528" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalCan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="34" y="0" width="476" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="34" y="0" width="494" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="588" y="0" width="72" height="25" isPrintWhenDetailOverflows="true" uuid="09207127-340b-49a2-ae12-9a568b588420"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="606" y="0" width="72" height="25" isPrintWhenDetailOverflows="true" uuid="09207127-340b-49a2-ae12-9a568b588420"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalTem}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="660" y="0" width="89" height="25" isPrintWhenDetailOverflows="true" uuid="9c5da354-f157-4960-b2a0-726933b3565a"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="678" y="0" width="71" height="25" isPrintWhenDetailOverflows="true" uuid="9c5da354-f157-4960-b2a0-726933b3565a"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>

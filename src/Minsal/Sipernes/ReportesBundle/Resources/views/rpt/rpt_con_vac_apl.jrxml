@@ -45,7 +45,8 @@
 		<![CDATA[SELECT
   ctl_establecimiento.nombre Establecimiento,
   enf_componente.nombre_componente Nombrevacuna,
-  count(enf_dosis_esquema_vac.id) Dosis
+  count(enf_dosis_esquema_vac.id) Dosis,
+  enf_dosis_esquema_vac.fecha_dosis_esq fecha
 
 FROM
   public.enf_componente,
@@ -62,11 +63,13 @@ WHERE
   enf_dosis_esquema_vac.fecha_dosis_esq::date<= to_date($P{fpfin}, 'DD/MM/YYYY')
 
 group by
-   Establecimiento, Nombrevacuna,Dosis;]]>
+   Establecimiento, Nombrevacuna,Dosis, fecha
+order by fecha asc;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="nombrevacuna" class="java.lang.String"/>
 	<field name="dosis" class="java.lang.Long"/>
+	<field name="fecha" class="java.sql.Date"/>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{dosis}]]></initialValueExpression>
@@ -128,7 +131,7 @@ group by
 				<text><![CDATA[Consolidado de Vacunas Aplicadas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="11" y="55" width="84" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" x="11" y="55" width="50" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -138,7 +141,7 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="484" y="55" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="26e39909-9bba-41d0-ba69-9a2c0038cf4f"/>
@@ -159,7 +162,7 @@ group by
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" x="306" y="55" width="178" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
+				<reportElement style="table_TH" x="261" y="55" width="150" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="746f3c43-9367-4fbe-988f-b42cee7db60d"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -172,7 +175,7 @@ group by
 				<text><![CDATA[Vacuna]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="95" y="55" width="211" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" x="61" y="55" width="200" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -214,12 +217,25 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_TH" x="411" y="55" width="73" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="2d4762c9-88b5-4ae2-be31-ed625c9108a3"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="11" y="0" width="50" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -232,7 +248,7 @@ group by
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="95" y="0" width="211" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="61" y="0" width="200" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -258,7 +274,7 @@ group by
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="306" y="0" width="178" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="261" y="0" width="150" height="25" isPrintWhenDetailOverflows="true" uuid="1a1e7a5a-14b8-417c-bce3-b337049a40c9"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -269,6 +285,19 @@ group by
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrevacuna}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="411" y="0" width="73" height="25" isPrintWhenDetailOverflows="true" uuid="f2289a36-81a7-4bba-bf61-db3e457be8d0"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -12,10 +12,6 @@
     {{parent()}}
     <script src="{{ asset('bundles/minsalsiaps/js/datepicker/jquery.ui.datepicker-es.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/maskedinput/jquery.maskedinput.js') }}" type="text/javascript"></script>
-   
-    
-    
-        
     <script src="{{ asset('bundles/minsalsiaps/js/Sipernes/MtlActividad/json_mtlactividad.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minsalsiaps/js/funciones_generales.js') }}" type="text/javascript"></script>
 {% endblock %}
@@ -103,29 +99,31 @@
                                                                 {{form_errors(form[form_group.fields.idExpediente])}}
                                                             </div>
                                                         {% endif %}						      
-                                                    </td>
-                                                </tr>
 
-                                                <tr class="dat_paciente_sec">
-                                                    <td colspan="4">B.Datos de actividad</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="" >
-                                                        <div id="sonata-ba-field-container-s54b31e919fc05_idSubactividad" class="form-group">
-                                                            <label class="control-label required" for="s54b31e919fc05_idSubactividad">
-                                                                Tipo de actividad:
-                                                            </label>
-                                                            <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
-                                                                <select id="actividad" name="actividad">
-                                                                    <option></option>
-                                                                </select>
+                                                                                      </td>
+                                                                                  </tr>
 
-                                                            </div>
+                                                                                  <tr class="dat_paciente_sec">
+                                                                                      <td colspan="4">B.Datos de actividad</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td class="" >
+                                                                                          <div id="sonata-ba-field-container-s54b31e919fc05_idSubactividad" class="form-group">
+                                                                                              <label class="control-label required" for="s54b31e919fc05_idSubactividad">
+                                                                                                  Tipo de actividad:
+                                                                                              </label>
+                                                                                              <div class=" sonata-ba-field sonata-ba-field-standard-natural ">
+                                                                                                  <select id="actividad" name="actividad">
+                                                                                                      <option></option>
+                                                                                                  </select>
+                                                                                                  
+                                                                                              </div>
 
-                                                        </div>                                                  <td></td>                   
-                                                </tr>
-                                                <tr>
-                                                    <td>{{form_row(form[form_group.fields.idSubactividad])}}
+                                                                                          </div>                                                  <td></td>                   
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td>{{form_row(form[form_group.fields.idSubactividad])}}
+
                                                         {% if form_errors(form[form_group.fields.idSubactividad])|length > 0 %}
                                                             <div class="sonata-ba-form-error">
                                                                 {{form_errors(form[form_group.fields.idSubactividad])}}
