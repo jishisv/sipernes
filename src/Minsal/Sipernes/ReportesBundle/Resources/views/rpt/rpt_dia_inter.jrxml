@@ -72,7 +72,7 @@ on (emp.id_establecimiento = est.id)
 where
 est.id=coalesce(25,est.id) and
 CASE WHEN $P{tipointervencion}  = 0 THEN (int2.id =int2.id) ELSE int2.id=$P{tipointervencion} END AND
-
+ emp.id_establecimiento = $P{tipoEstable} and
   CASE WHEN $P{codigoEmp}  = 0 THEN (int1.id_emp_corr=int1.id_emp_corr)    ELSE int1.id_emp_corr=$P{codigoEmp} END and
 int1.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY');]]>
 	</queryString>

@@ -72,7 +72,8 @@ WHERE
   enf_mtl_intervencion.id_emp_corr = mnt_empleado.id AND
   mnt_empleado.id=$P{codigoEmp} AND
   enf_mtl_intervencion.fecha_ingreso_interv= to_date($P{fpini}, 'dd/MM/YYYY')AND
-  enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id;]]>
+  enf_mtl_intervencion.id_intervencion = enf_ctl_intervencion.id AND
+  mnt_empleado.id_establecimiento = $P{tipoEstable};]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>

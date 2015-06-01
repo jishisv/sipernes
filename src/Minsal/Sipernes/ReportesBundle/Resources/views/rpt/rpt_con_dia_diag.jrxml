@@ -68,13 +68,15 @@ FROM
 WHERE
   mnt_expediente.id_paciente = mnt_paciente.id AND
   mnt_expediente.id = enf_mtl_diagnostico.id_expediente AND
-  ctl_establecimiento.id = $P{tipoEstable} AND
+  mnt_empleado.id_establecimiento = ctl_establecimiento.id and
+  mnt_empleado.id_establecimiento = $P{tipoEstable} AND
   enf_mtl_diagnostico.id_emp_corr = mnt_empleado.id AND
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END and
 enf_mtl_diagnostico.fecha_ingreso_diag::date = coalesce(to_date($P{fpini},'DD-MM-YYYY'),  enf_mtl_diagnostico.fecha_ingreso_diag) and
+
 mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id)
   group by
 

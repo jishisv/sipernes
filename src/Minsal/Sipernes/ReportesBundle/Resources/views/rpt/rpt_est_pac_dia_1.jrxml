@@ -57,14 +57,15 @@ mnt_expediente,
 enf_ctl_diagnostico,
 enf_clase,
 enf_dominio,
-ctl_establecimiento
+ctl_establecimiento,
+mnt_empleado
 
 where
 enf_mtl_diagnostico.id_expediente = mnt_expediente.id and
 enf_ctl_diagnostico.id = enf_mtl_diagnostico.id_ctl_diag and
 enf_clase.id = enf_ctl_diagnostico.id_clase and
 enf_dominio.id = enf_clase.id_dominio and
-
+mnt_empleado.id_establecimiento = $P{tipoEstable} and
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END
 GROUP BY
 enf_ctl_diagnostico.nombre_diagnostico;]]>

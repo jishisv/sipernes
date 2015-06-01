@@ -76,7 +76,7 @@ WHERE
 enf_mtl_diagnostico.fecha_ingreso_diag = coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
 enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp} and
 enf_mtl_diagnostico.id_expediente = $P{codigoExp} and
-
+mnt_empleado.id_establecimiento = $P{tipoEstable} and
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END
   group by
 

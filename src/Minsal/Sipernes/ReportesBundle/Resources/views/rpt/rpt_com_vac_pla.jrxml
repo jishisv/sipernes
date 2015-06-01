@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.2396694214876032"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -49,18 +49,24 @@ SELECT
   (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) dosis,
   (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=2) aplicadas,
   (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1)-(select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) pendientes
+
 FROM
   public.enf_componente,
   public.ctl_establecimiento,
   public.enf_ctl_tipo_componente,
   public.mnt_expediente,
   public.enf_dosis_esquema_vac,
-  public.enf_mov_inventario
+  public.enf_mov_inventario,
+  public.mnt_empleado
+
+
+
 WHERE
   enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
-  mnt_expediente.id_establecimiento = $P{tipoEstable} AND
+  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
+  mnt_empleado.id_establecimiento = $P{tipoEstable} AND
   enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>

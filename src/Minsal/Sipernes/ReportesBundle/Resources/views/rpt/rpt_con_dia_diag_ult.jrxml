@@ -77,8 +77,9 @@ enf_mtl_diagnostico.fecha_ingreso_diag>= to_date($P{fpini},'dd/MM/YYYY') - inter
 and
 enf_mtl_diagnostico.fecha_ingreso_diag <= to_date($P{fpini}, 'dd/MM/YYYY') and
 
-enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp} and
+enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp}  and
 
+ mnt_empleado.id_establecimiento = $P{tipoEstable} and
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END
   group by
 

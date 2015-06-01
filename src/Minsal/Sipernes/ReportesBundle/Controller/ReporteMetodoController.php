@@ -126,7 +126,7 @@ class ReporteMetodoController extends Controller {
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'tipo_vacuna' => $tipovacuna,
             'presentacion' => $presentacion,
         ));
@@ -203,7 +203,7 @@ class ReporteMetodoController extends Controller {
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
         ));
 
         return $jasperReport->buildReport();
@@ -529,7 +529,7 @@ class ReporteMetodoController extends Controller {
         $jasperReport->setReportPath("/reports_siaps_seguimiento/siaps/seguimiento/");
         $jasperReport->setReportParams(array(
             'fpini' => $fecha_inicio,
-            'fpini' => $fecha_fin,
+            'fpfin' => $fecha_fin,
 //            'deptos'=>  $deptos,
 //            'municipios' => $municipios,
 //            'establecimientos' => $establecimientos,
@@ -701,7 +701,7 @@ class ReporteMetodoController extends Controller {
             'deptos' => $deptos,
             'municipios' => $municipios,
             'establecimientos' => $establecimientos,
-            'tipoestablecimientos' => $tipoestablecimientos,
+            'tipoEstable' => $tipoestablecimientos,
             'tipoprotocolo' => $tipoprotocolo,
             'protocolo' => $protocolo,
             'codigoEmp' => $codigo_enfermera,

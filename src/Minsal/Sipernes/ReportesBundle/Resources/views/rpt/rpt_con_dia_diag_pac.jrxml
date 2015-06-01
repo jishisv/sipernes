@@ -85,8 +85,8 @@ mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag <= coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
 ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
-ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
-
+mnt_empleado.id_establecimiento = ctl_establecimiento.id and
+mnt_empleado.id_establecimiento = $P{tipoEstable}
 group by
 Establecimiento,
 codExp,
@@ -112,7 +112,7 @@ order by Diagnostico, fecha asc]]>
 		<fieldDescription><![CDATA[Diagnostico de ingreso del paciente al hospital]]></fieldDescription>
 	</field>
 	<field name="intervencion" class="java.lang.String"/>
-	<field name="fecha" class="java.util.Date"/>
+	<field name="fecha" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
