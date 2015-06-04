@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="112"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -67,9 +67,11 @@ mnt_empleado
 WHERE
   enf_mtl_capacitacion.id_financiamiento = enf_ctl_financiamiento.id AND
 enf_mtl_capacitacion.id_emp_corr = mnt_empleado.id and
-ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id) and
+ctl_establecimiento.id  = mnt_empleado.id_establecimiento and
+
+mnt_empleado.id_establecimiento = $P{tipoEstable} and
 enf_mtl_capacitacion.fecha_capacitacion = to_date($P{fpini},'DD-MM-YYYY') AND
-ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio) and
+
 
 CASE WHEN $P{financiado} = 0 THEN (enf_ctl_financiamiento.id = enf_ctl_financiamiento.id) ELSE enf_ctl_financiamiento.id=$P{financiado} END and
    mnt_empleado.id  = coalesce($P{codigoEmp},mnt_empleado.id)]]>

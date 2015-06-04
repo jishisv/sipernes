@@ -56,12 +56,13 @@ mnt_empleado,
 WHERE
    enf_anotacion.id_emp_corr = mnt_empleado.id and
   mnt_expediente.id = enf_anotacion.id_expediente AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id and
+  mnt_empleado.id_establecimiento = ctl_establecimiento.id and
 mnt_empleado.id = coalesce($P{codigoEmp}, mnt_empleado.id) and
 mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 enf_anotacion.fecha_ingreso_anota >=to_date($P{fpini},'dd-MM-YYYY') and
 enf_anotacion.fecha_ingreso_anota <=to_date($P{fpfin},'dd-MM-YYYY')and
- mnt_expediente.id_establecimiento =$P{tipoEstable}
+
+mnt_empleado.id_establecimiento =$P{tipoEstable}
  group by
   ctl_establecimiento.nombre,
   enf_anotacion.observacion_anot,

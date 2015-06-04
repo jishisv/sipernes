@@ -57,9 +57,10 @@ WHERE
   enf_componente.id_tipo_componente = 2 AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
-  ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id) AND
+  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, ctl_establecimiento.id) AND
   enf_dosis_esquema_vac.fecha_dosis_esq::date>= to_date($P{fpini}, 'DD/MM/YYYY') AND
   enf_dosis_esquema_vac.fecha_dosis_esq::date<= to_date($P{fpfin}, 'DD/MM/YYYY')
+
 
 group by
    Establecimiento, Nombremicro,fecha, Dosis

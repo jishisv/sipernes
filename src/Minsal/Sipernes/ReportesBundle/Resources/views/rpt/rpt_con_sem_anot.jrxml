@@ -68,7 +68,7 @@ CASE WHEN $P{codigoEmp} = 0 THEN (mnt_empleado.id = mnt_empleado.id) ELSE mnt_em
   enf_anotacion.fecha_ingreso_anota <= to_date($P{fpfin},'DD-MM-YYYY') AND
 
 CASE WHEN $P{codigoExp} = 0 THEN (mnt_expediente.id = mnt_expediente.id) ELSE mnt_expediente.id= $P{codigoExp} END and
-ctl_establecimiento.id = coalesce($P{tipoEstable},ctl_establecimiento.id)
+mnt_empleado.id_establecimiento = coalesce($P{tipoEstable},ctl_establecimiento.id)
 
 order by fecha asc;]]>
 	</queryString>

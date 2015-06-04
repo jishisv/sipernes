@@ -69,7 +69,7 @@ CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico
 
 enf_mtl_diagnostico.fecha_ingreso_diag >= coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
 enf_mtl_diagnostico.fecha_ingreso_diag <= coalesce(to_date($P{fpfin},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) AND
-ctl_establecimiento.id = coalesce($P{tipoEstable}, ctl_establecimiento.id)
+mnt_expediente.id_establecimiento = coalesce($P{tipoEstable}, ctl_establecimiento.id)
 group by enf_ctl_diagnostico.id,enf_ctl_diagnostico.nombre_diagnostico,ctl_establecimiento.nombre, fecha;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>

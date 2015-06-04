@@ -67,7 +67,7 @@ class EnfIndicacionMedicaAdmin extends Admin
             ->add('idEmpCorr',null, array('label' => 'Numero de empleado', 'required' => true))  
             ->add('idExpediente',null, array('label' => 'Numero de expediente', 'required' => true))
             ->add('tratamientoInd',null, array('label' => 'Tratamiento', 'required' => true))
-            ->add('dosisInd',null, array('label' => 'Dosis', 'required' => true))
+            ->add('dosisInd',null, array('label' => 'Dosis (ml)', 'required' => true))
             ->add('indicacionInd',null, array('label' => 'Indicación', 'required' => true))
             ->add('observacionInd',null, array('label' => 'Observación'))
             //->add('estadoInd')

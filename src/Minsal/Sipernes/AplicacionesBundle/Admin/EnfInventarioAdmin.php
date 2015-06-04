@@ -34,7 +34,7 @@ class EnfInventarioAdmin extends Admin
         $listMapper
             //->add('id')
             ->add('idComponente', null, array('label' => 'Componente'))
-            ->add('existencia', null, array('label' => 'Existencia'))
+            ->add('existencia', null, array('label' => 'Existencia (unidades)'))
             ->add('estadoInventario', null, array('label' => 'Activo'))
             ->add('caducidadInventario', null, array('label' => 'Caducidad'))
             ->add('fechaIngresoInventario', null, array('label' => 'Creado el'))
@@ -57,7 +57,7 @@ class EnfInventarioAdmin extends Admin
         $formMapper
 //            ->add('id')
             ->add('idComponente', null, array('label' => 'Seleccione componente','required' => true))   
-            ->add('existencia', null, array('label' => 'Existencia','required' => true))
+            ->add('existencia', null, array('label' => 'Existencia (unidades)','required' => true))
             ->add('caducidadInventario', null, array('label' => 'Caducidad','required' => true))
            //->add('fechaIngresoInventario')
            //->add('usuarioInventario')
@@ -74,7 +74,7 @@ class EnfInventarioAdmin extends Admin
         $showMapper
             //->add('id')
             ->add('idComponente', null, array('label' => 'Componente'))
-            ->add('existencia', null, array('label' => 'Existencia'))
+            ->add('existencia', null, array('label' => 'Existencia (unidades)'))
             ->add('fechaIngresoInventario', null, array('label' => 'Creado el'))
             ->add('usuarioInventario', null, array('label' => 'Creado por'))
             ->add('estadoInventario', null, array('label' => 'Activo'))
