@@ -92,6 +92,14 @@ ORDER BY fecha asc]]>
 		<variableExpression><![CDATA[$F{tiempo}.getMinutes()]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{tiempo}.getMinutes()]]></initialValueExpression>
 	</variable>
+	<variable name="TotalRendi" class="java.lang.Long">
+		<variableExpression><![CDATA[$F{tiempo}.getMinutes()/$F{cantidad}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{tiempo}.getMinutes()/$F{cantidad}]]></initialValueExpression>
+	</variable>
+	<variable name="SumRendi" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{TotalRendi}]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{TotalRendi}]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -221,7 +229,7 @@ ORDER BY fecha asc]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Rendimiento]]></text>
+				<text><![CDATA[Rendimiento (min)]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="710" y="16" width="21" height="20" uuid="0d97999a-0563-4acb-9b0f-86ba2574213a"/>
@@ -356,6 +364,13 @@ ORDER BY fecha asc]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="660" y="0" width="91" height="25" uuid="0c5386f3-28b2-453a-b45c-208b4c5444e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalRendi}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
@@ -414,6 +429,13 @@ ORDER BY fecha asc]]>
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="0" width="91" height="25" uuid="b6f53b71-f257-4273-9eae-06301ab7622e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumRendi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
