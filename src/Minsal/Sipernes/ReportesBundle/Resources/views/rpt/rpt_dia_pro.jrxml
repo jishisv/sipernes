@@ -64,7 +64,7 @@ FROM
   public.enf_mtl_intervencion
 WHERE
   mnt_expediente.id_paciente = mnt_paciente.id AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
+  mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   enf_ctl_protocolo.id = enf_ctl_subprotocolo.id_protocolo AND
   enf_ctl_subprotocolo.id = enf_ctl_intervencion.id_subprotocolo AND
   enf_ctl_intervencion.id = enf_ctl_fase_intervencion.id_intervencion AND
