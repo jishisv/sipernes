@@ -66,14 +66,13 @@ WHERE
   enf_ctl_subactividad.id = enf_mtl_actividad.id_subactividad AND
   enf_ctl_actividad.id = enf_ctl_subactividad.id_actividad AND
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
-  ctl_establecimiento.id = mnt_expediente.id_establecimiento AND
+  ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
+  mnt_empleado.id_establecimiento = $P{tipoEstable} and
 mnt_empleado.id = $P{codigoEmp} and
 enf_mtl_actividad.fecha_modificacion_act = to_date($P{fpini}, 'dd/MM/YYYY') AND
 
 CASE WHEN $P{subactividad} = 0 THEN (enf_ctl_subactividad.id = enf_ctl_subactividad.id) ELSE enf_ctl_subactividad.id=$P{subactividad} END
 
- and
-ctl_establecimiento.id_municipio = coalesce($P{municipio},ctl_establecimiento.id_municipio)
 
 
 GROUP BY enf_ctl_subactividad.nombre_subactividad,
