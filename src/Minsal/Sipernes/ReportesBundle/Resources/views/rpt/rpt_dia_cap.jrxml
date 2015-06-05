@@ -67,7 +67,7 @@ mnt_empleado
 WHERE
   enf_mtl_capacitacion.id_financiamiento = enf_ctl_financiamiento.id AND
 enf_mtl_capacitacion.id_emp_corr = mnt_empleado.id and
-ctl_establecimiento.id  = mnt_empleado.id_establecimiento and
+mnt_empleado.id_establecimiento = ctl_establecimiento.id and
 
 mnt_empleado.id_establecimiento = $P{tipoEstable} and
 enf_mtl_capacitacion.fecha_capacitacion = to_date($P{fpini},'DD-MM-YYYY') AND
