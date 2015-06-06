@@ -26,7 +26,7 @@
 	<parameter name="id_servicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="codigoEmp" class="java.lang.String">
+	<parameter name="codigoEmp" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="codigoExp" class="java.lang.String">
@@ -53,15 +53,17 @@
 
 FROM
   public.enf_componente,
-  public.mnt_empleado,
+
+  public.enf_dosis_esquema_vac,
   public.ctl_establecimiento,
-  public.enf_dosis_esquema_vac
+  public.mnt_empleado
 WHERE
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
   enf_componente.id_tipo_componente = 2 AND
-  mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
+  ctl_establecimiento.id = mnt_empleado.id_establecimiento and
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
-  mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento) AND
+  mnt_empleado.id = $P{codigoEmp} and
+  mnt_empleado.id_establecimiento = $P{tipoEstable} AND
   enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7'day AND
   enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpini}, 'dd/MM/YYYY')
 AND

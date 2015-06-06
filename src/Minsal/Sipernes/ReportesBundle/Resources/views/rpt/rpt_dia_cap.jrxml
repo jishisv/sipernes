@@ -49,7 +49,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-enf_mtl_capacitacion.establecimiento_cap Establecimiento,
+ctl_establecimiento.nombre Establecimiento,
   enf_mtl_capacitacion.tema_capacitacion Tema,
   mnt_empleado.idempleado codigoenfermera,
   mnt_empleado.nombreempleado Nombreempleado,
@@ -61,15 +61,15 @@ enf_mtl_capacitacion.establecimiento_cap Establecimiento,
 
 FROM
 enf_mtl_capacitacion,
-ctl_establecimiento,
+
 enf_ctl_financiamiento,
-mnt_empleado
+ctl_establecimiento inner join mnt_empleado on (ctl_establecimiento.id = mnt_empleado.id_establecimiento)
 WHERE
   enf_mtl_capacitacion.id_financiamiento = enf_ctl_financiamiento.id AND
 enf_mtl_capacitacion.id_emp_corr = mnt_empleado.id and
-mnt_empleado.id_establecimiento = ctl_establecimiento.id and
 
 mnt_empleado.id_establecimiento = $P{tipoEstable} and
+
 enf_mtl_capacitacion.fecha_capacitacion = to_date($P{fpini},'DD-MM-YYYY') AND
 
 

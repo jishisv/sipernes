@@ -58,6 +58,7 @@ FROM
   public.enf_dosis_esquema_vac
 WHERE
   enf_componente.id = enf_dosis_esquema_vac.id_componente AND
+  mnt_empleado.id = $P{codigoEmp} AND
   enf_componente.id_tipo_componente = 1 AND
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
