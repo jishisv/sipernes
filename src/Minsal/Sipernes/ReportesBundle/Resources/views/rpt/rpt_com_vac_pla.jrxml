@@ -42,7 +42,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select row_number() over (order by t.nombre) n,t.nombre establecimiento,t.nombre_componente1 tipo,sum(t.dosis) dosis,sum(t.aplicadas) aplicadas,sum(t.pendientes) pendientes from (
+		<![CDATA[select row_number() over (order by t.nombre) n,t.nombre establecimiento,t.nombre_componente1 tipo,sum(t.dosis) dosis,sum(t.aplicadas) aplicadas,sum(t.pendientes) pendientes,mnt_empleado.nombreempleado nombreempleado from mnt_empleado,(
 SELECT
   ctl_establecimiento.nombre,
   enf_ctl_tipo_componente.nombre_componente1,
@@ -67,7 +67,7 @@ WHERE
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   mnt_expediente.id_establecimiento = $P{tipoEstable} AND
-  enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1;]]>
+  enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1,nombreempleado;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="establecimiento" class="java.lang.String"/>
@@ -75,6 +75,9 @@ WHERE
 	<field name="dosis" class="java.math.BigDecimal"/>
 	<field name="aplicadas" class="java.math.BigDecimal"/>
 	<field name="pendientes" class="java.math.BigDecimal"/>
+	<field name="nombreempleado" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre Unido para los modulos de PHP Puro y POstgresql]]></fieldDescription>
+	</field>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{dosis}]]></initialValueExpression>
@@ -150,7 +153,7 @@ WHERE
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="231" y="65" width="155" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="322" y="65" width="64" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
@@ -212,6 +215,19 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="231" y="65" width="91" height="25" backcolor="#CCCCCC" uuid="c8db6be8-07e4-4973-b316-ab801aa92129"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Enfermera]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -231,7 +247,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="231" y="0" width="155" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="322" y="0" width="64" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -257,6 +273,19 @@ WHERE
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pendientes}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" x="231" y="0" width="91" height="25" uuid="214aef81-688a-424f-86cd-09b5e3358e5a"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreempleado}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

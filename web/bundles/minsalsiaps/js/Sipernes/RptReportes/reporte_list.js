@@ -147,7 +147,7 @@ $(document).ready(function () {
     });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $("#municipios").on('change', function (event) { // aqui el JSON });
-       alert("entre");
+       //alert("entre");
         $('#establecimientos option').each(function (index, val) {
             $(this).remove();
             /// $('#municipios').append('<option value="0" selected="true">Seleccione...</option>'); 

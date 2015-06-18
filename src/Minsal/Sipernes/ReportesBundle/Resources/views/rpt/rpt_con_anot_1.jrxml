@@ -46,7 +46,8 @@
   ctl_establecimiento.nombre Establecimiento,
   enf_anotacion.observacion_anot Anotacion,
   count(enf_anotacion.observacion_anot) CantidadAnotacion,
-  enf_anotacion.fecha_ingreso_anota fecha
+  enf_anotacion.fecha_ingreso_anota fecha,
+  mnt_empleado.nombreempleado nombreempleado
   FROM
 mnt_empleado,
   enf_anotacion,
@@ -66,12 +67,15 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
  group by
   ctl_establecimiento.nombre,
   enf_anotacion.observacion_anot,
-  fecha;]]>
+  fecha,nombreempleado;]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="anotacion" class="java.lang.String"/>
 	<field name="cantidadanotacion" class="java.lang.Long"/>
 	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombreempleado" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre Unido para los modulos de PHP Puro y POstgresql]]></fieldDescription>
+	</field>
 	<variable name="TotalAnot" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidadanotacion}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidadanotacion}]]></initialValueExpression>
@@ -151,7 +155,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="206" y="65" width="210" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
+				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="297" y="65" width="151" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1d661525-6453-4aed-a695-517d6e971f0e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -169,7 +173,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="484" y="65" width="83" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="516" y="65" width="51" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="31b584fa-0857-4fae-b55c-c5a5c90e982e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -212,7 +216,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="416" y="65" width="68" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="6ffb96d2-d4e2-4414-9637-e3144e06679e"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="448" y="65" width="68" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="6ffb96d2-d4e2-4414-9637-e3144e06679e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -223,6 +227,19 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="206" y="65" width="91" height="25" backcolor="#999999" uuid="47eba9e6-6520-40fa-bda5-39cfb0bed8c4"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Enfermera]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -255,7 +272,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="206" y="0" width="210" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="297" y="0" width="151" height="25" isPrintWhenDetailOverflows="true" uuid="8af11664-a7be-4cf4-b2e3-11ea113a56f4"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -268,7 +285,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<textFieldExpression><![CDATA[$F{anotacion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="484" y="0" width="83" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="516" y="0" width="51" height="25" isPrintWhenDetailOverflows="true" uuid="7835633f-90c3-4f53-90ca-8e8065af7e46"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -281,7 +298,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<textFieldExpression><![CDATA[$F{cantidadanotacion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="416" y="0" width="68" height="25" isPrintWhenDetailOverflows="true" uuid="8d2a57b2-6197-4c07-ac78-e076d3dc2883"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="448" y="0" width="68" height="25" isPrintWhenDetailOverflows="true" uuid="8d2a57b2-6197-4c07-ac78-e076d3dc2883"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -293,6 +310,19 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" x="206" y="0" width="91" height="25" uuid="3675586c-c433-453e-82fa-7a717785bd8b"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreempleado}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
@@ -301,7 +331,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="4" y="0" width="480" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="4" y="0" width="512" height="25" isPrintWhenDetailOverflows="true" uuid="8b0155d1-217b-4b01-ba44-dc31d8e2badc"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -314,7 +344,7 @@ mnt_empleado.id_establecimiento =$P{tipoEstable}
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="484" y="0" width="83" height="25" isPrintWhenDetailOverflows="true" uuid="9c5da354-f157-4960-b2a0-726933b3565a"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="516" y="0" width="51" height="25" isPrintWhenDetailOverflows="true" uuid="9c5da354-f157-4960-b2a0-726933b3565a"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>

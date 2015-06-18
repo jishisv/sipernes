@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="511"/>
+	<property name="ireport.y" value="384"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -53,7 +53,8 @@
   enf_ctl_subactividad.nombre_subactividad as actividad,
   SUM(enf_mtl_actividad.cantidad_act_enf)as cantidad,
   SUM(enf_mtl_actividad.tiempo_act_enf) as tiempo,
-  enf_mtl_actividad.fecha_modificacion_act as fecha
+  enf_mtl_actividad.fecha_modificacion_act as fecha,
+  mnt_empleado.nombreempleado
 FROM
   public.mnt_empleado,
   public.enf_mtl_actividad,
@@ -81,13 +82,17 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
   ctl_establecimiento.nombre,
   enf_mtl_actividad.fecha_modificacion_act,
   enf_mtl_actividad.cantidad_act_enf,
-  enf_mtl_actividad.tiempo_act_enf]]>
+  enf_mtl_actividad.tiempo_act_enf,
+  mnt_empleado.nombreempleado]]>
 	</queryString>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="actividad" class="java.lang.String"/>
 	<field name="cantidad" class="java.math.BigDecimal"/>
 	<field name="tiempo" class="org.postgresql.util.PGInterval"/>
 	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombreempleado" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre Unido para los modulos de PHP Puro y POstgresql]]></fieldDescription>
+	</field>
 	<variable name="TotalCan" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>
@@ -95,6 +100,14 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 	<variable name="TotalTem" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{tiempo}.getMinutes()]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{tiempo}.getMinutes()]]></initialValueExpression>
+	</variable>
+	<variable name="TotalRendi" class="java.lang.Long">
+		<variableExpression><![CDATA[$F{tiempo}.getMinutes()/$F{cantidad}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{tiempo}.getMinutes()/$F{cantidad}]]></initialValueExpression>
+	</variable>
+	<variable name="SumRendi" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{TotalRendi}]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{TotalRendi}]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -202,7 +215,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<text><![CDATA[Tiempo (min)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="234" y="77" width="238" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
+				<reportElement style="table_TH" x="344" y="77" width="128" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="30c7925d-4ed4-4529-aeac-a76bd5231075"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -215,7 +228,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" x="678" y="77" width="71" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
+				<reportElement style="table_TH" x="678" y="77" width="74" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="60f583a9-73e3-466a-a9c4-5bfa7c7e0085"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -269,6 +282,19 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="234" y="77" width="110" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="b7a07aa2-efe0-4dcf-a15d-963df5ecef8d"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Enfermera]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -327,7 +353,7 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				<textFieldExpression><![CDATA[$F{tiempo}.getMinutes()]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="234" y="0" width="238" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="344" y="0" width="128" height="25" isPrintWhenDetailOverflows="true" uuid="e486d2c5-b1d3-46ae-aa12-6dca632766d5"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -338,19 +364,6 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{actividad}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="678" y="0" width="71" height="25" isPrintWhenDetailOverflows="true" uuid="a9c48678-500c-42a7-aac5-de09fe045cc2"/>
-				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="472" y="0" width="56" height="25" isPrintWhenDetailOverflows="true" uuid="468f4c3d-fe3b-4173-bdbb-6a8fdc4ee326"/>
@@ -365,13 +378,31 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="679" y="0" width="73" height="25" isPrintWhenDetailOverflows="true" uuid="7cb71df2-79ad-41e8-a358-d219025335db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{TotalRendi}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="234" y="0" width="110" height="25" isPrintWhenDetailOverflows="true" uuid="b3a89ff6-a851-409f-b001-89e5f167765d"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreempleado}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="50">
+		<band height="49">
 			<textField>
 				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="528" y="0" width="78" height="25" isPrintWhenDetailOverflows="true" uuid="a69325e4-5980-4edd-b9fb-f1a43a454318"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
@@ -423,6 +454,14 @@ GROUP BY enf_ctl_subactividad.nombre_subactividad,
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" stretchType="RelativeToBandHeight" mode="Opaque" x="679" y="0" width="73" height="25" isPrintWhenDetailOverflows="true" uuid="b3a3e7b7-3ce2-4145-91d3-e44791e2a0cf"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumRendi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

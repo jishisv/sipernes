@@ -33,7 +33,7 @@ $(document).ready(function() {
     /*CARGAR Actividad*/
       $.getJSON(Routing.generate('get_actividad_padre') + '/' + $('select[id$="_idSubactividad"]').select2('val'),
             function (data) {
-               alert("entre");
+              // alert("entre");
                 $.each(data.datosactividad, function (indice, aux) {
                     $('#actividad').append('<option value="' + aux.id + '">' + aux.idActividad.nombreActividad + '</option>');
                 });
@@ -42,7 +42,7 @@ $(document).ready(function() {
     /*CARGAR PROTOCOLOS*/
       $.getJSON(Routing.generate('get_Act'),
             function (data) {
-              alert("entre");
+              //alert("entre");
                 $.each(data.actividad, function (indice, aux) {
                     $('#actividad').append('<option value="' + aux.id + '">' + aux.nombreActividad + '</option>');
                 });
