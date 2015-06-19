@@ -13,6 +13,7 @@ class SecSignosVitalesAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
