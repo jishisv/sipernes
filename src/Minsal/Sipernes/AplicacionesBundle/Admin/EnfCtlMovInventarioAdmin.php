@@ -13,6 +13,12 @@ class EnfCtlMovInventarioAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
+    
+    protected $datagridValues = array(
+        '_page' => 1, // Display the first page (default = 1)
+        '_sort_order' => 'DESC', // Descendant ordering (default = 'ASC')
+        '_sort_by' => 'fechaIngresoMov' // name of the ordered field (default = the model id field, if any)
+    );  
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -20,7 +26,7 @@ class EnfCtlMovInventarioAdmin extends Admin
             ->add('nombreTipoInventatrio')
             ->add('estadoCtlMov')
             //->add('usuarioIngresoMov')
-            //->add('fechaIngresoMov')
+            ->add('fechaIngresoMov')
         ;
     }
 
@@ -34,7 +40,7 @@ class EnfCtlMovInventarioAdmin extends Admin
             ->add('nombreTipoInventatrio',null, array('label' => 'Tipo Inventario'))
             ->add('estadoCtlMov',null, array('label' => 'Activo'))
             //->add('usuarioIngresoMov')
-            //->add('fechaIngresoMov')
+            ->add('fechaIngresoMov')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

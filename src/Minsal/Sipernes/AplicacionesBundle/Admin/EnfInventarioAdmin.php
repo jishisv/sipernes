@@ -29,6 +29,11 @@ class EnfInventarioAdmin extends Admin
     /**
      * @param ListMapper $listMapper
      */
+    protected $datagridValues = array(
+        '_page' => 1, // Display the first page (default = 1)
+        '_sort_order' => 'DESC', // Descendant ordering (default = 'ASC')
+        '_sort_by' => 'fechaIngresoInventario' // name of the ordered field (default = the model id field, if any)
+    );    
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
