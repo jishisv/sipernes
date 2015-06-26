@@ -73,7 +73,7 @@ WHERE
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
-enf_mtl_diagnostico.fecha_ingreso_diag = coalesce(to_date($P{fpini},'DD-MM-YYYY'), enf_mtl_diagnostico.fecha_ingreso_diag) and
+enf_mtl_diagnostico.fecha_ingreso_diag >= to_date($P{fpini},'DD-MM-YYYY') and enf_mtl_diagnostico.fecha_ingreso_diag <= to_date($P{fpfin},'DD-MM-YYYY')  and
 enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp} and
 enf_mtl_diagnostico.id_expediente = $P{codigoExp} and
 mnt_empleado.id_establecimiento = $P{tipoEstable} and
@@ -145,7 +145,7 @@ order by fecha asc;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Informe diario de diagnósticos de enfermería a paciente hospitalario]]></text>
+				<text><![CDATA[Informe de diagnósticos de enfermería a paciente hospitalario]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="31" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>

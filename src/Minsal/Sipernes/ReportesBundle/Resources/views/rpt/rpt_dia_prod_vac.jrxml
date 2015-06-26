@@ -69,7 +69,8 @@ WHERE
   mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   enf_esquema_vac.id = enf_dosis_esquema_vac.id_tipo_esq AND
-  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin},'DD-MM-YYYY') AND
   CASE WHEN $P{presentacion} = 0 THEN ( enf_componente.id =   enf_componente.id ) ELSE   enf_componente.id =$P{presentacion} END AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
 group by
@@ -140,7 +141,7 @@ order by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte de Registro Diario de Producción de Vacunas]]></text>
+				<text><![CDATA[Reporte de Registro de Producción de Vacunas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

@@ -74,7 +74,8 @@ est.id=coalesce(25,est.id) and
 CASE WHEN $P{tipointervencion}  = 0 THEN (int2.id =int2.id) ELSE int2.id=$P{tipointervencion} END AND
  emp.id_establecimiento = $P{tipoEstable} and
   CASE WHEN $P{codigoEmp}  = 0 THEN (int1.id_emp_corr=int1.id_emp_corr)    ELSE int1.id_emp_corr=$P{codigoEmp} END and
-int1.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY');]]>
+int1.fecha_ingreso_interv >= to_date($P{fpini},'DD-MM-YYYY') and
+int1.fecha_ingreso_interv <= to_date($P{fpfin},'DD-MM-YYYY')]]>
 	</queryString>
 	<field name="enfermera" class="java.lang.String"/>
 	<field name="establecimiento" class="java.lang.String"/>
@@ -131,7 +132,7 @@ int1.fecha_ingreso_interv = to_date($P{fpini},'DD-MM-YYYY');]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte Diario de Intervenciones]]></text>
+				<text><![CDATA[Reporte de Intervenciones]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="38" y="65" width="32" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>

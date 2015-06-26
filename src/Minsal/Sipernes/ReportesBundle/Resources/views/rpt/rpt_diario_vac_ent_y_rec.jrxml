@@ -78,8 +78,8 @@ WHERE
   enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
   enf_mov_inventario.id_inventario = enf_inventario.id AND
   enf_mov_inventario.id_dosis_esq is NULL AND
-  enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpini},'DD-MM-YYYY')  AND
-  enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpfin},'DD-MM-YYYY') AND
+  enf_mov_inventario.fecha_ingreso_mov >= to_date($P{fpini},'DD-MM-YYYY')  AND
+  enf_mov_inventario.fecha_ingreso_mov <= to_date($P{fpfin},'DD-MM-YYYY') AND
    CASE WHEN $P{presentacion} = 0 THEN ( enf_inventario.id_componente = enf_inventario.id_componente ) ELSE   enf_inventario.id_componente =$P{presentacion} END AND
 
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
