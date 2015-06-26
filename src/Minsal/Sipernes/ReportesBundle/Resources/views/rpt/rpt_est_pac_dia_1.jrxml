@@ -66,6 +66,9 @@ enf_ctl_diagnostico.id = enf_mtl_diagnostico.id_ctl_diag and
 enf_clase.id = enf_ctl_diagnostico.id_clase and
 enf_dominio.id = enf_clase.id_dominio and
 mnt_empleado.id_establecimiento = $P{tipoEstable} and
+ enf_mtl_diagnostico.fecha_ingreso_diag >= to_date($P{fpini}, 'DD/MM/YYYY') AND
+enf_mtl_diagnostico.fecha_ingreso_diag  <= to_date($P{fpfin}, 'DD/MM/YYYY') and
+
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END
 GROUP BY
 enf_ctl_diagnostico.nombre_diagnostico;]]>

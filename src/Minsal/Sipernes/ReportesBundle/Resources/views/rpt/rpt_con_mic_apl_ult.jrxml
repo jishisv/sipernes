@@ -64,8 +64,8 @@ WHERE
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   mnt_empleado.id = $P{codigoEmp} and
   mnt_empleado.id_establecimiento = $P{tipoEstable} AND
-  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7'day AND
-  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpini}, 'dd/MM/YYYY')
+  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY')  AND
+  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin}, 'dd/MM/YYYY')
 AND
 CASE WHEN $P{micro} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{micro} END
 group by
@@ -130,11 +130,11 @@ order by fecha asc;]]>
 	<columnHeader>
 		<band height="90" splitType="Stretch">
 			<staticText>
-				<reportElement x="134" y="8" width="297" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
+				<reportElement x="134" y="8" width="315" height="30" uuid="e64a9520-07e9-4b0b-828f-5b026812eb03"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Micronutrientes Aplicados en los Ultimos Siete Días]]></text>
+				<text><![CDATA[Consolidado de Micronutrientes Aplicados ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="45" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

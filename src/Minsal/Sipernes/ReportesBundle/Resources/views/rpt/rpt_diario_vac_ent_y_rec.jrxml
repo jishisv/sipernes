@@ -79,6 +79,7 @@ WHERE
   enf_mov_inventario.id_inventario = enf_inventario.id AND
   enf_mov_inventario.id_dosis_esq is NULL AND
   enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpini},'DD-MM-YYYY')  AND
+  enf_mov_inventario.fecha_ingreso_mov = to_date($P{fpfin},'DD-MM-YYYY') AND
    CASE WHEN $P{presentacion} = 0 THEN ( enf_inventario.id_componente = enf_inventario.id_componente ) ELSE   enf_inventario.id_componente =$P{presentacion} END AND
 
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
@@ -142,7 +143,7 @@ order by fecha asc;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte diario de vacunas entregadas y recibidas]]></text>
+				<text><![CDATA[Reporte de vacunas entregadas y recibidas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="9" y="65" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

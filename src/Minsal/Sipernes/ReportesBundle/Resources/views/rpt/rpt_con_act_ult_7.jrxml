@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="4.0"/>
-	<property name="ireport.x" value="2373"/>
-	<property name="ireport.y" value="677"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="166"/>
+	<property name="ireport.y" value="32"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -41,6 +41,9 @@
 	<parameter name="municipio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="fpfin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   ctl_establecimiento.nombre as establecimiento,
@@ -62,8 +65,8 @@ WHERE
   mnt_expediente.id = enf_mtl_actividad.id_expediente AND
 
 mnt_empleado.id = $P{codigoEmp} and
-enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day  and
-enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpini}, 'dd/MM/YYYY') and
+enf_mtl_actividad.fecha_modificacion_act>= to_date($P{fpini}, 'dd/MM/YYYY')  and
+enf_mtl_actividad.fecha_modificacion_act<= to_date($P{fpfin}, 'dd/MM/YYYY') and
 
 CASE WHEN $P{subactividad} = 0 THEN (enf_ctl_subactividad.id = enf_ctl_subactividad.id) ELSE enf_ctl_subactividad.id=$P{subactividad} END
  and
@@ -146,7 +149,7 @@ ORDER BY fecha asc]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Listado de Actividades Realizadas por el personal de enfermería en los últimos siete días]]></text>
+				<text><![CDATA[Listado de Actividades Realizadas por el personal de enfermería ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="29" y="65" width="45" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
@@ -247,16 +250,6 @@ ORDER BY fecha asc]]>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="259" y="42" width="151" height="20" uuid="eeb28ffc-165e-4bbf-83df-cfbfb662021a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Fecha de datos consultados:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="410" y="42" width="100" height="20" uuid="784a297f-4041-451a-a11f-99e8e7c0c84e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{fpini}]]></textFieldExpression>
-			</textField>
-			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="444" y="65" width="78" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="36fe8d0a-4444-4ee9-aa6a-ec4f4cf33b2e"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
@@ -269,6 +262,21 @@ ORDER BY fecha asc]]>
 				</textElement>
 				<text><![CDATA[Fecha de registro]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="208" y="40" width="165" height="15" uuid="19764352-aecc-4cdc-bdbc-d8fc7342d5b0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de datos consultados: Desde ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="473" y="40" width="100" height="15" uuid="3568ccc2-1aca-42ef-b7d4-04c181378b86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="40" width="100" height="15" uuid="f425a954-aaff-4cb0-a8b2-e5ec0e790330"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Desde "+ $P{fpini}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

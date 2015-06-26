@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -76,7 +76,10 @@ WHERE
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
 CASE WHEN $P{diagnostico} = 0 THEN (enf_ctl_diagnostico.id = enf_ctl_diagnostico.id) ELSE enf_ctl_diagnostico.id=$P{diagnostico} END and
-enf_mtl_diagnostico.fecha_ingreso_diag::date = coalesce(to_date($P{fpini},'DD-MM-YYYY'),  enf_mtl_diagnostico.fecha_ingreso_diag) and
+
+enf_mtl_diagnostico.fecha_ingreso_diag>= to_date($P{fpini}, 'dd/MM/YYYY') and
+enf_mtl_diagnostico.fecha_ingreso_diag<= to_date($P{fpfin}, 'dd/MM/YYYY') and
+
 
 mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id)
   group by
@@ -148,7 +151,7 @@ mnt_empleado.id=coalesce($P{codigoEmp},mnt_empleado.id)
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado diario de diagnósticos realizados por el personal de enfermería]]></text>
+				<text><![CDATA[Consolidado de diagnósticos realizados por el personal de enfermería]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="0" y="65" width="45" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>

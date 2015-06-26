@@ -74,7 +74,8 @@ WHERE
   enf_componente.id_tipo_componente = 1 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq>= to_date($P{fpini}, 'dd/MM/YYYY') and
+  enf_dosis_esquema_vac.fecha_dosis_esq<= to_date($P{fpfin}, 'dd/MM/YYYY') and
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
@@ -145,7 +146,7 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado Diario de Vacunación]]></text>
+				<text><![CDATA[Consolidado de Vacunación]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" x="30" y="75" width="35" height="25" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

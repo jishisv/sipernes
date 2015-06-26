@@ -64,8 +64,8 @@ WHERE
   mnt_empleado.id = enf_dosis_esquema_vac.id_emp_corr AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
  AND
-  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') - interval '7' day AND
-  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpini}, 'dd/MM/YYYY')
+  enf_dosis_esquema_vac.fecha_dosis_esq >= to_date($P{fpini}, 'dd/MM/YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin}, 'dd/MM/YYYY')
 AND
 CASE WHEN $P{presentacion} = 0 THEN (enf_dosis_esquema_vac.id_componente = enf_dosis_esquema_vac.id_componente) ELSE enf_dosis_esquema_vac.id_componente=$P{presentacion} END
 group by
@@ -134,7 +134,7 @@ order by fecha asc;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado de Vacunas Aplicadas en los Ultimos Siete Días]]></text>
+				<text><![CDATA[Consolidado de Vacunas Aplicadas ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="11" y="65" width="50" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

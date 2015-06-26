@@ -73,9 +73,9 @@ WHERE
   enf_mtl_diagnostico.id_ctl_diag = enf_ctl_diagnostico.id AND
   enf_ctl_diagnostico.id_clase = enf_clase.id AND
   enf_dominio.id = enf_clase.id_dominio and
-enf_mtl_diagnostico.fecha_ingreso_diag>= to_date($P{fpini},'dd/MM/YYYY') - interval '7' day
+enf_mtl_diagnostico.fecha_ingreso_diag>= to_date($P{fpini},'dd/MM/YYYY')
 and
-enf_mtl_diagnostico.fecha_ingreso_diag <= to_date($P{fpini}, 'dd/MM/YYYY') and
+enf_mtl_diagnostico.fecha_ingreso_diag <= to_date($P{fpfin}, 'dd/MM/YYYY') and
 
 enf_mtl_diagnostico.id_emp_corr=$P{codigoEmp}  and
 
@@ -300,7 +300,7 @@ order by fecha asc]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="578" y="0" width="74" height="25" isPrintWhenDetailOverflows="true" uuid="c4474417-8d48-4018-a794-ac75ac88dbe4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>

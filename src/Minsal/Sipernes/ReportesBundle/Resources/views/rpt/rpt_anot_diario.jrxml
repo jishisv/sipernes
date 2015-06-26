@@ -63,7 +63,8 @@ WHERE
   enf_anotacion.id_expediente = mnt_expediente.id AND
   mnt_expediente.id_paciente = mnt_paciente.id and
 mnt_empleado.id = coalesce($P{codigoEmp},mnt_empleado.id) and
-enf_anotacion.fecha_ingreso_anota = to_date($P{fpini},'DD-MM-YYYY') AND
+enf_anotacion.fecha_ingreso_anota>= to_date($P{fpini}, 'dd/MM/YYYY') and
+  enf_anotacion.fecha_ingreso_anota <= to_date($P{fpfin}, 'dd/MM/YYYY') and
 mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) and
 mnt_empleado.id_establecimiento = ctl_establecimiento.id and
 mnt_empleado.id_establecimiento = $P{tipoEstable}]]>
@@ -121,7 +122,7 @@ mnt_empleado.id_establecimiento = $P{tipoEstable}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Informe diario de anotaciones de enfermería por paciente]]></text>
+				<text><![CDATA[Informe de anotaciones de enfermería por paciente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="3" y="70" width="35" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="34289616-0ee4-45ae-a732-19a548fcb548"/>

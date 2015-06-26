@@ -77,7 +77,9 @@ WHERE
   enf_componente.id_tipo_componente = 2 AND
   enf_dosis_esquema_vac.id_componente = enf_componente.id AND
   enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.fecha_dosis_esq = to_date($P{fpini},'DD-MM-YYYY') AND
+  enf_dosis_esquema_vac.fecha_dosis_esq>= to_date($P{fpini}, 'dd/MM/YYYY') and
+  enf_dosis_esquema_vac.fecha_dosis_esq<= to_date($P{fpfin}, 'dd/MM/YYYY') and
+
   mnt_expediente.id = coalesce($P{codigoExp},mnt_expediente.id) AND
   enf_dosis_esquema_vac.id_emp_corr = coalesce($P{codigoEmp}, enf_dosis_esquema_vac.id_emp_corr) AND
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
@@ -148,7 +150,7 @@ group by
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Consolidado Diario de Aplicación de Micronutrientes]]></text>
+				<text><![CDATA[Consolidado de Aplicación de Micronutrientes]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="34" y="75" width="40" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>

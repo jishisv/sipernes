@@ -69,8 +69,8 @@ WHERE
   ctl_establecimiento.id = mnt_empleado.id_establecimiento AND
   mnt_empleado.id_establecimiento = $P{tipoEstable} and
 mnt_empleado.id = $P{codigoEmp} and
-enf_mtl_actividad.fecha_modificacion_act = to_date($P{fpini}, 'dd/MM/YYYY') AND
-
+enf_mtl_actividad.fecha_modificacion_act >= to_date($P{fpini}, 'dd/MM/YYYY') AND
+enf_mtl_actividad.fecha_modificacion_act <= to_date($P{fpfin}, 'dd/MM/YYYY') AND
 CASE WHEN $P{subactividad} = 0 THEN (enf_ctl_subactividad.id = enf_ctl_subactividad.id) ELSE enf_ctl_subactividad.id=$P{subactividad} END
 
 
@@ -150,7 +150,7 @@ ORDER BY fecha asc]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte diario de actividades realizadas por el personal de enfermería]]></text>
+				<text><![CDATA[Reporte de actividades realizadas por el personal de enfermería]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="table_CH" stretchType="RelativeToBandHeight" x="34" y="65" width="50" height="25" isPrintWhenDetailOverflows="true" backcolor="#999999" uuid="1e3a2612-7a57-4430-8a27-ee546d3546ff"/>
