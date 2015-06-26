@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumenIngresos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4849e951-95ca-49ad-87e0-c35b0585b150">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -41,57 +41,69 @@
 	<parameter name="fpfin" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="presentacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select row_number() over (order by t.nombre) n,t.nombre establecimiento,t.nombre_componente1 tipo,sum(t.dosis) dosis,sum(t.aplicadas) aplicadas,sum(t.pendientes) pendientes,mnt_empleado.nombreempleado nombreempleado from mnt_empleado,(
-SELECT
-  ctl_establecimiento.nombre,
-  enf_ctl_tipo_componente.nombre_componente1,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) dosis,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=2) aplicadas,
-  (select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1)-(select sum(a.cantidad_mov) from public.enf_mov_inventario a where enf_mov_inventario.id_tipo_inventario = a.id and a.id_tipo_inventario=1) pendientes
-
-FROM
-  public.enf_componente,
-  public.ctl_establecimiento,
-  public.enf_ctl_tipo_componente,
-  public.mnt_expediente,
-  public.enf_dosis_esquema_vac,
-  public.enf_mov_inventario,
-  public.mnt_empleado
-
-
-
-WHERE
-  enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
-  mnt_expediente.id_establecimiento = ctl_establecimiento.id AND
-  enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
-  enf_dosis_esquema_vac.id_componente = enf_componente.id AND
-  mnt_expediente.id_establecimiento = $P{tipoEstable} AND
-  enf_dosis_esquema_vac.fecha_dosis_esq>= to_date($P{fpini}, 'dd/MM/YYYY') and
-  enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin}, 'dd/MM/YYYY') and
-
-  enf_dosis_esquema_vac.id = enf_mov_inventario.id_dosis_esq) t group by t.nombre,t.nombre_componente1,nombreempleado;]]>
+		<![CDATA[select
+row_number() over (order by t.nombre_componente1) n,
+t.nombre establecimiento,
+t.nombre_componente1 tipo,
+t.nombre_componente componente,
+t.existencia dosis,
+t.resta aplicadas,
+t.existencia-t.resta pendientes
+from
+(
+	select
+	est.nombre,
+	tip.nombre_componente1,
+	comp.nombre_componente,
+	inv.existencia,
+	inv.existencia -
+	(
+	  select count(*) from enf_dosis_esquema_vac esq
+	  where comp.id = esq.id_componente
+	  group by esq.id_componente
+	) as resta
+	from
+	public.ctl_establecimiento est,
+	public.enf_ctl_tipo_componente tip,
+	public.enf_inventario inv ,
+	public.enf_componente comp,
+	public.mnt_expediente,
+	public.enf_dosis_esquema_vac
+	where
+	comp.id_tipo_componente = tip.id AND
+	comp.id = inv.id_componente AND
+	mnt_expediente.id_establecimiento = est.id AND
+          enf_dosis_esquema_vac.id_expediente = mnt_expediente.id AND
+	mnt_expediente.id_establecimiento = $P{tipoEstable} AND
+          enf_dosis_esquema_vac.fecha_dosis_esq>= to_date($P{fpini}, 'dd/MM/YYYY') AND
+          enf_dosis_esquema_vac.fecha_dosis_esq <= to_date($P{fpfin}, 'dd/MM/YYYY') AND
+CASE WHEN $P{presentacion} = 0 THEN ( comp.id = comp.id ) ELSE comp.id =$P{presentacion} END
+)t
+group by t.nombre, t.nombre_componente1, t.nombre_componente, t.existencia, t.resta
+;]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="establecimiento" class="java.lang.String"/>
 	<field name="tipo" class="java.lang.String"/>
+	<field name="componente" class="java.lang.String"/>
 	<field name="dosis" class="java.math.BigDecimal"/>
 	<field name="aplicadas" class="java.math.BigDecimal"/>
 	<field name="pendientes" class="java.math.BigDecimal"/>
-	<field name="nombreempleado" class="java.lang.String">
-		<fieldDescription><![CDATA[Nombre Unido para los modulos de PHP Puro y POstgresql]]></fieldDescription>
-	</field>
 	<variable name="TotalPro" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{dosis}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{dosis}]]></initialValueExpression>
 	</variable>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{aplicadas}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{aplicadas}]]></initialValueExpression>
+		<variableExpression><![CDATA[new BigDecimal(($F{aplicadas} != null) ? $F{aplicadas} : "0")]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(($F{aplicadas} != null) ? $F{aplicadas} : "0")]]></initialValueExpression>
 	</variable>
 	<variable name="TotalPen" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{pendientes}]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{pendientes}]]></initialValueExpression>
+		<variableExpression><![CDATA[$F{dosis}-new BigDecimal((($F{aplicadas} != null) ? $F{aplicadas} : "0"))]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{dosis}-new BigDecimal((($F{aplicadas} != null) ? $F{aplicadas} : "0"))]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -142,28 +154,28 @@ WHERE
 				<text><![CDATA[Comparativo Vacunación vrs Planificadas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="10" y="65" width="72" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="10" y="65" width="45" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="24594391-c860-4ac1-aad3-bf57516eaadc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Correlativo]]></text>
+				<text><![CDATA[No. Corr.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="82" y="65" width="149" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="55" y="65" width="154" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="9aa839c8-28e3-4e9e-95d1-6b7c96800bda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Establecimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="322" y="65" width="64" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="286" y="65" width="84" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="87295a20-c2b0-49d2-89e0-4da6f70ecf46"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Tipo]]></text>
+				<text><![CDATA[Componente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="386" y="65" width="58" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
+				<reportElement style="table_TH" stretchType="RelativeToBandHeight" x="370" y="65" width="74" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="c7e3aea5-392d-4f80-9406-0c1a115fc4f9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
@@ -219,7 +231,7 @@ WHERE
 				<textFieldExpression><![CDATA["Hasta "+ $P{fpfin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="table_CH" x="231" y="65" width="91" height="25" backcolor="#CCCCCC" uuid="c8db6be8-07e4-4973-b316-ab801aa92129"/>
+				<reportElement style="table_CH" x="209" y="65" width="77" height="25" backcolor="#CCCCCC" uuid="c8db6be8-07e4-4973-b316-ab801aa92129"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -229,56 +241,56 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nombre Enfermera]]></text>
+				<text><![CDATA[Tipo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="10" y="0" width="72" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="10" y="0" width="45" height="25" isPrintWhenDetailOverflows="true" uuid="68d54f84-9c9e-4fca-980c-8fcd3e01889e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="82" y="0" width="149" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="55" y="0" width="154" height="25" isPrintWhenDetailOverflows="true" uuid="9b6c8e93-5974-4680-8634-0aa6b6d12937"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="322" y="0" width="64" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="286" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="d67141e6-edf3-40ec-a0df-35a9a234c27f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{componente}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="386" y="0" width="58" height="25" isPrintWhenDetailOverflows="true" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="370" y="0" width="74" height="25" isPrintWhenDetailOverflows="true" uuid="e38b8cd5-828f-4b46-a947-83221749987c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dosis}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="444" y="0" width="67" height="25" isPrintWhenDetailOverflows="true" uuid="b0339586-9743-47f1-b57e-b0be441513aa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{aplicadas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new BigDecimal(($F{aplicadas} != null) ? $F{aplicadas} : "0")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement style="table" stretchType="RelativeToBandHeight" x="511" y="0" width="58" height="25" isPrintWhenDetailOverflows="true" uuid="9b34ea23-ee93-49cc-9fe2-adb2ba77e2a1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pendientes}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dosis}-new BigDecimal((($F{aplicadas} != null) ? $F{aplicadas} : "0"))]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="table" x="231" y="0" width="91" height="25" uuid="214aef81-688a-424f-86cd-09b5e3358e5a"/>
+				<reportElement style="table" x="209" y="0" width="77" height="25" uuid="214aef81-688a-424f-86cd-09b5e3358e5a"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -288,7 +300,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombreempleado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -298,14 +310,14 @@ WHERE
 	<summary>
 		<band height="50">
 			<staticText>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="10" y="0" width="376" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="10" y="0" width="360" height="25" isPrintWhenDetailOverflows="true" uuid="0e1ddbf9-f490-4bed-9ba1-65b206dc4b06"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="table" stretchType="RelativeToBandHeight" x="386" y="0" width="58" height="25" isPrintWhenDetailOverflows="true" uuid="f688767d-b2f1-46d5-b619-a76e5a9129ab"/>
+				<reportElement style="table" stretchType="RelativeToBandHeight" x="370" y="0" width="74" height="25" isPrintWhenDetailOverflows="true" uuid="f688767d-b2f1-46d5-b619-a76e5a9129ab"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
