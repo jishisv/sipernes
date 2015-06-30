@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
-class EnfMtlCapacitacionAdminController extends Controller
-{
- 
+
+class EnfMtlCapacitacionAdminController extends Controller {
+
     public function createAction() {
         // the key used to lookup the template
         $templateKey = 'edit';
@@ -43,8 +43,25 @@ class EnfMtlCapacitacionAdminController extends Controller
                 }
 
                 $this->admin->create($object);
-
-                if ($this->isXmlHttpRequest()) {
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                $em = $this->getDoctrine()->getManager();
+                $conn = $this->get('database_connection');
+//                $clap1 = chop(ltrim($request->get('id')));
+//                if ($clap1 != '') {
+//                    $session->set('id', $clap1);
+//                }
+//                $clap = $session->get('clap');
+                $sql_preparada = "select count(*) as total from enf_mtl_capacitacion where id=1 ";
+                $preparada = $conn->query($sql_preparada);
+                $existe = $preparada->fetch();
+                if ($existe['total'] == 1) {
+                    $this->addFlash(
+                            'sonata_flash_error', 'Esta Paciente ya esta preparada'
+                    );
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_shcpexpmaterno_list'));
+                }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+             if ($this->isXmlHttpRequest()) {
 
                     return $this->renderJson(array(
                                 'result' => 'ok',
@@ -84,5 +101,5 @@ class EnfMtlCapacitacionAdminController extends Controller
     }
 
 }
- 
+
 ?>
