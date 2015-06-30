@@ -25,6 +25,6 @@ services:
 
     minsal_sipernes_actividad.admin.enf_mtl_capacitacion:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfMtlCapacitacionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlCapacitacion, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlCapacitacion, MinsalSipernesActividadBundle:EnfMtlCapacitacionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: CPC-1-Capacitacion, label: Capacitaciones impartidas}
