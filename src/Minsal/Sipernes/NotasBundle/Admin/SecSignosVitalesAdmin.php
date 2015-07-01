@@ -13,6 +13,11 @@ class SecSignosVitalesAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
+    protected $datagridValues = array(
+        '_page' => 1, // Display the first page (default = 1)
+        '_sort_order' => 'DESC', // Descendant ordering (default = 'ASC')
+        '_sort_by' => 'id' // name of the ordered field (default = the model id field, if any)
+    );  
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -49,7 +54,6 @@ class SecSignosVitalesAdmin extends Admin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;

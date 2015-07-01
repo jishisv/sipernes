@@ -46,7 +46,6 @@ protected $datagridValues = array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
