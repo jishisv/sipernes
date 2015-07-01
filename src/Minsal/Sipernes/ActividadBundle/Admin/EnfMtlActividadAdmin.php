@@ -132,7 +132,7 @@ class EnfMtlActividadAdmin extends Admin {
      */
 
     public function prePersist($EnfMtlActividad) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfMtlActividad->setusuarioIngresoAct($user);
         $EnfMtlActividad->setfechaIngresoAct(new \DateTime());
         $EnfMtlActividad->setestadoMtlAct(true);

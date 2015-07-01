@@ -143,7 +143,7 @@ class EnfMtlCapacitacionAdmin extends Admin
      */
 
     public function prePersist($EnfMtlCapacitacion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfMtlCapacitacion->setusuarioCapacitacion($user);
         $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());      
         $EnfMtlCapacitacion->setestadoCapacitacion(true);

@@ -107,7 +107,7 @@ protected $datagridValues = array(
      * 
      */
     public function preUpdate($EnfCtlFaseIntervencion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlFaseIntervencion->setusuarioFase($user);
         $EnfCtlFaseIntervencion->setfechaModificacionFase(new \DateTime());
     }   

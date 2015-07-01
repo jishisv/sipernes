@@ -95,17 +95,17 @@ class EnfComponenteAdmin extends Admin
     }
     
     public function prePersist($EnfComponente) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfComponente->setusuarioComponente($user);
         $EnfComponente->setfechaIngresoComponente(new \DateTime());                
     }
     
     public function validate(ErrorElement $errorElement, $pais) {
-         
+        /* 
         if (5 == 5) {
             $errorElement->with('nombrecomponente')
                     ->addViolation('El número es 5')
                     ->end();
-        }
+        }*/
     }
 }

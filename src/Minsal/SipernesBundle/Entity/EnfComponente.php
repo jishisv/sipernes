@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * EnfComponente
  *
  * @ORM\Table(name="enf_componente", indexes={@ORM\Index(name="IDX_F8EF86BD6244810C", columns={"id_tipo_componente"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SipernesBundle\Repository\CatalogoInventarioRepository")
  */
 class EnfComponente
 {

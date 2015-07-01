@@ -86,7 +86,7 @@ class EnfEsquemaMicAdmin extends Admin
     }
     
     public function prePersist($EnfEsquemaMic) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfEsquemaMic->setusuarioIngresoMic($user);
         $EnfEsquemaMic->setfechaIngresoMic(new \DateTime());
        

@@ -104,7 +104,7 @@ class EnfInventarioAdmin extends Admin
     
     
     public function prePersist($EnfInventario) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfInventario->setusuarioInventario($user);
         $EnfInventario->setfechaIngresoInventario(new \DateTime());
        

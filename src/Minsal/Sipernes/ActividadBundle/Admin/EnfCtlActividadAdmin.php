@@ -99,7 +99,7 @@ class EnfCtlActividadAdmin extends Admin
      */
  
     public function prePersist($EnfCtlActividad) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlActividad->setusuarioIngresoCatAct($user);
         $EnfCtlActividad->setfechaIngresoCatAct(new \DateTime());
     }

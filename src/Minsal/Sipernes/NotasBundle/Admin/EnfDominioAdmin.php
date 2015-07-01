@@ -109,7 +109,7 @@ class EnfDominioAdmin extends Admin
      * 
      */
     public function preUpdate($EnfDominio) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfDominio->setusuarioDom($user);
         $EnfDominio->setfechaModificacionDom(new \DateTime());
     }   

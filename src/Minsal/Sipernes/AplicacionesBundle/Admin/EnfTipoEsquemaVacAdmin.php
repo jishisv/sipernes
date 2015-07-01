@@ -111,7 +111,7 @@ protected $datagridValues = array(
     
     
     public function prePersist($EnfTipoEsquemaVac) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfTipoEsquemaVac->setusuarioIngresoTipoVac($user);
         $EnfTipoEsquemaVac->setfechaIngresoTipoVac(new \DateTime());
         

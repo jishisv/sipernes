@@ -161,7 +161,7 @@ class EnfDosisEsquemaVacAdmin extends Admin
     
     
     public function prePersist($EnfDosisEsquemaVac) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfDosisEsquemaVac->setusuarioDosisEsq($user);
         $EnfDosisEsquemaVac->setfechaDosisEsq(new \DateTime());
         $EnfDosisEsquemaVac->setfechaIngresoDosisEsq(new \DateTime());

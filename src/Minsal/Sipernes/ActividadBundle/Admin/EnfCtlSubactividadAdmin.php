@@ -114,7 +114,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlSubactividad) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlSubactividad->setusuarioIngresoSubact($user);
         $EnfCtlSubactividad->setfechaIngresoSubact(new \DateTime());
     }

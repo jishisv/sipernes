@@ -92,7 +92,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlTipoComponente) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlTipoComponente->setusuarioCtlComp($user);
         $EnfCtlTipoComponente->setfechaIngresoCompo(new \DateTime());
     }

@@ -128,7 +128,7 @@ protected $datagridValues = array(
      * 
      */
     public function preUpdate($EnfCtlDiagnostico) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlDiagnostico->setusuarioCtlDiag($user);
         $EnfCtlDiagnostico->setfechaModificacionCtlDiag(new \DateTime());
     }   
