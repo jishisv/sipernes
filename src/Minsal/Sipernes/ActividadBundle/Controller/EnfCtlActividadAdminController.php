@@ -47,7 +47,7 @@ class EnfCtlActividadAdminController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
-                $this->admin->setSubject($object);
+                //$this->admin->setSubject($object);
 //                $session = $this->get('session');
 //                $form = $this->admin->getForm();
 //                $clap1 = chop(ltrim($request->get('temacapacitacion')));
@@ -57,7 +57,7 @@ class EnfCtlActividadAdminController extends Controller {
 //               $clap = $session->get('tema_capacitacion');
                
                $nombre =  $object->getNombreActividad();
-  //             $fecha = $object->getFechaCapacitacion();
+               $id = $object->getId();
   //             $fondo = $object->getIdFinanciamiento();
                $sql_query = "select count(*) as total from enf_ctl_actividad where nombre_actividad = '$nombre' ";
               
@@ -68,6 +68,8 @@ class EnfCtlActividadAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                $sql_query2 = "delete from enf_ctl_actividad where nombre_actividad = '$nombre' and id=$id; ";
+                $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlactividad_list'));
                 }else{
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
