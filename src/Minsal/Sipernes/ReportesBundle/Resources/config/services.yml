@@ -9,7 +9,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraActividadAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfBitacoraActividad, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 02. Consolidado de Actividades Realizadas}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 01. Consolidado de Actividades Realizadas}
 
     minsal_sipernes_reportes.admin.enf_bitacora_intervencion:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfBitacoraIntervencionAdmin
@@ -69,7 +69,7 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaDosisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTrazaDosis, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 12. Consolidado de micronutrientes aplicados}
+            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 11. Consolidado de micronutrientes aplicados}
 
     minsal_sipernes_reportes.admin.enf_traza_nota:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTrazaNotaAdmin
@@ -93,82 +93,82 @@ services:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlMunicipioAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlMunicipio, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 16. Listado de actividades realizadas por el personal de enfermería de los últimos 7 días}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 16. Listado de actividades realizadas por el personal de enfermería de los últimos 7 días}
 
     minsal_sipernes_reportes.admin.ctl_pais:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlPaisAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlPais, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 17. Consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 17. Consolidado de diagnósticos de enfermería a paciente hospitalario de los últimos 7 días}
 
     minsal_sipernes_reportes.admin.ctl_departamento:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlDepartamentoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlDepartamento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 18. Consolidado de micronutrientes aplicados en los últimos 7 días}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 18. Consolidado de micronutrientes aplicados en los últimos 7 días}
 
     minsal_sipernes_reportes.admin.ctl_area_atencion:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlAreaAtencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlAreaAtencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 19. Consolidado de vacunas aplicadas en los últimos 7 días}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 19. Consolidado de vacunas aplicadas en los últimos 7 días}
 
     minsal_sipernes_reportes.admin.ctl_atencion:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlAtencionAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlAtencion, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 20. Consolidado de Vacunas Aplicadas}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 10. Consolidado de Vacunas Aplicadas}
 
     minsal_sipernes_reportes.admin.ctl_establecimiento:
         class: Minsal\Sipernes\ReportesBundle\Admin\CtlEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\CtlEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 21. Reporte diario de actividades realizadas por el personal de enfermería}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 11. Reporte diario de actividades realizadas por el personal de enfermería}
 
     minsal_sipernes_reportes.admin.mnt_paciente:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntPacienteAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntPaciente, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 22. Reporte diario del registro de vacunas entregadas y recibidas por el personal de las distintas disciplinas}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 11. Reporte diario del registro de vacunas entregadas y recibidas por el personal de las distintas disciplinas}
 
     minsal_sipernes_reportes.admin.mnt_expediente:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntExpediente, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 23. Informe diario de diagnósticos de enfermería a paciente hospitalario}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 13. Informe diario de diagnósticos de enfermería a paciente hospitalario}
 
     minsal_sipernes_reportes.admin.mnt_empleado:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntEmpleadoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntEmpleado, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 24. Reporte diario de niños inmunizados en un área geográfica}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 14. Reporte diario de niños inmunizados en un área geográfica}
 
     minsal_sipernes_reportes.admin.fos_user_user:
         class: Minsal\Sipernes\ReportesBundle\Admin\FosUserUserAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\FosUserUser, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 25. Reporte diario de intervenciones efectuadas por el personal de enfermería}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 15. Reporte diario de intervenciones efectuadas por el personal de enfermería}
 
     minsal_sipernes_reportes.admin.sec_ingreso:
         class: Minsal\Sipernes\ReportesBundle\Admin\SecIngresoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\SecIngreso, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 26. Reporte de registros diarios de producción de vacunas}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 16. Reporte de registros diarios de producción de vacunas}
 
     minsal_sipernes_reportes.admin.fos_user_group:
         class: Minsal\Sipernes\ReportesBundle\Admin\FosUserGroupAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\FosUserGroup, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 27. Reporte diario de protocolos efectuados por el personal de enfermería}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 17. Reporte diario de protocolos efectuados por el personal de enfermería}
 
     minsal_sipernes_reportes.admin.mnt_expediente_establecimiento:
         class: Minsal\Sipernes\ReportesBundle\Admin\MntExpedienteEstablecimientoAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\MntExpedienteEstablecimiento, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 28. Reporte de control de existencias y descargo de vacunas por día}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 18. Reporte de control de existencias y descargo de vacunas por día}
 
     minsal_sipernes_reportes.admin.enf_tiene:
         class: Minsal\Sipernes\ReportesBundle\Admin\EnfTieneAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfTiene, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: RPT-1-ReportePrueba1, label: 29. Comparativo de micronutrientes aplicados versus planificados}
+            - {name: sonata.admin, manager_type: orm, group: RPS-1-ReportePrueba1, label: 19. Comparativo de micronutrientes aplicados versus planificados}

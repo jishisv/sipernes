@@ -24,6 +24,7 @@ class MenuBuilder extends ContainerAware {
         'NTS' => array('label' => 'Nota', 'icon' => 'glyphicon glyphicon-book'),
         'IVT' => array('label' => 'Inventario', 'icon' => 'glyphicon glyphicon-book'),
         'RPT' => array('label' => 'Reportes', 'icon' => 'glyphicon glyphicon-file'),
+        'RPS' => array('label' => 'Reportes 2', 'icon' => 'glyphicon glyphicon-file'),
         //
         
         
