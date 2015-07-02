@@ -1,13 +1,13 @@
 services:
     minsal_sipernes_notas.admin.enf_dominio:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfDominioAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfDominio, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfDominio, MinsalSipernesNotasBundle:EnfDominioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Dominios de diagnósticos}
 
     minsal_sipernes_notas.admin.enf_clase:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfClaseAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfClase, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfClase, MinsalSipernesNotasBundle:EnfClaseAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Clases de diagnósticos}
 
