@@ -49,6 +49,7 @@ class EnfCtlProtocoloAdminController extends Controller {
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
                 $nombre = $object->getNombreProtocolo();
+                $id2 = $object->getId();
                 $sql_query = "select count(*) as total from enf_ctl_protocolo where nombre_protocolo = '$nombre'";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -56,6 +57,8 @@ class EnfCtlProtocoloAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_ctl_protocolo where nombre_protocolo = '$nombre' and id=$id2 ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlprotocolo_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

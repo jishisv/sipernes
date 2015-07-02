@@ -106,7 +106,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlSubprotocolo) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlSubprotocolo->setusuarioSubpro($user);
         $EnfCtlSubprotocolo->setfechaIngresoSubpro(new \DateTime());
     }

@@ -51,6 +51,7 @@ class EnfCtlDiagnosticoAdminController extends Controller {
                 $nombre = $object->getNombreDiagnostico();
                 $cod = $object->getCodDiagnostico();
                 $idClase = $object->getIdClase()->getId();
+                $id2 = $object->getId();
                 $sql_query = "select count(*) as total from enf_ctl_diagnostico where nombre_diagnostico = '$nombre' and cod_diagnostico = $cod and id_clase=$idClase";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -58,6 +59,8 @@ class EnfCtlDiagnosticoAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_ctl_diagnostico where nombre_diagnostico = '$nombre' and cod_diagnostico = $cod and id_clase=$idClase and id=$id2 ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctldiagnostico_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

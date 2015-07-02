@@ -106,7 +106,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfClase) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfClase->setusuarioClase($user);
         $EnfClase->setfechaIngresoClase(new \DateTime());
     }

@@ -45,6 +45,7 @@ class EnfCtlSubProtocoloAdminController extends Controller {
                 $concepto = $object->getConcepto();
                 $etiologia = $object->getEtiologia();
                 $sub = $object->getIdProtocolo()->getId();
+                $id2 = $object->getId();
                 $sql_query = "select count(*) as total from enf_ctl_subprotocolo where nombre_subprotocolo = '$nombre' and concepto='$concepto' and etiologia='$etiologia' and id_protocolo=$sub";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -52,6 +53,8 @@ class EnfCtlSubProtocoloAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_ctl_subprotocolo where nombre_subprotocolo = '$nombre' and concepto='$concepto' and etiologia='$etiologia' and id_protocolo=$sub and id=$id2 ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlsubprotocolo_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

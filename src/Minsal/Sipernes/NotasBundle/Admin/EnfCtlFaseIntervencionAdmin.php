@@ -94,7 +94,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlFaseIntervencion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlFaseIntervencion->setusuarioFase($user);
         $EnfCtlFaseIntervencion->setfechaIngresoFase(new \DateTime());
     }

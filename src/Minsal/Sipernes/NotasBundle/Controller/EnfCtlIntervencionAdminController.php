@@ -43,6 +43,7 @@ class EnfCtlIntervencionAdminController extends Controller {
                 $this->admin->setSubject($object);
                 $nombre = $object->getDescripcionInterven();
                 $sub = $object->getIdSubprotocolo()->getId();
+                $id2 = $object->getId();
                 $sql_query = "select count(*) as total from enf_ctl_intervencion where descripcion_interven = '$nombre' and id_subprotocolo=$sub";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -50,6 +51,8 @@ class EnfCtlIntervencionAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_ctl_intervencion where descripcion_interven = '$nombre' and id_subprotocolo=$sub and id=$id2 ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlintervencion_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

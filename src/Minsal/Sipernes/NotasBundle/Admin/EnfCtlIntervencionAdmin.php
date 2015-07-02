@@ -110,7 +110,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlIntervencion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlIntervencion->setusuarioInterven($user);
         $EnfCtlIntervencion->setfechaIngresoInterven(new \DateTime());
     }

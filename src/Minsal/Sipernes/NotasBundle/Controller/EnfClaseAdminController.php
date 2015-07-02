@@ -51,6 +51,7 @@ class EnfClaseAdminController extends Controller {
                 $nombre = $object->getNombreClase();
                 $cod = $object->getCodClase();
                 $id = $object->getIdDominio()->getId();
+                $id2 = $object->getId();
                 $sql_query = "select count(*) as total from enf_clase where nombre_clase = '$nombre' and cod_clase = $cod and id_dominio=$id";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -58,6 +59,8 @@ class EnfClaseAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_clase where nombre_clase = '$nombre' and cod_clase = $cod and id_dominio=$id and id=$id2 ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfclase_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -90,7 +90,7 @@ class EnfCtlProtocoloAdmin extends Admin
      */
  
     public function prePersist($EnfCtlProtocolo) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlProtocolo->setusuarioProto($user);
         $EnfCtlProtocolo->setfechaIngresoProto(new \DateTime());
     }

@@ -115,7 +115,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlDiagnostico) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlDiagnostico->setusuarioCtlDiag($user);
         $EnfCtlDiagnostico->setfechaIngresoCtlDiag(new \DateTime());
     }
