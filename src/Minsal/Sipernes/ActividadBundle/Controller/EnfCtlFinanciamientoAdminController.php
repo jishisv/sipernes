@@ -6,13 +6,13 @@ namespace Minsal\Sipernes\ActividadBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Minsal\Metodos\Funciones;
-use Minsal\SipernesBundle\Entity\EnfCtlActividad;
+use Minsal\SipernesBundle\Entity\EnfCtlFinanciamiento;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnfCtlActividadAdminController extends Controller {
+class EnfCtlFinanciamientoAdminController extends Controller {
 
     public function createAction() {
         // the key used to lookup the template
@@ -48,28 +48,18 @@ class EnfCtlActividadAdminController extends Controller {
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
-//                $session = $this->get('session');
-//                $form = $this->admin->getForm();
-//                $clap1 = chop(ltrim($request->get('temacapacitacion')));
-//                if ($clap1 != '') {
-//                    $session->set('tema_capacitacion', $clap1);
-//                }
-//               $clap = $session->get('tema_capacitacion');
-               
-               $nombre =  $object->getNombreActividad();
-  //             $fecha = $object->getFechaCapacitacion();
-  //             $fondo = $object->getIdFinanciamiento();
-               $sql_query = "select count(*) as total from enf_ctl_actividad where nombre_actividad = '$nombre' ";
+
+               $nombre =  $object->getNombreFinanciamiento();
+               $sql_query = "select count(*) as total from enf_ctl_financiamiento where nombre_financiamiento = '$nombre'";
               
-//                tema1 = $session->get('clap');
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
                 if ($existe['total'] > 1) {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlactividad_list'));
-                }else{
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlfinanciamiento_create'));
+                }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {
 
@@ -83,9 +73,8 @@ class EnfCtlActividadAdminController extends Controller {
 
                 // redirect to edit mode
                 return $this->redirectTo($object);
-                
             }
-            }
+
             // show an error message if the form failed validation
             if (!$isFormValid) {
                 if (!$this->isXmlHttpRequest()) {
@@ -110,7 +99,7 @@ class EnfCtlActividadAdminController extends Controller {
                     'object' => $object,
         ));
     }
-    
+
 }
 
 ?>
