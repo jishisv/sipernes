@@ -19,7 +19,7 @@ services:
 
     minsal_sipernes_actividad.admin.enf_ctl_financiamiento:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlFinanciamientoAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFinanciamiento, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFinanciamiento, MinsalSipernesActividadBundle:EnfCtlFinanciamientoAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: CPC-1-Capacitacion, label: Empresas de financiamiento}
 

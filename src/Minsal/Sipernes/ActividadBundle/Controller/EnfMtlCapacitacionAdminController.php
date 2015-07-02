@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnfMtlCapacitacionAdminController extends Controller {
-//
+////
 //    public function createAction() {
 //        // the key used to lookup the template
 //        $templateKey = 'edit';
@@ -50,7 +50,7 @@ class EnfMtlCapacitacionAdminController extends Controller {
 //                $this->admin->setSubject($object);
 //                $session = $this->get('session');
 //                $form = $this->admin->getForm();
-//                $clap1 = chop(ltrim($request->get('temacapacitacion')));
+//                $clap1 = chop(ltrim($request->get('tema_capacitacion')));
 //                if ($clap1 != '') {
 //                    $session->set('tema_capacitacion', $clap1);
 //                }
@@ -70,7 +70,7 @@ class EnfMtlCapacitacionAdminController extends Controller {
 //                    );
 //                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfmtlcapacitacion_create'));
 //                }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                if ($this->isXmlHttpRequest()) {
 //
 //                    return $this->renderJson(array(
@@ -109,7 +109,7 @@ class EnfMtlCapacitacionAdminController extends Controller {
 //                    'object' => $object,
 //        ));
 //    }
-//
+
 }
 
 ?>
