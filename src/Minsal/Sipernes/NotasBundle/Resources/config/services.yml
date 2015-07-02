@@ -55,7 +55,7 @@ services:
 
     minsal_sipernes_notas.admin.enf_ctl_nota:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlNotaAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlNota, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlNota, MinsalSipernesNotasBundle:EnfCtlNotaAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Catálogo Notas}
 

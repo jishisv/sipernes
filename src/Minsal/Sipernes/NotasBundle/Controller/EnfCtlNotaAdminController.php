@@ -5,7 +5,7 @@ namespace Minsal\Sipernes\NotasBundle\Controller;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
-class EnfCtlSubProtocoloAdminController extends Controller {
+class EnfCtlNotaAdminController extends Controller {
 
     public function createAction() {
         // the key used to lookup the template
@@ -41,21 +41,20 @@ class EnfCtlSubProtocoloAdminController extends Controller {
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
-                $nombre = $object->getNombreSubprotocolo();
-                $concepto = $object->getConcepto();
-                $etiologia = $object->getEtiologia();
-                $sub = $object->getIdProtocolo()->getId();
-                $id2 = $object->getId();
-                $sql_query = "select count(*) as total from enf_ctl_subprotocolo where nombre_subprotocolo = '$nombre' and concepto='$concepto' and etiologia='$etiologia' and id_protocolo=$sub";
+
+               $nombre =  $object->getNombreNota();
+               $id = $object->getId();
+               $sql_query = "select count(*) as total from enf_ctl_nota where nombre_nota = '$nombre'";
+              
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
                 if ($existe['total'] > 1) {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
-                    $sql_query2 = "delete from enf_ctl_subprotocolo where nombre_subprotocolo = '$nombre' and concepto='$concepto' and etiologia='$etiologia' and id_protocolo=$sub and id=$id2 ";
-                    $consulta2 = $conn->query($sql_query2);
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlsubprotocolo_create'));
+                $sql_query2 = "delete from enf_ctl_nota where nombre_nota = '$nombre' and id=$id; ";
+                $consulta2 = $conn->query($sql_query2);
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlnota_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {
@@ -67,7 +66,8 @@ class EnfCtlSubProtocoloAdminController extends Controller {
                 }
 
                 $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
-
+                $sql_query2 = "delete from enf_ctl_actividad where nombre_actividad = '$nombre' and id=$id; ";
+                $consulta2 = $conn->query($sql_query2);
                 // redirect to edit mode
                 return $this->redirectTo($object);
             }

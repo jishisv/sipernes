@@ -95,7 +95,7 @@ protected $datagridValues = array(
      */
  
     public function prePersist($EnfCtlNota) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlNota->setusuarioCtlNota($user);
         $EnfCtlNota->setfechaIngresoCtlNota(new \DateTime());
     }
