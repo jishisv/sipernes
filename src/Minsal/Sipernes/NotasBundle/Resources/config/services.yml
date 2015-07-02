@@ -13,7 +13,7 @@ services:
 
     minsal_sipernes_notas.admin.enf_ctl_diagnostico:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlDiagnosticoAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlDiagnostico, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlDiagnostico, MinsalSipernesNotasBundle:EnfCtlDiagnosticoAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: DNT-1-Diagnostico, label: Catálogo de diagnósticos}
 
@@ -25,25 +25,25 @@ services:
 
     minsal_sipernes_notas.admin.enf_ctl_protocolo:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlProtocoloAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlProtocolo, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlProtocolo, MinsalSipernesNotasBundle:EnfCtlProtocoloAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de protocolos}
 
     minsal_sipernes_notas.admin.enf_ctl_subprotocolo:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlSubprotocoloAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubprotocolo, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubprotocolo, MinsalSipernesNotasBundle:EnfCtlSubProtocoloAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de subprotocolos}
 
     minsal_sipernes_notas.admin.enf_ctl_intervencion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlIntervencionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlIntervencion, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlIntervencion, MinsalSipernesNotasBundle:EnfCtlIntervencionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo de intervenciones}
 
     minsal_sipernes_notas.admin.enf_ctl_fase_intervencion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfCtlFaseIntervencionAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFaseIntervencion, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlFaseIntervencion, MinsalSipernesNotasBundle:EnfCtlFaseIntervencionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: PTC-1-Protocolo, label: Catálogo Fases de intervenciones}
 

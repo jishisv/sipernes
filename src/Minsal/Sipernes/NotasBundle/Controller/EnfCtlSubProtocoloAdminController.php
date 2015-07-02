@@ -5,7 +5,7 @@ namespace Minsal\Sipernes\NotasBundle\Controller;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
-class EnfCtlIntervencionAdminController extends Controller {
+class EnfCtlSubProtocoloAdminController extends Controller {
 
     public function createAction() {
         // the key used to lookup the template
@@ -41,16 +41,18 @@ class EnfCtlIntervencionAdminController extends Controller {
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
-                $nombre = $object->getDescripcionInterven();
-                $sub = $object->getIdSubprotocolo()->getId();
-                $sql_query = "select count(*) as total from enf_ctl_intervencion where descripcion_interven = '$nombre' and id_subprotocolo=$sub";
+                $nombre = $object->getNombreSubprotocolo();
+                $concepto = $object->getConcepto();
+                $etiologia = $object->getEtiologia();
+                $sub = $object->getIdProtocolo()->getId();
+                $sql_query = "select count(*) as total from enf_ctl_subprotocolo where nombre_subprotocolo = '$nombre' and concepto='$concepto' and etiologia='$etiologia' and id_protocolo=$sub";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
                 if ($existe['total'] > 1) {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlintervencion_create'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlsubprotocolo_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {

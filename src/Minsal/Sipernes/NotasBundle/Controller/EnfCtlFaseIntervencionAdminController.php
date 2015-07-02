@@ -5,7 +5,7 @@ namespace Minsal\Sipernes\NotasBundle\Controller;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
-class EnfCtlIntervencionAdminController extends Controller {
+class EnfCtlFaseIntervencionAdminController extends Controller {
 
     public function createAction() {
         // the key used to lookup the template
@@ -41,16 +41,16 @@ class EnfCtlIntervencionAdminController extends Controller {
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
-                $nombre = $object->getDescripcionInterven();
-                $sub = $object->getIdSubprotocolo()->getId();
-                $sql_query = "select count(*) as total from enf_ctl_intervencion where descripcion_interven = '$nombre' and id_subprotocolo=$sub";
+                $nombre = $object->getNombreFase();
+                $sub = $object->getIdIntervencion()->getId();
+                $sql_query = "select count(*) as total from enf_ctl_fase_intervencion where nombre_fase = '$nombre' and id_intervencion=$sub";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
                 if ($existe['total'] > 1) {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlintervencion_create'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlfaseintervencion_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {
