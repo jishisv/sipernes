@@ -63,7 +63,7 @@ services:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfMtlNotaAdmin
         arguments: [~, Minsal\SipernesBundle\Entity\EnfMtlNota, MinsalSipernesNotasBundle:EnfMtlNotaAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: Registrar Nota}
+            - {name: sonata.admin, manager_type: orm, group: NTS-1-Nota, label: ""}
 
     minsal_sipernes_notas.admin.enf_anotacion:
         class: Minsal\Sipernes\NotasBundle\Admin\EnfAnotacionAdmin
