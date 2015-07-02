@@ -136,12 +136,12 @@ class EnfMtlCapacitacionAdmin extends Admin {
      * 
      */
 
-    public function prePersist($EnfMtlCapacitacion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-        $EnfMtlCapacitacion->setusuarioCapacitacion($user);
-        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());
-        $EnfMtlCapacitacion->setestadoCapacitacion(true);
-        $EnfMtlCapacitacion->setestablecimientoCap('Hospital Nacional Antiguo Cuscatlán');
+//    public function prePersist($EnfMtlCapacitacion) {
+//        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+//        $EnfMtlCapacitacion->setusuarioCapacitacion($user);
+//        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());
+//        $EnfMtlCapacitacion->setestadoCapacitacion(true);
+//        $EnfMtlCapacitacion->setestablecimientoCap('Hospital Nacional Antiguo Cuscatlán');
 
 //        $em = $this->getDoctrine()->getManager();
 //        $query = $em->createQuery(
@@ -151,7 +151,7 @@ class EnfMtlCapacitacionAdmin extends Admin {
 //        if($products->getIdFinanciamiento() == 1){
 //            echo 'datos repetidos';
 //        }
-    }
+//    }
 
     /*
      * Método que se ejecuta antes de realizar una actualización.
