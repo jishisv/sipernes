@@ -70,7 +70,7 @@ class EnfCtlActividadAdminController extends Controller {
                     );
                 $sql_query2 = "delete from enf_ctl_actividad where nombre_actividad = '$nombre' and id=$id; ";
                 $consulta2 = $conn->query($sql_query2);
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlactividad_list'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlactividad_create'));
                 }else{
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {

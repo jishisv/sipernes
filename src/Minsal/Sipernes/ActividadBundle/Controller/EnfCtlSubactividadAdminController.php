@@ -50,6 +50,7 @@ class EnfCtlSubactividadAdminController extends Controller {
                 $this->admin->setSubject($object);
 
                $nombre =  $object->getNombreSubactividad();
+               $id = $object->getId();
                $tipo = $object->getIdActividad()->getId();
                $sql_query = "select count(*) as total from enf_ctl_subactividad where nombre_subactividad = '$nombre' and id_actividad=$tipo ";
               
@@ -59,6 +60,8 @@ class EnfCtlSubactividadAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_ctl_subactividad where nombre_subactividad = '$nombre' and id=$id and id_actividad=$tipo ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlsubactividad_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

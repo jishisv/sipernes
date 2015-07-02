@@ -50,6 +50,7 @@ class EnfDominioAdminController extends Controller {
                 $this->admin->setSubject($object);
                 $nombre = $object->getNombreDominio();
                 $cod = $object->getCodDominio();
+                $id = $object->getId();
                 $sql_query = "select count(*) as total from enf_dominio where nombre_dominio = '$nombre' and cod_dominio = $cod";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
@@ -57,6 +58,8 @@ class EnfDominioAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                    $sql_query2 = "delete from enf_dominio where nombre_dominio = '$nombre' and id=$id and cod_dominio = $cod ";
+                    $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfdominio_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

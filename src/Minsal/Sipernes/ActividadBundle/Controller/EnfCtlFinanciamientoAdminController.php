@@ -50,6 +50,7 @@ class EnfCtlFinanciamientoAdminController extends Controller {
                 $this->admin->setSubject($object);
 
                $nombre =  $object->getNombreFinanciamiento();
+               $id = $object->getId();
                $sql_query = "select count(*) as total from enf_ctl_financiamiento where nombre_financiamiento = '$nombre'";
               
                 $consulta = $conn->query($sql_query);
@@ -58,6 +59,8 @@ class EnfCtlFinanciamientoAdminController extends Controller {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
+                $sql_query2 = "delete from enf_ctl_financiamiento where nombre_financiamiento = '$nombre' and id=$id; ";
+                $consulta2 = $conn->query($sql_query2);
                     return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlfinanciamiento_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +73,8 @@ class EnfCtlFinanciamientoAdminController extends Controller {
                 }
 
                 $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
-
+                $sql_query2 = "delete from enf_ctl_actividad where nombre_actividad = '$nombre' and id=$id; ";
+                $consulta2 = $conn->query($sql_query2);
                 // redirect to edit mode
                 return $this->redirectTo($object);
             }
