@@ -46,7 +46,6 @@ class EnfCtlProtocoloAdmin extends Admin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
@@ -104,7 +103,7 @@ class EnfCtlProtocoloAdmin extends Admin
      */
     public function preUpdate($EnfCtlProtocolo) {
         
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlProtocolo->setusuarioProto($user);
         $EnfCtlProtocolo->setfechaModificacionProto(new \DateTime());
     }   

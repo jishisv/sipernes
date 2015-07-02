@@ -59,7 +59,6 @@ class EnfMtlCapacitacionAdmin extends Admin {
                     'actions' => array(
                         'show' => array(),
                         'edit' => array(),
-                        'delete' => array(),
                     )
                 ))
         ;
@@ -136,12 +135,14 @@ class EnfMtlCapacitacionAdmin extends Admin {
      * 
      */
 
-//    public function prePersist($EnfMtlCapacitacion) {
-//        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-//        $EnfMtlCapacitacion->setusuarioCapacitacion($user);
-//        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());
-//        $EnfMtlCapacitacion->setestadoCapacitacion(true);
-//        $EnfMtlCapacitacion->setestablecimientoCap('Hospital Nacional Antiguo Cuscatlán');
+
+    public function prePersist($EnfMtlCapacitacion) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
+        $EnfMtlCapacitacion->setusuarioCapacitacion($user);
+        $EnfMtlCapacitacion->setfechaIngresoCap(new \DateTime());
+        $EnfMtlCapacitacion->setestadoCapacitacion(true);
+        $EnfMtlCapacitacion->setestablecimientoCap('Hospital Nacional Antiguo Cuscatlán');
+
 
 //        $em = $this->getDoctrine()->getManager();
 //        $query = $em->createQuery(
@@ -164,4 +165,5 @@ class EnfMtlCapacitacionAdmin extends Admin {
       $EnfMtlActividad->setusuarioIngresoAct($user);
       $EnfMtlActividad->setfechaModificacionAct(new \DateTime());
       } */
+}
 }

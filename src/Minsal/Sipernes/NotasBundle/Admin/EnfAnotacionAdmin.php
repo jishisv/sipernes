@@ -52,7 +52,6 @@ class EnfAnotacionAdmin extends Admin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
@@ -114,7 +113,7 @@ class EnfAnotacionAdmin extends Admin
     
     
     public function prePersist($EnfAnotacion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfAnotacion->setusuarioAnotacion($user);
         $EnfAnotacion->setfechaIngresoAnota(new \DateTime());
         $EnfAnotacion->setestadoAnotacion(true);

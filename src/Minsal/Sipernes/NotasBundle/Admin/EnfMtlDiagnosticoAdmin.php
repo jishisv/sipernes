@@ -50,7 +50,6 @@ class EnfMtlDiagnosticoAdmin extends Admin {
                     'actions' => array(
                         'show' => array(),
                         'edit' => array(),
-                        'delete' => array(),
                     )
                 ))
         ;
@@ -112,7 +111,7 @@ class EnfMtlDiagnosticoAdmin extends Admin {
      */
 
     public function prePersist($EnfMtlDiagnostico) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfMtlDiagnostico->setusuarioIngresoDiag($user);
         $EnfMtlDiagnostico->setfechaIngresoDiag(new \DateTime());
         $EnfMtlDiagnostico->setestadoMtlDiag(true);

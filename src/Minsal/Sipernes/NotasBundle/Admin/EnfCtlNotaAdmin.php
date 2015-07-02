@@ -48,7 +48,6 @@ protected $datagridValues = array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
@@ -110,7 +109,7 @@ protected $datagridValues = array(
     public function preUpdate( $EnfCtlNota) {
         
         
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfCtlNota->setusuarioCtlNota($user);
         $EnfCtlNota->setfechaModCtlNota(new \DateTime());
     }   

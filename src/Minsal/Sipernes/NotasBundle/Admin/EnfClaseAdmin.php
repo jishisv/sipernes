@@ -54,7 +54,6 @@ protected $datagridValues = array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
@@ -119,7 +118,7 @@ protected $datagridValues = array(
      * 
      */
     public function preUpdate($EnfClase) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfClase->setusuarioClase($user);
         $EnfClase->setfechaModificacionClase(new \DateTime());
     }  

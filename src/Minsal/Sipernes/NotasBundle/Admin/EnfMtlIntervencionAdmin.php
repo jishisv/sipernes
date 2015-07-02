@@ -56,7 +56,6 @@ class EnfMtlIntervencionAdmin extends Admin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ))
         ;
@@ -126,7 +125,7 @@ class EnfMtlIntervencionAdmin extends Admin
      */
  
     public function prePersist($EnfMtlIntervencion) {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUsername();
         $EnfMtlIntervencion->setusuarioIngresoInterv($user);
         $EnfMtlIntervencion->setfechaIngresoInterv(new \DateTime());
         $EnfMtlIntervencion->setestadoMtlInterv(true);
