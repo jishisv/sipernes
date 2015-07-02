@@ -7,7 +7,7 @@ services:
 
     minsal_sipernes_actividad.admin.enf_ctl_subactividad:
         class: Minsal\Sipernes\ActividadBundle\Admin\EnfCtlSubactividadAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubactividad, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlSubactividad, MinsalSipernesActividadBundle:EnfCtlSubactividadAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: ACT-1-Actividad, label: Catálogo de actividades}
 
