@@ -4,7 +4,7 @@ namespace Minsal\Sipernes\AplicacionesBundle\Controller;
 
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-class EnfTipoEsquemaVacAdminController extends Controller
+class EnfCtlMovInventarioAdminController extends Controller
 {
     public function createAction() {
         // the key used to lookup the template
@@ -40,19 +40,18 @@ class EnfTipoEsquemaVacAdminController extends Controller
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
                 $this->admin->setSubject($object);
-                $nombre = $object-> getNombreTipoEsq();
+                $nombre = $object-> getNombreTipoInventatrio();
                 $id= $object->getId();
-                $id2 = $object->getIdEsquemaVac()->getId();
-                $sql_query = "select count(*) as total from enf_tipo_esquema_vac where nombre_tipo_esq = '$nombre' and id_esquema_vac = $id2 ";
+                $sql_query = "select count(*) as total from enf_ctl_mov_inventario where nombre_tipo_inventatrio = '$nombre' ";
                 $consulta = $conn->query($sql_query);
                 $existe = $consulta->fetch();
                 if ($existe['total'] > 1) {
                     $this->addFlash(
                             'sonata_flash_error', 'Ya existe un registro con esta información'
                     );
-                    $sql_query2 = "delete from enf_tipo_esquema_vac where nombre_tipo_esq = '$nombre' and id_esquema_vac = $id2  and id=$id ";
+                    $sql_query2 = "delete from enf_ctl_mov_inventario where nombre_tipo_inventatrio = '$nombre'  and id=$id ";
                     $consulta2 = $conn->query($sql_query2);
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfesquemavac_create'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfctlmovinventario_create'));
                 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if ($this->isXmlHttpRequest()) {

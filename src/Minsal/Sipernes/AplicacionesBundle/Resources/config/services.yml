@@ -13,13 +13,13 @@ services:
 
     minsal_sipernes_aplicaciones.admin.enf_ctl_tipo_componente:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlTipoComponenteAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlTipoComponente, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlTipoComponente,MinsalSipernesAplicacionesBundle:EnfCtlTipoComponenteAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Catálogo tipo componentes}
 
     minsal_sipernes_aplicaciones.admin.enf_ctl_mov_inventario:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfCtlMovInventarioAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlMovInventario, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfCtlMovInventario, MinsalSipernesAplicacionesBundle:EnfCtlMovInventarioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Catálogo movimiento en inventario}
 
@@ -31,7 +31,7 @@ services:
 
     minsal_sipernes_aplicaciones.admin.enf_componente:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfComponenteAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfComponente, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfComponente, MinsalSipernesAplicacionesBundle:EnfComponenteAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Componentes}
 
