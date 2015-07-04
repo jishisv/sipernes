@@ -32,7 +32,7 @@ class EnfBitacoraActividad
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_hist_act", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_hist_act", type="datetime", nullable=true)
      */
     private $fechaIngresoHistAct;
 

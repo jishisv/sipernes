@@ -25,7 +25,7 @@ class EnfMtlCapacitacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_cap", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_cap", type="datetime", nullable=true)
      */
     private $fechaIngresoCap;
 

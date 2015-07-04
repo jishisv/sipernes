@@ -39,7 +39,7 @@ class EnfBitacoraDiagnostico
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_hist_diag", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_hist_diag", type="datetime", nullable=true)
      */
     private $fechaIngresoHistDiag;
 

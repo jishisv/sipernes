@@ -39,7 +39,7 @@ class EnfTrazaIntervencion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_tra_interven", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_tra_interven", type="datetime", nullable=true)
      */
     private $fechaIngresoTraInterven;
 

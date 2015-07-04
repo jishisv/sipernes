@@ -32,7 +32,7 @@ class EnfTrazaCapacitacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_tra_capa", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_tra_capa", type="datetime", nullable=true)
      */
     private $fechaIngresoTraCapa;
 

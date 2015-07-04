@@ -32,7 +32,7 @@ class EnfMtlDiagnostico
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_diag", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_diag", type="datetime", nullable=true)
      */
     private $fechaIngresoDiag;
 

@@ -25,7 +25,7 @@ class EnfMtlIntervencion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_interv", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_interv", type="datetime", nullable=true)
      */
     private $fechaIngresoInterv;
 

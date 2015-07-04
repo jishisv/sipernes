@@ -32,7 +32,7 @@ class EnfTrazaDiagnostico
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_tra_dia", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_tra_dia", type="datetime", nullable=true)
      */
     private $fechaIngresoTraDia;
 

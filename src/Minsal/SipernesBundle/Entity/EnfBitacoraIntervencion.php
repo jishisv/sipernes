@@ -39,7 +39,7 @@ class EnfBitacoraIntervencion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_modificacion_hist_interv", type="date", nullable=true)
+     * @ORM\Column(name="fecha_modificacion_hist_interv", type="datetime", nullable=true)
      */
     private $fechaModificacionHistInterv;
 

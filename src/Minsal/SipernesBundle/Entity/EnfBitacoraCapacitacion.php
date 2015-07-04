@@ -81,7 +81,7 @@ class EnfBitacoraCapacitacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_hist_capa", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_hist_capa", type="datetime", nullable=true)
      */
     private $fechaIngresoHistCapa;
 
