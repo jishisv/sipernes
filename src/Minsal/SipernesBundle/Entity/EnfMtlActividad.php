@@ -32,7 +32,7 @@ class EnfMtlActividad
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_act", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_act", type="datetime", nullable=true)
      */
     private $fechaIngresoAct;
 
