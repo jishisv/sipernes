@@ -4,13 +4,7 @@ namespace Minsal\Sipernes\NotasBundle\Controller;
 
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Minsal\Metodos\Funciones;
-use Minsal\SipernesBundle\Entity\EnfMtlActividad;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\Response;
+
 class EnfMtlIntervencionAdminController extends Controller
 {
   public function createAction() {
@@ -46,16 +40,7 @@ class EnfMtlIntervencionAdminController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
-                //$this->admin->setSubject($object);
-//                $session = $this->get('session');
-//                $form = $this->admin->getForm();
-//                $clap1 = chop(ltrim($request->get('temacapacitacion')));
-//                if ($clap1 != '') {
-//                    $session->set('tema_capacitacion', $clap1);
-//                }
-//               $clap = $session->get('tema_capacitacion');
-
-                $fechaingreso = $object->getFechaIngresoInterv()->date;
+                $fechaingreso = $object->getFechaIngresoInterv()->format('Y-m-d H:i:s');
                 //$fechaingreso
                 $id = $object->getId();
                 $subact = $object->getIdIntervencion()->getId();

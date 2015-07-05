@@ -4,13 +4,6 @@ namespace Minsal\Sipernes\ActividadBundle\Controller;
 
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Minsal\Metodos\Funciones;
-use Minsal\SipernesBundle\Entity\EnfMtlActividad;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\Response;
 
 class EnfMtlCapacitacionAdminController extends Controller {
 
@@ -47,15 +40,12 @@ class EnfMtlCapacitacionAdminController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $conn = $this->get('database_connection');
                 $request = $this->getRequest();
-                
-                $fechaingreso = $object->getFechaIngresoCap()->date;
 
-//$fechaingreso
-                
+                $fechaingreso = $object->getFechaIngresoCap()->format('Y-m-d H:i:s');
+
                 $id = $object->getId();
                 $tema = $object->getTemaCapacitacion();
                 $empcor = $object->getIdEmpCorr()->getId();
-                //$exp = $object->getIdExpediente()->getId();
                 $sql_query = "select count(date_trunc('minute', fecha_ingreso_cap)) as total from enf_mtl_capacitacion where tema_capacitacion='$tema' and id_emp_corr=$empcor and
                 date_trunc('minute', fecha_ingreso_cap) = date_trunc('minute', TIMESTAMP '$fechaingreso')";
 

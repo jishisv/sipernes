@@ -4,13 +4,7 @@ namespace Minsal\Sipernes\NotasBundle\Controller;
 
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Minsal\Metodos\Funciones;
-use Minsal\SipernesBundle\Entity\EnfMtlActividad;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\Response;
+
 class EnfMtlDiagnosticoAdminController extends Controller
 {
   public function createAction() {
@@ -48,7 +42,7 @@ class EnfMtlDiagnosticoAdminController extends Controller
                 $request = $this->getRequest();
   
 
-                $fechaingreso = $object->getFechaIngresoDiag()->date;
+                $fechaingreso = $object->getFechaIngresoDiag()->format('Y-m-d H:i:s');
                 
                 $id = $object->getId();
                 $diag = $object->getIdCtlDiag()->getId();
