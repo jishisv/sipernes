@@ -43,6 +43,6 @@ services:
 
     minsal_sipernes_aplicaciones.admin.enf_mov_inventario:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfMovInventarioAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfMovInventario, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfMovInventario, MinsalSipernesAplicacionesBundle:EnfMovInventarioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Movimiento de inventario}
