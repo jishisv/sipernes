@@ -33,7 +33,7 @@ class EnfMovInventarioAdminController extends Controller
             $form->submit($this->get('request'));
 
             $isFormValid = $form->isValid();
-
+            
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
 
