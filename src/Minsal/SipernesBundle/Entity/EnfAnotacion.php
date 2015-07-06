@@ -48,7 +48,7 @@ class EnfAnotacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_anota", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_anota", type="datetime", nullable=true)
      */
     private $fechaIngresoAnota;
 

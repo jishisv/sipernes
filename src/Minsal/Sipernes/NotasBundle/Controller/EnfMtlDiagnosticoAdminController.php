@@ -65,7 +65,7 @@ class EnfMtlDiagnosticoAdminController extends Controller
                     $sql_query2 = "delete from enf_mtl_diagnostico where id_ctl_diag=$diag and id_emp_corr=$empcor and id_expediente=$exp and
  date_trunc('minute', fecha_ingreso_diag) = date_trunc('minute', TIMESTAMP '$fechaingreso') and id=$id; ";
                     $consulta2 = $conn->query($sql_query2);
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfmtlactividad_create'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfmtldiagnostico_create'));
                 } else {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     if ($this->isXmlHttpRequest()) {

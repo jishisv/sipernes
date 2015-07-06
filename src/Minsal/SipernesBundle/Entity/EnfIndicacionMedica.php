@@ -60,7 +60,7 @@ class EnfIndicacionMedica
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_ind", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_ind", type="datetime", nullable=true)
      */
     private $fechaIngresoInd;
 

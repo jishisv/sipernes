@@ -39,7 +39,7 @@ class EnfTrazaDosis
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_traza_dosis", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_traza_dosis", type="datetime", nullable=true)
      */
     private $fechaIngresoTrazaDosis;
 

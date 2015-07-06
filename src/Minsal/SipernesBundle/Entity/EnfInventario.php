@@ -32,7 +32,7 @@ class EnfInventario
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_inventario", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_inventario", type="datetime", nullable=true)
      */
     private $fechaIngresoInventario;
 

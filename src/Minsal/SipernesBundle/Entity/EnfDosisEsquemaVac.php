@@ -60,7 +60,7 @@ class EnfDosisEsquemaVac
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso_dosis_esq", type="date", nullable=true)
+     * @ORM\Column(name="fecha_ingreso_dosis_esq", type="datetime", nullable=true)
      */
     private $fechaIngresoDosisEsq;
 

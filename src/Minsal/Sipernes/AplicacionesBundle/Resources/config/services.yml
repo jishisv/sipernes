@@ -25,7 +25,7 @@ services:
 
     minsal_sipernes_aplicaciones.admin.enf_inventario:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfInventarioAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfInventario, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfInventario, MinsalSipernesAplicacionesBundle:EnfInventarioAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: IVT-1-Inventario, label: Inventario}
 
@@ -37,7 +37,7 @@ services:
 
     minsal_sipernes_aplicaciones.admin.enf_dosis_esquema_vac:
         class: Minsal\Sipernes\AplicacionesBundle\Admin\EnfDosisEsquemaVacAdmin
-        arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac, SonataAdminBundle:CRUD]
+        arguments: [~, Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac, MinsalSipernesAplicacionesBundle:EnfDosisEsquemaVacAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: APL-1-Aplicacion, label: Aplicación }
 

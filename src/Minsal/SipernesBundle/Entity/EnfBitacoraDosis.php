@@ -39,7 +39,7 @@ class EnfBitacoraDosis
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_dosis_esq_hist", type="date", nullable=true)
+     * @ORM\Column(name="fecha_dosis_esq_hist", type="datetime", nullable=true)
      */
     private $fechaDosisEsqHist;
 
