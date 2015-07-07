@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Minsal\SipernesBundle\Entity\EnfComponente;
+use Minsal\SipernesBundle\Entity\EnfInventario;
 use Doctrine\ORM\EntityRepository;
 
 class EnfMovInventarioAdmin extends Admin
@@ -73,11 +74,12 @@ protected $datagridValues = array(
     {
         $formMapper
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario', 'required' => true))
-    ->add('idInventario',null, array('label' => 'Componente', 'required' => true,
-           'class' => 'MinsalSipernesBundle:EnfComponente',
-          'query_builder' => function(EntityRepository $repository) {
-              return $repository->obtenerInvActivo();
-           }))
+    ->add('idInventario',null, array('label' => 'Componente', 'required' => true))
+//    ->add('idInventario',null, array('label' => 'Componente', 'required' => true,
+//           'class' => 'MinsalSipernesBundle:EnfInventario',
+//          'query_builder' => function(EntityRepository $repository) {
+//              return $repository->obtenerInvActivo2();
+//           }))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')
