@@ -73,11 +73,11 @@ protected $datagridValues = array(
     {
         $formMapper
             ->add('idTipoInventario', null, array('label' => 'Tipo de inventario', 'required' => true))
-            ->add('idInventario', null, array('label' => 'Componente', 'required' => true,
-            'class' => 'MinsalSipernesBundle:EnfComponente',
-            'query_builder' => function(EntityRepository $repository) {
-                return $repository->obtenerInvActivo();
-            }))
+    ->add('idInventario',null, array('label' => 'Componente', 'required' => true,
+           'class' => 'MinsalSipernesBundle:EnfComponente',
+          'query_builder' => function(EntityRepository $repository) {
+              return $repository->obtenerInvActivo();
+           }))
             //->add('idDosisEsq', null, array('label' => 'Tipo de dosis esquema'))          
 //            ->add('usuarioMov')
 //            ->add('fechaIngresoMov')
