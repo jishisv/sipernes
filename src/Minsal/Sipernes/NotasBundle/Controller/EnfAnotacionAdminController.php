@@ -64,7 +64,7 @@ public function createAction() {
                     $sql_query2 = "delete from enf_anotacion where  id_emp_corr=$empcor and id_expediente=$exp and
  date_trunc('minute', fecha_ingreso_anota) = date_trunc('minute', TIMESTAMP '$fechaingreso') and id=$id; ";
                     $consulta2 = $conn->query($sql_query2);
-                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfmtldiagnostico_create'));
+                    return $this->redirect($this->generateUrl('admin_minsal_sipernes_enfanotacion_create'));
                 } else {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     if ($this->isXmlHttpRequest()) {

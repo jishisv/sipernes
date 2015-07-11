@@ -11,26 +11,27 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 
 class EnfDosisEsquemaVacAdmin extends Admin
 {
-    public function createQuery($context = 'list') 
-    { 
-        //$query = parent::createQuery($context); 
-        // this is the queryproxy, you can call anything you could call on the doctrine orm QueryBuilder         
-        //$query->andWhere( 
-        //    $query->expr()->eq($query->getRootAlias().'.idModalidad', ':idModalidad') 
-        //); 
-        //$query->setParameter('idModalidad', '1'); // eg get from security context 
-        //-----------------------------------------------------------------------------
-        $query = parent::createQuery($context); 
-        // this is the queryproxy, you can call anything you could call on the doctrine orm QueryBuilder         
-        $query
-                ->select('a')
-                ->from('Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac', 'a')
-                ->innerJoin('a.idComponente', 'c','WITH','a.idComponente=c.id')
-                //->andWhere($query->expr()->eq('c.idTipoComponente', '1'))
-                ;
-            
-        return $query; 
-    } 
+//    public function createQuery($context = 'list') 
+//    { 
+//        //$query = parent::createQuery($context); 
+//        // this is the queryproxy, you can call anything you could call on the doctrine orm QueryBuilder         
+//        //$query->andWhere( 
+//        //    $query->expr()->eq($query->getRootAlias().'.idModalidad', ':idModalidad') 
+//        //); 
+//        //$query->setParameter('idModalidad', '1'); // eg get from security context 
+//        //-----------------------------------------------------------------------------
+//        $query = parent::createQuery($context); 
+//        // this is the queryproxy, you can call anything you could call on the doctrine orm QueryBuilder         
+//        $query
+//                ->select('a')
+//                ->from('Minsal\SipernesBundle\Entity\EnfDosisEsquemaVac', 'a')
+//                ->innerJoin('a.idComponente', 'c','WITH','a.idComponente=c.id')
+//                ->orderBy('a.fechaIngresoDosisEsq ASC')
+//                //->andWhere($query->expr()->eq('c.idTipoComponente', '1'))
+//                ;
+//            
+//        return $query; 
+//    } 
     
     /**
      * @param DatagridMapper $datagridMapper

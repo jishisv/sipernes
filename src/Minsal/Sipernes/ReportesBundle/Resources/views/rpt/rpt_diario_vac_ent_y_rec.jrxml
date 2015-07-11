@@ -52,34 +52,35 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-  enf_mov_inventario.id Movimiento,
-  ctl_establecimiento.nombre Establecimiento,
-  enf_componente.presentacion Nombrevacuna,
-  enf_mov_inventario.cantidad_mov Cantidad,
-  enf_mov_inventario.empleado_envio EmpleadoEnvio,
-  enf_mov_inventario.empleado_recivio EmpleadoRecivio,
-  enf_mov_inventario.fecha_ingreso_mov fecha
+enf_mov_inventario.id Movimiento,
+ctl_establecimiento.nombre Establecimiento,
+enf_componente.presentacion Nombrevacuna,
+enf_mov_inventario.cantidad_mov Cantidad,
+enf_mov_inventario.empleado_envio EmpleadoEnvio,
+enf_mov_inventario.empleado_recivio EmpleadoRecivio,
+enf_mov_inventario.fecha_ingreso_mov fecha
 
-  FROM
-  public.enf_componente,
-  public.enf_ctl_tipo_componente,
-  public.mnt_empleado,
-  public.ctl_establecimiento,
-  public.enf_ctl_mov_inventario,
-  public.enf_mov_inventario,
-  public.enf_inventario,
-  public.ctl_area_atencion
+FROM
+public.enf_componente,
+public.enf_ctl_tipo_componente,
+public.mnt_empleado,
+public.ctl_establecimiento,
+public.enf_ctl_mov_inventario,
+public.enf_mov_inventario,
+public.enf_inventario,
+public.ctl_area_atencion
 WHERE
-  enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
-  mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
-  mnt_empleado.id = enf_mov_inventario.id_emp_corr AND
-  enf_componente.id_tipo_componente = 1 AND
-  enf_componente.id = enf_inventario.id_componente AND
-  enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
-  enf_mov_inventario.id_inventario = enf_inventario.id AND
-  enf_mov_inventario.id_dosis_esq is NULL AND
-  enf_mov_inventario.fecha_ingreso_mov >= to_date($P{fpini},'DD-MM-YYYY')  AND
-  enf_mov_inventario.fecha_ingreso_mov <= to_date($P{fpfin},'DD-MM-YYYY') AND
+enf_componente.id_tipo_componente = enf_ctl_tipo_componente.id AND
+mnt_empleado.id_establecimiento = ctl_establecimiento.id AND
+mnt_empleado.id = enf_mov_inventario.id_emp_corr AND
+enf_componente.id_tipo_componente = 1 AND
+enf_componente.id = enf_inventario.id_componente AND
+enf_mov_inventario.id_tipo_inventario = enf_ctl_mov_inventario.id AND
+enf_mov_inventario.id_inventario = enf_inventario.id AND
+enf_mov_inventario.id_dosis_esq is NULL AND
+
+enf_mov_inventario.fecha_ingreso_mov >= to_date(to_char(to_timestamp($P{fpini}, 'DD-MM-YYYY HH12:MI:SS'), 'DD-MM-YYYY'),'DD-MM-YYYY HH12:MI:SS') and
+enf_mov_inventario.fecha_ingreso_mov <= to_date(to_char(to_timestamp($P{fpfin}, 'DD-MM-YYYY HH12:MI:SS'), 'DD-MM-YYYY'),'DD-MM-YYYY HH12:MI:SS') and
    CASE WHEN $P{presentacion} = 0 THEN ( enf_inventario.id_componente = enf_inventario.id_componente ) ELSE   enf_inventario.id_componente =$P{presentacion} END AND
 
   mnt_empleado.id_establecimiento = coalesce($P{tipoEstable}, mnt_empleado.id_establecimiento)
@@ -92,7 +93,7 @@ order by fecha asc;]]>
 	<field name="cantidad" class="java.math.BigDecimal"/>
 	<field name="empleadoenvio" class="java.lang.String"/>
 	<field name="empleadorecivio" class="java.lang.String"/>
-	<field name="fecha" class="java.sql.Date"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
 	<variable name="TotalApl" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{cantidad}]]></initialValueExpression>
